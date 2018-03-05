@@ -4,7 +4,7 @@ title: what
 permalink: /
 ---
 
-## Introduction
+# Nunc Ille Est Magicus -- Introduction
 
 Non destructive testing and imaging ultrasound modalities have been around since the '50s in . More and more ultrasound-based initiative are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs for the different possible uses, mostly efforts from research laboratories. Most have been used on commercial US scanners, traditionaly used as experiment platforms, but they are not cheap, and yield very little in terms of data access and control. Others have been developped in labs, but, sadly, very few have been open-sourced. This particular project stems from a previous beaglebone-based design, as well as an arduino-like module-based design. 
 
@@ -13,7 +13,7 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 
 
 
-## Comparative
+## Si Non Confectus, Non Reficiat -- a short omparative
 
 | Tool           	| Murgen 	| echOmods        	| unoric               	|
 |----------------	|--------	|-----------------	|----------------------	|
@@ -23,88 +23,43 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 | Price of a set	| 400$		| 450$			| 400$			|
 | Modular		| Np		| Yes			| No			| 
 
-## Installation steps
+## Quia Ego Sic Dico -- installation steps
 
-* Setup
-* Install image
-* Burn bitstream
-* Acquire
-* Display!
+1. Setup
+2. Install the image on the Raspberry 
+3. Burn bitstream
+4. Acquire the signal
+5. Process and display!
 
-## Application
+## Faber Est Quisqve Fortunae Suae
 
-### Ideas of use
+A couple of ideas to play with the stuff
 
 * Compressed sensing to be used with [muscle detection]().
-* AMode - 
-  * Non destructive testing
-  * f
-* Medical imaging BMode with 
+* AMode Non destructive testing
+* Medical imaging BMode with a probe
 
+## Moneta Supervacanea, Magister?
 
-### Examples of use
+* Send me a mail at __orders@un0rick.cc__ !
+* Or wait for the Tindie shop to order.
+* First sets around 349$.  Vilis Ad Bis Pretii !
 
-* Single element acquisition
+# Non Ante Septem Dies Proxima, Squiri
 
-## Contributing
+* [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
+* [2018-02-02]() - First tests
+* [2018-01-23]() - Got the first board
+* [2017-11-19]() - First ideas
 
+@todo makelinks
 
-## Resources on open-source science hardware
+# Liber Paginarum Fulvarum
 
-### Inspiring resources
-
-* Hackaday for sharing awesome experiences
-* The [Journal of Open Hardware](https://openhardware.metajnl.com/)
-
-* HardwareX
-* [GOSH](http://openhardware.science/)
-* BlackMesa Labs
-* PoC || GTfO
-
-### Thanks
-
-* All of the users of the echOmods modules
-* 
-* Lattice for the ice40
-  * and [Project IceStorm](http://www.clifford.at/icestorm/)
-* Raspberry Pi for the awesome Pi W
-
-* MacroFab for the prototype boards
-
-
- 
-* ATL to have produced superb mechanical probes
-
-* And of course thanks to David!
-
-
-
-## Links // Liber Paginarum Fulvarum (Latatian: "Book of yellow pages")
-
-* Homepage
-* GitBook Examples
-* PDF / LaTeX summary
-* GitHub Repo
-* Tindie
-* Hackaday
-
-
-
-///
-
-* @senjak https://wiki.lspace.org/mediawiki/Latatian_Phrases ( 
-  * Si Non Confectus, Non Reficiat -- "If It Ain't Broke, Don't Fix It"  (motto)
-  * Stercus, Stercus, Stercus, Morituri Sum -- "Oh Shit, Oh Shit, Oh Shit, I'm Gonna Die"
-  * Nunc Ille Est Magicus  ? --  "Now That's Magic" - Guild of Conjurors
-  * Non Ante Septem Dies Proxima, Squiri  -- "Not Before Next Week, Squire" (plombiers)
-  * Vilis Ad Bis Pretii -- "Cheap At Twice The Price" (marchands)
-
-
-
-
-
-
-
-
-
+* [Homepage](http://un0rick.cc) and [blog](http://un0rick.cc/blog/) 
+* [GitBook Examples](http://git.un0rick.cc)
+* [PDF / LaTeX summary](http://un0rick.cc)
+* The full [GitHub Repo](https://github.com/kelu124/un0rick)
+* The guy's [Tindie shop](https://www.tindie.com/stores/kelu124/)
+* The corresponding [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
 
