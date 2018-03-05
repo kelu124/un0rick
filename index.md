@@ -1,6 +1,6 @@
 ---
 layout: page
-title:  un0rick
+title: home 
 permalink: /
 ---
 
