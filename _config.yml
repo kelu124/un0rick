@@ -33,10 +33,10 @@ kramdown:
 ####################################
 #
 owner:
-  name: kelu
+  name: un0rick
   avatar: leonids-logo.png
-  job: "Tinkerer"
-  bio: "Having fun tinkering with hardware, France."
+  job: "Open source ultrasound"
+  bio: "Low cost, open source ultrasound imaging hardware."
   email: kelu@un0rick.cc
   disqus-shortname: kelu124
   twitter: kelu124 #username
