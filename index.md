@@ -11,11 +11,9 @@ Non destructive testing and imaging ultrasound modalities have been around since
 It has also been shown that simple (be it low-power, low-cost and small) can be achieved - and this, even for relatively complex systems, based on 16 to 64  parallel   channels   front-end  processing and software back-end processing (embedded PC or DSP). This makes it a bit more complex for the layman, hobbyist, or non-specialist researcher to use, not to mention the very little information that is accessible.
 
 
+# Si Non Confectus, Non Reficiat -- a short comparative
 
-
-## Si Non Confectus, Non Reficiat -- a short omparative
-
-| Tool           	| Murgen 	| echOmods        	| unoric               	|
+| Tool           	| Murgen 	| echOmods        	| un0rick               	|
 |----------------	|--------	|-----------------	|----------------------	|
 | Open Source    	| Yes    	| Yes             	| Yes                  	|
 | ADC            	| 20Msps 	| 1Msps to 24Msps 	| 65Msps up to 100Msps 	|
@@ -23,7 +21,7 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 | Price of a set	| 400$		| 450$			| 400$			|
 | Modular		| Np		| Yes			| No			| 
 
-## Quia Ego Sic Dico -- installation steps
+# Quia Ego Sic Dico -- installation steps
 
 1. Setup
 2. Install the image on the Raspberry 
@@ -31,7 +29,7 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 4. Acquire the signal
 5. Process and display!
 
-## Faber Est Quisqve Fortunae Suae
+# Faber Est Quisqve Fortunae Suae
 
 A couple of ideas to play with the stuff
 
@@ -39,7 +37,7 @@ A couple of ideas to play with the stuff
 * AMode Non destructive testing
 * Medical imaging BMode with a probe
 
-## Moneta Supervacanea, Magister?
+# Moneta Supervacanea, Magister?
 
 * Send me a mail at __orders@un0rick.cc__ !
 * Or wait for the Tindie shop to order.
@@ -48,9 +46,9 @@ A couple of ideas to play with the stuff
 # Non Ante Septem Dies Proxima, Squiri
 
 * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
-* [2018-02-02]() - First tests
-* [2018-01-23]() - Got the first board
-* [2017-11-19]() - First ideas
+* [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
+* [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
+* [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Having an idea... and exploring it
 
 @todo makelinks
 
