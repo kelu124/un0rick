@@ -48,9 +48,8 @@ A couple of ideas to play with the stuff
 * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
 * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
 * [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
-* [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Having an idea... and exploring it
-
-@todo makelinks
+* [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Exploring the idea of an ICE40, using Upverter
+* [2017-09-15](http://un0rick.cc/articles/2017-09/uniboard) - First ideal specs on the paper
 
 # Liber Paginarum Fulvarum
 
