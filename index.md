@@ -10,14 +10,51 @@ Non destructive testing and imaging ultrasound modalities have been around since
 
 It has also been shown that simple (be it low-power, low-cost and small) can be achieved - and this, even for relatively complex systems, based on 16 to 64  parallel   channels   front-end  processing and software back-end processing (embedded PC or DSP). This makes it a bit more complex for the layman, hobbyist, or non-specialist researcher to use, not to mention the very little information that is accessible.
 
+# Non Quod Maneat, Sed Quod Adimimus -- simplified hardware
+
+#### Feature and specs 
+
+1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
+2. __Memory__:
+  * 8 Mbit SRAM, 10ns, 512 k x 16, equivalent:
+      * 65 full lines of 120us at 64Msps
+      * 840 lines of 120us at 10Msps, 8 bits
+  * 8 Mb SPI Flash for FPGA configuration 
+3. __Ultrasound processing__:
+  * __VGA__: AD8331 controled by DAC
+  * __Pulser__: MD1210 + TC6320
+  * __ADC__: 10Msps ADC10065
+4. __Extensibility__:
+  * 2 x Pmod connectors
+  * SMA plug for transducers
+  * RPi GPIO
+5. __User Interfaces__:
+  * 2 x PMOD for IOs
+  * 3 x push button (with software noise debouncing)
+  * Jumpers for high voltage selection
+6. __Compatibility__: 
+  * Programable via USB and RPi header
+  * Raspberry Pi 
+7. __Input Voltage__: 
+  * 5 V from RPi or USB
+8. __Fully Open Source__:
+  * Hardware: _github repository_
+  * Software: _github repository_
+  * Toolchain: _Project IceStorm_
+  * Documentation: _gitbook_
+9. __Operating Voltage__: 
+  * FPGA and logics at at 3.3 V
+  * High voltage at 25V, 50V, 75V
+10. __Dimensions__: @todo!
+11. __Weight__: @todo! g
 
 # Si Non Confectus, Non Reficiat -- a short comparative
 
-| Tool           	| Murgen 	| echOmods        	| un0rick               	|
+| Tool  *    	| Murgen 	| echOmods  * 	| un0rick  *        	|
 |----------------	|--------	|-----------------	|----------------------	|
-| Open Source    	| Yes    	| Yes             	| Yes                  	|
-| ADC            	| 20Msps 	| 1Msps to 24Msps 	| 65Msps up to 100Msps 	|
-| Onboard memory 	| 300 Mb 	| 10 Mb           	| 20Mb                 	|
+| Open Source    	| Yes    	| Yes  *      	| Yes  *   *   	|
+| ADC  *     	| 20Msps 	| 1Msps to 24Msps 	| 65Msps up to 100Msps 	|
+| Onboard memory 	| 300 Mb 	| 10 Mb  *    	| 20Mb  *   *  	|
 | Price of a set	| 400$		| 450$			| 400$			|
 | Modular		| Np		| Yes			| No			| 
 
