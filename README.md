@@ -8,7 +8,7 @@ Non destructive testing and imaging ultrasound modalities have been around since
 
 ## Picture of the setup
 
-![](/un0rick/images/IMG_20180224_195210.jpg)
+![](/images/IMG_20180224_195210.jpg)
 
 ## Details of acquisitions
 
