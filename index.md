@@ -4,15 +4,14 @@ title: what
 permalink: /
 ---
 
-# Nunc Ille Est Magicus -- Introduction
+# __Nunc Ille Est Magicus__ -- Introduction
 
 Non destructive testing and imaging ultrasound modalities have been around since the '50s in . More and more ultrasound-based initiative are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs for the different possible uses, mostly efforts from research laboratories. Most have been used on commercial US scanners, traditionaly used as experiment platforms, but they are not cheap, and yield very little in terms of data access and control. Others have been developped in labs, but, sadly, very few have been open-sourced. This particular project stems from a previous beaglebone-based design, as well as an arduino-like module-based design. 
 
 It has also been shown that simple (be it low-power, low-cost and small) can be achieved - and this, even for relatively complex systems, based on 16 to 64  parallel   channels   front-end  processing and software back-end processing (embedded PC or DSP). This makes it a bit more complex for the layman, hobbyist, or non-specialist researcher to use, not to mention the very little information that is accessible.
 
-# Non Quod Maneat, Sed Quod Adimimus -- simplified hardware
+# __Non Quod Maneat, Sed Quod Adimimus__ -- simplified hardware: specs and features
 
-#### Feature and specs 
 
 1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
 2. __Memory__:
@@ -24,19 +23,28 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
   * __VGA__: AD8331 controled by DAC
   * __Pulser__: MD1210 + TC6320
   * __ADC__: 10Msps ADC10065
-4. __Extensibility__:
+    * 10 bits of data / sample
+    * 2 bits of line counters
+    * 4 bits of IOs (counters, ...) 
+4. __Parameters__: Settings programable via USB or Raspberry Pi 
+  * Type of acquisition (one line / set of lines)
+  * Number of lines
+  * Length of lines acquisitions
+  * Delay between acquisitions
+  * Pulse width 
+  * Delay between pulse and beginning of acquisitions
+  * 200us time-gain-compensation programmable (8 bits, from 0 to Max), every 5us
+5. __Extensibility__:
   * 2 x Pmod connectors
   * SMA plug for transducers
   * RPi GPIO
-5. __User Interfaces__:
+6. __User Interfaces__:
   * 2 x PMOD for IOs
   * 3 x push button (with software noise debouncing)
   * Jumpers for high voltage selection
-6. __Compatibility__: 
-  * Programable via USB and RPi header
-  * Raspberry Pi 
 7. __Input Voltage__: 
   * 5 V from RPi or USB
+  * Uses 350mA-450mA at 5V
 8. __Fully Open Source__:
   * Hardware: _github repository_
   * Software: _github repository_
@@ -46,19 +54,17 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
   * FPGA and logics at at 3.3 V
   * High voltage at 25V, 50V, 75V
 10. __Dimensions__: @todo!
-11. __Weight__: @todo! g
+11. __Weight__: @todo! 
 
-# Si Non Confectus, Non Reficiat -- a short comparative
+# __Si (Non) Confectus, (Non) Reficiat__ -- a short comparative
 
-| Tool  *    	| Murgen 	| echOmods  * 	| un0rick  *        	|
-|----------------	|--------	|-----------------	|----------------------	|
-| Open Source    	| Yes    	| Yes  *      	| Yes  *   *   	|
-| ADC  *     	| 20Msps 	| 1Msps to 24Msps 	| 65Msps up to 100Msps 	|
-| Onboard memory 	| 300 Mb 	| 10 Mb  *    	| 20Mb  *   *  	|
-| Price of a set	| 400$		| 450$			| 400$			|
-| Modular		| Np		| Yes			| No			| 
+* Ready-made commercial platforms range in the 1000s$ .. and even smallish one-channel boards can be around 2k$. Each has pros and cons (for example a 2k$ board samples at 160Msps but can only store 4k pts). Not open-source.
+* Research gigs are not always published. Not open-source.
+* Some arduino-like modules were developped. A whole set is around 350$ for AFE+ADC+controls. Open source. DIY quality (acceptable, not for pros). Open source.
+* This board has more or less only plusses compared to the competition =)
+ 
 
-# Quia Ego Sic Dico -- installation steps
+# __Quia Ego Sic Dico__ -- installation steps
 
 1. Setup
 2. Install the image on the Raspberry 
@@ -66,7 +72,7 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 4. Acquire the signal
 5. Process and display!
 
-# Faber Est Quisqve Fortunae Suae
+# __Faber Est Quisqve Fortunae Suae__ -- what can you do with this?
 
 A couple of ideas to play with the stuff
 
@@ -74,21 +80,22 @@ A couple of ideas to play with the stuff
 * AMode Non destructive testing
 * Medical imaging BMode with a probe
 
-# Moneta Supervacanea, Magister?
+# __Moneta Supervacanea, Magister?__ -- shopping time
 
 * Send me a mail at __orders@un0rick.cc__ !
 * Or wait for the Tindie shop to order.
 * First sets around 349$.  Vilis Ad Bis Pretii !
 
-# Non Ante Septem Dies Proxima, Squiri
+# __Non Ante Septem Dies Proxima, Squiri__
 
-* [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
-* [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
-* [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
-* [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Exploring the idea of an ICE40, using Upverter
-* [2017-09-15](http://un0rick.cc/articles/2017-09/uniboard) - First ideal specs on the paper
+* V 0.1 -- Prototyping (project codename: MATTY)
+  * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
+  * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
+  * [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
+  * [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Exploring the idea of an ICE40, using Upverter
+  * [2017-09-15](http://un0rick.cc/articles/2017-09/uniboard) - First ideal specs on the paper
 
-# Liber Paginarum Fulvarum
+# __Liber Paginarum Fulvarum__ -- other resources
 
 * [Homepage](http://un0rick.cc) and [blog](http://un0rick.cc/blog/) 
 * [GitBook Examples](http://git.un0rick.cc)
@@ -96,4 +103,22 @@ A couple of ideas to play with the stuff
 * The full [GitHub Repo](https://github.com/kelu124/un0rick)
 * The guy's [Tindie shop](https://www.tindie.com/stores/kelu124/)
 * The corresponding [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
+* Join the [Slack channel](https://join.slack.com/usdevkit/shared_invite/MTkxODU5MjU0NjI1LTE0OTY1ODgxMDEtMmYyZTliZDBlZA)
 
+# Thanks to
+
+* BiVi - _always here to chat_
+* Charles - _bringing neat insights_
+* David - _what would I have done without you?_
+* echOmods - _the fundations of this work_
+* Fabian - _already so many insights_
+* Fouad.. and team - _awesome works there_
+* Jan - _piezooos_
+* Johannes and Felix - _hardware is .. hard, but rewarding!_
+* Marc - _share these echoes =)_
+* Murgen - _early elements_
+* Sofian - _early ideas!_
+* Tindie - _to allow people sharing their niche hardware, and for others to search for these_
+* Visa - _exploring amode_
+* Vlad - _you pulse_
+* .. and all the others !
