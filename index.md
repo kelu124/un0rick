@@ -89,6 +89,7 @@ A couple of ideas to play with the stuff
 # __Non Ante Septem Dies Proxima, Squiri__
 
 * V 0.1 -- Prototyping (project codename: MATTY)
+  * [2018-03-10](https://github.com/kelu124/echomods/tree/master/matty/20180310a) - getting the DAC working
   * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
   * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
   * [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
