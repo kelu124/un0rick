@@ -18,6 +18,7 @@ Non destructive testing and imaging ultrasound modalities have been around since
 
 * The [source files -- the upverter initial design are here](/source/)
 * The [production files are here](/build/)
+* The [VHDL files](/software/un0rick_v0.1.vhd)
 
 # Resources
 
