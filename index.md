@@ -10,6 +10,18 @@ Non destructive testing and imaging ultrasound modalities have been around since
 
 It has also been shown that simple (be it low-power, low-cost and small) can be achieved - and this, even for relatively complex systems, based on 16 to 64  parallel   channels   front-end  processing and software back-end processing (embedded PC or DSP). This makes it a bit more complex for the layman, hobbyist, or non-specialist researcher to use, not to mention the very little information that is accessible.
 
+__How about a case study? __
+
+The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/IMG_20180224_195210.jpg)
+
+Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
+
+
+
 # __Non Quod Maneat, Sed Quod Adimimus__ -- simplified hardware: specs and features
 
 
@@ -98,9 +110,7 @@ A couple of ideas to play with the stuff
 
 # __Liber Paginarum Fulvarum__ -- other resources
 
-* [Homepage](http://un0rick.cc) and [blog](http://un0rick.cc/blog/) 
-* [GitBook Examples](http://git.un0rick.cc)
-* [PDF / LaTeX summary](http://un0rick.cc)
+
 * The full [GitHub Repo](https://github.com/kelu124/un0rick)
 * The guy's [Tindie shop](https://www.tindie.com/stores/kelu124/)
 * The corresponding [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
