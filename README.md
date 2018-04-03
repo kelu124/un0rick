@@ -5,6 +5,7 @@ Non destructive testing and imaging ultrasound modalities have been around since
 # Results
 
 * v0.1 version (the __[matty](https://github.com/kelu124/echomods/tree/master/matty)__ prototype) gave good results!
+* v0.1 release! https://github.com/kelu124/un0rick/releases/tag/v0.1
 
 ## Picture of the setup
 
