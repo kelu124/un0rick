@@ -11,7 +11,13 @@ permalink: /FPGA-Rpi
 
 This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
 
-It builds in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
+## ice40 - a specificity
+
+This board builds in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
+
+It can use the "Project IceStorm", which aims at reverse engineering and documenting the bitstream format of Lattice iCE40 FPGAs and providing simple tools for analyzing and creating bitstream files.
+
+There's a bit of action around these FPGAs these days, be it for tools, extensions, DIP designs,... and I thought using those for a ultrasound imaging device would permit to mix both FPGA and OpenSource.
 
 ## How is this better?
 
