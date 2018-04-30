@@ -100,7 +100,7 @@ Below is represented the improvement in signal capture.
 
 ### Picture of the setup
 
-![](https://github.com/kelu124/echomods/blob/master/matty/20180225a/IMG_20180225_184226.jpg)
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180225a/IMG_20180225_184226.jpg)
 
 ### Results
 
