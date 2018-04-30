@@ -4,6 +4,10 @@ title: First idea
 excerpt: "Getting the first schematics in place."
 categories: [worklog]
 comments: false
+image:
+  feature: https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/idea.jpg
+  credit: kelu124
+  creditlink: https://github.com/kelu124/un0rick
 ---
 
 ## Basic idea
