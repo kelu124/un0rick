@@ -4,6 +4,8 @@ title: what
 permalink: /
 ---
 
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
+
 # __Nunc Ille Est Magicus__ -- Introduction
 
 Non destructive testing and imaging ultrasound modalities have been around since the '50s in . More and more ultrasound-based initiative are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs for the different possible uses, mostly efforts from research laboratories. Most have been used on commercial US scanners, traditionaly used as experiment platforms, but they are not cheap, and yield very little in terms of data access and control. Others have been developped in labs, but, sadly, very few have been open-sourced. This particular project stems from a previous beaglebone-based design, as well as an arduino-like module-based design. 
@@ -101,6 +103,7 @@ A couple of ideas to play with the stuff
 # __Non Ante Septem Dies Proxima, Squiri__
 
 * V 0.1 -- Prototyping (project codename: MATTY)
+  * [2018-05-16](https://github.com/kelu124/echomods/tree/master/matty/20180516a) - packaging data nicely
   * [2018-03-10](https://github.com/kelu124/echomods/tree/master/matty/20180310a) - getting the DAC working
   * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
   * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
