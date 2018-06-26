@@ -1,0 +1,153 @@
+Synopsys HDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+Synopsys VHDL Compiler, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+Copyright (C) 1994-2016 Synopsys, Inc. All rights reserved. This Synopsys software and all associated documentation are proprietary to Synopsys, Inc. and may only be used pursuant to the terms and conditions of a written license agreement with Synopsys, Inc. All other use, reproduction, modification, or distribution of the Synopsys software or the associated documentation is strictly prohibited.
+
+@N: CD720 :"C:\lscc\iCEcube2.2017.08\synpbase\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ps
+@N:"C:\Users\david\Desktop\MATTY serie\matty.vhd":23:7:23:21|Top entity is set to MATTY_MAIN_VHDL.
+File C:\Users\david\Desktop\MATTY serie\gray_counter.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\pll100M.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\pll128M2.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\pll256M2.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\asyn_fifo.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\spi_master.vhd changed - recompiling
+File C:\Users\david\Desktop\MATTY serie\matty.vhd changed - recompiling
+VHDL syntax check successful!
+Warning:Can't open record reference file@N: CD630 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":23:7:23:21|Synthesizing work.matty_main_vhdl.behavioral.
+@W: CG296 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":523:0:523:6|Incomplete sensitivity list; assuming completeness. Make sure all referenced variables in message CG290 are included in the sensitivity list.
+@W: CG290 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":530:61:530:69|Referenced variable seeperiod is not in sensitivity list.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":132:8:132:17|Signal stop_tour1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":133:8:133:17|Signal stop_tour2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":136:8:136:16|Signal sspi_miso is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":161:8:161:16|Signal sdelayacq is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":187:8:187:16|Signal sadc_data is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":189:11:189:15|Signal sadc0 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":190:11:190:15|Signal sadc1 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":191:11:191:15|Signal sadc2 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":192:11:192:15|Signal sadc3 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":193:11:193:15|Signal sadc4 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":194:11:194:15|Signal sadc5 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":195:11:195:15|Signal sadc6 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":196:11:196:15|Signal sadc7 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":197:11:197:15|Signal sadc8 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":198:11:198:15|Signal sadc9 is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":237:8:237:18|Signal spi_cs_prev is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":238:8:238:23|Signal button_mode_prev is undriven. Either assign the signal a value or remove the signal declaration.
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\spi_master.vhd":9:7:9:16|Synthesizing work.spi_master.spi_master_rtl.
+@N: CD604 :"C:\Users\david\Desktop\MATTY serie\spi_master.vhd":118:16:118:44|OTHERS clause is not synthesized.
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":9:7:9:19|Synthesizing work.spi_data_path.rtl_arch.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":62:11:62:23|Signal data_in_reg_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":73:11:73:23|Signal rxfifoempty_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":75:11:75:24|Signal readhalffull_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":76:11:76:22|Signal rxfifofull_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":78:11:78:23|Signal txfifoempty_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":80:11:80:26|Signal txfifohalffull_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":81:11:81:22|Signal txfifofull_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":104:11:104:17|Signal dummy_i is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":105:11:105:18|Signal dummy_rd is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.spi_data_path.rtl_arch
+@W: CL240 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":81:11:81:22|Signal TxFifoFull_i is floating; a simulation mismatch is possible.
+@W: CL240 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":76:11:76:22|Signal RxFifoFull_i is floating; a simulation mismatch is possible.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":277:8:277:9|Pruning unused register d2_RxReady_i_2. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":277:8:277:9|Pruning unused register d1_RxReady_i_2. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":264:8:264:9|Pruning unused register d2_TxReady_i_2. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":264:8:264:9|Pruning unused register d1_TxReady_i_2. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":249:8:249:9|Pruning unused register rx_fifo_rd_en_i_1. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\spi_data_path.vhd":232:8:232:9|Pruning unused register tx_fifo_wr_en_i_2. Make sure that there are no unused intermediate registers.
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd":9:7:9:14|Synthesizing work.sclk_gen.count_arch.
+@N: CD231 :"C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd":45:25:45:26|Using onehot encoding for type spim_clk_states. For example, enumeration spim_idle_state is mapped to "10000".
+@N: CD604 :"C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd":191:16:191:44|OTHERS clause is not synthesized.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd":29:11:29:23|Signal sclk_period_i is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.sclk_gen.count_arch
+Post processing for work.spi_master.spi_master_rtl
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\spi_slave_ice.vhd":48:7:48:19|Synthesizing work.spi_slave_ice.rtl_arch.
+Post processing for work.spi_slave_ice.rtl_arch
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":4:7:4:14|Synthesizing work.pll128m2.behavior.
+@W: CD280 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":18:10:18:25|Unbound component SB_PLL40_2F_CORE mapped to black box
+@N: CD630 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":18:10:18:25|Synthesizing work.sb_pll40_2f_core.syn_black_box.
+Post processing for work.sb_pll40_2f_core.syn_black_box
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":16:7:16:14|Signal openwire is undriven. Either assign the signal a value or remove the signal declaration.
+@W: CD638 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Signal openwirebus is undriven. Either assign the signal a value or remove the signal declaration.
+Post processing for work.pll128m2.behavior
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 0 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 1 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 2 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 3 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 4 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 5 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 6 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":17:7:17:17|Bit 7 of signal openwirebus is floating -- simulation mismatch possible.
+@W: CL240 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":16:7:16:14|Signal openwire is floating; a simulation mismatch is possible.
+@W: CL167 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Input extfeedback of instance pll128M2_inst is floating
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 0 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 1 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 2 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 3 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 4 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 5 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 6 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL245 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Bit 7 of input dynamicdelay of instance pll128M2_inst is undriven. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL167 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Input latchinputvalue of instance pll128M2_inst is floating
+@W: CL167 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Input sdi of instance pll128M2_inst is floating
+@W: CL167 :"C:\Users\david\Desktop\MATTY serie\pll128M2.vhd":63:0:63:12|Input sclk of instance pll128M2_inst is floating
+Post processing for work.matty_main_vhdl.behavioral
+@W: CL169 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":125:46:125:48|Pruning unused register spi_miso_valid_6. Make sure that there are no unused intermediate registers.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":156:46:156:48|Feedback mux created for signal sTrigCounter[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":125:46:125:48|Feedback mux created for signal sRAM_ADD[18:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":125:46:125:48|Feedback mux created for signal sADC_clk_prev. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":690:0:690:1|Feedback mux created for signal sEEPointerReset. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":690:0:690:1|Feedback mux created for signal sEEDAC[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":690:0:690:1|Feedback mux created for signal sEEADC_freq[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":158:36:158:38|Feedback mux created for signal button_debounce_counter[23:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":158:36:158:38|Feedback mux created for signal sbuttonModeStatus. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":690:0:690:1|Feedback mux created for signal spi_mosi_ready64_prev3. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":128:48:128:50|Feedback mux created for signal spi_mosi_ready64_prev2. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":127:49:127:51|Feedback mux created for signal spi_mosi_ready64_prev. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@N: CL201 :"C:\Users\david\Desktop\MATTY serie\sclk_gen.vhd":134:8:134:9|Trying to extract state machine for register spim_clk_state_i.
+Extracted state machine for register spim_clk_state_i
+State machine has 5 reachable states with original encodings of:
+   00001
+   00010
+   00100
+   01000
+   10000
+@N: CL159 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":31:0:31:9|Input reset_alim is unused.
+@N: CL159 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":32:12:32:19|Input reset_ft is unused.
+@N: CL159 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":80:12:80:22|Input button_trig is unused.
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 82MB peak: 84MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun May 13 07:21:17 2018
+
+###########################################################]
+Synopsys Netlist Linker, version comp2016q3p1, Build 141R, built Dec  5 2016
+@N|Running in 64-bit mode
+@N: NF107 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":23:7:23:21|Selected library: work cell: MATTY_MAIN_VHDL view behavioral as top level
+@N: NF107 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":23:7:23:21|Selected library: work cell: MATTY_MAIN_VHDL view behavioral as top level
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 68MB peak: 69MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun May 13 07:21:18 2018
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Sun May 13 07:21:18 2018
+
+###########################################################]

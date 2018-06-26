@@ -1,0 +1,34 @@
+---------------------------------------
+Resource Usage Report for MATTY_MAIN_VHDL 
+
+Mapping to part: ice40hx4ktq144
+Cell usage:
+GND             5 uses
+SB_CARRY        324 uses
+SB_DFF          2 uses
+SB_DFFE         39 uses
+SB_DFFER        554 uses
+SB_DFFES        31 uses
+SB_DFFESR       1 use
+SB_DFFNR        14 uses
+SB_DFFR         144 uses
+SB_DFFS         7 uses
+SB_DFFSR        31 uses
+SB_GB           8 uses
+SB_PLL40_2F_CORE  1 use
+VCC             5 uses
+SB_LUT4         945 uses
+
+I/O ports: 84
+I/O primitives: 81
+SB_IO          81 uses
+
+I/O Register bits:                  0
+Register bits not including I/Os:   823 (23%)
+
+@S |Mapping Summary:
+Total  LUTs: 945 (26%)
+
+Distribution of All Consumed LUTs = LUT4 
+Distribution of All Consumed Luts 945 = 945 
+

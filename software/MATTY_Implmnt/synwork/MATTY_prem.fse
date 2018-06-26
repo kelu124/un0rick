@@ -1,0 +1,14 @@
+
+fsm_encoding {1013481341} onehot
+
+fsm_state_encoding {1013481341} spim_idle_state {00001}
+
+fsm_state_encoding {1013481341} spim_setup_state {00010}
+
+fsm_state_encoding {1013481341} spim_data_tx_state {00100}
+
+fsm_state_encoding {1013481341} spim_hold_state {01000}
+
+fsm_state_encoding {1013481341} spim_tx2tx_wait_state {10000}
+
+fsm_registers {1013481341} {spim_clk_state_i[0]}  {spim_clk_state_i[1]}  {spim_clk_state_i[2]}  {spim_clk_state_i[3]}  {spim_clk_state_i[4]} 

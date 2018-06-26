@@ -1,5 +1,7 @@
 # This project
 
+![](/images/un0desc.png)
+
 Non destructive testing and imaging ultrasound modalities have been around since the '50s in . More and more ultrasound-based initiative are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs for the different possible uses, mostly efforts from research laboratories. Most have been used on commercial US scanners, traditionaly used as experiment platforms, but they are not cheap, and yield very little in terms of data access and control. Others have been developped in labs, but, sadly, very few have been open-sourced. Let's tackle this!
 
 ## Picture of the setup
@@ -111,6 +113,8 @@ A couple of ideas to play with the stuff
 
 # __Non Ante Septem Dies Proxima, Squiri__
 
+* V1
+  * Update of wrong footprints and connections
 * V 0.1 [release](https://github.com/kelu124/un0rick/releases/tag/v0.1) -- Prototyping (project codename: MATTY)
   * [2018-03-10](https://github.com/kelu124/echomods/tree/master/matty/20180310a) - getting the DAC working
   * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
