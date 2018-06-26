@@ -13,7 +13,7 @@ DATA = {}
 DNP = []
 
 
-with open('77c1d00889d46acf_15124824574958_BOM.csv') as csvfile:
+with open('BOM_v1.csv') as csvfile:
 	spamreader = csv.reader(csvfile, delimiter=',', quotechar='"')
 
 	done = False
