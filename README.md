@@ -22,7 +22,12 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 
 * The [source files -- the upverter initial design are here](/source/)
 * The [production files are here](/build/)
-* The [VHDL files](/software/)
+* The [VHDL files](/software/) - and [corresponding firmware](/software/MATTY.bin)
+
+# External sources
+
+* DATA server
+* gitbook for external doc
 
 # Resources
 

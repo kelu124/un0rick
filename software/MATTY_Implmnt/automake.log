@@ -1,0 +1,12 @@
+
+synpwrap -msg -prj "MATTY_MATTY_Implmnt_synplify.tcl" -log "MATTY_MATTY_Implmnt.srf"
+Copyright (C) 1992-2017 Lattice Semiconductor Corporation. All rights reserved.
+Lattice Diamond Version 3.10.0.111.2
+    <postMsg mid="2011000" type="Info"    dynamic="0" navigation="0"  />
+/usr/local/diamond/3.10_x64/synpbase/bin/synplify_pro: 137: [: unexpected operator
+/usr/local/diamond/3.10_x64/synpbase/bin/synplify_pro: 151: [: !=: argument expected
+/usr/local/diamond/3.10_x64/synpbase/bin/synplify_pro: 320: /usr/local/diamond/3.10_x64/synpbase/bin/config/execute: Syntax error: "(" unexpected (expecting ";;")
+Error : can not print out log file stdout.log
+Child process exit with 2.
+Error of dumping file MATTY_MATTY_Implmnt.srf, 'stdout.log' is instead. 
+Synthesis exit by 2.

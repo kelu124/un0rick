@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="3.2" title="MATTY" device="LFECP6E-5T144C" default_implementation="MATTY_Implmnt">
+    <Options/>
+    <Implementation title="MATTY_Implmnt" dir="MATTY_Implmnt" description="MATTY_Implmnt" synthesis="synplify" default_strategy="Strategy1">
+        <Options def_top="SPI_SLAVE"/>
+        <Source name="MATTY_Implmnt/source/16M_Async_SRAM.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/asyn_fifo.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/gray_counter.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/matty_main.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/matty_main248.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/matty.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/mattysimu.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="MATTY_MAIN_VHDL_tb"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/package_timing.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/package_utility.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll100M.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="pll100M"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll128M2.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="pll128M2"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll248M2_inst.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll248M2_vhd.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll248M2.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="pll248M2"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll256M2_inst.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll256M2_vhd.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/pll256M2.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="pll256M2"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/sclk_gen.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/spi_data_path.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/spi_master.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="spi_master"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/spi_slave_ice.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="SPI_SLAVE_ICE"/>
+        </Source>
+        <Source name="MATTY_Implmnt/source/SPI_SLAVE.vhd" type="VHDL" type_short="VHDL">
+            <Options top_module="SPI_SLAVE"/>
+        </Source>
+        <Source name="MATTY.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="MATTY1.sty"/>
+</BaliProject>
