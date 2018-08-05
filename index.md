@@ -2,7 +2,7 @@
 layout: default
 ---
 
-](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
 
 # __Nunc Ille Est Magicus__ -- Introduction
 
