@@ -1,8 +1,3 @@
----
-layout: default
----
-
-
 # Experiments
 
 ## Introduction
