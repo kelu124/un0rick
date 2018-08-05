@@ -3,3 +3,4 @@ description: un0rick is a open-source ultrasound project.
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-cayman
+permalink: /404.html
