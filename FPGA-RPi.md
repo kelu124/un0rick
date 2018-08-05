@@ -1,12 +1,5 @@
 ---
-layout: page
-title: FPGA Ultrasound Imaging on a Raspberry Pi - ice40-powered
-permalink: /FPGA-Rpi
-comments: false
-image:
-  feature: https://raw.githubusercontent.com/kelu124/un0rick/gh-pages/img/2018-02-27.jpg
-  credit: kelu124
-  creditlink: https://github.com/kelu124/un0rick
+layout: default
 ---
 
 
