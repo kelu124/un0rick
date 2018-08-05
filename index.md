@@ -4,7 +4,9 @@ layout: default
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
 
-# __Nunc Ille Est Magicus__ -- Introduction
+# __Nunc Ille Est Magicus__ 
+
+### Introduction
 
 Non destructive testing and imaging ultrasound modalities have been around since the '50s in . More and more ultrasound-based initiative are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs for the different possible uses, mostly efforts from research laboratories. Most have been used on commercial US scanners, traditionaly used as experiment platforms, but they are not cheap, and yield very little in terms of data access and control. Others have been developped in labs, but, sadly, very few have been open-sourced. This particular project stems from a previous beaglebone-based design, as well as an arduino-like module-based design. 
 
@@ -22,7 +24,9 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 
 
 
-# __Non Quod Maneat, Sed Quod Adimimus__ -- simplified hardware: specs and features
+# __Non Quod Maneat, Sed Quod Adimimus__ 
+
+### Simplified hardware: specs and features
 
 
 1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
@@ -68,7 +72,9 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 10. __Dimensions__: @todo!
 11. __Weight__: @todo! 
 
-# __Si (Non) Confectus, (Non) Reficiat__ -- a short comparative
+# __Si (Non) Confectus, (Non) Reficiat__ 
+
+If it's not broken..
 
 * Ready-made commercial platforms range in the 1000s$ .. and even smallish one-channel boards can be around 2k$. Each has pros and cons (for example a 2k$ board samples at 160Msps but can only store 4k pts). Not open-source.
 * Research gigs are not always published. Not open-source.
@@ -76,7 +82,9 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 * This board has more or less only plusses compared to the competition =)
  
 
-# __Quia Ego Sic Dico__ -- installation steps
+# __Quia Ego Sic Dico__ 
+
+### Installation steps
 
 1. Setup
 2. Install the image on the Raspberry 
@@ -84,34 +92,18 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 4. Acquire the signal
 5. Process and display!
 
-# __Faber Est Quisqve Fortunae Suae__ -- what can you do with this?
-
-A couple of ideas to play with the stuff
-
-* Compressed sensing to be used with [muscle detection]().
-* AMode Non destructive testing
-* Medical imaging BMode with a probe
-
-# __Moneta Supervacanea, Magister?__ -- shopping time
+# __Moneta Supervacanea, Magister?__
 
 * Send me a mail at __orders@un0rick.cc__ !
 * Or wait for the Tindie shop to order.
-* First sets around 349$.  Vilis Ad Bis Pretii !
+* First sets around 449$.  Vilis Ad Bis Pretii !
 
 # __Non Ante Septem Dies Proxima, Squiri__
 
-* V 0.2 -- Minor tweaks -- [RELEASE](https://github.com/kelu124/un0rick/releases/tag/v0.2)
-  * [2018-05-16](https://github.com/kelu124/echomods/tree/master/matty/20180516a) - packaging data nicely
-* V 0.1 -- Prototyping (project codename: MATTY) -- [RELEASE](https://github.com/kelu124/un0rick/releases/tag/v0.1)
-  * [2018-03-10](https://github.com/kelu124/echomods/tree/master/matty/20180310a) - getting the DAC working
-  * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
-  * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
-  * [2018-01-23](http://un0rick.cc/articles/2018-01/first-board) - Got the first board from the fab
-  * [2017-11-19](http://un0rick.cc/articles/2017-11/first-ideas) - Exploring the idea of an ICE40, using Upverter
-  * [2017-09-15](http://un0rick.cc/articles/2017-09/uniboard) - First ideal specs on the paper
+V1 RELEASE !
+@todo
 
-# __Liber Paginarum Fulvarum__ -- other resources
-
+# __Liber Paginarum Fulvarum__ 
 
 * The full [GitHub Repo](https://github.com/kelu124/un0rick)
 * The guy's [Tindie shop](https://www.tindie.com/stores/kelu124/)
