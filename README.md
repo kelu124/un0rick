@@ -52,7 +52,7 @@ It has also been shown that simple (be it low-power, low-cost and small) can be 
 3. __Ultrasound processing__:
   * __VGA__: AD8331 controled by DAC
   * __Pulser__: MD1210 + TC6320
-  * __ADC__: 10Msps ADC10065
+  * __ADC__: 65Msps ADC10065
     * 10 bits of data / sample
     * 2 bits of line counters
     * 4 bits of IOs (counters, ...) 
@@ -114,7 +114,7 @@ A couple of ideas to play with the stuff
 
 * Send me a mail at __orders@un0rick.cc__ !
 * Or wait for the Tindie shop to order.
-* First sets around 349$.  Vilis Ad Bis Pretii !
+* First sets around 449$.  Vilis Ad Bis Pretii !
 
 # __Non Ante Septem Dies Proxima, Squiri__
 
