@@ -102,8 +102,9 @@ A couple of ideas to play with the stuff
 
 # __Non Ante Septem Dies Proxima, Squiri__
 
-* V 0.1 -- Prototyping (project codename: MATTY)
+* V 0.2 -- Minor tweaks -- [RELEASE](https://github.com/kelu124/un0rick/releases/tag/v0.2)
   * [2018-05-16](https://github.com/kelu124/echomods/tree/master/matty/20180516a) - packaging data nicely
+* V 0.1 -- Prototyping (project codename: MATTY) -- [RELEASE](https://github.com/kelu124/un0rick/releases/tag/v0.1)
   * [2018-03-10](https://github.com/kelu124/echomods/tree/master/matty/20180310a) - getting the DAC working
   * [2018-02-27](http://un0rick.cc/articles/2018-02/good-news) - first acquisitions at high speed
   * [2018-02-02](http://un0rick.cc/articles/2018-02/first-tests) - Getting the first tests done (and repairs)
