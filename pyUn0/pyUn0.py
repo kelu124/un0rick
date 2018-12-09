@@ -12,7 +12,7 @@ __copyright__   = "Copyright 2016, Kelu124"
 __license__ = "GPLv3"
 
 '''
-Used inter alia in `20180901a`
+Used inter alia in `20181104a` 
 '''
 
 import spidev
@@ -145,9 +145,9 @@ class us_spi:
 	    PRESET = 23 ## Reset for the FPGA
 	    IO4 = 26 ## 26 is the output connected to 
 	    
-	    CS_FLASH = 7
-	    GPIO.setup(CS_FLASH,GPIO.OUT)  
-	    GPIO.output(CS_FLASH,GPIO.LOW)
+	    #CS_FLASH = 7
+	    #GPIO.setup(CS_FLASH,GPIO.OUT)  
+	    #GPIO.output(CS_FLASH,GPIO.LOW)
 
 	    GPIO.setup(PRESET,GPIO.OUT)
 	    GPIO.setup(IO4,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -634,8 +634,28 @@ class us_json:
         plt.savefig(FileName)
 	plt.show() 
 
+    def mkFiltered(self,img):
+
+        Filtered = []
+        FFTFil = []
+        if len(img):
+            N, L = np.shape(img)
+            FFT_x = [ X*self.f / (L) for X in range(L)] 
+            for k in range(N):
+                FFT_c = np.fft.fft(img[k])
+                FFTFil.append(FFT_c)
+                for p in range(len(FFT_c)/2+1):
+                    if (FFT_x[p] > (1000 * self.fPiezo * 1.27 ) or FFT_x[p] < (1000 * self.fPiezo * 0.7 ) ):
+                        FFT_c[p] =  0
+                        FFT_c[-p] =  0
+                Filtered.append(np.real(np.fft.ifft(FFT_c)))
+         
+
+        return Filtered,FFTFil
+
     def mkSpectrum(self,img):
         Spectrum = []
+        Filtered = []
         if len(img):
             N, L = np.shape(img)
             FFT_x = [ X*self.f / (L) for X in range(L)] 
@@ -643,10 +663,14 @@ class us_json:
                 FFT_c = np.fft.fft(img[k])
                 Spectrum.append(FFT_c[0:L/2])
 
+
+                
             plt.figure(figsize = (15,10))
             plt.imshow(np.sqrt(np.abs(Spectrum)), extent=[0,1000.0*self.f/2,N,0],cmap='hsv', aspect=30.0, interpolation='nearest') 
+            
             plt.axvline(x=(1000 * self.fPiezo * 1.27 ),linewidth=4, color='b')
             plt.axvline(x=(1000 * self.fPiezo * 0.7 ),linewidth=4, color='b')
+            
             plt.xlabel("Frequency (kHz)")
             plt.ylabel("Lines #")
             
@@ -667,7 +691,7 @@ class us_json:
             "2D Array not created yet"
 
         return np.abs(Spectrum)
-
+    
 ##############
 #
 # Main
@@ -676,4 +700,34 @@ class us_json:
 
 if __name__ == "__main__":
 	print "Loaded!"
+
+	if len(sys.argv) > 1:
+		if "test" in sys.argv[1]:
+			x = us_spi()
+			x.init()   
+			x.TestSPI(3)
+		if "single" in sys.argv[1]:
+			x = us_spi()
+			x.init()   
+			x.TestSPI(3)
+			Curve = x.CreateDACCurve(0,1000,True)[0] # Beginning, Ending, Linear (if False, expo)
+			x.setDACCurve(Curve)
+			x.JSON["N"] = 1 # Experiment ID
+			x.setMultiLines(True)				        # Multi lines acquisition	
+			x.setNLines(2)				            # Setting the number of lines
+			x.setMsps(3) 					            # Acquisition Freq
+			print("-----")
+			A = x.setTimings(200,100,2000,5000,200000)	# Settings the series of pulses
+			x.JSON["data"] = x.doAcquisition()
+		if "loop" in sys.argv[1]:
+			x = us_spi()
+			x.init()   
+			x.setMultiLines(True)				        # Multi lines acquisition	
+			x.setNLines(2)				            # Setting the number of lines
+			x.setMsps(3) 					            # Acquisition Freq
+			A = x.setTimings(200,100,2000,5000,200000)
+			while True:
+				x.WriteFPGA(0xEA,0x01) # trigs
+				time.sleep (50.0 / 1000.0)
+
 
