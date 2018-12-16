@@ -73,6 +73,10 @@ class us_spi:
     number_lines = 0
 
     def create_tgc_curve(self, Deb, Fin, CurveType):
+        """
+        Returns an arary with the TGC values, along a 40 values array.
+        Used afterwards to set fpga registers.
+        """
         n = 200/5
         DACValues = []
         for k in range(n+1):
@@ -107,6 +111,9 @@ class us_spi:
         return self.Nacq, self.LAcq, self.Fech, self.number_lines
 
     def set_multi_lines(self, Bool):
+        """
+        Determines if this is a single-line of multi-line acquisition.
+        """
         if Bool:
             print "Remember to indicate how many lines"
             self.write_fpga(0xEB, 1) # Doing one line if 0, several if 1
@@ -116,21 +123,26 @@ class us_spi:
             self.write_fpga(0xEB, 0) # Doing one line if 0, several if 1
             self.Nacq = 1
 
-    def set_tgc_curve(self, DACValues):
+    def set_tgc_curve(self, tgc_values):
+        """
+        Sets up the TGC using an array
+        """
         print "Setting up the DAC"
-        if len(DACValues) < 43: # to correct
-            for i in range(len(DACValues)):
-                if (DACValues[i] >= 0) and (DACValues[i] < 1020):
-                    self.write_fpga(16+i, DACValues[i]/4)
+        if len(tgc_values) < 43: # to correct
+            for i in range(len(tgc_values)):
+                if (tgc_values[i] >= 0) and (tgc_values[i] < 1020):
+                    self.write_fpga(16+i, tgc_values[i]/4) # /4 since 1024 values, on 8 bits
                 else:
                     self.write_fpga(16+i, 0)
-                #print 16+i, len(DACValues)
 
     #----------------
     # FPGA Controls
     #----------------
 
     def write_fpga(self, adress, value):
+        """
+        Basic function to write registers value to the FPGA
+        """
         self.spi.xfer([0xAA])
         self.spi.xfer([adress])
         self.spi.xfer([value])
@@ -141,10 +153,6 @@ class us_spi:
         GPIO.setmode(GPIO.BCM)
         PRESET = 23 ## Reset for the FPGA
         IO4 = 26 ## 26 is the output connected to
-
-        #CS_FLASH = 7
-        #GPIO.setup(CS_FLASH, GPIO.OUT)
-        #GPIO.output(CS_FLASH, GPIO.LOW)
 
         GPIO.setup(PRESET, GPIO.OUT)
         GPIO.setup(IO4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
@@ -165,9 +173,12 @@ class us_spi:
     # Testing functions
     #----------------
 
-    def test_spi(self, ncycles):
+    def test_spi(self, n_cycles):
+        """
+        Blinks the multi-line LED n_cycles times.
+        """
         i = 0
-        while i < ncycles:
+        while i < n_cycles:
             self.write_fpga(0xEB, 0x01) # 0: single mode 1 continious mode
             time.sleep(0.5)
             self.write_fpga(0xEB, 0x00) # 0: single mode 1 continious mode
@@ -175,6 +186,9 @@ class us_spi:
             i = i+1
 
     def loop_spi(self):
+        """
+        Pure debug test to spam SPI bus
+        """
         while 1:
             self.write_fpga(0xEB, 0x01) # 0: single mode 1 continious mode
             self.write_fpga(0xEB, 0x00) # 0: single mode 1 continious mode
@@ -195,6 +209,10 @@ class us_spi:
     # Setup functions
     #----------------
     def set_msps(self, F):
+        """
+        Setting acquisition speed.
+        Using F, ADC speed is determined as 64Msps / (1 + F)
+        """
         self.write_fpga(0xED, F)
         self.Fech = float(64/((1+F)))
         print "Acquisition frequency set at "+str(self.Fech)+" Msps"
@@ -264,47 +282,47 @@ class us_spi:
         self.write_fpga(0xE0, HPon) # set sEEPon
         return HPon*10
 
-    def setPulsesDelay(self, DeltaPP):
+    def setPulsesDelay(self, pulse_on_off_delay_val):
     # Set Lengh between Pon and Poff
-        if DeltaPP > 2500:
-            DeltaPP = 2500
-        elif DeltaPP < 0:
-            DeltaPP = 0
-        HPP = DeltaPP /10
+        if pulse_on_off_delay_val > 2500:
+            pulse_on_off_delay_val = 2500
+        elif pulse_on_off_delay_val < 0:
+            pulse_on_off_delay_val = 0
+        HPP = pulse_on_off_delay_val /10
         #print  hex(HPP)
-        self.JSON["parameters"]["PulsesDelay"] = int(DeltaPP)
+        self.JSON["parameters"]["PulsesDelay"] = int(pulse_on_off_delay_val)
         self.JSON["parameters"]["PulsesDelay_Real"] = int(HPP)
-        print "Pulses delay:", DeltaPP, " ns -- ", hex(HPP)
+        print "Pulses delay:", pulse_on_off_delay_val, " ns -- ", hex(HPP)
         self.write_fpga(0xD0, HPP) # set sEEPon
         return HPP*10
 
-    def setPoff(self, sEEPoff):
+    def setPoff(self, poff_value):
         # Sets the damping length.
-        POff = sEEPoff /10
+        POff = poff_value /10
         #print sEEPoff, POff
         POffMSB, POffLSB = 0x00FF&POff/256, 0x00FF&POff
-        print "Poff:", sEEPoff, " ns -- ", hex(POffMSB), hex(POffLSB)
-        self.JSON["parameters"]["Poff"] = int(sEEPoff)
+        print "Poff:", poff_value, " ns -- ", hex(POffMSB), hex(POffLSB)
+        self.JSON["parameters"]["Poff"] = int(poff_value)
         self.JSON["parameters"]["Poff_Real"] = int(POff)
         self.write_fpga(0xE1, POffMSB) # set sEEPon MSB
         self.write_fpga(0xE2, POffLSB) # set sEEPon LSB
         return POff*10
 
         # Setting Poff to Acq delay sEEDelayACQ
-    def setDeltaAcq(self, DeltaAcq):
-        if DeltaAcq > 255*255:
-            DeltaAcq = 254*254
-        elif DeltaAcq < 0:
-            DeltaAcq = 0
+    def setDeltaAcq(self, acquisition_delay_val):
+        if acquisition_delay_val > 255*255:
+            acquisition_delay_val = 254*254
+        elif acquisition_delay_val < 0:
+            acquisition_delay_val = 0
 
-        hDA = int((1.28*DeltaAcq)/10)
+        hDA = int((1.28*acquisition_delay_val)/10)
         hDAMSB, hDALSB = hDA/256, 0x00FF&hDA
         print "Delay between:", hDA*1000/128, "ns -- ", hex(hDAMSB), hex(hDALSB)
-        self.JSON["parameters"]["DeltaAcq"] = int(DeltaAcq)
+        self.JSON["parameters"]["DeltaAcq"] = int(acquisition_delay_val)
         self.JSON["parameters"]["DeltaAcq_Real"] = int(hDA)
         self.write_fpga(0xE3, hDAMSB) # set sEEPon MSB
         self.write_fpga(0xE4, hDALSB) # set sEEPon LSB
-        return DeltaAcq
+        return acquisition_delay_val
 
     def set_length_acq(self, LAcqI):
         correct_length_acq = int((128*LAcqI)/1000) # (LAcqI*128/1000)
@@ -318,17 +336,17 @@ class us_spi:
         return int(correct_length_acq*1000/128)
 
     def set_period_between_acqs(self, lEPeriod):
-        lrepeat_length = lEPeriod/10 #ns
-        repeat_length_msb = 0x00FF&lrepeat_length/(256*256)
-	repeat_length = 0x00FF&lrepeat_length/256
-	repeat_length_lsb = 0x0000FF&lrepeat_length
-        print "Period between two acquisitions:", lrepeat_length, "us --", hex(repeat_length_msb), hex(repeat_length), hex(repeat_length_lsb)
+        repeat_length_arg = lEPeriod/10 #ns
+        repeat_length_msb = 0x00FF&repeat_length_arg/(256*256)
+        repeat_length = 0x00FF&repeat_length_arg/256
+        repeat_length_lsb = 0x0000FF&repeat_length_arg
+        print "Period between two acquisitions:", repeat_length_arg, "us --", hex(repeat_length_msb), hex(repeat_length), hex(repeat_length_lsb)
         self.JSON["parameters"]["PeriodAcq"] = int(lEPeriod)
-        self.JSON["parameters"]["PeriodAcq_Real"] = int(lrepeat_length)
+        self.JSON["parameters"]["PeriodAcq_Real"] = int(repeat_length_arg)
         self.write_fpga(0xE7, repeat_length_msb) # Period of one cycle MSB
         self.write_fpga(0xE8, repeat_length) # Period of one cycle 15 to 8
         self.write_fpga(0xE9, repeat_length_lsb) # Period of one cycle LSB
-        return lrepeat_length*10
+        return repeat_length_arg*10
 
     def set_pulse_train(self, Pon, Pdelay, Poff, DelayAcq, Acq):
         RPon = self.setPon(Pon)
@@ -410,7 +428,7 @@ class us_json:
     Signal = []
     filtered_signal = []
     Registers = {}
-    t= []
+    t = []
     fPiezo = 3.5
     f = 0 # sampling freq
 
@@ -442,7 +460,8 @@ class us_json:
 
             self.description = d["experiment"]["description"]
             self.piezo = d["experiment"]["probe"]
-            self.time = d["time"]
+            self.metatags["time"] = d["time"]
+            self.metatags["original_json"] = d
 
             A = d["data"]
             #print d.keys()
@@ -505,7 +524,6 @@ class us_json:
             self.single = d["registers"][str(0XEB)]
             self.t = t
             self.IDLine = IDLine
-	    self.metatags["original_json"] = d
             self.metatags["firmware_md5"] = d['firmware_md5']
             self.experiment = d['experiment']
             self.parameters = d['parameters']
@@ -520,7 +538,7 @@ class us_json:
         self.FFT_y = np.fft.fft(self.tmp)
         self.filtered_fft = np.fft.fft(self.tmp)
 
-        for k in range (self.LengthT/2 + 1):
+        for k in range(self.LengthT/2 + 1):
             if k < (self.LengthT * self.fPiezo * 0.5 / self.f):
                 self.filtered_fft[k] = 0
                 self.filtered_fft[-k] = 0
@@ -532,15 +550,21 @@ class us_json:
 
         if self.processed:
             plt.figure(figsize=(15, 5))
-            plt.plot(self.FFT_x[1:self.LengthT/2], np.abs(self.FFT_y[1:self.LengthT/2]), 'b-')
-            plt.plot(self.FFT_x[1:self.LengthT/2], np.abs(self.filtered_fft[1:self.LengthT/2]), 'y-')
+
+            plot_time = self.FFT_x[1:self.LengthT/2]
+            plot_abs_fft = np.abs(self.FFT_y[1:self.LengthT/2])
+            plot_filtered_fft = np.abs(self.filtered_fft[1:self.LengthT/2])
+
+            plt.plot(plot_time, plot_abs_fft, 'b-')
+            plt.plot(plot_time, plot_filtered_fft, 'y-')
+
             plt.title("FFT of "+self.iD + " - acq. #: "+ str(self.N))
             plt.xlabel('Freq (MHz)')
             plt.tight_layout()
             file_name = "images/"+self.iD+"-"+str(self.N)+"-fft.jpg"
             plt.savefig(file_name)
             plt.show()
-            description_experiment = "FFT of the of "+self.iD 
+            description_experiment = "FFT of the of "+self.iD
             description_experiment += " experiment. "+self.experiment["description"]
             self.tag_image("matty, cletus", self.iD, "FFT", description_experiment)
 
@@ -576,7 +600,7 @@ class us_json:
             metadata['Exif.Photo.MakerNote'] = Type
             metadata['Exif.Image.ImageDescription'] = Description
             metadata.write()
- 
+
     def mk2DArray(self):
         L = len(self.tmp)
         img = []
@@ -589,8 +613,8 @@ class us_json:
                 tmpline = []
             else:
                 tmpline.append(self.tmp[k])
- 
- 
+
+
         self.Duration = (self.parameters['LengthAcq']-self.parameters['DeltaAcq'])/1000.0
         SelfDuration = int(float(self.f)*self.Duration)
         y = [s for s in img if (len(s) > SelfDuration-10 and len(s) < SelfDuration+10)]
@@ -607,28 +631,20 @@ class us_json:
         plt.figure(figsize = (15, 10))
         im = plt.imshow(np.sqrt(np.abs(CleanImage)), cmap='gray', aspect=0.5*(imSize[1]/imSize[0]), interpolation='nearest')
 
-        # @todo : develop a Title function
-        Title = "Experiment: " +self.iD+"-"+str(self.N)+"\nDuration: "+str(Duration)+"us ("+str(self.parameters['LengthAcq'])+" - "
-        Title += str(self.parameters['DeltaAcq'])+"), for "+str(self.Nacq)
-        Title += " repeats "
-        Title += "each "+str(self.parameters['PeriodAcq_Real']/128)+" us\n"
-        Title += "Fech = "+str(self.f)+"Msps, total of "+str(float(self.f)*Duration)+" pts per line, Nacq = "+str(self.Nacq)+"\n"
-        Title += self.experiment["description"]+", probe: "+self.piezo+", target = "+self.experiment["target"]+"\n"
-        Title += "Timestamp = "+str(self.time)
 
-        plt.title(Title)
+        plt.title(self.create_title_text())
         #plt.colorbar(im, orientation='vertical')
         plt.tight_layout()
         file_name = "images/2DArray_"+self.iD+"-"+str(self.N)+".jpg"
         plt.savefig(file_name)
-        tag_image(file_name, "matty, "+self.piezo, self.iD, "BC", Title.replace("\n", ". "))
+        tag_image(file_name, "matty, "+self.piezo, self.iD, "BC", self.create_title_text().replace("\n", ". "))
         plt.show()
         self.TwoDArray = CleanImage
         return CleanImage
- 
+
     def SaveNPZ(self):
-        NPZPath = "data/"+self.iD+"-"+str(self.N)+".npz"
-        np.savez(NPZPath, self)
+        path_npz = "data/"+self.iD+"-"+str(self.N)+".npz"
+        np.savez(path_npz, self)
         #print "Saved at "+NPZPath
 
     def plot_detail(self, NbLine, Start, Stop): #@todo: use it when processing data
@@ -636,79 +652,87 @@ class us_json:
         TLine = self.len_line/self.f
         Offset = NbLine*self.len_line
 
-        plt.figure(figsize=(15, 5))
-        plt.plot(self.t[Offset+int(self.len_line*Start/TLine):Offset+int(self.len_line*Stop/TLine)], self.tmp[Offset+int(self.len_line*Start/TLine):int(self.len_line*Stop/TLine)], 'b-')
-        plt.plot(self.t[Offset+int(self.len_line*Start/TLine):Offset+int(self.len_line*Stop/TLine)], self.EnvHil[Offset+int(self.len_line*Start/TLine):int(self.len_line*Stop/TLine)], 'y-')
+        plot_time_series = self.t[Offset+int(Start/self.f):Offset+int(Stop*self.f)]
+        plot_signal = self.tmp[Offset+int(Start/self.f):int(Stop*self.f)]
+        plot_enveloppe = self.EnvHil[Offset+int(Start/self.f):int(Stop*self.f)]
 
-        plt.title("Detail of "+self.iD + " - acq. #: "+ str(self.N)+", between "+str(Start)+" and "+str(Stop)+" (line #"+str(NbLine)+").")
+        plot_title = "Detail of "+self.iD + " - acq. #: "+ str(self.N)+", between "
+        plot_title += str(Start)+" and "+str(Stop)+" (line #"+str(NbLine)+")."
+
+        plt.figure(figsize=(15, 5))
+        plt.plot(plot_time_series, plot_signal, 'b-')
+        plt.plot(plot_time_series, plot_enveloppe, 'y-')
+        plt.title(plot_title)
         plt.xlabel('Time in us')
         plt.tight_layout()
-        file_name = "images/detail_"+self.iD+"-"+str(self.N)+"-"+str(Start)+"-"+str(Stop)+"-line"+str(NbLine)+".jpg"
+
+        file_name = "images/detail_"+self.iD+"-"+str(self.N)+"-"
+        file_name += str(Start)+"-"+str(Stop)+"-line"+str(NbLine)+".jpg"
         plt.savefig(file_name)
+
         plt.show()
 
-    def mkFiltered(self, img):
-
+    def mkFiltered(self, original_image):
         Filtered = []
-        FFTFil = []
+        fft_image_filtered = []
         if len(img):
-            N, L = np.shape(img)
+            N, L = np.shape(original_image)
             FFT_x = [X*self.f / (L) for X in range(L)]
             for k in range(N):
-                FFT_c = np.fft.fft(img[k])
-                FFTFil.append(FFT_c)
-                for p in range(len(FFT_c)/2+1):
+                fft_single_line = np.fft.fft(original_image[k])
+                fft_image_filtered.append(fft_single_line)
+                for p in range(len(fft_single_line)/2+1):
                     f_min = (1000 * self.fPiezo * 0.7)
                     f_max = (1000 * self.fPiezo * 1.27)
 
                     if (FFT_x[p] > f_max or FFT_x[p] < f_min):
-                        FFT_c[p] = 0
-                        FFT_c[-p] = 0
-                Filtered.append(np.real(np.fft.ifft(FFT_c)))
-
-
-        return Filtered, FFTFil
+                        fft_single_line[p] = 0
+                        fft_single_line[-p] = 0
+                Filtered.append(np.real(np.fft.ifft(fft_single_line)))
+        return Filtered, fft_image_filtered
 
     def mkSpectrum(self, img):
         Spectrum = []
-        Filtered = []
+        #Filtered = [] #@unused
         if len(img):
             N, L = np.shape(img)
-            FFT_x = [X*self.f / (L) for X in range(L)] #@usuned, why?
+            self.FFT_x = [X*self.f / (L) for X in range(L)] #@usuned, why?
             for k in range(N):
-                FFT_c = np.fft.fft(img[k])
-                Spectrum.append(FFT_c[0:L/2])
+                fft_single_line = np.fft.fft(img[k])
+                Spectrum.append(fft_single_line[0:L/2])
 
-
- 
             plt.figure(figsize = (15, 10))
-            plt.imshow(np.sqrt(np.abs(Spectrum)), extent= [0, 1000.0*self.f/2, N, 0], cmap='hsv', aspect=30.0, interpolation='nearest')
+            plt.imshow(np.sqrt(np.abs(Spectrum)), extent=[0, 1000.0*self.f/2, N, 0], cmap='hsv', aspect=30.0, interpolation='nearest')
 
             plt.axvline(x=(1000 * self.fPiezo * 1.27), linewidth=4, color='b')
             plt.axvline(x=(1000 * self.fPiezo * 0.7), linewidth=4, color='b')
 
             plt.xlabel("Frequency (kHz)")
             plt.ylabel("Lines #")
-
-            Title = "Experiment: " +self.iD+"-"+str(self.N)+"\nDuration: "+str(self.Duration)
-            Title += "us ("+str(self.parameters['LengthAcq'])+" - "
-            Title += str(self.parameters['DeltaAcq'])+"), for "+str(self.Nacq)
-            Title += " repeats "
-            Title += "each "+str(self.parameters['PeriodAcq_Real']/128)+" us\n"
-            Title += "Fech = "+str(self.f)+"Msps, total of "+str(float(self.f)*self.Duration)
-            Title +=" pts per line, Nacq = "+str(self.Nacq)+"\n"
-            Title += self.experiment["description"]+", probe: "
-            Title += self.piezo+", target = "+self.experiment["target"]+"\n"
-            Title += "Timestamp = "+str(self.time)
-            plt.title(Title)
+     
+            plt.title(self.create_title_text())
             plt.tight_layout()
+
             file_name = "images/Spectrum_"+self.iD+"-"+str(self.N)+".jpg"
             plt.savefig(file_name)
-            tag_image(file_name, "matty, "+self.piezo, self.iD, "FFT", Title.replace("\n", ". "))
+            tag_image(file_name, "matty,"+self.piezo, self.iD, "FFT", self.create_title_text().replace("\n", ". "))
         else:
-            "2D Array not created yet"
+            print "2D Array not created yet"
 
         return np.abs(Spectrum)
+
+    def create_title_text(self):
+        title_text = "Experiment: " +self.iD+"-"+str(self.N)+"\nDuration: "+str(self.Duration)
+        title_text += "us ("+str(self.parameters['LengthAcq'])+" - "
+        title_text += str(self.parameters['DeltaAcq'])+"), for "+str(self.Nacq)
+        title_text += " repeats "
+        title_text += "each "+str(self.parameters['PeriodAcq_Real']/128)+" us\n"
+        title_text += "Fech = "+str(self.f)+"Msps, total of "+str(float(self.f)*self.Duration)
+        title_text += " pts per line, Nacq = "+str(self.Nacq)+"\n"
+        title_text += self.experiment["description"]+", probe: "
+        title_text += self.piezo+", target = "+self.experiment["target"]+"\n"
+        title_text += "Timestamp = "+str(self.metatags["time"])
+        return title_text
 
 ##############
 #
@@ -721,29 +745,29 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         if "test" in sys.argv[1]:
-            x = us_spi()
-            x.init()
-            x.test_spi(3)
+            un0rick = us_spi()
+            un0rick.init()
+            un0rick.test_spi(3)
         if "single" in sys.argv[1]:
-            x = us_spi()
-            x.init()
-            x.test_spi(3)
-            Curve = x.create_tgc_curve(0, 1000, True)[0]    # Start, Stop, Linear (if False, expo)
-            x.set_tgc_curve(Curve)
-            x.JSON["N"] = 1 				  # Experiment ID
-            x.set_multi_lines(True)                         # Multi lines acquisition
-            x.set_acquisition_number_lines(2)             # Setting the number of lines
-            x.set_msps(3)                                  # Acquisition Freq
-            print "-----"
-            A = x.set_timings(200, 100, 2000, 5000, 200000)# Settings the series of pulses
-            x.JSON["data"] = x.do_acquisition()
+            un0rick = us_spi()
+            un0rick.init()
+            un0rick.test_spi(3)
+            Curve = un0rick.create_tgc_curve(0, 1000, True)[0]    # Start, Stop, Linear (if False, expo)
+            un0rick.set_tgc_curve(Curve)
+            un0rick.JSON["N"] = 1 				  # Experiment ID
+            un0rick.set_multi_lines(True)                         # Multi lines acquisition
+            un0rick.set_acquisition_number_lines(2)             # Setting the number of lines
+            un0rick.set_msps(3)                                  # Acquisition Freq
+            A = un0rick.set_timings(200, 100, 2000, 5000, 200000)# Settings the series of pulses
+            un0rick.JSON["data"] = un0rick.do_acquisition()
+
         if "loop" in sys.argv[1]:
-            x = us_spi()
-            x.init()
-            x.set_multi_lines(True)                         # Multi lines acquisition
-            x.set_acquisition_number_lines(2)		  # Setting the number of lines
-            x.set_msps(3)                                  # Acquisition Freq
-            A = x.set_timings(200, 100, 2000, 5000, 200000)
+            un0rick = us_spi()
+            un0rick.init()
+            un0rick.set_multi_lines(True)                         # Multi lines acquisition
+            un0rick.set_acquisition_number_lines(2)		  # Setting the number of lines
+            un0rick.set_msps(3)                                  # Acquisition Freq
+            A = un0rick.set_timings(200, 100, 2000, 5000, 200000)
             while True:
-                x.write_fpga(0xEA, 0x01) # trigs
+                un0rick.write_fpga(0xEA, 0x01) # trigs
                 time.sleep(50.0 / 1000.0)

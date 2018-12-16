@@ -110,8 +110,8 @@ wire stop_tour2 = 1'b0;
 
 
 wire sSPI_MISO = 1'b0;
-wire sPon      = 1'b0;
-wire sPoff     = 1'b0;
+wire sPon;
+wire sPoff;
 
 
 wire [3:0] sDAC_CSarray;
@@ -120,7 +120,7 @@ wire       sDAC_sclk;
 
 
 reg  [18:0]	sRAM_ADD =  'd0;
-wire	      sRAM_nWE = 1'b1;
+wire	      sRAM_nWE;
 
 
 //configuration registers
@@ -136,10 +136,10 @@ reg	         sACQ                 =  1'b0;	// 1 during acqusition
 reg 	[15:0] sEEDelayACQ          = 16'h02BC;	// 0us to 50us def 7us
 wire	       sDelayACQ            =  1'b0;
 reg 	[15:0] sEEACQ               = 16'h32C8;		//50us to 130us		def 130us	  	 6590
-wire	       sACQtime             =  1'b0;
+wire	       sACQtime;
 reg 	[23:0] sEEPeriod            = 24'h0186A0;	//700us to 10ms def 1ms 	 0186A0
-wire	       sPeriod              =  1'b0;
-wire	       sDACDyn              =  1'b0;
+wire	       sPeriod;
+wire	       sDACDyn;
 reg 	       sPeriod_prev         =  1'b0;
 reg 	 [7:0] sEETrigCounter       =  8'h0A; // number of acquisition secquence in continious mode
 reg 	 [7:0] sTrigCounter         =  8'h00;
@@ -191,7 +191,7 @@ wire        spi_cs_prev             = 1'b0;
 wire        button_mode_prev        = 1'b0;
 reg  [23:0] button_debounce_counter =  'd0;
 reg         trig_prev               = 1'b0;
-wire        nrst                    = 1'b0;
+wire        nrst;
 reg         sbuttonModeStatus       = 1'b0;
 
 reg   [7:0] sDAC_mem [1:42];

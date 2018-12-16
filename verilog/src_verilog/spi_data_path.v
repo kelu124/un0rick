@@ -202,12 +202,14 @@ begin
   if(i_sys_rst == 1'b1)
     data_in <= 'd0;
   else 
-    if( (FIFO_REQ == 0) & (DATA_SIZE == 8) )
+    if( (FIFO_REQ == 0) & (DATA_SIZE == 8) ) begin
       if( (i_wr == 1'b1) & (i_csn == 1'b0) & (tx_ready_i == 1'b1) )
         data_in <= i_data[7:0];
-    else if( (FIFO_REQ == 0) & (DATA_SIZE == 16) )
+    end
+    else if( (FIFO_REQ == 0) & (DATA_SIZE == 16) ) begin
       if( (i_wr == 1'b1) & (i_csn == 1'b0) & (tx_ready_i == 1'b1) )
         data_in <= i_data;
+    end
 end
 
 // Tx FIFO write enable signal generated when write is high and cs is low
@@ -216,11 +218,12 @@ begin
   if(i_sys_rst == 1'b1)
     tx_fifo_wr_en_i <= 1'b0;
   else
-    if(FIFO_REQ != 0)
+    if(FIFO_REQ != 0) begin
       if( (i_wr == 1'b1) & (i_csn == 1'b0) )
         tx_fifo_wr_en_i <= 1'b1;
       else 
         tx_fifo_wr_en_i <= 1'b0;
+    end
 end
 
 // Rx FIFO read enable signal generated when read is high and cs is low
@@ -229,11 +232,12 @@ begin
   if(i_sys_rst == 1'b1)
     rx_fifo_rd_en_i <= 1'b0;
   else
-    if(FIFO_REQ != 0)
+    if(FIFO_REQ != 0) begin
       if ( (i_rd == 1'b1) & (i_csn == 1'b0) )
         rx_fifo_rd_en_i <= 1'b1;
       else
         rx_fifo_rd_en_i <= 1'b0;
+    end
 end
 
 always @ (posedge i_sys_clk or posedge i_sys_rst)
@@ -275,11 +279,12 @@ begin
   if(i_sys_rst == 1'b1)
     rxdata_reg_i <= 'd0;
   else
-    if( (rx_done_reg1_i == 1'b1) & (rx_done_reg2_i == 1'b0) )
+    if( (rx_done_reg1_i == 1'b1) & (rx_done_reg2_i == 1'b0) ) begin
       if(( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) ))
         rxdata_reg_i <= rx_shift_data_pos_sclk_i;
       else
         rxdata_reg_i <= rx_shift_data_neg_sclk_i;
+    end
 end
 
 // Re-register data to be transmitted
@@ -287,11 +292,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     txdata_reg_i     <= 'd0;
-  else
+  else begin
     if(FIFO_REQ != 0)
       txdata_reg_i <= data_in_reg_i;
     else
       txdata_reg_i <= data_in;
+  end
 end
 
 //// SPI Slave Receiver Section
@@ -304,12 +310,14 @@ always @ (posedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     rx_shift_data_pos_sclk_i <= 'd0;
-  else
-    if( (i_ssn == 1'b0) & (( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) )))
+  else begin
+    if( (i_ssn == 1'b0) & (( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) ))) begin
       if(i_lsb_first == 1'b1)
         rx_shift_data_pos_sclk_i <= {i_miso, rx_shift_data_pos_sclk_i[DATA_SIZE-1:1]};
       else
         rx_shift_data_pos_sclk_i <= {rx_shift_data_pos_sclk_i[DATA_SIZE-2:0], i_miso};
+    end
+  end
 end
 
 always @ (posedge i_sclk or posedge i_sys_rst)
@@ -344,12 +352,14 @@ always @ (negedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     rx_shift_data_neg_sclk_i <= 'd0;
-  else
-    if((i_ssn == 1'b0) & (((i_cpol == 1'b1) & (i_cpha == 1'b0)) | ((i_cpol == 1'b0) & (i_cpha == 1'b1))))
+  else begin
+    if((i_ssn == 1'b0) & (((i_cpol == 1'b1) & (i_cpha == 1'b0)) | ((i_cpol == 1'b0) & (i_cpha == 1'b1)))) begin
       if(i_lsb_first == 1'b1)
         rx_shift_data_neg_sclk_i <= {i_miso, rx_shift_data_neg_sclk_i[DATA_SIZE-1:1]};
       else
         rx_shift_data_neg_sclk_i <= {rx_shift_data_neg_sclk_i[DATA_SIZE-2:0], i_miso};
+    end
+  end
 end
 
 always @ (negedge i_sclk or posedge i_sys_rst)
@@ -408,11 +418,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     rx_ready_i     <= 1'b0;
-  else
+  else begin
     if((rx_done_reg2_i == 1'b1) & (rx_done_reg3_i == 1'b0))
       rx_ready_i <= 1'b1;
     else if ((i_rd == 1'b1) & (i_csn == 1'b0))
       rx_ready_i <= 1'b0;
+  end
 end
 
 // Receive error when external interface hasn't read previous data
@@ -421,11 +432,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     rx_error_i <= 1'b0;
-  else
+  else begin
     if((rx_done_reg2_i == 1'b1) & (rx_done_reg3_i == 1'b0) & (rx_ready_i == 1'b1))
       rx_error_i <= 1'b1;
     else if ((i_rd == 1'b1) & (i_csn == 1'b0))
       rx_error_i <= 1'b0;
+  end
 end
 
 //// SPI Master Transmitter section 
@@ -457,11 +469,12 @@ always @ (posedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     mosi_01_i <= 1'b1;
-  else
+  else begin
     if(i_lsb_first == 1'b1)
       mosi_01_i <= txdata_reg_i[tx_data_count_pos_sclk_i];
     else
       mosi_01_i <= txdata_reg_i[DATA_SIZE - tx_data_count_pos_sclk_i - 'd1];
+  end
 end
 
 // cpol=1 and cpha=1: data must be placed at falling edge of sclk
@@ -470,11 +483,12 @@ always @ (negedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     mosi_11_i <= 1'b1;
-  else
+  else begin
     if(i_lsb_first == 1'b1)
       mosi_11_i <= txdata_reg_i[tx_data_count_neg_sclk_i];
     else
       mosi_11_i <= txdata_reg_i[DATA_SIZE - tx_data_count_neg_sclk_i - 'd1];
+  end
 end
 
 // Tx count on falling edge of sclk for cpol=0 and cpha=0
@@ -530,7 +544,7 @@ end
 
 always @ (i_ssn or i_cpol or i_cpha or mosi_00_i or mosi_01_i or mosi_10_i or mosi_11_i)
 begin
-  if (i_ssn == 1'b0)
+  if (i_ssn == 1'b0) begin
       if ((i_cpol == 1'b0) & (i_cpha == 1'b0))
           o_mosi <= mosi_00_i;
       else if ((i_cpol == 1'b0) & (i_cpha == 1'b1))
@@ -539,6 +553,7 @@ begin
           o_mosi <= mosi_10_i;
       else
           o_mosi <= mosi_11_i;
+  end
   else
       o_mosi <= 1'b0;
 end
@@ -576,11 +591,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     tx_ready_i <= 1'b1;
-  else
+  else begin
     if (i_spi_start == 1'b1)
         tx_ready_i <= 1'b0;
     else if ((tx_done_reg2_i == 1'b1) & (tx_done_reg3_i == 1'b0))
         tx_ready_i <= 1'b1;
+  end
 end
 
 // Transmitter error when a data is written while transmitter busy transmitting data
@@ -590,11 +606,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     tx_error_i <= 1'b0;
-  else
+  else begin
     if((tx_ready_i == 1'b0) & (i_wr == 1'b1) & (i_csn == 1'b0))
       tx_error_i <= 1'b1;
     else if((i_wr == 1'b1) & (i_csn == 1'b0))
       tx_error_i <= 1'b0;
+  end
 end
 
 // Interrupt generation logic

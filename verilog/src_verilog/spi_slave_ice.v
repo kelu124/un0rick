@@ -84,11 +84,12 @@ begin
   if(i_sys_rst == 1'b1)
     rxdata_reg_i <= 'd0;
   else
-    if( (rx_done_reg1_i == 1'b1) & (rx_done_reg2_i == 1'b0) )
+    if( (rx_done_reg1_i == 1'b1) & (rx_done_reg2_i == 1'b0) ) begin
       if(( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) ))
         rxdata_reg_i <= rx_shift_data_pos_sclk_i;
       else
         rxdata_reg_i <= rx_shift_data_neg_sclk_i;
+    end
 end
 
 
@@ -113,11 +114,12 @@ begin
   if(i_sys_rst == 1'b1)
     rx_shift_data_pos_sclk_i <= 'd0;
   else
-    if( (i_ssn == 1'b0) & (( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) )))
+    if( (i_ssn == 1'b0) & (( (i_cpol == 1'b0) & (i_cpha == 1'b0) ) | ( (i_cpol == 1'b1) & (i_cpha == 1'b1) ))) begin
       if(i_lsb_first == 1'b1)
         rx_shift_data_pos_sclk_i <= {i_mosi, rx_shift_data_pos_sclk_i[DATA_SIZE-1:1]};
       else
         rx_shift_data_pos_sclk_i <= {rx_shift_data_pos_sclk_i[DATA_SIZE-2:0], i_mosi};
+    end
 end
 
 always @ (posedge i_sclk or posedge i_sys_rst)
@@ -153,11 +155,12 @@ begin
   if(i_sys_rst == 1'b1) 
     rx_shift_data_neg_sclk_i <= 'd0;
   else
-    if((i_ssn == 1'b0) & (((i_cpol == 1'b1) & (i_cpha == 1'b0)) | ((i_cpol == 1'b0) & (i_cpha == 1'b1))))
+    if((i_ssn == 1'b0) & (((i_cpol == 1'b1) & (i_cpha == 1'b0)) | ((i_cpol == 1'b0) & (i_cpha == 1'b1)))) begin
       if(i_lsb_first == 1'b1)
         rx_shift_data_neg_sclk_i <= {i_mosi, rx_shift_data_neg_sclk_i[DATA_SIZE-1:1]};
       else
         rx_shift_data_neg_sclk_i <= {rx_shift_data_neg_sclk_i[DATA_SIZE-2:0], i_mosi};
+    end
 end
 
 always @ (negedge i_sclk or posedge i_sys_rst)
@@ -218,13 +221,14 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     rx_ready_i     <= 1'b0;
-  else
+  else begin
     if (rx_done_reg2_i == 1'b1 & rx_done_reg3_i == 1'b0)
         rx_ready_i <= 1'b1;
     else if (i_ssn == 1'b1 & i_csn == 1'b0)
         rx_ready_i <= 1'b1;
     else if (i_ssn == 1'b0 & i_csn == 1'b0)
         rx_ready_i <= 1'b0;
+  end
 end
 
 // Receive error when external interface hasn't read previous data
@@ -234,18 +238,19 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
     if (i_sys_rst == 1'b1)
       rx_error_i     <= 1'b0;
-    else
+    else begin
       if(rx_ready_i == 1'b0 & i_rd == 1'b1 & i_csn == 1'b0)
         rx_error_i <= 1'b1;
       else if(i_rd == 1'b1 & i_csn == 1'b0)
         rx_error_i <= 1'b0;
+    end
 end
 
 always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if (i_sys_rst == 1'b1)
     rx_error_reg_1_i <= 1'b0;
-else
+  else
     rx_error_reg_1_i <= rx_error_i;
 end
 
@@ -278,11 +283,12 @@ always @ (posedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     miso_01_i <= 1'b1;
-  else
+  else begin
     if(i_lsb_first == 1'b1)
       miso_01_i <= txdata_reg_i[tx_data_count_pos_sclk_i];
     else
       miso_01_i <= txdata_reg_i[DATA_SIZE - tx_data_count_pos_sclk_i - 'd1];
+  end
 end
 
 
@@ -292,11 +298,12 @@ always @ (negedge i_sclk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1) 
     miso_11_i <= 1'b1;
-  else
+  else begin
     if(i_lsb_first == 1'b1)
       miso_11_i <= txdata_reg_i[tx_data_count_neg_sclk_i];
     else
       miso_11_i <= txdata_reg_i[DATA_SIZE - tx_data_count_neg_sclk_i - 'd1];
+  end
 end
 
 
@@ -353,7 +360,7 @@ end
 
 always @ (i_ssn or i_cpol or i_cpha or miso_00_i or miso_01_i or miso_10_i or miso_11_i)
 begin
-  if (i_ssn == 1'b0)
+  if (i_ssn == 1'b0) begin
       if ((i_cpol == 1'b0) & (i_cpha == 1'b0))
           o_miso <= miso_00_i;
       else if ((i_cpol == 1'b0) & (i_cpha == 1'b1))
@@ -362,6 +369,7 @@ begin
           o_miso <= miso_10_i;
       else
           o_miso <= miso_11_i;
+  end
   else
       o_miso <= 1'b0;
 end
@@ -401,13 +409,14 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin  // process tx_ready
 	if(i_sys_rst == 1'b1)  	// asynchronous reset (active high)
 	    tx_ready_i <= 1'b1;
-	else  // rising clock edge
+	else begin  // rising clock edge
 	  if (tx_done_reg2_i == 1'b1 & tx_done_reg3_i == 1'b0)
 		  tx_ready_i <= 1'b1;
 	  else if (i_ssn == 1'b1 & i_csn == 1'b0)
 		  tx_ready_i <= 1'b1;
     else if (i_csn == 1'b0 & i_ssn == 1'b0)
       tx_ready_i <= 1'b0;
+  end
 end
 
 // Transmitter error when a data is written while transmitter busy transmitting data
@@ -417,11 +426,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     tx_error_i <= 1'b0;
-  else
+  else begin
     if((tx_ready_i == 1'b0) & (i_wr == 1'b1) & (i_csn == 1'b0))
       tx_error_i <= 1'b1;
     else if((i_wr == 1'b1) & (i_csn == 1'b0))
       tx_error_i <= 1'b0;
+  end
 end
 
 
@@ -440,13 +450,14 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin  // process data_valid_proc
   if(i_sys_rst == 1'b1)  		// asynchronous reset (active high)
       data_valid_i <= 1'b0;
-  else  // rising clock edge
+  else begin // rising clock edge
     if (i_wr == 1'b1 & i_ssn == 1'b0)
       data_valid_i <= 1'b1;
     else if (tx_done_pulse_i == 1'b1)
       data_valid_i <= 1'b0;
     else if (i_ssn == 1'b1)
       data_valid_i <= 1'b0;
+  end
 end
 
   
@@ -454,26 +465,28 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin  // process data_valid_proc
   if(i_sys_rst == 1'b1)  		// asynchronous reset (active high)
     o_tx_ack <= 1'b0;
-  else  // rising clock edge
+  else begin  // rising clock edge
     if(i_ssn == 1'b1 & data_valid_i == 1'b1)
       o_tx_ack <= 1'b0;
     else if(tx_done_pulse_i == 1'b1 & data_valid_i == 1'b1)
       o_tx_ack <= 1'b1;
     else
       o_tx_ack <= 1'b0;
+  end
 end
 
 always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin  // process data_valid_proc
   if(i_sys_rst == 1'b1)  		// asynchronous reset (active high)
       o_tx_no_ack <= 1'b0;
-  else  // rising clock edge
+  else begin // rising clock edge
     if (i_ssn == 1'b1 & data_valid_i == 1'b1)
       o_tx_no_ack <= 1'b1;
     else if(tx_done_reg3_i == 1'b1 & data_valid_i == 1'b1)
       o_tx_no_ack <= 1'b0;
     else
       o_tx_no_ack <= 1'b0;
+  end
 end
   
 assign tx_done_pulse_i = tx_done_reg2_i & (~tx_done_reg3_i);

@@ -227,11 +227,12 @@ always @ (posedge i_sys_clk or posedge i_sys_rst)
 begin
   if(i_sys_rst == 1'b1)
     clk_falling_count_i <= 'd0;
-  else
+  else begin
     if(falling_count_start_i == 1'b0)
         clk_falling_count_i <= 'd0;
     else if (clk_falling_i == 1'b1)
         clk_falling_count_i <= clk_falling_count_i + 'd1;
+  end
 end
 
 assign clk_rising_i  = ((div_clk_i == 1'b1) & (delay_clk_i == 1'b0)) ? 1'b1 : 1'b0;
