@@ -105,11 +105,11 @@ reg        spi_mosi_ready64_prev3 = 1'b0;
 wire       spi_miso_ack;
 
 
-wire stop_tour1 = 1'b0;
-wire stop_tour2 = 1'b0;
+wire stop_tour1; //= 1'b0;//@modified kelu
+wire stop_tour2; //= 1'b0;//@modified kelu
 
 
-wire sSPI_MISO = 1'b0;
+wire sSPI_MISO; // = 1'b0;//@modified kelu
 wire sPon;
 wire sPoff;
 
@@ -134,7 +134,7 @@ reg          sEESingleCont        =  1'b0;			// single if 0
 reg          sSingleCont          =  1'b0;			// single if 0
 reg	         sACQ                 =  1'b0;	// 1 during acqusition
 reg 	[15:0] sEEDelayACQ          = 16'h02BC;	// 0us to 50us def 7us
-wire	       sDelayACQ            =  1'b0;
+wire	       sDelayACQ;//@modified kelu            =  1'b0;
 reg 	[15:0] sEEACQ               = 16'h32C8;		//50us to 130us		def 130us	  	 6590
 wire	       sACQtime;
 reg 	[23:0] sEEPeriod            = 24'h0186A0;	//700us to 10ms def 1ms 	 0186A0
@@ -160,18 +160,18 @@ reg   [7:0] sCounterADC   = 8'h00; // to set up frequency
 reg         sADC_clk      = 1'b0;
 reg        sADC_clk_prev  = 1'b0;
 reg   [7:0] sEEADC_freq   = 8'h03;
-wire [11:0] sADC_data     =  'd0;
+wire [11:0] sADC_data;//@modified kelu     =  'd0;
 
-wire sADC0 = 1'b0;
-wire sADC1 = 1'b0;
-wire sADC2 = 1'b0;
-wire sADC3 = 1'b0;
-wire sADC4 = 1'b0;
-wire sADC5 = 1'b0;
-wire sADC6 = 1'b0;
-wire sADC7 = 1'b0;
-wire sADC8 = 1'b0;
-wire sADC9 = 1'b0;
+wire sADC0;//@modified kelu = 1'b0;
+wire sADC1;//@modified kelu = 1'b0;
+wire sADC2;//@modified kelu = 1'b0;
+wire sADC3;//@modified kelu = 1'b0;
+wire sADC4;//@modified kelu= 1'b0;
+wire sADC5;//@modified kelu = 1'b0;
+wire sADC6;//@modified kelu = 1'b0;
+wire sADC7;//@modified kelu = 1'b0;
+wire sADC8;//@modified kelu = 1'b0;
+wire sADC9;//@modified kelu = 1'b0;
 
 //RAM
 reg  [18:0] sRAM_pointer_read  =  'd0;
@@ -187,8 +187,8 @@ reg [7:0] sAddress = 'd0;
 
 
 // edge
-wire        spi_cs_prev             = 1'b0;
-wire        button_mode_prev        = 1'b0;
+wire        spi_cs_prev;//@modified kelu           = 1'b0;
+wire        button_mode_prev;//@modified kelu      = 1'b0;
 reg  [23:0] button_debounce_counter =  'd0;
 reg         trig_prev               = 1'b0;
 wire        nrst;

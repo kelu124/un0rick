@@ -17,15 +17,17 @@ set_io reset_ft 48
 set_io reset_rpi 47
 set_io LED_MODE 7
 set_io LED_ACQ 2
-set_io LED3 9
+set_io LED3          	9	## IOL_05A - OK
 set_io trig_ext 16
-set_io trig_rpi 22
-set_io trig_ft 61
-set_io button_mode 3
-# set_io button_trig 3
-set_io DAC_cs 38
-set_io DAC_sclk 37
-set_io DAC_mosi 39
+set_io trig_rpi 	22	## IOL_14B (22) - Was 2, mistake
+set_io trig_ft 		61      ## IOB_96  - OK
+set_io button_mode 	3   	## ?? IOL_02A () - Was 3, mistake
+# set_io button_trig 	3 	
+
+set_io DAC_cs 		38	## IOB_57
+set_io DAC_sclk 	37	## IOB_56
+set_io DAC_mosi 	39	## IOB_61
+
 
 set_io spi_select 23
 set_io spi_cs_ft 73   
