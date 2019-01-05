@@ -4,15 +4,15 @@ layout: default
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
 
-# FOSS ultrasound
-
 Non destructive testing and imaging ultrasound have been around since the '50s. Many ultrasound open-source projects are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs to be used on commercial US scanners, but they are not cheap, and are difficult to access.
 
 I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers.
 
-# The board
+# un0rick
 
 ## Overview
+
+This is a simple single-channel ultrasound board. Block diagram below:
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/block-diagram.png)
 
@@ -25,7 +25,9 @@ I couldn't find designs to play with, that would be affordable or open, so I dec
 
 I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared are image for the [RPi W](https://doc.un0rick.cc/installation.html), a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well.
 
-## With a Raspberry pi
+## Examples 
+
+* __With a Raspberry pi__
 
 The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a controler and server.
 
@@ -35,28 +37,17 @@ Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
 
-## With a M5Stack
+* __With a M5Stack__
 
 The board was also tested with a nice [m5stack board](https://doc.un0rick.cc/m5stack.html) ([ino file](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)). Below an example in image:
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/m5stack/calibration.gif)
 
-## Tip: reaching 128msps
+* __Tip: reaching 128msps__
 
 Playing with the trigger, it's possible to [interleave two signals](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) and artificially double to acquisition speed, yielding clean images:
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/128msps.png)
-
-## Latest sources
-
-* Hardware resources are on github:
-  * [FPGA bin](https://github.com/kelu124/un0rick/tree/master/software) so far using Lattice's tools. A icestorm port is coming.
-  * Files for [v1.1](https://github.com/kelu124/un0rick/tree/master/hardware/v1.1) and [v1.01](https://github.com/kelu124/un0rick/tree/master/hardware) are available - on [upverter too](https://tools.upverter.com/eda/#tool=schematic,designId=c59550d3e0dcf944).
-* FPGA files too:
-  * Single SMA: [v1.01](https://github.com/kelu124/un0rick/raw/master/bins/v1.01.bin)
-  * Two SMAs, large board: [v1.1](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin)
-* [Python lib too](https://github.com/kelu124/un0rick/blob/master/pyUn0/pyUn0.py)
-
 
 ## Specs (un0v1.1)
 
@@ -98,14 +89,24 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
   * Toolchain: [Project IceStorm](http://www.clifford.at/icestorm/)
   * Documentation: [gitbook](https://doc.un0rick.cc/)
 
+## Latest sources
 
-# Others
+* Hardware resources are on github:
+  * [FPGA bin](https://github.com/kelu124/un0rick/tree/master/software) so far using Lattice's tools. A icestorm port is coming.
+  * Files for [v1.1](https://github.com/kelu124/un0rick/tree/master/hardware/v1.1) and [v1.01](https://github.com/kelu124/un0rick/tree/master/hardware) are available - on [upverter too](https://tools.upverter.com/eda/#tool=schematic,designId=c59550d3e0dcf944).
+* FPGA files too:
+  * Single SMA: [v1.01](https://github.com/kelu124/un0rick/raw/master/bins/v1.01.bin)
+  * Two SMAs, large board: [v1.1](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin)
+* [Python lib too](https://github.com/kelu124/un0rick/blob/master/pyUn0/pyUn0.py)
 
 ## Orders
 
 * First sets around 449$.  Vilis Ad Bis Pretii !
   * Send me a mail at __orders@un0rick.cc__ !
   * Or wait for the [Tindie shop](https://www.tindie.com/stores/kelu124/)
+
+# Others
+
 
 ## Changelog
 
@@ -128,6 +129,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
   * First ice40 board - compatible with iceprog =)
   * Only one in existence, had some SPI wiring issues
   * HV module footprint reversed
+
 
 ## Useful links
 
@@ -155,8 +157,25 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 * Vlad - _you pulse_
 * Wlmeng11 - _inspiring_
 * all the supportive users
-* .. and all the others !
-
-## Where are we ?
+* .. and all the others around the world!
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
+
+
+## License
+
+The [un0rick project](https://github.com/kelu124/un0rick) and its boards are open hardware, and working with open-hardware components.
+Licensed under TAPR Open Hardware License (www.tapr.org/OHL)
+Copyright Kelu124 (kelu124@gmail.com) 2018
+
+This work is based on a previous TAPR project, [the echOmods project](https://github.com/kelu124/echomods/).
+
+## Disclaimer(s)
+
+This project is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. Also:
+* This is not a medical ultrasound scanner! It's a development kit that can be used for pedagogical and academic purposes - possible immediate use as a non-destructive testing (NDT) tool, for example in metallurgical crack analysis. 
+* As in all electronics, be careful, especially.
+* This is a learning by doing project, I never did something related -> It's all but a finalized product.
+* Ultrasound raises questions. In case you build a scanner, use caution and good sense!
+
+
