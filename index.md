@@ -25,6 +25,28 @@ I couldn't find designs to play with, that would be affordable or open, so I dec
 
 I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared are image for the [RPi W](https://doc.un0rick.cc/installation.html), a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well.
 
+## With a Raspberry pi
+
+The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a controler and server.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/IMG_20180224_195210.jpg)
+
+Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
+
+## With a M5Stack
+
+The board was also tested with a nice [m5stack board](https://doc.un0rick.cc/m5stack.html) ([ino file](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)). Below an example in image:
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/m5stack/calibration.gif)
+
+## Tip: reaching 128msps
+
+Playing with the trigger, it's possible to [interleave two signals](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) and artificially double to acquisition speed, yielding clean images:
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/128msps.png)
+
 ## Latest sources
 
 * Hardware resources are on github:
@@ -35,31 +57,8 @@ I recommend using RPi, particularly W for the wireless aspects, which then becom
   * Two SMAs, large board: [v1.1](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin)
 * [Python lib too](https://github.com/kelu124/un0rick/blob/master/pyUn0/pyUn0.py)
 
-## Examples
 
-### Raspberry pi
-
-The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a controler and server.
-
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/IMG_20180224_195210.jpg)
-
-Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
-
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
-
-### M5Stack
-
-The board was also tested with a nice [m5stack board](https://doc.un0rick.cc/m5stack.html) ([ino file](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)). Below an example in image:
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/m5stack/calibration.gif)
-
-## Up to 128msps
-
-Playing with the trigger, it's possible to [interleave two signals](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) and artificially double to acquisition speed, yielding clean images:
-
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/128msps.png)
-
-# Specs (un0v1.1)
+## Specs (un0v1.1)
 
 1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
 2. __Memory__:
