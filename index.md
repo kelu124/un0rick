@@ -25,6 +25,11 @@ I recommend using RPi, particularly W for the wireless aspects, which then becom
 
 Also tested with a nice [m5stack board](https://doc.un0rick.cc/m5stack.html) ([ino file](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)).
 
+## Latest sources
+
+* [FPGA bin](https://github.com/kelu124/un0rick/tree/master/software) so far using Lattice's tools. A icestorm port is coming.
+* Files for [v1.1](https://github.com/kelu124/un0rick/tree/master/hardware/v1.1) and [v1.01](https://github.com/kelu124/un0rick/tree/master/hardware) are available - on [upverter too](https://tools.upverter.com/eda/#tool=schematic,designId=c59550d3e0dcf944).
+
 ## Stable binaries
 
 * Single SMA: [v1.01](https://github.com/kelu124/un0rick/raw/master/bins/v1.01.bin)
@@ -32,7 +37,7 @@ Also tested with a nice [m5stack board](https://doc.un0rick.cc/m5stack.html) ([i
 
 ## An example
 
-The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a .
+The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a controler and server.
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/IMG_20180224_195210.jpg)
 
@@ -50,17 +55,13 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 
 1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
 2. __Memory__:
-  * 8 Mbit SRAM, 10ns, 512 k x 16, equivalent:
-      * 65 full lines of 120us at 64Msps
-      * 840 lines of 120us at 10Msps, 8 bits
+  * 8 Mbit SRAM, 10ns, 512 k x 16, equivalent to 65 full lines of 120us at 64Msps or 840 lines of 120us at 10Msps, 8 bits.
   * 8 Mb SPI Flash for FPGA configuration 
 3. __Ultrasound processing__:
   * __VGA__: AD8331 controled by DAC
   * __Pulser__: MD1210 + TC6320
   * __ADC__: 65Msps ADC10065
-    * 10 bits of data / sample
-    * 2 bits of line trackers
-    * 4 bits of IOs (counters, ...) 
+  * __Data__ formatted over 2 bytes, with 10 bits / sample, 2 bits of line trackers, 4 bits of IOs (counters, ...)  and 2 bits for tracking.
 4. __Parameters__: Settings programable via USB or Raspberry Pi 
   * Type of acquisition (one line / set of lines)
   * Number of lines
@@ -81,22 +82,25 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 7. __Input Voltage__: 
   * 5 V from RPi or USB
   * Uses 350mA-450mA at 5V (including RPi)
-8. __Fully Open Source__:
+8. __Operating Voltage__: 
+  * FPGA and logics at at 3.3 V
+  * High voltage at 25V, 50V, 75V
+9. __Fully Open Source__:
   * Hardware: [github repository](https://github.com/kelu124/un0rick)
   * Software: [github repository](https://github.com/kelu124/un0rick)
   * Toolchain: [Project IceStorm](http://www.clifford.at/icestorm/)
   * Documentation: [gitbook](https://doc.un0rick.cc/)
-9. __Operating Voltage__: 
-  * FPGA and logics at at 3.3 V
-  * High voltage at 25V, 50V, 75V
 
-# Orders
+
+# Others
+
+## Orders
 
 * First sets around 449$.  Vilis Ad Bis Pretii !
   * Send me a mail at __orders@un0rick.cc__ !
   * Or wait for the [Tindie shop]((https://www.tindie.com/stores/kelu124/)
 
-# Changelog
+## Changelog
 
 * lit3rick _v1.2 - Ongoing_ 
   * lighter board
@@ -118,7 +122,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
   * Only one in existence, had some SPI wiring issues
   * HV module footprint reversed
 
-# Useful links
+## Useful links
 
 * __Come and chat__ : join the [Slack channel](https://join.slack.com/usdevkit/shared_invite/MTkxODU5MjU0NjI1LTE0OTY1ODgxMDEtMmYyZTliZDBlZA)
 * The full [GitHub Repo](https://github.com/kelu124/un0rick)
@@ -127,7 +131,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 * wlmeng11's [SimpleRick](https://github.com/wlmeng11/SimpleRick) for a analog part board. Clever use of [RTL-sdr hardware](https://github.com/wlmeng11/rtl-ultrasound) for the acquisition !
 * A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of my earlier works.
 
-# Thanks & shouts
+## Thanks & shouts
 
 * BiVi - _always here to chat_
 * Charles - _bringing neat insights_
@@ -146,6 +150,6 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 * all the supportive users
 * .. and all the others !
 
-# Where are we ?
+## Where are we ?
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
