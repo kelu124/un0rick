@@ -105,7 +105,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 
 * First sets around 449$.  Vilis Ad Bis Pretii !
   * Send me a mail at __orders@un0rick.cc__ !
-  * Or wait for the [Tindie shop]((https://www.tindie.com/stores/kelu124/)
+  * Or wait for the [Tindie shop](https://www.tindie.com/stores/kelu124/)
 
 ## Changelog
 
