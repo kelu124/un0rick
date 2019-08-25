@@ -1,5 +1,13 @@
 # Looking for Verilog help
 
+## Objective
+
+The aim of this is to build the skeleton of a Non Destructive Testing (NDT) tool for the lit3rick board, acquiring fast signals (around 5-10MHz) and making those available to the user of the board. The target user is maker/academedic/student.
+
+It would be important to obtain this skeleton/boilerplate so to open the way to more open-source fpga code, and avoid relying on the closed, proprietary toolchain from the fpga maker.
+
+All in all, the code aims at supporting research for NDT ultrasound with an open-source platform, whose hardware already exists.
+
 ## Why I need help ?
 
 I am looking for someone proficient in Verilog to write a Verilog boilerplate using the open toolchain. It is centered around a up5k open-source board, designed to be used in conjunction with a rapsberry pi, that has to acquire 200us worth of signal on a trigger. Data is to be stored in RAM, and made available through SPI. 
