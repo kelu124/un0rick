@@ -2,9 +2,11 @@
 
 ## Why I need help ?
 
-I am looking for someone proficient in Verilog to write a Verilog boilerplate. It is centered around a up5k open-source board, designed to be used in conjunction with a rapsberry pi, that has to acquire 200us worth of signal on a trigger. Data is to be stored in RAM, and made available through SPI. 
+I am looking for someone proficient in Verilog to write a Verilog boilerplate using the open toolchain. It is centered around a up5k open-source board, designed to be used in conjunction with a rapsberry pi, that has to acquire 200us worth of signal on a trigger. Data is to be stored in RAM, and made available through SPI. 
 
-The previous work used a [lattice HX4K](http://un0rick.cc/) - and [more complex VHDL](https://github.com/kelu124/un0rick/tree/master/software) written. 
+The previous work used a [lattice HX4K](http://un0rick.cc/) - and [more complex VHDL](https://github.com/kelu124/un0rick/tree/master/software) written.
+
+I have little experience on with the open-toolchain and Verilog, so am looking for help on this !   
 
 ## The board
 
