@@ -1,4 +1,4 @@
-# Looking for Verilog help
+# Looking for Verilog help using iceStorm
 
 ## Objective
 
@@ -6,7 +6,7 @@ The aim of this is to build the skeleton of a Non Destructive Testing (NDT) tool
 
 It would be important to obtain this skeleton/boilerplate so to open the way to more open-source fpga code, and avoid relying on the closed, proprietary toolchain from the fpga maker.
 
-All in all, the code aims at supporting research for NDT ultrasound with an open-source platform, whose hardware already exists.
+All in all, the code aims at supporting research for NDT ultrasound with __icestorm__ (the open-source platform), and for which hardware already exists.
 
 ## Why I need help ?
 
