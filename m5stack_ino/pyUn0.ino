@@ -1,6 +1,20 @@
 #include <SPI.h>
 #include <M5Stack.h>
 
+/*------------------------------------------------------
+  CONNECTIONS BETWEEN RPi and m5stack
+  Used in `20190113a`
+  ------------------------------------------------------
+  M5STACK pin22 -> RPi header GPIO 23 (Ice40 reset)
+  M5STACK pin21 -> RPi header GPIO 8 (Ice40 CS)
+  M5STACK pin19 -> RPi header GPIO 10 (Rpi MISO)
+  M5STACK pin23 -> RPi header GPIO 9 (Rpi MOSI)
+  M5STACK pin18 -> RPi header GPIO 11 (Rpi  CLK)
+  M5STACK GND to RaspberryPi header GND pin
+  M5STACK 5V ->  RaspberryPi header 5V pin
+  ------------------------------------------------------
+*/
+
 #define ICE40RESET 22
 #define ICE40CS    21
 #define ICE40MISO  19
@@ -9,6 +23,13 @@
 #define PTS        3200
 #define LenAcq      2*PTS+1
 #define LenData      PTS+1
+
+// Sound aspects
+#define D0 -1 //silence
+//THE FIRST OCTAVE
+#define B1 262 //Do (B)
+#define D1 294 //Re (D)
+#define E1 330 //Mi (E)
 
 uint16_t MaxPt = PTS / 2;
 int CenterPeak = 80;
@@ -35,7 +56,8 @@ void buttons_test() {
   int MAXARRAY = 0;
 
   if (M5.BtnA.wasPressed()) {
-        M5.Lcd.fillScreen(BLACK);
+
+    M5.Lcd.fillScreen(BLACK);
     M5.Lcd.setCursor(10, 10);
     M5.Lcd.setTextColor(TFT_RED);
     M5.Lcd.setTextSize(3);
@@ -45,6 +67,10 @@ void buttons_test() {
     TestFPGA();
     TestFPGA();
     TestFPGA();
+
+
+    M5.Speaker.tone(B1, 200); //frequency 3000, with a duration of 200ms
+
   }
 
   if (M5.BtnB.wasPressed()) {
@@ -57,16 +83,18 @@ void buttons_test() {
     CenterPeak = MaxPt * Factor;
     for (int i = 0; i <= 319 / 2; i++) {
 
-      M5.Lcd.drawPixel(2 * i, RAWDATA[CenterPeak - 320 / 4 + i] / 4+20, TFT_RED);
+      M5.Lcd.drawPixel(2 * i, RAWDATA[CenterPeak - 320 / 4 + i] / 4 + 20, TFT_RED);
 
-      M5.Lcd.drawLine(2 * i, RAWDATA[CenterPeak - 320 / 4 + i] / 4+20, 2 * i + 2, RAWDATA[CenterPeak - 320 / 4 + i + 1] / 4 +20, TFT_ORANGE);
+      M5.Lcd.drawLine(2 * i, RAWDATA[CenterPeak - 320 / 4 + i] / 4 + 20, 2 * i + 2, RAWDATA[CenterPeak - 320 / 4 + i + 1] / 4 + 20, TFT_ORANGE);
 
       /*if (i < 5) {
         M5.Lcd.printf("%3d ; ", i);
         M5.Lcd.printf("%3d \n", RAWDATA[CenterPeak - 320 / 2 + i] / 4);
-      }
+        }
       */
     }
+
+    M5.Speaker.tone(D1, 200); //frequency 3000, with a duration of 200ms
 
   }
 
@@ -87,10 +115,10 @@ void buttons_test() {
 
     /*
         for (int i = 0; i <= 20; i++) {
-          M5.Lcd.printf("%3d -- ", DATA[2 * i]);
-          M5.Lcd.printf("%3d -->  ", DATA[2 * i + 1]);
-          M5.Lcd.printf("%3d\n", RAWDATA[i]);
-        }
+      M5.Lcd.printf("%3d -- ", DATA[2 * i]);
+      M5.Lcd.printf("%3d -->  ", DATA[2 * i + 1]);
+      M5.Lcd.printf("%3d\n", RAWDATA[i]);
+      }
     */
     Factor = PTS / 320; // PTS = 3200 pts (16msps * 200us)
     for (int i = 0; i <= 319; i++) {
@@ -105,14 +133,16 @@ void buttons_test() {
         }
       }
       value = value / (Factor * 2); // 240 (512, going into 240)
-      M5.Lcd.drawFastVLine(i, (240 - value)-10, 240-10, TFT_GREEN);
+      M5.Lcd.drawFastVLine(i, (240 - value) - 10, 240 - 10, TFT_GREEN);
     }
-M5.Lcd.drawRect(230, 0, 240, 320, BLACK);
+    M5.Lcd.drawRect(230, 0, 240, 320, BLACK);
     //M5.Lcd.printf("== Value Max at %3d \n", MaxPt);
 
     //M5.Lcd.drawFastVLine(0, 0, 100, TFT_RED);
     //M5.Lcd.drawFastVLine(319, 0, 200, TFT_GREEN);
-    // kikoo
+
+    M5.Speaker.tone(E1, 200); //frequency 3000, with a duration of 200ms
+
   }
 }
 
@@ -166,9 +196,9 @@ void GetData() {
 
     /*
       if (i < 10) {
-        M5.Lcd.printf("%3d ", DATA[2 * i + 1]); M5.Lcd.printf("%3d - ", DATA[2 * i + 1] & 0b111);
-        M5.Lcd.printf("%3d ", DATA[2 * i ]); M5.Lcd.printf("%3d - ", DATA[2 * i + 2]);
-        M5.Lcd.printf("%3d \n", RAWDATA[i]);
+      M5.Lcd.printf("%3d ", DATA[2 * i + 1]); M5.Lcd.printf("%3d - ", DATA[2 * i + 1] & 0b111);
+      M5.Lcd.printf("%3d ", DATA[2 * i ]); M5.Lcd.printf("%3d - ", DATA[2 * i + 2]);
+      M5.Lcd.printf("%3d \n", RAWDATA[i]);
       }
     */
   }
@@ -257,3 +287,4 @@ void loop() {
   buttons_test();
   M5.update();
 }
+
