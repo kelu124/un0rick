@@ -139,6 +139,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 * The project [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
 * wlmeng11's [SimpleRick](https://github.com/wlmeng11/SimpleRick) for a analog part board. Clever use of [RTL-sdr hardware](https://github.com/wlmeng11/rtl-ultrasound) for the acquisition !
 * A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of my earlier works.
+* un0rick boards are open-source certified on [OSHWA, FR000005](https://certification.oshwa.org/list.html?q=un0rick). lit3rick's certification is pending.
 
 ## Thanks & shouts
 
