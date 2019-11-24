@@ -19,7 +19,11 @@ Prepare the jumper here :
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/program.jpg)
 
-Then, plug an usb cable from the RPi to the board (not connected using the raspberry pi header), check that the FTDI device is well created by typing:
+Then, plug an usb cable from the RPi to the board (not connected using the raspberry pi header).
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/P_20191123_144920.jpg)
+
+Check that the FTDI device is well created by typing:
 
 ```
 dmesg
@@ -36,6 +40,12 @@ This should flash the board:
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/v1.01/iceprog.png)
 
+## Physical setup for the lib acquisitions
+
+I've been using a RPi4 with a ribbon cable to connect to the board, leaving the jumper on, putting one to select the high voltage level, connecting a piezo.. and that's it.
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/P_20191123_161358.jpg)
+
 ## Running an acquisition
 
 Then, for example to discover the board using Python, you can use the library:
@@ -48,3 +58,18 @@ python pyUn0.py single
 ```
 
 It will download the lib, then you should see with the 'test' option a LED blink, then the "single" option will allow you to capture a single line.
+
+
+## Results
+
+I've used this exact setup to get the lib examples ( https://github.com/kelu124/pyUn0-lib ).
+* [Raw files are here](https://github.com/kelu124/pyUn0-lib/tree/master/data)
+* [Images here]()
+
+Example of an acq : 
+
+![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20191123a-1.jpg)
+
+with a clean spectrum: 
+
+![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20191123a-1-fft.jpg)
