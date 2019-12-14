@@ -22,6 +22,14 @@ Need a few feet, two 2x20 headers, and a SMA.
 
 iceprog is the software used to put the fpga on the flash storage on the board, which will be read by the fpga on boot.
 
+The easiest way is to 
+
+```
+sudo apt install fpga-icestorm
+```
+
+If this doesn't work, then this may work:
+
 ```
 sudo apt-get install libftdi-dev git gcc 
 git clone https://github.com/cliffordwolf/icestorm.git
