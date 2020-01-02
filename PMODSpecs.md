@@ -1,6 +1,6 @@
 Reference for PMODs designs  https://reference.digilentinc.com/_media/reference/pmod/pmod-interface-specification-1_2_0.pdf
 
-1. PMOD split in two (a+b): see attached picture (2 boards)
+## PMOD split in two (a+b): see attached picture (2 boards)
 
 a: HV generation - 3.3V in
 - Logic: SPI (x3), Enable
@@ -14,7 +14,8 @@ b: Pulse control + SMA
 - LEDs: all 4 logics
 - Reference design: https://github.com/kelu124/un0rick/blob/master/hardware/v1.1/MATTY-V11.pdf with the MD1210K6 / TC6320TG design.
 
-2. PMOD for fast ADC: connectors: SMA + PMODx2
+## PMOD for fast ADC: connectors: SMA + PMODx2
+
 - 10 bit, 64Msps, ADC 
 - AD8331 + MD0100
 - Low noise ampli
