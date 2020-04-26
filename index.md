@@ -133,7 +133,7 @@ Playing with the trigger, it's possible to [interleave two signals](https://gith
 
 ## Useful links
 
-* __Come and chat__ : join the [Slack channel](https://join.slack.com/usdevkit/shared_invite/MTkxODU5MjU0NjI1LTE0OTY1ODgxMDEtMmYyZTliZDBlZA)
+* __Come and chat__ : join the [Slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
 * The full [GitHub Repo](https://github.com/kelu124/un0rick)
 * The board's [Tindie shop](https://www.tindie.com/stores/kelu124/)
 * The project [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
