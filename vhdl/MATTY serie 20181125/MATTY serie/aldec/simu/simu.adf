@@ -1,0 +1,51 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=3
+Current Config=compile
+
+[Configurations]
+compile=simu
+
+[Library]
+simu=.\simu\simu.lib
+
+[Settings]
+AccessRead=1
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=0
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+fileopenfolder=E:\iCE40HX8kLED\test\MATTY\MATTY
+
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+LibNames=ice
+
+[LocalVhdlSets]
+CompileWithDebug=0
+
+[$LibMap$]
+simu=.
+
+[Files]
+/..\..\..\MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.vhd=-1
+/package_timing.vhd=-1
+/package_utility.vhd=-1
+/16M_Async_SRAM.vhd=-1
+/mattysimu.vhd=-1
+
+[Files.Data]
+.\..\..\MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.vhd=VHDL Source Code
+.\src\package_timing.vhd=VHDL Source Code
+.\src\package_utility.vhd=VHDL Source Code
+.\src\16M_Async_SRAM.vhd=VHDL Source Code
+.\src\mattysimu.vhd=VHDL Source Code
+

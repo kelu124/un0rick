@@ -1,0 +1,1 @@
+@W: MT529 :"c:\users\david\desktop\matty serie\spi_slave_ice.vhd":213:8:213:9|Found inferred clock MATTY_MAIN_VHDL|spi_sclk_inferred_clock which controls 45 sequential elements including spi_slave_inst.rx_data_count_pos_sclk_i[5:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 

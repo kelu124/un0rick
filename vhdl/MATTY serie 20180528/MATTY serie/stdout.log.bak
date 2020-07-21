@@ -1,0 +1,46 @@
+Running in Lattice mode
+
+
+Starting:    C:\lscc\iCEcube2.2017.08\synpbase\bin64\mbin\synbatch.exe
+Install:     C:\lscc\iCEcube2.2017.08\synpbase
+Hostname:    DESKTOP-QDLO61O
+Date:        Sun May 13 07:20:33 2018
+Version:     L-2016.09L+ice40
+
+Arguments:   -product synplify_pro -batch MATTY_syn.prj
+ProductType: synplify_pro
+
+
+
+
+
+log file: "C:\Users\david\Desktop\MATTY serie\MATTY_Implmnt\MATTY.srr"
+Running: MATTY_Implmnt in foreground
+
+Running MATTY_syn|MATTY_Implmnt
+
+Running: compile (Compile) on MATTY_syn|MATTY_Implmnt
+# Sun May 13 07:20:33 2018
+
+Running: compile_flow (Compile Process) on MATTY_syn|MATTY_Implmnt
+# Sun May 13 07:20:33 2018
+
+Running: compiler (Compile Input) on MATTY_syn|MATTY_Implmnt
+# Sun May 13 07:20:33 2018
+compiler exited with errors
+Job failed on: MATTY_syn|MATTY_Implmnt
+
+Job: "compiler" terminated with error status: 2
+See log file: "C:\Users\david\Desktop\MATTY serie\MATTY_Implmnt\synlog\MATTY_compiler.srr"
+# Sun May 13 07:20:33 2018
+
+Return Code: 2
+Run Time:00h:00m:00s
+Complete: Compile Process on MATTY_syn|MATTY_Implmnt
+Complete: Compile on MATTY_syn|MATTY_Implmnt
+Complete: Logic Synthesis on MATTY_syn|MATTY_Implmnt
+
+exit status=2
+
+exit status=2
+

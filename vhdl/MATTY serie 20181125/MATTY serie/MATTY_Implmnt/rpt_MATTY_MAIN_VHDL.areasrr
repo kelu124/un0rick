@@ -1,0 +1,131 @@
+#### START OF AREA REPORT #####[
+
+Part:			ICE40HX4KTQ144 (Lattice)
+
+-------------------------------------------------------------------------------
+########   Utilization report for  Top level view:   MATTY_MAIN_VHDL   ########
+===============================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     839                100 %                
+==================================================
+Total SEQUENTIAL ELEMENTS in the block MATTY_MAIN_VHDL:	839 (37.83 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       913                100 %                
+CARRYS     362                100 %                
+===================================================
+Total COMBINATIONAL LOGIC in the block MATTY_MAIN_VHDL:	1275 (57.48 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     88                 100 %                
+=================================================
+Total IO PADS in the block MATTY_MAIN_VHDL:	88 (3.97 % Utilization)
+
+-------------------------------------------------------------------
+########   Utilization report for  cell:   SPI_SLAVE_ICE   ########
+Instance path:   MATTY_MAIN_VHDL.SPI_SLAVE_ICE                     
+===================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     61                 7.27 %               
+==================================================
+Total SEQUENTIAL ELEMENTS in the block MATTY_MAIN_VHDL.SPI_SLAVE_ICE:	61 (2.75 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       47                 5.15 %               
+CARRYS     15                 4.14 %               
+===================================================
+Total COMBINATIONAL LOGIC in the block MATTY_MAIN_VHDL.SPI_SLAVE_ICE:	62 (2.80 % Utilization)
+
+--------------------------------------------------------------
+########   Utilization report for  cell:   pll128M2   ########
+Instance path:   MATTY_MAIN_VHDL.pll128M2                     
+==============================================================
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+PADS     2                  2.27 %               
+=================================================
+Total IO PADS in the block MATTY_MAIN_VHDL.pll128M2:	2 (0.09 % Utilization)
+
+----------------------------------------------------------------
+########   Utilization report for  cell:   spi_master   ########
+Instance path:   MATTY_MAIN_VHDL.spi_master                     
+================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     81                 9.65 %               
+==================================================
+Total SEQUENTIAL ELEMENTS in the block MATTY_MAIN_VHDL.spi_master:	81 (3.65 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       84                 9.2 %                
+CARRYS     26                 7.18 %               
+===================================================
+Total COMBINATIONAL LOGIC in the block MATTY_MAIN_VHDL.spi_master:	110 (4.96 % Utilization)
+
+--------------------------------------------------------------
+########   Utilization report for  cell:   sclk_gen   ########
+Instance path:   spi_master.sclk_gen                          
+==============================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     37                 4.41 %               
+==================================================
+Total SEQUENTIAL ELEMENTS in the block spi_master.sclk_gen:	37 (1.67 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       58                 6.35 %               
+CARRYS     21                 5.8 %                
+===================================================
+Total COMBINATIONAL LOGIC in the block spi_master.sclk_gen:	79 (3.56 % Utilization)
+
+-------------------------------------------------------------------
+########   Utilization report for  cell:   spi_data_path   ########
+Instance path:   spi_master.spi_data_path                          
+===================================================================
+
+SEQUENTIAL ELEMENTS
+Name      Total elements     Utilization     Notes
+--------------------------------------------------
+FLOPS     43                 5.13 %               
+==================================================
+Total SEQUENTIAL ELEMENTS in the block spi_master.spi_data_path:	43 (1.94 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+LUTS       26                 2.85 %               
+CARRYS     5                  1.38 %               
+===================================================
+Total COMBINATIONAL LOGIC in the block spi_master.spi_data_path:	31 (1.40 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

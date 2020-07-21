@@ -1,0 +1,5 @@
+
+#1001 : define_clock p:CLK -freq 12 -clockgroup default_clkgroup_0
+# line 12 in c:/users/david/desktop/matty serie/timing_const_matty.sdc
+
+define_clock [get_ports {clk}] -freq {12} -clockgroup {default_clkgroup_0}

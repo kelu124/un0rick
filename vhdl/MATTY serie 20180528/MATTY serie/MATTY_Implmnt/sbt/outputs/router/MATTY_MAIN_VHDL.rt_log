@@ -1,0 +1,39 @@
+* ******************************************************************************
+
+* iCEcube Router
+
+* Version:            2017.08.27940
+
+* Build Date:         Sep 11 2017 17:03:42
+
+* File Generated:     May 13 2018 07:23:39
+
+* Purpose:            Router runtime info
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Executing : C:\lscc\iCEcube2.2017.08\sbt_backend\bin\win32\opt\sbrouter.exe C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ICE40P04.dev C:\Users\david\Desktop\MATTY serie\MATTY_Implmnt\sbt\netlist\oadb-MATTY_MAIN_VHDL C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ice40HX8K.lib C:\Users\david\Desktop\MATTY serie\MATTY_Implmnt\sbt\outputs\packer\MATTY_MAIN_VHDL_pk.sdc --outdir C:\Users\david\Desktop\MATTY serie\MATTY_Implmnt\sbt\outputs\router --sdf_file C:/Users/david/Desktop/MATTY serie/MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.sdf --pin_permutation 
+I1203: Reading Design MATTY_MAIN_VHDL
+I1202: Reading Architecture of device iCE40HX4K
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTGLOBALB
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTGLOBALA
+I1209: Started routing
+I1223: Total Nets : 1770 
+I1212: Iteration  1 :   408 unrouted : 10 seconds
+I1212: Iteration  2 :    36 unrouted : 4 seconds
+I1212: Iteration  3 :    15 unrouted : 1 seconds
+I1212: Iteration  4 :     4 unrouted : 0 seconds
+I1212: Iteration  5 :     2 unrouted : 0 seconds
+I1212: Iteration  6 :     2 unrouted : 0 seconds
+I1212: Iteration  7 :     2 unrouted : 0 seconds
+I1212: Iteration  8 :     0 unrouted : 0 seconds
+I1215: Routing is successful
+I1206: Completed routing
+I1204: Writing Design MATTY_MAIN_VHDL
+I1210: Writing routes
+I1218: Exiting the router
+I1224: Router run-time : 27 seconds

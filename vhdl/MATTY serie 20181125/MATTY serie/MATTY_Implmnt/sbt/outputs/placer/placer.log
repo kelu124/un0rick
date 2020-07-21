@@ -1,0 +1,165 @@
+* ******************************************************************************
+
+* iCEcube Placer
+
+* Version:            2017.08.27940
+
+* Build Date:         Sep 11 2017 17:12:22
+
+* File Generated:     Oct 7 2018 03:20:54
+
+* Purpose:            
+
+* Copyright (C) 2006-2010 by Lattice Semiconductor Corp. All rights reserved.
+
+* ******************************************************************************
+
+Executing : C:\lscc\iCEcube2.2017.08\sbt_backend\bin\win32\opt\sbtplacer.exe --des-lib C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\netlist\oadb-MATTY_MAIN_VHDL --outdir C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\outputs\placer --device-file C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ICE40P04.dev --package TQ144 --deviceMarketName iCE40HX4K --sdc-file C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\Temp/sbt_temp.sdc --lib-file C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ice40HX8K.lib --effort_level std --out-sdc-file C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\outputs\placer\MATTY_MAIN_VHDL_pl.sdc
+I2004: Option and Settings Summary
+=============================================================
+Device file          - C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ICE40P04.dev
+Package              - TQ144
+Design database      - C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\netlist\oadb-MATTY_MAIN_VHDL
+SDC file             - C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\Temp/sbt_temp.sdc
+Output directory     - C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\outputs\placer
+Timing library       - C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ice40HX8K.lib
+Effort level         - std
+
+I2050: Starting reading inputs for placer
+=============================================================
+I2100: Reading design library: C:/Users/david/Desktop/luc/MATTY serie/MATTY_Implmnt\sbt\netlist\oadb-MATTY_MAIN_VHDL/BFPGA_DESIGN_ep
+I2065: Reading device file : C:\lscc\iCEcube2.2017.08\sbt_backend\devices\ICE40P04.dev
+I2051: Reading of inputs for placer completed successfully
+
+I2053: Starting placement of the design
+=============================================================
+W2715: Warning for set_io Constraint: Ignoring pin assignment for reset_alim, as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for reset_ft, as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for spi_miso_flash, as it is not connected to any PAD
+W2715: Warning for set_io Constraint: Ignoring pin assignment for button_trig, as it is not connected to any PAD
+
+Input Design Statistics
+    Number of LUTs      	:	913
+    Number of DFFs      	:	839
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	362
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	80
+    Number of GBIOs     	:	0
+    Number of GBs       	:	8
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+
+Phase 1
+I2077: Start design legalization
+
+Design Legalization Statistics
+    Number of feedthru LUTs inserted to legalize input of DFFs     	:	563
+    Number of feedthru LUTs inserted for LUTs driving multiple DFFs	:	0
+    Number of LUTs replicated for LUTs driving multiple DFFs       	:	1
+    Number of feedthru LUTs inserted to legalize output of CARRYs  	:	11
+    Number of feedthru LUTs inserted to legalize global signals    	:	0
+    Number of feedthru CARRYs inserted to legalize input of CARRYs 	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 01xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 10xxxx  	:	0
+    Number of inserted LUTs to Legalize IOs with PIN_TYPE= 11xxxx  	:	0
+    Total LUTs inserted                                            	:	575
+    Total CARRYs inserted                                          	:	0
+
+
+I2078: Design legalization is completed successfully
+I2088: Phase 1, elapsed time : 0.1 (sec)
+
+
+Phase 2
+I2088: Phase 2, elapsed time : 0.1 (sec)
+
+Phase 3
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTCOREA
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTCOREB
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTGLOBALA
+Info-1404: Inferred PLL generated clock at pll128M2_inst.pll128M2_inst/PLLOUTGLOBALB
+
+Design Statistics after Packing
+    Number of LUTs      	:	1489
+    Number of DFFs      	:	839
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	367
+
+Device Utilization Summary after Packing
+    Sequential LogicCells
+        LUT and DFF      	:	689
+        LUT, DFF and CARRY	:	150
+    Combinational LogicCells
+        Only LUT         	:	506
+        CARRY Only       	:	73
+        LUT with CARRY   	:	144
+    LogicCells                  :	1562/3520
+    PLBs                        :	222/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	80/107
+    PLLs                        :	1/2
+
+
+I2088: Phase 3, elapsed time : 2.0 (sec)
+
+Phase 4
+I2088: Phase 4, elapsed time : 0.2 (sec)
+
+Phase 5
+I2088: Phase 5, elapsed time : 7.3 (sec)
+
+Phase 6
+I2088: Phase 6, elapsed time : 83.1 (sec)
+
+Final Design Statistics
+    Number of LUTs      	:	1489
+    Number of DFFs      	:	839
+    Number of DFFs packed to IO	:	0
+    Number of Carrys    	:	367
+    Number of RAMs      	:	0
+    Number of ROMs      	:	0
+    Number of IOs       	:	80
+    Number of GBIOs     	:	0
+    Number of GBs       	:	8
+    Number of WarmBoot  	:	0
+    Number of PLLs      	:	1
+
+Device Utilization Summary
+    LogicCells                  :	1562/3520
+    PLBs                        :	274/440
+    BRAMs                       :	0/20
+    IOs and GBIOs               :	80/107
+    PLLs                        :	1/2
+
+
+
+#####################################################################
+Placement Timing Summary
+
+The timing summary is based on estimated routing delays after
+placement. For final timing report, please carry out the timing
+analysis after routing.
+=====================================================================
+
+#####################################################################
+                     Clock Summary 
+=====================================================================
+Number of clocks: 6
+Clock: MATTY_MAIN_VHDL|spi_sclk_inferred_clock | Frequency: 128.58 MHz | Target: 1.00 MHz
+Clock: clk | Frequency: N/A | Target: 12.00 MHz
+Clock: pll128M2_inst.pll128M2_inst/PLLOUTCOREA | Frequency: 72.19 MHz | Target: 127.51 MHz
+Clock: pll128M2_inst.pll128M2_inst/PLLOUTCOREB | Frequency: 116.31 MHz | Target: 63.75 MHz
+Clock: pll128M2_inst.pll128M2_inst/PLLOUTGLOBALA | Frequency: N/A | Target: 127.51 MHz
+Clock: pll128M2_inst.pll128M2_inst/PLLOUTGLOBALB | Frequency: N/A | Target: 63.75 MHz
+
+=====================================================================
+                     End of Clock Summary
+#####################################################################
+
+I2054: Placement of design completed successfully
+
+I2076: Placer run-time: 93.8 sec.
+
