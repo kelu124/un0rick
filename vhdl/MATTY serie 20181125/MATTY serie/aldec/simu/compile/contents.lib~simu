@@ -1,9 +1,0 @@
-23
-~E 1 "./../src/mattysimu.vhd" 9 LED_VHDL_tb
-~A 1 "./../src/mattysimu.vhd" 17 testbench_arch
-~E 1 "./../../../MATTY_Implmnt/sbt/outputs/simulation_netlist/MATTY_MAIN_VHDL_sbt.vhd" 28 MATTY_MAIN_VHDL
-~A 1 "./../../../MATTY_Implmnt/sbt/outputs/simulation_netlist/MATTY_MAIN_VHDL_sbt.vhd" 70 \INTERFACE\
-~E 1 "./../src/mattysimu.vhd" 9 MATTY_MAIN_VHDL_tb
-~A 1 "./../src/mattysimu.vhd" 17 testbench_arch
-~E 1 "./../src/16M_Async_SRAM.vhd" 18 mobl_1Mx16
-~A 1 "./../src/16M_Async_SRAM.vhd" 48 behave_arch

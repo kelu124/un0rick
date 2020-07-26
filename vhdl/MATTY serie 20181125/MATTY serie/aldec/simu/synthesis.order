@@ -1,5 +1,0 @@
-i<>.\..\..\MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.vhd
-i<>.\src\16M_Async_SRAM.vhd
-i<>.\src\package_timing.vhd
-i<>.\src\package_utility.vhd
-i<>.\src\mattysimu.vhd

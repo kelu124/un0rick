@@ -1,3 +1,0 @@
-@E: CD255 :"C:\Users\david\Desktop\MATTY serie\matty.vhd":386:8:386:8|No identifier "reset" in scope
-@E: Parse errors encountered - exiting
-

@@ -1,8 +1,0 @@
-[Version]
-Version=10.3
-[Designs]
-simu=simu.adf
-[Settings]
-Active=simu
-[Expand]
-simu=1

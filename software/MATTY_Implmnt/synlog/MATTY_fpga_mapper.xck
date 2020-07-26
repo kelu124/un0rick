@@ -1,3 +1,0 @@
-CKID0001:@|S:pll128M2_inst.pll128M2_inst@|E:sDAC_mem_10[0]@|F:@syn_sample_clock_path==CKID0001@|M:ClockId0001 
-CKID0002:@|S:pll128M2_inst.pll128M2_inst@|E:button_debounce_counter_esr[23]@|F:@syn_sample_clock_path1==CKID0002@|M:ClockId0002 
-CKID0003:@|S:spi_slave_inst.spi_sclk@|E:spi_slave_inst.rx_data_count_pos_sclk_i[2]@|F:@syn_sample_clock_path==CKID0003@|M:ClockId0003 
