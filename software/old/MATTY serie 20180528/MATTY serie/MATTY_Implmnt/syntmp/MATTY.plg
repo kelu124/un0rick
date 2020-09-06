@@ -1,0 +1,27 @@
+@P:  Worst Slack : -5.338
+@P:  MATTY_MAIN_VHDL|spi_sclk_inferred_clock - Estimated Frequency : 99.3 MHz
+@P:  MATTY_MAIN_VHDL|spi_sclk_inferred_clock - Requested Frequency : 1.0 MHz
+@P:  MATTY_MAIN_VHDL|spi_sclk_inferred_clock - Estimated Period : 10.070
+@P:  MATTY_MAIN_VHDL|spi_sclk_inferred_clock - Requested Period : 1000.000
+@P:  MATTY_MAIN_VHDL|spi_sclk_inferred_clock - Slack : 989.930
+@P:  clk - Estimated Frequency : NA
+@P:  clk - Requested Frequency : 12.0 MHz
+@P:  clk - Estimated Period : NA
+@P:  clk - Requested Period : 83.333
+@P:  clk - Slack : NA
+@P:  pll128M2|PLLOUTCOREA_derived_clock - Estimated Frequency : 75.9 MHz
+@P:  pll128M2|PLLOUTCOREA_derived_clock - Requested Frequency : 127.5 MHz
+@P:  pll128M2|PLLOUTCOREA_derived_clock - Estimated Period : 13.180
+@P:  pll128M2|PLLOUTCOREA_derived_clock - Requested Period : 7.842
+@P:  pll128M2|PLLOUTCOREA_derived_clock - Slack : -5.338
+@P:  pll128M2|PLLOUTCOREB_derived_clock - Estimated Frequency : 37.9 MHz
+@P:  pll128M2|PLLOUTCOREB_derived_clock - Requested Frequency : 63.8 MHz
+@P:  pll128M2|PLLOUTCOREB_derived_clock - Estimated Period : 26.359
+@P:  pll128M2|PLLOUTCOREB_derived_clock - Requested Period : 15.683
+@P:  pll128M2|PLLOUTCOREB_derived_clock - Slack : 0.142
+@P: MATTY_MAIN_VHDL Part : ice40hx4ktq144
+@P: MATTY_MAIN_VHDL I/O primitives : 81
+@P: MATTY_MAIN_VHDL I/O Register bits : 0
+@P: MATTY_MAIN_VHDL Register bits (Non I/O) : 823 (23%)
+@P: MATTY_MAIN_VHDL Total Luts : 945 (26%)
+@P:  CPU Time : 0h:00m:29s

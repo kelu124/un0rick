@@ -1,0 +1,7 @@
+C:\lscc\iCEcube2.2017.08\synpbase\bin64\syn_nfilter.exe  -link  -multisrs  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_comp.srs"  -osyn  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_mult.srs"  -log  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synlog\MATTY_multi_srs_gen.srr" 
+rc:0 success:1 runtime:1
+file:C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_comp.srs|io:i|time:1538907632|size:43272|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_mult.srs|io:o|time:1538907634|size:22968|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synlog\MATTY_multi_srs_gen.srr|io:o|time:1538907634|size:823|exec:0
+file:C:\lscc\iCEcube2.2017.08\synpbase\bin\syn_nfilter.exe|io:i|time:1519441704|size:3128320|exec:1
+file:C:\lscc\iCEcube2.2017.08\synpbase\bin64\syn_nfilter.exe|io:i|time:1519441706|size:3947520|exec:1

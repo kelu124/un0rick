@@ -1,0 +1,16 @@
+C:\lscc\iCEcube2.2017.08\synpbase\bin64\c_hdl.exe  -osyn  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_comp.srs"  -hdllog  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synlog\MATTY_compiler.srr"  -encrypt  -mp  4  -verification_mode 0  -vhdl  -prodtype  synplify_pro  -primux -fixsmult -infer_seqShift -ice -sdff_counter -nram -divnmod -nostructver  -encrypt  -pro  -dmgen  "C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\dm"  -lite -ui -fid2 -ram -sharing on -ll 2000 -autosm  -ignore_undefined_lib  -lib work "C:\Users\david\Desktop\luc\MATTY serie\spi_slave_ice.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\asyn_fifo.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\gray_counter.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\spi_data_path.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\spi_master.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\pll100M.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\pll128M2.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\pll256M2.vhd" -lib work "C:\Users\david\Desktop\luc\MATTY serie\matty.vhd" 
+rc:0 success:1 runtime:2
+file:C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synwork\MATTY_comp.srs|io:o|time:1538907632|size:43272|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\MATTY_Implmnt\synlog\MATTY_compiler.srr|io:o|time:1538907632|size:19185|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\spi_slave_ice.vhd|io:i|time:1518953431|size:23878|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\asyn_fifo.vhd|io:i|time:1348157280|size:11395|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\gray_counter.vhd|io:i|time:1348157308|size:3019|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd|io:i|time:1348157316|size:10848|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\spi_data_path.vhd|io:i|time:1348157324|size:27487|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\spi_master.vhd|io:i|time:1516127097|size:7130|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\pll100M.vhd|io:i|time:1516654503|size:3954|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\pll128M2.vhd|io:i|time:1516625014|size:4502|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\pll256M2.vhd|io:i|time:1519637825|size:4502|exec:0
+file:C:\Users\david\Desktop\luc\MATTY serie\matty.vhd|io:i|time:1538907628|size:32310|exec:0
+file:C:\lscc\iCEcube2.2017.08\synpbase\bin\c_hdl.exe|io:i|time:1519441702|size:1338368|exec:1
+file:C:\lscc\iCEcube2.2017.08\synpbase\bin64\c_hdl.exe|io:i|time:1519441704|size:1754112|exec:1

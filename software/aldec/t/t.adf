@@ -1,0 +1,39 @@
+[Project]
+Current Flow=Generic
+VCS=0
+version=3
+Current Config=compile
+[Configurations]
+compile=t
+[Library]
+t=.\t\t.lib
+[Settings]
+AccessRead=1
+AccessReadWrite=0
+AccessACCB=0
+AccessACCR=0
+AccessReadWriteSLP=0
+AccessReadTopLevel=0
+DisableC=1
+ENABLE_ADV_DATAFLOW=0
+FLOW_TYPE=HDL
+LANGUAGE=VHDL
+REFRESH_FLOW=1
+[LocalVerilogSets]
+EnableSLP=1
+EnableDebug=0
+LibNames=ice
+[LocalVhdlSets]
+CompileWithDebug=0
+[$LibMap$]
+t=.
+[Files]
+/..\..\..\MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.vhd=-1
+[Files.Data]
+.\..\..\MATTY_Implmnt\sbt\outputs\simulation_netlist\MATTY_MAIN_VHDL_sbt.vhd=VHDL Source Code
+[SpecTracer]
+WindowVisible=0
+[HierarchyViewer]
+HierarchyInformation=
+ShowHide=ShowTopLevel
+Selected=
