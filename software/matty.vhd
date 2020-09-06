@@ -1,6 +1,4 @@
 ----------------------------------------------------------------------------------
--- Company: dplight
--- Engineer: David PAILLE
 --
 -- Create Date:    2018
 -- Design Name: 	MATTY
