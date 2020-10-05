@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Open source ultrasound hardware
+title: Welcome!
 nav_order: 1
 ---
 
