@@ -2,6 +2,7 @@
 layout: default
 title: FPGA RPi setup
 parent: un0rick
+nav_order: 1
 ---
 
 # Experiments

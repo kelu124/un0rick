@@ -2,6 +2,7 @@
 layout: default
 title: RPi setup
 parent: un0rick
+nav_order: 3
 ---
 
 # How to setup the board using only a raspberry pi 4
