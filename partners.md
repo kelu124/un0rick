@@ -1,3 +1,9 @@
+---
+layout: default
+title: Partnering
+nav_order: 4
+---
+
 # What I want to do 
 
 Become the RaspberryPi of open-source ultrasound hardware 

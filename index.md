@@ -1,5 +1,7 @@
 ---
 layout: default
+title: Open source ultrasound hardware
+nav_order: 1
 ---
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/board/un0desc.png)
