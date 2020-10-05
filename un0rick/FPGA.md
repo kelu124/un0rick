@@ -1,6 +1,6 @@
 ---
 layout: default
-title: un0rick: FPGA 
+title: un0rick FPGA 
 parent: un0rick
 nav_order: 4
 ---

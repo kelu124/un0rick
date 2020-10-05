@@ -1,6 +1,6 @@
 ---
 layout: default
-title: un0rick: Experiment
+title: un0rick Experiment
 parent: un0rick
 nav_order: 5
 ---

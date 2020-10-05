@@ -1,6 +1,6 @@
 ---
 layout: default
-title: un0rick: hardware 
+title: un0rick hardware 
 parent: un0rick
 nav_order: 2
 ---

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: RPi setup
+title: un0rick RPi setup
 parent: un0rick
 nav_order: 3
 ---

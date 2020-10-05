@@ -1,6 +1,6 @@
 ---
 layout: default
-title: un0rick: m5stack 
+title: un0rick m5stack 
 parent: un0rick
 nav_order: 6
 ---
