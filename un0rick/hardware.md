@@ -5,11 +5,11 @@ parent: un0rick
 nav_order: 2
 ---
 
-# Hardware overview
+## Open ultrasound pulse-echo features 
 
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0desc.png)
+![](https://github.com/kelu124/un0rick/raw/master/images/un0rick_black.png)
 
-## Design and specs
+## Design and specs of the un0rick
 
 
 1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
@@ -45,13 +45,18 @@ nav_order: 2
   * 5 V from RPi or USB
   * Uses 350mA-450mA at 5V
 8. __Fully Open Source__:
-  * Hardware: _github repository_
-  * Software: _github repository_
-  * Toolchain: _Project IceStorm_
-  * Documentation: _gitbook_
+  * Hardware: [github](https://github.com/kelu124/un0rick/tree/master/hardware) - done through [upverter](https://upverter.com/design/kelu124/c59550d3e0dcf944/un0rick-v11/).
+  * Gateware: [github](https://github.com/kelu124/un0rick/tree/master/software)
+  * Toolchain: [Project YoSys](http://www.clifford.at/yosys/)
+  * Documentation: [this website](http://un0rick.cc/un0rick)
 9. __Operating Voltage__: 
   * FPGA and logics at at 3.3 V
   * High voltage at 25V, 50V, 75V
 10. __Dimensions__: @todo!
 11. __Weight__: @todo! 
+
+
+## Overview of the board itself
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/black/P_20191214_151518_good.jpg)
 

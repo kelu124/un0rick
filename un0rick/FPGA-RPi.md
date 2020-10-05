@@ -1,6 +1,6 @@
 ---
 layout: default
-title: FPGA RPi setup
+title: Introduction
 parent: un0rick
 nav_order: 1
 ---

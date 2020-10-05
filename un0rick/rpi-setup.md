@@ -83,7 +83,7 @@ I've been using a RPi4 with a ribbon cable to connect to the board, leaving the 
 Then, for example to discover the board using Python, you can use the library:
 
 ```
-git clone git@github.com:kelu124/pyUn0-lib.git
+git clone https://github.com/kelu124/pyUn0-lib.git
 cd pyUn0-lib
 python pyUn0.py test
 python pyUn0.py single
@@ -96,7 +96,8 @@ It will download the lib, then you should see with the 'test' option a LED blink
 
 I've used this exact setup to get the lib examples ( https://github.com/kelu124/pyUn0-lib ).
 * [Raw files are here](https://github.com/kelu124/pyUn0-lib/tree/master/data)
-* [Images here]()
+* [Images here]() `@todo`
+
 
 Example of an acq : 
 

@@ -5,8 +5,7 @@ parent: un0rick
 nav_order: 6
 ---
 
-# Testing [the board](https://doc.un0rick.cc/) with a M5Stack
-
+# Testing the un0rick board with a M5Stack
 
 ## What is the M5Stack ?
 
@@ -26,6 +25,7 @@ Connectors necessary were :
 
 ## Actual connections:
 
+```
 * M5STACK pin22 -> RPi header GPIO 23 (Ice40 reset)
 * M5STACK pin21 -> RPi header GPIO 8 (Ice40 CS)
 * M5STACK pin19 -> RPi header GPIO 10 (Rpi MISO)
@@ -33,13 +33,14 @@ Connectors necessary were :
 * M5STACK pin18 -> RPi header GPIO 11 (Rpi  CLK)
 * M5STACK GND to RaspberryPi header GND pin
 * M5STACK 5V ->  RaspberryPi header 5V pin
-
+```
 
 ## Some code
 
 Only SPI libs and M5Stack were necessary.. and a proof of concept was done with a single line acquisition process, for 200us, with a low gain.
 
-[File source is available](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)
+* [Arduino file source is available](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)
+* [Using the standard v1.1 firmware](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin), as detailed [previously](rpi-setup.md).
 
 ## Results
 
@@ -50,3 +51,5 @@ Only SPI libs and M5Stack were necessary.. and a proof of concept was done with 
 ### With a piezo in a mug
 
 ![](https://github.com/kelu124/echomods/raw/master/matty/m5stack/mug.gif)
+
+### Not so bad eh!
