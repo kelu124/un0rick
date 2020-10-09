@@ -34,4 +34,16 @@ By default, all acquisitions are 128us long, which is normally enough for most u
 
 The i2s bus can be used to get filtered data (enveloppe already extracted) for several consecutive acquisitions.
 
+# Validating the AD8331 gain range
+
+We observe a ~42dB range (close to the 48dB claimed by the AD8331) of amplification. On some values (for example the blue line), we're looking at the first echo on HI gain - hence it saturates quickly. The dashed brown line on the contrary is the 3rd peak, at LO setting, so the full range can be represented. [Experiment source](https://github.com/kelu124/lit3rick/blob/master/sample_acqs/lit3rick_5v/1.CheckingGainSetup.ipynb).
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/sample_acqs/lit3rick_5v/lit3_5V_gaintrends.jpg)
+
+We also find back the 7.5dB attenuation between the HI and the LO setting.
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/sample_acqs/lit3rick_5v/lit3_5V_hilo.jpg)
+
+
+
 
