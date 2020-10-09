@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Bard Probe
+title: Bard
 parent: Probes
-nav_order: 1
+nav_order: 2
 ---
 
 
