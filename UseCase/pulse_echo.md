@@ -37,6 +37,25 @@ One will find the bandwidth of the transducer itself from the FFT of the signal:
 
 A demo in [video](https://www.youtube.com/watch?v=rv-Ag_TcnP8&feature=youtu.be) was done.
 
+# Along with a servo
 
+That worked on an early prototype (2x20 header reversed, single connector) - but still valid. [Experiment data](https://github.com/kelu124/echomods/tree/master/matty/20180430a) are here.
+
+## Setup
+
+A microcontroller is moving a piezo in front of a wire target.
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180430a/image/20180430_181856.jpg)
+
+SPI lines (transmitting the servo position) are connected to the TopTurn entries of the un0rick board. 
+
+Here's the signal I'm sending on the two bits acquired from the TopTurn bits. Here, the piezo is at angle 22, that's a reference of the offset (60) + the position, so I should read 82 in binary. And that's what I'm getting, yeay!
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180430a/wire/clock_check_pos82.jpg)
+
+
+## Acquisition
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180430a/wire/SCImage.jpg)
 
 

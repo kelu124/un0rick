@@ -1,6 +1,6 @@
 ---
 layout: default
-title: M5stack
+title: M5stack Platform 
 parent: Use Cases
 nav_order: 5
 ---

@@ -5,12 +5,6 @@ nav_order: 2
 has_children: true
 ---
 
----
-layout: default
-title: Introduction
-parent: un0rick
-nav_order: 1
----
 
 # Experiments
 

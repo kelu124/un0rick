@@ -5,11 +5,9 @@ parent: Using probes
 nav_order: 2
 ---
 
+[Source of the experiment](https://github.com/kelu124/echomods/blob/master/matty/20200608a/)
 
 # Playing with an electromagnetic probe
-
-
-# Images
 
 ## Capture
 

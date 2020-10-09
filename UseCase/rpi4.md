@@ -1,6 +1,6 @@
 ---
 layout: default
-title: RPi4
+title: RPi4 Platform
 parent: Use Cases
 nav_order: 4
 ---

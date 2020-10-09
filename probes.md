@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Using probes
+has_children: true
 nav_order: 4
 ---
 
