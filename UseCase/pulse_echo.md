@@ -9,6 +9,10 @@ nav_order: 1
 
 The following examples are made on a test-bench, ie a piezo with a simple reflector immerged in water, a few centimeters away from the piezo. There are other experiments with probes, such as with a [bard probe](bard.md).
 
+Example of setup, with an un0rick board and a bench reflector.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/P_20201009_194611.jpg)
+
 ## Examples from lit3rick
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/sample_acqs/lit3rick_i2s/lit3_i2s.jpg)
@@ -21,7 +25,7 @@ The following examples are made on a test-bench, ie a piezo with a simple reflec
 
 The setup is a classical one, header of the board connected to the Raspberry pi through a ribbon, the transducer being connected to the board.
 
-![](https://github.com/kelu124/echomods/blob/master/matty/20190713/P_20190713_223932.jpg)
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20190713/P_20190713_223932.jpg)
 
 ### Acquisitions.
 
@@ -41,7 +45,7 @@ A demo in [video](https://www.youtube.com/watch?v=rv-Ag_TcnP8&feature=youtu.be) 
 
 That worked on an early prototype (2x20 header reversed, single connector) - but still valid. [Experiment data](https://github.com/kelu124/echomods/tree/master/matty/20180430a) are here.
 
-## Setup
+## Setup
 
 A microcontroller is moving a piezo in front of a wire target.
 
@@ -54,7 +58,7 @@ Here's the signal I'm sending on the two bits acquired from the TopTurn bits. He
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180430a/wire/clock_check_pos82.jpg)
 
 
-## Acquisition
+## Acquisition
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180430a/wire/SCImage.jpg)
 

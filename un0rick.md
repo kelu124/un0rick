@@ -6,8 +6,6 @@ has_children: true
 ---
 
 
-
-
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
 
@@ -26,7 +24,7 @@ This is a simple single-channel ultrasound board. Block diagram below:
 3. Set up the acquisition sequence through SPI (for example using this python lib for Raspberry Pi)
 4. Get the data back again through SPI, and process it.
 
-I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared are image for the [RPi W](https://doc.un0rick.cc/installation.html), a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well.
+I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared is a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well. The v1.0.0 version is RPi4 proofed.
 
 ## Examples 
 
@@ -38,7 +36,7 @@ The board was connected to a single element piezo, in water, with a reflector a 
 
 Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
 
-![](![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/P_20201009_194611.jpg)
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/P_20201009_194611.jpg)
 
 * __With a M5Stack (or any microcontroller really)__
 
