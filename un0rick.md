@@ -38,7 +38,7 @@ The board was connected to a single element piezo, in water, with a reflector a 
 
 Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
 
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
+![](![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/P_20201009_194611.jpg)
 
 * __With a M5Stack (or any microcontroller really)__
 
