@@ -1,0 +1,22 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N: CD720 :"C:\lscc\iCEcube2.2017.08\synpbase\lib\vhd\std.vhd":123:18:123:21|Setting time resolution to ps
+@N:"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":23:7:23:21|Top entity is set to MATTY_MAIN_VHDL.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\spi_master.vhd":9:7:9:16|Synthesizing work.spi_master.spi_master_rtl.
+@N: CD604 :"C:\Users\david\Desktop\luc\MATTY serie\spi_master.vhd":118:16:118:44|OTHERS clause is not synthesized.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\spi_data_path.vhd":9:7:9:19|Synthesizing work.spi_data_path.rtl_arch.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd":9:7:9:14|Synthesizing work.sclk_gen.count_arch.
+@N: CD231 :"C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd":45:25:45:26|Using onehot encoding for type spim_clk_states. For example, enumeration spim_idle_state is mapped to "10000".
+@N: CD604 :"C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd":191:16:191:44|OTHERS clause is not synthesized.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\spi_slave_ice.vhd":48:7:48:19|Synthesizing work.spi_slave_ice.rtl_arch.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\pll128M2.vhd":4:7:4:14|Synthesizing work.pll128m2.behavior.
+@N: CD630 :"C:\Users\david\Desktop\luc\MATTY serie\pll128M2.vhd":18:10:18:25|Synthesizing work.sb_pll40_2f_core.syn_black_box.
+@N: CL201 :"C:\Users\david\Desktop\luc\MATTY serie\sclk_gen.vhd":134:8:134:9|Trying to extract state machine for register spim_clk_state_i.
+@N: CL159 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":28:12:28:21|Input reset_alim is unused.
+@N: CL159 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":29:12:29:19|Input reset_ft is unused.
+@N: CL159 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":45:12:45:25|Input spi_miso_flash is unused.
+@N: CL159 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":77:12:77:22|Input button_trig is unused.
+@N|Running in 64-bit mode
+@N: NF107 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":23:7:23:21|Selected library: work cell: MATTY_MAIN_VHDL view behavioral as top level
+@N: NF107 :"C:\Users\david\Desktop\luc\MATTY serie\matty.vhd":23:7:23:21|Selected library: work cell: MATTY_MAIN_VHDL view behavioral as top level
+

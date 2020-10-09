@@ -9,15 +9,17 @@ import json
 import time
 import datetime
 import os,glob
-import sys
+import sys,re
 import spidev
 import numpy as np
+import matplotlib
+matplotlib.use('Agg') 
 import matplotlib.pyplot as plt
 
 try:
     import RPi.GPIO as GPIO
 except:
-    print "Not loading RPi.GPIO as not on RPi"
+    print("Not loading RPi.GPIO as not on RPi")
     gpioexists = False
 else:
     gpioexists = True
@@ -25,7 +27,7 @@ else:
 try:
     import pyexiv2
 except:
-    print "pyexiv2 does not exist on RPi"
+    print("pyexiv2 does not exist on RPi")
     pyexivexists = False
 else:
     pyexivexists = True
@@ -33,15 +35,17 @@ else:
 
 
 '''Description: Most updated library for the un0rick platform. 
-`Latest: 20190111`
+Compatible for a RPi4/python3 setup 
+`220200109a` expe
 @todo: improve doc: http://sametmax.com/les-docstrings/
 '''
 
 __author__ = "kelu124"
-__copyright__ = "Copyright 2018, Kelu124"
+__copyright__ = "Copyright 2018-2020, kelu124"
 __license__ = "GPLv3"
-
-
+__version__ = "1.0.0"
+__maintainer__ = "kelu124" 
+__status__ = "Production"
 
 
 
@@ -63,7 +67,7 @@ class us_spi:
     JSON["firmware_md5"] = "fa6a7560ade6d6b1149b6e78e0de051f"
     JSON["firmware_version"] = "e_un0"
     JSON["data"] = []
-    JSON["time"] = unicode(datetime.datetime.now())
+    JSON["time"] = "NOW" #// todo, pass to py3 unicode(datetime.datetime.now())
     JSON["registers"] = {}
     JSON["experiment"] = {}
     JSON["parameters"] = {}
@@ -88,7 +92,7 @@ class us_spi:
         """
         n = 200/5
         dac_array = []
-        for k in range(n+1):
+        for k in range(int(n+1)):
             if curvetype:
                 val = int(init_value+1.0*k*(final_value-init_value)/n)
             else:
@@ -118,7 +122,7 @@ class us_spi:
         self.JSON["timings"]["LAcq"] = self.LAcq
         self.JSON["timings"]["Fech"] = self.f_ech
         self.JSON["timings"]["NLines"] = self.number_lines
-        print "NAcq = "+str(self.Nacq)
+        print("NAcq = "+str(self.Nacq))
         if self.Nacq > 499999:
             raise NameError('Acquisition length over 500.000 points (8Mb = Flash limit)')
         return self.Nacq, self.LAcq, self.f_ech, self.number_lines
@@ -131,12 +135,12 @@ class us_spi:
         """
         if Bool:
             if self.verbose:
-                print "Doing several lines.\nRemember to indicate how many lines. number_lines = 3 by default"
+                print("Doing several lines.\nRemember to indicate how many lines. number_lines = 3 by default")
             self.write_fpga(0xEB, 1) # Doing one line if 0, several if 1
             self.number_lines = 3
         else:
             if self.verbose:
-                print "Doing a single line"
+                print("Doing a single line")
             self.write_fpga(0xEB, 0) # Doing one line if 0, several if 1 
             self.number_lines = 1
 
@@ -144,9 +148,9 @@ class us_spi:
         """
         Sets up the TGC using an array
         """
-        print "Setting up the DAC"
+        print("Setting up the DAC")
         if len(tgc_values) < 43: # to correct
-            for i in range(len(tgc_values)):
+            for i in range(int(len(tgc_values))):
                 if (tgc_values[i] >= 0) and (tgc_values[i] < 1020):
                     self.write_fpga(16+i, tgc_values[i]/4) # /4 since 1024 values, on 8 bits
                 else:
@@ -160,41 +164,47 @@ class us_spi:
         """
         Basic function to write registers value to the FPGA
         """
-        self.spi.xfer([0xAA])
-        self.spi.xfer([adress])
-        self.spi.xfer([value])
-        self.JSON["registers"][int(adress)] = value
+        print(value,int(value))
+        if gpioexists:
+            self.spi.xfer([0xAA])
+            self.spi.xfer([adress])
+            self.spi.xfer([int(value)])
+            #self.spi.xfer([value])
+            self.JSON["registers"][int(adress)] = value
 
 
     def init(self):
         """
         Initialises the FPGA
         """
-
-        GPIO.setmode(GPIO.BCM)
-        PRESET = 23 ## Reset for the FPGA
-        IO4 = 26 ## 26 is the output connected to
-        #@todo check 3 lines below
-        CS_FLASH = 7
-        GPIO.setup(CS_FLASH,GPIO.OUT)  
-        GPIO.output(CS_FLASH,GPIO.LOW)
-        
-        GPIO.setup(PRESET, GPIO.OUT)
-        GPIO.setup(IO4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-        
-        print "Reset GPIO 23 - Low 1s"
-        GPIO.output(PRESET, GPIO.LOW)
-        time.sleep(3)
-        print "Reset GPIO 23 - High 0.2s"
-        GPIO.output(PRESET, GPIO.HIGH)
-        time.sleep(0.2)
-        self.spi.open(0, 0) # CS2 - FPGA, on CE1 = IO4
-        self.spi.mode = 0b01
-        self.spi.max_speed_hz = 2000000
-        if self.verbose:
-            print "spi.cshigh is " + str(self.spi.cshigh)
-            print "spi mode is " + str(self.spi.mode)
-            print "spi maxspeed is "+str(self.spi.max_speed_hz)+"hz"
+        if gpioexists:
+            print("Init")
+            GPIO.setmode(GPIO.BCM)
+            PRESET = 23 ## Reset for the FPGA
+            IO4 = 26 ## 26 is the output connected to
+            #@todo check 3 lines below
+            CS_FLASH = 7
+            GPIO.setup(CS_FLASH,GPIO.OUT)  
+            GPIO.output(CS_FLASH,GPIO.LOW)
+            
+            GPIO.setup(PRESET, GPIO.OUT)
+            GPIO.setup(IO4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+            
+            print("Reset GPIO 23 - Low 1s")
+            GPIO.output(PRESET, GPIO.LOW)
+            time.sleep(3)
+            print("Reset GPIO 23 - High 0.2s")
+            GPIO.output(PRESET, GPIO.HIGH)
+            time.sleep(0.2)
+            self.spi.open(0, 0) # CS2 - FPGA, on CE1 = IO4
+            self.spi.mode = 0b00 
+            self.spi.max_speed_hz = 2000000
+            if self.verbose:
+                print("spi.cshigh is " + str(self.spi.cshigh))
+                print("spi mode is " + str(self.spi.mode))
+                print("spi maxspeed is "+str(self.spi.max_speed_hz)+"hz")
+        else:
+            print("Not running from a raspberry")
 
     #----------------
     # Testing functions
@@ -248,7 +258,7 @@ class us_spi:
         """
         self.write_fpga(0xED, f_msps)
         self.f_ech = float(64/((1+f_msps)))
-        print "Acquisition frequency set at "+str(self.f_ech)+" Msps"
+        print("Acquisition frequency set at "+str(self.f_ech)+" Msps")
         return self.f_ech
 
     def do_acquisition(self):
@@ -256,28 +266,31 @@ class us_spi:
         Doing an acquisition, trigs, then reads the data.
         """
         self.write_fpga(0xEF, 0x01) # Cleaning memory pointer
-        self.JSON["time"] = unicode(datetime.datetime.now())
+        self.JSON["time"] = "now" #/@todo fix py3 unicode(datetime.datetime.now())
         self.write_fpga(0xEA, 0x01) # Software Trig : As to be clear by software
         self.JSON["data"] = []
         time.sleep(1) 
         milestone = self.Nacq / 5
         start = time.time()
-        for i in range(2*self.Nacq+2):
-            self.JSON["data"].append(self.spi.xfer([0x00])[0])
-            if not (i%milestone) and self.verbose:
-                print str((50*i)/self.Nacq)+"% - "+str(self.JSON["data"][-1])
-        end = time.time()
-        delta = end - start
-        if self.verbose:
-            print "Took %.2f seconds to transfer." % delta
-            print "for "+str(2*self.Nacq+2)+" transfers of data"
-        self.JSON["N"] = new_n("./",self.JSON["experiment"]["id"])
-        name_json = self.JSON["experiment"]["id"]+"-"+str(self.JSON["N"])+".json"
-        with open(name_json, 'w') as outfile:
-            json.dump(self.JSON, outfile)
-        if self.verbose:
-            print name_json+": file saved."
-        return self.JSON["data"]
+        if gpioexists:
+            for i in range(int(2*self.Nacq+2)):
+                self.JSON["data"].append(self.spi.xfer([0x00])[0])
+                if not (i%milestone) and self.verbose:
+                    print( str((50*i)/self.Nacq)+"% - "+str(self.JSON["data"][-1]) )
+            end = time.time()
+            delta = end - start
+            if self.verbose:
+                print("Took %.2f seconds to transfer." % delta)
+                print("for "+str(2*self.Nacq+2)+" transfers of data")
+            self.JSON["N"] = new_n("./",self.JSON["experiment"]["id"])
+            name_json = self.JSON["experiment"]["id"]+"-"+str(self.JSON["N"])+".json"
+            with open(name_json, 'w') as outfile:
+                json.dump(self.JSON, outfile)
+            if self.verbose:
+                print(name_json+": file saved.")
+        else:
+            print("Not on a RPI")
+            return self.JSON["data"]
 
     def set_acquisition_number_lines(self, n):
         """
@@ -288,7 +301,7 @@ class us_spi:
         self.write_fpga(0xDE, n_msb)
         self.number_lines = n
         if self.verbose:
-            print "Number of lines: "+str(n)
+            print("Number of lines: "+str(n))
 
     def config_spi(self):
         """
@@ -305,7 +318,7 @@ class us_spi:
         self.write_fpga(0xEB, 0x00) # 0: single mode 1 continious mode
         self.write_fpga(0xED, 0x03) # Frequency of ADC acquisition
         self.set_acquisition_number_lines(0xA0)      # How many cycles in countinious mode
-        print "Config FPGA done!"
+        print("Config FPGA done!")
 
     def set_tgc_constant(self, mV):
         """
@@ -316,7 +329,7 @@ class us_spi:
         elif mV < 0:
             mV = 0
             hmV = mV/4
-        print "Gain:", mV, " mV -- ", hex(hmV)
+        print("Gain:", mV, " mV -- ", hex(hmV))
         self.write_fpga(0xEC, hmV) # Voltage gain control: 0V to 1V
 
 
@@ -328,7 +341,7 @@ class us_spi:
         unit_p_on = int(p_on*128.0/1000)
         self.JSON["parameters"]["Pon"] = int(p_on)
         self.JSON["parameters"]["Pon_Real"] = int(unit_p_on*1000/128)
-        print "POn width:", p_on, " ns -- ", hex(unit_p_on)
+        print("POn width:", p_on, " ns -- ", hex(unit_p_on))
         self.write_fpga(0xE0, unit_p_on) # set sEEPon
         return unit_p_on*1000/128
 
@@ -342,7 +355,7 @@ class us_spi:
         #print  hex(HPP)
         self.JSON["parameters"]["PulsesDelay"] = int(pulse_on_off_delay_val)
         self.JSON["parameters"]["PulsesDelay_Real"] = int(HPP*1000/128)
-        print "Pulses delay:", pulse_on_off_delay_val, "ns -- ", hex(HPP)
+        print("Pulses delay:", pulse_on_off_delay_val, "ns -- ", hex(HPP))
         self.write_fpga(0xD0, HPP) # set sEEPon
         return HPP*1000/128
 
@@ -350,8 +363,8 @@ class us_spi:
         # Sets the damping length.
         p_off = int(poff_value /(1000/128.0))
         #print sEEPoff, POff
-        p_off_msb, p_off_lsb = 0x00FF&p_off/256, 0x00FF&p_off
-        print "Poff:", poff_value, " ns -- ", hex(p_off_msb), hex(p_off_lsb)
+        p_off_msb, p_off_lsb = 0x00FF&int(p_off/256), 0x00FF&int(p_off)
+        print("Poff:", poff_value, " ns -- ", hex(p_off_msb), hex(p_off_lsb))
         self.JSON["parameters"]["Poff"] = int(poff_value)
         self.JSON["parameters"]["Poff_Real"] = int(p_off*1000/128)
         self.write_fpga(0xE1, p_off_msb) # set sEEPon MSB
@@ -365,8 +378,8 @@ class us_spi:
         elif acquisition_delay_val < 0:
             acquisition_delay_val = 0
         hDA = int((128*acquisition_delay_val)/1000.0)
-        hDAMSB, hDALSB = hDA/256, 0x00FF&hDA
-        print "Delay between:", hDA*1000/128, "ns -- ", hex(hDAMSB), hex(hDALSB)
+        hDAMSB, hDALSB = int(hDA/256), 0x00FF&int(hDA)
+        print("Delay between:", hDA*1000/128, "ns -- ", hex(hDAMSB), hex(hDALSB))
         self.JSON["parameters"]["DeltaAcq"] = int(acquisition_delay_val)
         self.JSON["parameters"]["DeltaAcq_Real"] = int(hDA*1000/128)
         self.write_fpga(0xE3, hDAMSB) # set sEEPon MSB
@@ -378,40 +391,40 @@ class us_spi:
         #print correct_length_acq, hex(LAcq), hex(LAcqI)
         self.JSON["parameters"]["LengthAcq"] = int(LAcqI)
         self.JSON["parameters"]["LengthAcq_Real"] = int(correct_length_acq*1000/128)
-        length_acq_msb = 0x00FF & correct_length_acq/256
+        length_acq_msb = 0x00FF & int(correct_length_acq/256)
         length_acq_lsb = 0x00FF & correct_length_acq
         if self.verbose:
-            print "Acquisition length: ", int(correct_length_acq*1000/128), "ns."
-            print "Arguments: ", hex(length_acq_msb), hex(length_acq_lsb)
+            print("Acquisition length: ", int(correct_length_acq*1000/128), "ns.")
+            print("Arguments: ", hex(length_acq_msb), hex(length_acq_lsb))
         self.write_fpga(0xE5, length_acq_msb) # set sEEPon MSB
         self.write_fpga(0xE6, length_acq_lsb) # set sEEPon LSB
         return int(correct_length_acq*1000/128)
 
     def set_period_between_acqs(self, lEPeriod):
         repeat_length_arg = int(lEPeriod*128.0/1000) #ns
-        repeat_length_msb = 0x00FF&repeat_length_arg/(256*256)
-        repeat_length = 0x00FF&repeat_length_arg/256
-        repeat_length_lsb = 0x0000FF&repeat_length_arg
-        print "Period between two acquisitions:", lEPeriod/1000, "us"
-        print "Arguments:", hex(repeat_length_msb), hex(repeat_length), hex(repeat_length_lsb)
+        repeat_length_msb = 0x00FF & int(repeat_length_arg/(256*256))
+        repeat_length = 0x00FF&int(repeat_length_arg/256)
+        repeat_length_lsb = 0x0000FF&int(repeat_length_arg)
+        print("Period between two acquisitions:", lEPeriod/1000, "us")
+        print("Arguments:", hex(repeat_length_msb), hex(repeat_length), hex(repeat_length_lsb))
         self.JSON["parameters"]["PeriodAcq"] = int(lEPeriod)
         self.JSON["parameters"]["PeriodAcq_Real"] = int(repeat_length_arg*1000/128)
         self.write_fpga(0xE7, repeat_length_msb) # Period of one cycle MSB
-        self.write_fpga(0xE8, repeat_length) # Period of one cycle 15 to 8
+        self.write_fpga(0xE8, repeat_length) # Period of one cycle f15 to 8
         self.write_fpga(0xE9, repeat_length_lsb) # Period of one cycle LSB
         return repeat_length_arg*1000/128
 
     def set_pulse_train(self, Pon, Pdelay, Poff, delay_acq, Acq):
         tpon = self.set_pon(Pon)
-        print "tpon = ",tpon
+        print("tpon = ",tpon)
         tpulsedelay = self.set_pulses_delay(tpon+Pdelay)
-        print "tpulsedelay = ",tpulsedelay,tpon,Pdelay
+        print("tpulsedelay = ",tpulsedelay,tpon,Pdelay)
         tmp = self.set_poff(Poff+tpulsedelay) #@unused @tocheck
-        print "Poff = ",tmp,Poff,tpulsedelay
+        print("Poff = ",tmp,Poff,tpulsedelay)
         tmp = self.set_delta_acq(delay_acq) #@unused @tocheck
-        print "delay_acq = ",tmp,delay_acq
+        print("delay_acq = ",tmp,delay_acq)
         l_acq = self.set_length_acq(Acq)
-        print "Set_pulse_train 'l_acq' "+str(l_acq)
+        print("Set_pulse_train 'l_acq' "+str(l_acq))
         return l_acq
 
 
@@ -465,7 +478,7 @@ def metadatag_images_batch(list_modules, exp_id, img_category, img_desc):
             try:
                 metadata.read()
             except IOError:
-                print "Not an image"
+                print("Not an image")
             else:
                 # Modules
                 metadata['Exif.Image.Software'] = list_modules # "matty, cletus"
@@ -473,9 +486,9 @@ def metadatag_images_batch(list_modules, exp_id, img_category, img_desc):
                 metadata['Exif.Photo.MakerNote'] = img_category #"oscilloscope"
                 metadata['Exif.Image.ImageDescription'] = img_desc #"Unpacking data"
                 metadata.write()
-            print file_name, "done"
+            print(file_name, "done")
     else:
-        print "PyExiv not present"
+        print("PyExiv not present")
     return 0
 
 def tag_image(file_name, Modules, Experiment, Category, Description):
@@ -484,7 +497,7 @@ def tag_image(file_name, Modules, Experiment, Category, Description):
         try:
             metadata.read()
         except IOError:
-            print "Not an image"
+            print("Not an image")
         else:
             metadata['Exif.Image.Software'] = Modules # "matty, cletus"
             metadata['Exif.Image.Make'] = Experiment #"20180516a"
@@ -492,7 +505,7 @@ def tag_image(file_name, Modules, Experiment, Category, Description):
             metadata['Exif.Image.ImageDescription'] = Description #"Unpacking data"
             metadata.write()
     else:
-        print "PyExiv not present"
+        print("PyExiv not present")
     return 1
 
 class us_json:
@@ -518,7 +531,8 @@ class us_json:
     filtered_signal = []
     Registers = {}
     t = []
-    fPiezo = 3.5
+    fPiezo = 5
+    Bandwidth = 1.0
     f = 0 # sampling freq
     piezo = ""
     experiment = ""
@@ -555,22 +569,22 @@ class us_json:
 
             A = d["data"]
             #print d.keys()
-            for i in range(len(A)/2-1):
+            for i in range(int(len(A)/2-1)):
                 if (A[2*i+1]) < 128:
-                #print "first"
+                #print("first"
                     value = 128*(A[2*i+0]&0b0000111) + A[2*i+1] - 512
                     IDLine.append(((A[2*i+0]&0b11110000)/16  -8) /2) # Identify the # of the line
                     TT1.append((A[2*i+0] & 0b00001000) / 0b1000)
                     TT2.append((A[2*i+0] & 0b00010000) / 0b10000)
                     tmp.append(2.0*value/512.0)
                 else:
-                #print "second"
+                #print("second"
                     value = 128*(A[2*i+1]&0b111) + A[2*i+2] - 512
                     IDLine.append(((A[2*i+1]&0b11110000)/16 -8) /2) # Identify the # of the line
                     TT1.append((A[2*i+1] & 0b00001000) / 0b1000)
                     TT2.append((A[2*i+1] & 0b00010000) / 0b10000)
                     tmp.append(2.0*value/512.0)
-            print "Data acquired"
+            print("Data acquired")
             self.Registers = d["registers"]
             self.timings = d["timings"]
             self.f = float(64/((1.0+int(d["registers"]["237"]))))
@@ -578,7 +592,7 @@ class us_json:
             t = [1.0*x/self.f + self.timings['t4']/1000.0  for x in range(len(tmp))]
             self.t = t
 
-            for i in range(len(IDLine)):
+            for i in range(int(len(IDLine))):
                 if IDLine[i] < 0:
                     IDLine[i] = 0
             self.LengthT = len(t)
@@ -625,15 +639,15 @@ class us_json:
             self.Duration = (self.parameters['LengthAcq']-self.parameters['DeltaAcq'])/1000.0
 
     def create_fft(self):
-        self.FFT_x = [X*self.f / (self.LengthT) for X in range(self.LengthT)]
+        self.FFT_x = [X*self.f / (self.LengthT) for X in range(int(self.LengthT))]
         self.FFT_y = np.fft.fft(self.tmp)
         self.filtered_fft = np.fft.fft(self.tmp)
 
-        for k in range(self.LengthT/2 + 1):
-            if k < (self.LengthT * self.fPiezo * 0.5 / self.f):
+        for k in range(int(self.LengthT/2 + 1)):
+            if k < (self.LengthT * self.fPiezo * (1 - self.Bandwidth/2.0) / self.f):
                 self.filtered_fft[k] = 0
                 self.filtered_fft[-k] = 0
-            if k > (self.LengthT * self.fPiezo *1.5 / self.f):
+            if k > (self.LengthT * self.fPiezo *(1 + self.Bandwidth/2.0) / self.f):
                 self.filtered_fft[k] = 0
                 self.filtered_fft[-k] = 0
 
@@ -641,10 +655,10 @@ class us_json:
 
         if self.processed:
             plt.figure(figsize=(15, 5))
-
-            plot_time = self.FFT_x[1:self.LengthT/2]
-            plot_abs_fft = np.abs(self.FFT_y[1:self.LengthT/2])
-            plot_filtered_fft = np.abs(self.filtered_fft[1:self.LengthT/2])
+            selfLength = int(self.LengthT/2)
+            plot_time = self.FFT_x[1:selfLength]
+            plot_abs_fft = np.abs(self.FFT_y[1:selfLength])
+            plot_filtered_fft = np.abs(self.filtered_fft[1:selfLength])
 
             plt.plot(plot_time, plot_abs_fft, 'b-')
             plt.plot(plot_time, plot_filtered_fft, 'y-')
@@ -652,7 +666,7 @@ class us_json:
             plt.title("FFT of "+self.iD + " - acq. #: "+ str(self.N))
             plt.xlabel('Freq (MHz)')
             plt.tight_layout()
-            file_name = "images/"+self.iD+"-"+str(self.N)+"-fft.jpg"
+            file_name = "images/"+self.iD+"-"+str(self.N)+"-fft.png"
             plt.savefig(file_name)
             if self.show_images:
                 plt.show()
@@ -676,7 +690,7 @@ class us_json:
             ax1.set_ylabel('Signal from ADC (V)', color='b')
             ax2.set_ylabel('DAC output in mV (range 0 to 1V)', color='g')
             plt.tight_layout()
-            file_name = "images/"+self.iD+"-"+str(self.N)+".jpg"
+            file_name = "images/"+self.iD+"-"+str(self.N)+".png"
             plt.savefig(file_name)
             if self.show_images:
                 plt.show()
@@ -693,7 +707,7 @@ class us_json:
             try:
                 metadata.read()
             except IOError:
-                print "Not an image"
+                print("Not an image")
             else:
                 metadata['Exif.Image.Software'] = bricks
                 metadata['Exif.Image.Make'] = experiment_id
@@ -701,7 +715,7 @@ class us_json:
                 metadata['Exif.Image.ImageDescription'] = img_desc
                 metadata.write()
         else:
-            print "pyexiv does not exist"
+            print("pyexiv does not exist")
 
     def mk2DArray(self):
         """
@@ -712,8 +726,8 @@ class us_json:
         tmpline = []
         lineindex = 0
 
-        for k in range(len_acquisition):
-            if self.IDLine[k] <> lineindex:
+        for k in range(int(len_acquisition)):
+            if not self.IDLine[k] == lineindex:
                 img.append(tmpline)
                 lineindex = self.IDLine[k]
                 tmpline = []
@@ -728,7 +742,7 @@ class us_json:
         else:
             clean_image = np.zeros((len(y),1))
 
-        for i in range(len(y)):
+        for i in range(int(len(y))):
             clean_image[i][0:len(y[i])] = y[i]
 
         img_size = np.shape(clean_image)
@@ -738,7 +752,7 @@ class us_json:
         clean_image = clean_image[:, :int(Duration*self.f)]
         plt.figure(figsize=(15, 10))
         if self.Nacq > 1:
-            print img_size[1],img_size[0]
+            print( img_size[1],img_size[0] )
             plt.imshow(np.sqrt(np.abs(clean_image)), cmap='gray', aspect=0.5*(img_size[1]/img_size[0]), interpolation='nearest')
         else:
             plt.plot(self.t[0:self.len_line], self.tmp[0:self.len_line], 'b-')
@@ -747,7 +761,7 @@ class us_json:
         plt.title(self.create_title_text())
         #plt.colorbar(im, orientation='vertical')
         plt.tight_layout()
-        file_name = "images/2DArray_"+self.iD+"-"+str(self.N)+".jpg"
+        file_name = "images/2DArray_"+self.iD+"-"+str(self.N)+".png"
         plt.savefig(file_name)
         tag_image(file_name, "matty, "+self.piezo, self.iD, "BC", self.create_title_text().replace("\n", ". "))
         if self.show_images:
@@ -786,7 +800,7 @@ class us_json:
         plt.tight_layout()
 
         file_name = "images/detail_"+self.iD+"-"+str(self.N)+"-"
-        file_name += str(Start)+"-"+str(Stop)+"-line"+str(nb_line)+".jpg"
+        file_name += str(Start)+"-"+str(Stop)+"-line"+str(nb_line)+".png"
         plt.savefig(file_name)
         if self.show_images:
             plt.show()
@@ -801,11 +815,11 @@ class us_json:
         fft_image_filtered = []
         if len(original_image):
             num_lines, length_lines = np.shape(original_image)
-            f_array = [X*self.f / length_lines for X in range(length_lines)]
-            for k in range(num_lines): # number of images
+            f_array = [X*self.f / length_lines for X in range(int(length_lines))]
+            for k in range(int(num_lines)): # number of images
                 fft_single_line = np.fft.fft(original_image[k])
                 fft_image_filtered.append(fft_single_line)
-                for p in range(len(fft_single_line)/2+1):
+                for p in range(int(len(fft_single_line)/2+1)):
                     f_min = (1000.0 * self.fPiezo * 0.7)
                     f_max = (1000.0 * self.fPiezo * 1.27)
                     if (f_array[p] > f_max or f_array[p] < f_min):
@@ -839,12 +853,12 @@ class us_json:
             plt.title(self.create_title_text())
             plt.tight_layout()
 
-            file_name = "images/Spectrum_"+self.iD+"-"+str(self.N)+".jpg"
+            file_name = "images/Spectrum_"+self.iD+"-"+str(self.N)+".png"
             plt.savefig(file_name)
             img_desc = self.create_title_text().replace("\n", ". ")
             tag_image(file_name, "matty,"+self.piezo, self.iD, "FFT", img_desc)
         else:
-            print "2D Array not created yet"
+            print("2D Array not created yet")
 
         return np.abs(Spectrum)
 
@@ -866,19 +880,90 @@ class us_json:
 
 ##############
 #
+# Support
+#
+##############
+
+def ConfigFromTxt(UN0RICK,filepath):
+    """
+	Used with -f to get inputs from file.
+    """
+    ConfigText = {}
+    with open(filepath) as fp:  
+        line = fp.readline()
+        while line:
+            line = line.replace("* ","").replace(": ",":")
+            #print line
+            line = re.sub("[\(\[].*?[\)\]]", "", line).strip()
+            if len(line):
+                keys = line.split(":")
+                if len(keys)==2:
+                    if keys[1].isdigit():
+                        ConfigText[keys[0]] = float(keys[1])
+                    else:
+                        ConfigText[keys[0]] = keys[1]	
+            line = fp.readline()
+
+    if "bandwidthpiezo" in ConfigText.keys():
+	    UN0RICK.Bandwidth = ConfigText["bandwidthpiezo"]
+    if "fpiezo" in ConfigText.keys():
+	    UN0RICK.fPiezo = ConfigText["fpiezo"]
+    if "description" in ConfigText.keys():
+        UN0RICK.JSON["experiment"]["description"] = ConfigText["description"]
+    if "target" in ConfigText.keys():
+	    UN0RICK.JSON["experiment"]["target"] =  ConfigText["target"]
+    if "probe" in ConfigText.keys():
+	    UN0RICK.JSON["experiment"]["probe"] = ConfigText["probe"]
+    if "freq" in ConfigText.keys():
+	    UN0RICK.set_msps(int(ConfigText["freq"]))  
+    if "nlines" in ConfigText.keys():
+	    UN0RICK.set_acquisition_number_lines(int(ConfigText["nlines"]))  
+    if "interlinedelay" in ConfigText.keys():
+	    ILD = ConfigText["interlinedelay"]*1000
+	    UN0RICK.set_period_between_acqs(int(ILD))   
+    if "gain" in ConfigText.keys():
+        G1,G2 = ConfigText["gain"].split(",")
+        G1,G2 = int(G1),int(G2)
+        TGCC = UN0RICK.create_tgc_curve(G1, G2, True)[0]
+        UN0RICK.set_tgc_curve(TGCC)
+    if "acqtiming" in ConfigText.keys():
+        T1,T2,T3,T4,T5 = ConfigText["acqtiming"].split(",")
+        T1,T2,T3,T4,T5 = int(T1),int(T2),int(T3),int(T4),int(T5)
+        A = UN0RICK.set_timings(T1, T2, T3, T4, T5)
+
+    print(ConfigText)
+
+    UN0RICK.JSON["ConfigText"] = ConfigText
+
+    return UN0RICK
+
+##############
+#
 # Main
 #
 ##############
 
+
+
+
 if __name__ == "__main__":
-    print "Loaded!"
+    print("Loaded!")
 
     if len(sys.argv) > 1:
+        
+        if (sys.argv[1] == "-f" ) and (len(sys.argv) == 3) and (os.path.exists(sys.argv[2])):
+            print("file exists - OK")
+            UN0RICK = us_spi()
+            UN0RICK.init()
+            UN0RICK.set_multi_lines(True)
+            UN0RICK.set_acquisition_number_lines(15) 
+            UN0RICK = ConfigFromTxt(UN0RICK,sys.argv[2])
+            UN0RICK.JSON["data"] = UN0RICK.do_acquisition()
 
         if "test" in sys.argv[1]:
             UN0RICK = us_spi()
             UN0RICK.init()
-            UN0RICK.test_spi(3)
+            UN0RICK.test_spi(5)
 
         if "single" in sys.argv[1]:
             UN0RICK = us_spi()
@@ -899,26 +984,28 @@ if __name__ == "__main__":
             UN0RICK.init()
             UN0RICK.test_spi(3)
             UN0RICK.JSON["N"] = 1 # Experiment ID
-            TGCC = UN0RICK.create_tgc_curve(300, 900, False)[0]  # Gain: expo, 300mV to 900mv
+            TGCC = UN0RICK.create_tgc_curve(600, 900, False)[0]  # Gain: expo, 300mV to 900mv
             UN0RICK.set_tgc_curve(TGCC)                          # We then apply the curve
             UN0RICK.set_period_between_acqs(int(2500000)) 	 # Setting 2.5ms between lines
             UN0RICK.set_multi_lines(True)			 # Multi lines acquisition	
-            UN0RICK.set_acquisition_number_lines(3)              # Setting the number of lines (3)
-            UN0RICK.set_msps(3)                                  # Sampling speed setting
-            A = UN0RICK.set_timings(200, 100, 2000, 5000, 200000)# Settings the series of pulses
+            UN0RICK.set_acquisition_number_lines(10)              # Setting the number of lines (3)
+            UN0RICK.set_msps(0)                                  # Sampling speed setting
+            A = UN0RICK.set_timings(200, 100, 1000, 2000, 100000)# Settings the series of pulses
             UN0RICK.JSON["data"] = UN0RICK.do_acquisition()      # Doing the acquisition and saves
 
         if "process" in sys.argv[1]:
             make_clean("./")
             for MyDataFile in os.listdir("./data/"):
                 if MyDataFile.endswith(".json"):
-                    print MyDataFile
+                    print(MyDataFile)
                     y = us_json()
                     y.show_images = False
                     y.JSONprocessing("./data/"+MyDataFile)
                     y.create_fft() 
                     y.save_npz() 
-                    y.mkImg() 
+                    y.mkImg()
+                    #if y.Nacq > 1:
+                    #    y.mk2DArray()
 
         if "loop" in sys.argv[1]:
             UN0RICK = us_spi()
@@ -930,7 +1017,9 @@ if __name__ == "__main__":
             while True:
                 UN0RICK.write_fpga(0xEA, 0x01)                   # trigs
                 time.sleep(50.0 / 1000.0)                        # Waits 50ms between shots
+    else:
+        print("No argument used")
 
-        if gpioexists:
-            GPIO.output(23, GPIO.LOW)
-            GPIO.setup(23, GPIO.OUT)
+    if gpioexists:
+        GPIO.output(23, GPIO.LOW)
+        GPIO.setup(23, GPIO.OUT)
