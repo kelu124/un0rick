@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Partnering
-nav_order: 4
+nav_order: 5
 ---
 
 # What I want to do 
