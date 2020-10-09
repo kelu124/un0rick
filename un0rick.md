@@ -6,135 +6,178 @@ has_children: true
 ---
 
 
-# Experiments
-
-## Introduction
-
-This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
-
-## ice40 - a specificity
-
-This board builds in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
-
-It can use the "Project IceStorm", which aims at reverse engineering and documenting the bitstream format of Lattice iCE40 FPGAs and providing simple tools for analyzing and creating bitstream files.
-
-There's a bit of action around these FPGAs these days, be it for tools, extensions, DIP designs,... and I thought using those for a ultrasound imaging device would permit to mix both FPGA and OpenSource.
-
-## How is this better?
-
-Compared to previous iteration, this setup is:
-
-* more robust;
-* more cost efficient;
-* integrated: SNR is far better than earlier;
-* better memory for bigger captures;
-* has an [Open Source Hardware Certificate](http://certificate.oshwa.org/certification-directory/)
-
-## Objective
-
-The aim of this project is to build a small ultrasound imaging hardware and software development kit, with the specific goal of:
-
-- consolidating [existing hardware research](http://openhardware.metajnl.com/articles/10.5334/joh.2/);
-- simplifing / lowering the cost of the kit;
-- making it more robust;
-- introducing a simple API to control hardware;
-- having a server which provides raw ultrasound data, and for ultrasound imaging, can deliver standard DICOM files;
-- having a kit that can be used for pedagogical and academic purposes - not to mention people who want to understand ultrasound!
-
-Previous projects has shown the feasibility of the hardware, but was not simple enough. Let's keep the momentum, and use this dev kit in interesting ways.
-
-## What can be done with this hardware?
-
-This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-desctrucive testing work. This structure can be used to develop:
-
-* other modalities of ultrasound imaging - and be used as a platform for A-mode, or B-mode imaging; 
-* it can also be used for array imaging - the modules can be used with a multiplexer for do synthetic aperture beamforming; 
-* new signal processing methods;
-* test transducers - which can be used as well for maintenance and repairs of ultrasound probes;
-* other non-destructive testing apparatus.
-
-Why are you doing this ? or besides pedagogical uses of your prototype, we want to know if you are thinking about other applications ? Where your prototype can be more useful? In Africa for example, can your prototype solve some problems? 
 
 
-# General principles of ultrasound imaging
-
-## Using echoes to map interfaces
-
-Medical ultrasound is based on the use of high frequency sound to aid in the diagnosis and treatment of patients. Ultrasound frequencies range from 2 MHz to approximately 15 MHz, although even higher frequencies may be used in some situations.
-
-The ultrasound beam originates from mechanical oscillations of numerous crystals in a transducer, which are excited by electrical pulses (piezoelectric effect). The transducer converts one type of energy into another (electrical <--> mechanical/sound). 
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/include/20161016/concept1.PNG)
-
-The ultrasound waves (pulses of sound) are sent from the transducer, propagate through different tissues, and then return to the transducer as reflected echoes when crossing an interface. The returned echoes are converted back into electrical impulses by the transducer crystals and are further processed - _mostly to extract the enveloppe of the signal, a process that transforms the electrical signal in an image_ -  in order to form the ultrasound image presented on the screen.
-
-Ultrasound waves are reflected at the surfaces between the tissues of different density, the reflection being proportional to the difference in impedance. If the difference in density is increased, the proportion of reflected sound is increased and the proportion of transmitted sound is proportionately decreased.
-
-If the difference in tissue density is very different, then sound is completely reflected, resulting in total acoustic shadowing. Acoustic shadowing is present behind bones, calculi (stones in kidneys, gallbladder, etc.) and air (intestinal gas). Echoes are not produced on the other hand if there is no difference in a tissue or between tissues. Homogenous fluids like blood, bile, urine, contents of simple cysts, ascites and pleural effusion are seen as echo-free structures.
-
-## Creating a 2D image
-
-If the process is repeated with the probe sweeping the area to image, one can build a 2D image. In practice, in the setups we'll be discussing, this sweep is done with a transducer coupled to a servo, or using a probe that has an built-in motor to create the sweep.
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/include/20161016/concept2.PNG)
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
 
-# Plugging the Pi to an existing probe
+# un0rick
 
-## Not a first shot
+## Overview
 
-1. A beaglebone black had been used with its [high-speed DAQ](https://kelu124.gitbooks.io/echomods/content/Chapter2/toadkiller.md) to be connected to an existing [mechanical probe](https://kelu124.gitbooks.io/echomods/content/Chapter2/retroATL3.html), with [some results](https://kelu124.gitbooks.io/echomods/content/Chapter2/basicdevkit.html). 
-2. The next step has been to interface a __Raspberry Pi W__ to this probe through the [24Msps Pi ADC pHAT](https://kelu124.gitbooks.io/echomods/content/Chapter2/elmo.html), to see if one can get the same quality of image, and produce a ultrasound loop. This was [summarized here](https://kelu124.gitbooks.io/echomods/content/RPI.html)
+This is a simple single-channel ultrasound board. Block diagram below:
 
-## Comparing improvements on signal capture
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/block-diagram.png)
 
-Below is represented the improvement in signal capture.
+## Step-by-step
 
-![](https://raw.githubusercontent.com/kelu124/echomods/master/include/20180417a/details.jpg)
+1. Program the fpga using a open-source toolchain
+2. Control the board fully through SPI, be it through USB, a Raspberry Pi, or even an arduino.
+3. Set up the acquisition sequence through SPI (for example using this python lib for Raspberry Pi)
+4. Get the data back again through SPI, and process it.
 
-## This setup
+I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared are image for the [RPi W](https://doc.un0rick.cc/installation.html), a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well.
 
-### Picture of the setup
+## Examples 
 
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180225a/IMG_20180225_184226.jpg)
+* __With a Raspberry pi__
 
-### Results
+The board was connected to a single element piezo, in water, with a reflector a few centimers away, immersed in water. Pulser is set up at 25V high pulses. Control was done through a Raspberry Pi W which is used as a controler and server, another Rasbperry pi.
 
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180225a/probe.jpg)
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20190713/P_20190713_223932.jpg)
+
+Acquisition is realized, with a small offset, between 32Msps and 64Msps. Data is explored a bit further.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/2018-02-27.jpg)
+
+* __With a M5Stack (or any microcontroller really)__
+
+The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/m5stack) ([ino file](https://github.com/kelu124/echomods/blob/4923d2af498ee07439468cc0e1ba58e79040f0c0/matty/m5stack/SPI.ino)). Below an example in image:
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/m5stack/calibration.gif)
 
 
-## Making it better
+## Specs (un0v1.1)
 
-I'll definitely need to use the on-board __Time Gain Compensation__, did the tests on the benchmark unit.. but haven't been using it on this rig.
+1. __FPGA__: Lattice iCE40HX4K - TQFP 144 Package
+2. __Memory__:
+  * 8 Mbit SRAM, 10ns, 512 k x 16, equivalent to 65 full lines of 120us at 64Msps or 840 lines of 120us at 10Msps, 8 bits.
+  * 8 Mb SPI Flash for FPGA configuration 
+3. __Ultrasound processing__:
+  * __VGA__: AD8331 controled by DAC
+  * __Pulser__: MD1210 + TC6320
+  * __ADC__: 65Msps ADC10065
+  * __Data__ formatted over 2 bytes, with 10 bits / sample, 2 bits of line trackers, 4 bits of IOs (counters, ...)  and 2 bits for tracking.
+4. __Parameters__: Settings programable via USB or Raspberry Pi 
+  * Type of acquisition (one line / set of lines)
+  * Number of lines
+  * Length of lines acquisitions
+  * Delay between acquisitions
+  * Pulse width 
+  * Delay between pulse and beginning of acquisitions
+  * 200us time-gain-compensation programmable (8 bits, from 0 to Max), every 5us
+5. __Extensibility__:
+  * 2 x Pmod connectors
+  * SMA plug for transducers
+  * RPi GPIO
+6. __User Interfaces__:
+  * 2 x PMOD for IOs
+  * 4 x push button (with software noise debouncing)
+  * Jumpers for high voltage selection
+  * Jumpers for SPI selection
+7. __Input Voltage__: 
+  * 5 V from RPi or USB
+  * Uses 350mA-450mA at 5V (including RPi)
+8. __Operating Voltage__: 
+  * FPGA and logics at at 3.3 V
+  * High voltage at 25V, 50V, 75V
+9. __Fully Open Source__:
+  * Hardware: [github repository](https://github.com/kelu124/un0rick)
+  * Software: [github repository](https://github.com/kelu124/un0rick)
+  * Toolchain: [Project IceStorm](http://www.clifford.at/icestorm/)
+  * Documentation: [gitbook](https://doc.un0rick.cc/)
 
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180403b/TGC.jpg)
+## Latest sources
+
+* Hardware resources are on github:
+  * [FPGA bin](https://github.com/kelu124/un0rick/tree/master/software) so far using Lattice's tools. A icestorm port is coming.
+  * Files for [v1.1](https://github.com/kelu124/un0rick/tree/master/hardware/v1.1) and [v1.01](https://github.com/kelu124/un0rick/tree/master/hardware) are available - on [upverter too](https://tools.upverter.com/eda/#tool=schematic,designId=c59550d3e0dcf944).
+* FPGA files too:
+  * Single SMA: [v1.01](https://github.com/kelu124/un0rick/raw/master/bins/v1.01.bin)
+  * Two SMAs, large board: [v1.1](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin)
+* [Python lib too](https://github.com/kelu124/un0rick/blob/master/pyUn0/pyUn0.py)
+
+## Orders
+
+* First sets around 449$.  Vilis Ad Bis Pretii !
+  * Send me a mail at __orders@un0rick.cc__ !
+  * Or wait for the [Tindie shop](https://www.tindie.com/stores/kelu124/)
+
+# Others
 
 
+## Changelog
 
-# What's next?
+* lit3rick _v1.2 - Ongoing_ 
+  * lighter board
+  * external HV modules
+* un0rick dual _v1.2 - Ongoing_ 
+  * Better HV generation
+  * SPI muxing to update
+  * Check USB too
+  * PMOD-compliant headers
+  * remove i2c header, but keep i2c to RPI (with PU)
+* un0Rick dual - __v1.1__
+  * Double SMA to possibly separate TX and RX path (for dual elements transducers)
+  * Still some issues with muxing
+* un0Rick - __v1.01__
+  * Rewired SPI
+  * Less MUXing
+* The "matty board" __v1__ 
+  * First ice40 board - compatible with iceprog =)
+  * Only one in existence, had some SPI wiring issues
+  * HV module footprint reversed
 
-1. Just a name ... Kruizinga ;)
-2. Plugin a real probe (I'm thinking about Shenzen, there are good prodes)
-3. Assembling with an old ultrasound machine.
 
-# Working together
+## Useful links
 
-## Who's working on this?
+* __Come and chat__ : join the [Slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
+* The full [GitHub Repo](https://github.com/kelu124/un0rick)
+* The board's [Tindie shop](https://www.tindie.com/stores/kelu124/)
+* The project [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
+* wlmeng11's [SimpleRick](https://github.com/wlmeng11/SimpleRick) for a analog part board. Clever use of [RTL-sdr hardware](https://github.com/wlmeng11/rtl-ultrasound) for the acquisition !
+* A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of my earlier works.
+* un0rick boards are open-source certified on [OSHWA, FR000005](https://certification.oshwa.org/list.html?q=un0rick). lit3rick's certification is pending.
 
-A summary of the contributors using this family of hardware is detailed below. Some continents are still to be represented!
+## Thanks & shouts
+
+* BiVi - _always here to chat_
+* Charles - _bringing neat insights_
+* David - _what would I have done without you?_
+* echOmods - _the fundations of this work_
+* Fabian - _already so many insights_
+* Fouad.. and team - _awesome works there_
+* Jan - _piezooos_
+* Johannes and Felix - _hardware is .. hard, but rew-harding!_
+* Sofian - _early ideas!_
+* Sterling - _another geek_
+* Tindie - _to allow people sharing their niche hardware, and for others to search for these_
+* Visa - _exploring amode_
+* Vlad - _you pulse_
+* Wlmeng11 - _inspiring_
+* all the supportive users
+* .. and all the others around the world!
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
 
-## And you?
 
-* Want to learn more? You can join the [slack channel](https://join.slack.com/usdevkit/shared_invite/MTkxODU5MjU0NjI1LTE0OTY1ODgxMDEtMmYyZTliZDBlZA) if you want to discuss, but there are plenty of other sources:
-* [Hackaday page too](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board)
-* You can also __fork the [project repo](https://github.com/kelu124/un0rick/)__, 
-* Or, you can go vintage and see:
-  * [Old repo](https://github.com/kelu124/echomods/) can be used for an extensive archive for the source files, raw data and raw experiment logs or explore the [hackaday page](https://hackaday.io/project/9281-murgen-open-source-ultrasound-imaging), where I tried to blog day-to-day experiments in a casual format
-  * Obviously, you can __read the [online manual/book](https://www.gitbook.com/book/kelu124/echomods/details)__ for a easily readable and searchable archive of the whole work on this family of hardware
+## License
 
-# Articles
+This work is based on a previous TAPR project, [the echOmods project](https://github.com/kelu124/echomods/). The [un0rick project](https://github.com/kelu124/un0rick) and its boards are open hardware and software, developped with open-source elements.
 
-Under CC-BY-4.0, [main article here](https://openhardware.metajnl.com/articles/10.5334/joh.2/) 
+Copyright Kelu124 (kelu124@gmail.com) 2018 
+
+* The hardware is licensed under TAPR Open Hardware License (www.tapr.org/OHL)
+* The software components are free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+* The documentation is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+
+
+## Disclaimer(s)
+
+This project is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. Also:
+* This is not a medical ultrasound scanner! It's a development kit that can be used for pedagogical and academic purposes - possible immediate use as a non-destructive testing (NDT) tool, for example in metallurgical crack analysis. 
+* As in all electronics, be careful, especially.
+* This is a learning by doing project, I never did something related -> It's all but a finalized product.
+* Ultrasound raises questions. In case you build a scanner, use caution and good sense!
+
 

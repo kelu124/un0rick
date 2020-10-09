@@ -8,11 +8,15 @@ nav_order: 7
 
 [Source experiment](https://github.com/kelu124/echomods/tree/master/matty/20180814a)
 
+* __Tip: reaching 128msps__
+
+Playing with the trigger, it's possible to [interleave two signals](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) and artificially double to acquisition speed, yielding clean images.
+
 # Setup 
 
 The usual fixed target. But [code](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) has changed.
 
-```
+```python
 x.setNLines(1)				            # Setting the number of lines
 x.setMultiLines(False)				    # Multi lines acquisition	
 x.setMsps(0) 					    # Acquisition Freq
