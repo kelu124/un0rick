@@ -5,17 +5,30 @@ nav_order: 1
 ---
 
 
-# Experiments
+# Open source ultrasound
 
-## Introduction
-
-This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
 
 Non destructive testing and imaging ultrasound have been around since the '50s. Many ultrasound open-source projects are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs to be used on commercial US scanners, but they are not cheap, and are difficult to access.
 
+
 I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers.
 
-## Two boards
+## Why this project ?
+
+This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
+
+The aim of this project is to build a basic ultrasound imaging hardware and software development kit, with the specific goal of:
+
+- consolidating [existing hardware research](http://openhardware.metajnl.com/articles/10.5334/joh.2/);
+- simplifing / lowering the cost of the kit;
+- making it more robust;
+- introducing a simple API to control hardware;
+- having a server which provides raw ultrasound data, and for ultrasound imaging, can deliver standard DICOM files;
+- having a kit that can be used for pedagogical and academic purposes - not to mention people who want to understand ultrasound!
+
+Previous projects has shown the feasibility of the hardware, but was not simple enough. Let's keep the momentum, and use this dev kit in interesting ways.
+
+## Two boards
 
 For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively.
 
@@ -32,6 +45,8 @@ It can use the "Project IceStorm", which aims at reverse engineering and documen
 
 There's a bit of action around these FPGAs these days, be it for tools, extensions, DIP designs,... and I thought using those for a ultrasound imaging device would permit to mix both FPGA and OpenSource.
 
+
+
 ## How is this better?
 
 Compared to previous iterations, the two un0rick and lit3rick boards setups are :
@@ -41,19 +56,6 @@ Compared to previous iterations, the two un0rick and lit3rick boards setups are 
 * integrated: SNR is far better than earlier;
 * better memory for bigger captures;
 * has an [Open Source Hardware Certificate](http://certificate.oshwa.org/certification-directory/)
-
-## Objective
-
-The aim of this project is to build a small ultrasound imaging hardware and software development kit, with the specific goal of:
-
-- consolidating [existing hardware research](http://openhardware.metajnl.com/articles/10.5334/joh.2/);
-- simplifing / lowering the cost of the kit;
-- making it more robust;
-- introducing a simple API to control hardware;
-- having a server which provides raw ultrasound data, and for ultrasound imaging, can deliver standard DICOM files;
-- having a kit that can be used for pedagogical and academic purposes - not to mention people who want to understand ultrasound!
-
-Previous projects has shown the feasibility of the hardware, but was not simple enough. Let's keep the momentum, and use this dev kit in interesting ways.
 
 ## What can be done with this hardware?
 
@@ -66,24 +68,6 @@ This board has been developped for pedagogical purposes, to understand how ultra
 * other non-destructive testing apparatus.
 
 Why are you doing this ? or besides pedagogical uses of your prototype, we want to know if you are thinking about other applications ? Where your prototype can be more useful? Can your prototype solve some problems? 
-
-# Acqs
-
-## Comparing improvements on signal capture
-
-Below is represented the improvement in signal capture.
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/include/20180417a/details.jpg)
-
-## This setup
-
-### Picture of the setup
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180225a/IMG_20180225_184226.jpg)
-
-### Results
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180225a/probe.jpg)
 
 # Working together
 
@@ -104,13 +88,13 @@ A summary of the contributors using this family of hardware is detailed below. S
 
 # Articles
 
-Under CC-BY-4.0, [main article here](https://openhardware.metajnl.com/articles/10.5334/joh.2/) 
+Under CC-BY-4.0, [main article here](https://openhardware.metajnl.com/articles/10.5334/joh.2/). Other articles are in the pipeline.
 
 ## License
 
-This work is based on a previous TAPR project, [the echOmods project](https://github.com/kelu124/echomods/). The [un0rick project](https://github.com/kelu124/un0rick) and its boards are open hardware and software, developped with open-source elements.
+This work is based on a previous TAPR project, [the echOmods project](https://github.com/kelu124/echomods/). The [un0rick project](https://github.com/kelu124/un0rick), the [lit3rick project](https://github.com/kelu124/lit3rick) and their boards are open hardware and software, developped with open-source elements, as much as possible.
 
-Copyright Kelu124 (kelu124@gmail.com) 2018 
+Copyright Kelu124 (kelu124@gmail.com) 2018-2020
 
 * The hardware is licensed under TAPR Open Hardware License (www.tapr.org/OHL)
 * The software components are free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.

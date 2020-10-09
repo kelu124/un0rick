@@ -6,7 +6,7 @@ nav_order: 3
 ---
 
 
-# Use of the hardware for NDT
+# Use of the hardware for NDT
 
 In the experiments below, NDT tests were done on a steel block used for calibration. A dual transducer element was used, with a jumper removed from the board to allow for different TX and RX paths. 
 
