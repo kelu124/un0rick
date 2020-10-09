@@ -1,7 +1,7 @@
 ---
 layout: default
 title: HP
-parent: Probes
+parent: Using probes
 nav_order: 3
 ---
 

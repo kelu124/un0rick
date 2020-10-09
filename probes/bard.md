@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Bard
-parent: Probes
+parent: Using probes
 nav_order: 2
 ---
 

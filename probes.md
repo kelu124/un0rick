@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Probes
+title: Using probes
 nav_order: 4
 ---
 
