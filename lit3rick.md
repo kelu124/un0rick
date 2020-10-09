@@ -5,18 +5,19 @@ nav_order: 3
 has_children: true
 ---
 
-# the up5k lit3rick open hardware ultrasound pulse echo board
-
-## Presentation of the hardware
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
 
+# the up5k lit3rick open hardware ultrasound pulse echo board
+
+## What's the hardware?
+
 * Lattice: up5k. Onboard RAM for 64k points saves.
-* Onboard flash : W25X10CLSNIG
-* Pulser : HV7361GA-G: adaptable to +-100V pulses. Onboard is 5V pulse.
-* AD8331 for gain
-* ADC: AD9629BCPZ-65: 12bits, reaching 64Msps here
-* DAC: MCP4812-E/MS for 8us gain segments
+* __Onboard flash__ : W25X10CLSNIG
+* __Pulser__ : HV7361GA-G: adaptable to +-100V pulses. Onboard is 5V pulse.
+* __AD8331__ for gain
+* __ADC__: AD9629BCPZ-65: 12bits, reaching 64Msps here
+* __DAC__: MCP4812-E/MS for 8us gain segments
 
 # Content
 
