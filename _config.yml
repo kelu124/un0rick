@@ -1,5 +1,8 @@
 title: un0rick open hardware 
 description: un0rick is a open-source ultrasound project.
-google_analytics: UA-115122033-1
+# Google Analytics Tracking (optional)
+# e.g, UA-1234567-89
+ga_tracking: UA-115122033-1
+ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true by default)
 remote_theme: kelu124/just-the-docs
 permalink: /404.html
