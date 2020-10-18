@@ -13,6 +13,8 @@ Non destructive testing and imaging ultrasound have been around since the '50s. 
 
 I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers.
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G81MT0G)
+
 ## Why this project ?
 
 This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
