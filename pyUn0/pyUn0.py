@@ -13,16 +13,17 @@ import sys,re
 import spidev
 import numpy as np
 import matplotlib
-matplotlib.use('Agg') 
-import matplotlib.pyplot as plt
 
 try:
     import RPi.GPIO as GPIO
 except:
     print("Not loading RPi.GPIO as not on RPi")
-    gpioexists = False
+    gpioexists = False 
+    import matplotlib.pyplot as plt
 else:
     gpioexists = True
+    matplotlib.use('Agg') 
+    import matplotlib.pyplot as plt
 
 try:
     import pyexiv2
@@ -652,7 +653,7 @@ class us_json:
                 self.filtered_fft[-k] = 0
 
         self.filtered_signal = np.real(np.fft.ifft(self.filtered_fft))
-
+        #self.EnvHil = np.asarray(np.abs(hilbert(self.filtered_signal)))
         if self.processed:
             plt.figure(figsize=(15, 5))
             selfLength = int(self.LengthT/2)
@@ -784,21 +785,22 @@ class us_json:
         #TLine = self.len_line/self.f #@unused
         Offset = nb_line*self.len_line
 
-        plot_time_series = self.t[Offset+int(Start/self.f):Offset+int(Stop*self.f)]
-        plot_signal = self.tmp[Offset+int(Start/self.f):int(Stop*self.f)]
+        plot_time_series = self.t[Offset+int(Start*self.f):Offset+int(Stop*self.f)]
+        plot_signal = self.tmp[Offset+int(Start*self.f):int(Stop*self.f)]
         #@todo .. what happens if no EnvHil ?
-        plot_enveloppe = self.EnvHil[Offset+int(Start/self.f):int(Stop*self.f)]
+        plot_enveloppe = self.EnvHil[Offset+int(Start*self.f):int(Stop*self.f)]
 
         plot_title = "Detail of "+self.iD + " - acq. #: "+ str(self.N)+", between "
         plot_title += str(Start)+" and "+str(Stop)+" (line #"+str(nb_line)+")."
 
         plt.figure(figsize=(15, 5))
-        plt.plot(plot_time_series, plot_signal, 'b-')
-        plt.plot(plot_time_series, plot_enveloppe, 'y-')
+        plt.plot(plot_time_series, plot_signal, 'b-',label="Raw signal")
+
+        plt.plot(plot_time_series, plot_enveloppe, 'y-',label="Enveloppe")
         plt.title(plot_title)
         plt.xlabel('Time in us')
         plt.tight_layout()
-
+        plt.legend()
         file_name = "images/detail_"+self.iD+"-"+str(self.N)+"-"
         file_name += str(Start)+"-"+str(Stop)+"-line"+str(nb_line)+".png"
         plt.savefig(file_name)
