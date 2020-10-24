@@ -2,7 +2,7 @@
 layout: default
 title: lit3rick experiments
 parent: lit3rick
-nav_order: 3
+nav_order: 5
 ---
 
 # Some experiment examples?

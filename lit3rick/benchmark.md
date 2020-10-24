@@ -2,7 +2,7 @@
 layout: default
 title: lit3rick benchmarking
 parent: lit3rick
-nav_order: 2
+nav_order: 4
 ---
 
 # Benchmarking with the un0rick board
