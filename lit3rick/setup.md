@@ -68,7 +68,7 @@ Any python editor works, but for the sake of simplicity I use VSCode on raspberr
 
 One can remove the traditional jumpers supplying 5V to the positive HV path to pulser, to provide one's HV. 
 
-![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/txrx.jpg)
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/txrx.png)
 
 In case one wishes to use a dual element transducer, to separate tx and rx path, one needs to remove R26.
 
