@@ -1,6 +1,6 @@
 ---
 layout: default
-title: The lib
+title: py_fpga library
 parent: lit3rick
 nav_order: 3
 ---
@@ -9,7 +9,7 @@ The main lib is the [py_fpga.py](https://github.com/kelu124/lit3rick/blob/master
 
 So far, we have the following main functions:
 
-## TGC control
+## TGC control
 
 ### set_HILO
 

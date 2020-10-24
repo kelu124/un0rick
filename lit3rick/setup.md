@@ -25,7 +25,7 @@ Then update python modules with the following command
 pip3 install smbus2 RPi.GPIO PyAudio  matplotlib
 ```
 
-Pour commencer à coder, dans le shell toujours, on récupère les outils de la carte:
+To get the tools for this board, the lit3rick repo can be used with all required tools at: 
 
 ```
 cd ~

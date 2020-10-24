@@ -25,11 +25,34 @@ Need a few feet, two 2x20 headers, and a SMA.
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/black/P_20191214_163247_good.jpg)
 
-## Installing iceprog
+# Software side
 
-iceprog is the software used to put the fpga on the flash storage on the board, which will be read by the fpga on boot.
+## Updating the raspberry tools
 
-The easiest way is to 
+You may need to install new packages, especially to communicate with the fpga.
+
+``` 
+sudo apt-get update
+sudo apt-get install i2c-tools libasound2-dev
+```
+
+From a general perspective, it may be worth trying to keep your tools up to date with:
+
+```
+sudo apt-get upgrade
+```
+
+## Updating the python tools
+
+On the raspberry pi, use pip to install the following modules:
+
+```
+pip3 install smbus2 RPi.GPIO PyAudio matplotlib numpy scipy spidev
+```
+
+## Installing iceprog to flash the fpga
+
+iceprog is the software used to put the fpga on the flash storage on the board, which will be read by the fpga on boot. The easiest way is to :
 
 ```
 sudo apt install fpga-icestorm
@@ -80,17 +103,26 @@ I've been using a RPi4 with a ribbon cable to connect to the board, leaving the 
 
 ## Running an acquisition
 
+### Testing the connection to the board
+
 Then, for example to discover the board using Python, you can use the library:
 
 ```
 git clone https://github.com/kelu124/pyUn0-lib.git
 cd pyUn0-lib
 python pyUn0.py test
-python pyUn0.py single
 ```
 
-It will download the lib, then you should see with the 'test' option a LED blink, then the "single" option will allow you to capture a single line.
+It will download the lib, then you should see with the 'test' option a LED blink
 
+### Testing the connection to the board
+
+The "single" option will allow you to capture a single line, then the "process" one will create the corresponding images.
+
+```
+python pyUn0.py single
+python pyUn0.py process
+```
 
 ## Results
 
