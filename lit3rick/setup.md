@@ -5,7 +5,7 @@ parent: lit3rick
 nav_order: 2
 ---
 
-# How to set up a raspberry for li3rick
+# How to set up a raspberry for lit3rick
 
 
 ## Setting up the development tools
@@ -63,3 +63,14 @@ This command should start the acquisition of a line, and will create the ndt* im
 ## To go forward programming
 
 Any python editor works, but for the sake of simplicity I use VSCode on raspberrypi4 - this IDE allows you to work on a "working" computer while connected to raspberrypi. A [great tutorial is here](https://medium.com/@pythonpow/remote-development-on-a-raspberry-pi-with-ssh-and-vscode-a23388e24bc7). It also allows multiple collaborators to access the code without having to be physically near the raspberry.
+
+# High voltage supply
+
+One can remove the traditional jumpers supplying 5V to the positive HV path to pulser, to provide one's HV. 
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/txrx.jpg)
+
+In case one wishes to use a dual element transducer, to separate tx and rx path, one needs to remove R26.
+
+
+

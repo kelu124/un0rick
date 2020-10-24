@@ -25,7 +25,7 @@ Need a few feet, two 2x20 headers, and a SMA.
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/black/P_20191214_163247_good.jpg)
 
-# Software side
+# Software side
 
 ## Updating the raspberry tools
 
@@ -103,7 +103,7 @@ I've been using a RPi4 with a ribbon cable to connect to the board, leaving the 
 
 ## Running an acquisition
 
-### Testing the connection to the board
+### Testing the connection to the board
 
 Then, for example to discover the board using Python, you can use the library:
 
@@ -115,7 +115,7 @@ python pyUn0.py test
 
 It will download the lib, then you should see with the 'test' option a LED blink
 
-### Testing the connection to the board
+### Testing the connection to the board
 
 The "single" option will allow you to capture a single line, then the "process" one will create the corresponding images.
 
