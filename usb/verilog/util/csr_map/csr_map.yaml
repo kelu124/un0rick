@@ -1,0 +1,274 @@
+---
+initdel:
+  type: reg
+  address: '0x00'
+  description: Initial pulse delay -- 0 - 1 period of 127.5 MHz, 1 - 2 periods, etc.
+  size: 8
+  mode: rw
+  reset: '0x07'
+
+ponw:
+  type: reg
+  address: '0x01'
+  description: Pon width -- 0 - 1 period of 127.5 MHz, 1 - 2 periods, etc.
+  size: 8
+  mode: rw
+  reset: '0x10'
+
+poffw:
+  type: reg
+  address: '0x02'
+  description: Poff width -- 0 - 1 period of 127.5 MHz, 1 - 2 periods, etc.
+  size: 8
+  mode: rw
+  reset: '0x80'
+
+interw:
+  type: reg
+  address: '0x03'
+  description: Intermediate delay width -- 0 - 1 period of 127.5 MHz, 1 - 2 periods, etc.
+  size: 8
+  mode: rw
+  reset: '0x07'
+
+drmode:
+  type: reg
+  address: '0x04'
+  description: Double resolution mode -- add 1 to INITDEL whe line is even
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+dacout:
+  type: reg
+  address: '0x07'
+  description: DAC out -- value for the DAC idle state
+  size: 10
+  mode: rw
+  reset: '0x100'
+
+dacgain:
+  type: arr
+  length: 32
+  address: '0x20'
+  description: DAC gain
+  size: 10
+  mode: rw
+  reset:
+    - '0x200' #0
+    - '0x200' #1
+    - '0x200' #2
+    - '0x200' #3
+    - '0x200' #4
+    - '0x200' #5
+    - '0x200' #6
+    - '0x200' #7
+    - '0x200' #8
+    - '0x200' #9
+    - '0x200' #10
+    - '0x200' #11
+    - '0x200' #12
+    - '0x200' #13
+    - '0x200' #14
+    - '0x200' #15
+    - '0x200' #16
+    - '0x200' #17
+    - '0x200' #18
+    - '0x200' #19
+    - '0x200' #20
+    - '0x200' #21
+    - '0x200' #22
+    - '0x200' #23
+    - '0x200' #24
+    - '0x200' #25
+    - '0x200' #26
+    - '0x200' #27
+    - '0x200' #28
+    - '0x200' #29
+    - '0x200' #30
+    - '0x200' #31
+
+acqstart:
+  type: reg
+  address: '0x50'
+  description: Start acquisition
+  size: 1
+  mode: wo
+  reset: '0x0'
+
+acqdone:
+  type: reg
+  address: '0x51'
+  description: Acquisition is done
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+nblines:
+  type: reg
+  address: '0x52'
+  description: Number of lines per acquisition -- 0 - 1 line, 1 - 2 lines, etc.
+  size: 8
+  mode: rw
+  reset: '0x00'
+
+acqbusy:
+  type: reg
+  address: '0x53'
+  description: Acquisition is busy
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+led1:
+  type: reg
+  address: '0x63'
+  description: LED1 (LED_ACQUISITION) control
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+led2:
+  type: reg
+  address: '0x64'
+  description: LED2 (LED_SiNGLE/nLOOP) control
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+led3:
+  type: reg
+  address: '0x65'
+  description: LED3 control
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+topturn1:
+  type: reg
+  address: '0x66'
+  description: TOP_TURN1 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+topturn2:
+  type: reg
+  address: '0x67'
+  description: TOP_TURN2 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+topturn3:
+  type: reg
+  address: '0x68'
+  description: TOP_TURN3 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+jumper1:
+  type: reg
+  address: '0x69'
+  description: Jumper1 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+jumper2:
+  type: reg
+  address: '0x6A'
+  description: Jumper2 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+jumper3:
+  type: reg
+  address: '0x6B'
+  description: Jumper3 status
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+out1ice:
+  type: reg
+  address: '0x6C'
+  description: OUT1_ICE output control
+  size: 1
+  mode: rw
+  reset: '0x1'
+
+out2ice:
+  type: reg
+  address: '0x6D'
+  description: OUT2_ICE output control
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+out3ice:
+  type: reg
+  address: '0x6E'
+  description: OUT3_ICE output control
+  size: 1
+  mode: rw
+  reset: '0x1'
+
+ramdata:
+  type: fifo
+  address: '0xA0'
+  description: Read data from the external RAM
+  size: 16
+  length: 16384
+  mode: ro
+  reset: '0x0000'
+
+ramraddrrst:
+  type: reg
+  address: '0xA1'
+  description: Reset external RAM read address
+  size: 1
+  mode: wo
+  reset: '0x0'
+
+ramfinc:
+  type: reg
+  address: '0xA4'
+  description: Fill external RAM with incrementing data pattern
+  size: 1
+  mode: wo
+  reset: '0x0'
+
+ramfdec:
+  type: reg
+  address: '0xA5'
+  description: Fill external RAM with decrementing data pattern
+  size: 1
+  mode: wo
+  reset: '0x0'
+
+ramfdone:
+  type: reg
+  address: '0xA6'
+  description: Filling of external RAM is done
+  size: 1
+  mode: ro
+  reset: '0x0'
+
+author:
+  type: reg
+  address: '0xF0'
+  description: Author
+  size: 8
+  mode: ro
+  reset: '0x01'
+
+version:
+  type: reg
+  address: '0xF1'
+  description: Version
+  size: 8
+  mode: ro
+  reset: '0x01'

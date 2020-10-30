@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Script to run Yosys synthesis and nextpnr place'n'route
+
+# exit when any command fails
+#set -e
+
+# Tools used
+SYNTOOL=yosys
+PRTOOL=nextpnr-ice40
+STATOOL=icetime
+BMAPTOOL=icepack
+
+# Properties
+FREQMHZ=64
+DEVICE=hx8k
+PACKAGE=tq144:4k
+TOPNAME=top
+SDC=sdc.py
+PCF=un0rick.pcf
+
+# Parse Verilog sources
+SRCFILES=""
+VFILES=files.list
+IFS=$'\r\n' GLOBIGNORE='*' command eval 'VFILES_ARR=($(cat ${VFILES}))'
+for i in "${VFILES_ARR[@]}"
+do
+    SRCFILES="${SRCFILES} ${i}"
+done
+
+# Synthesis
+${SYNTOOL} -l syn.rpt -p "synth_ice40 -top ${TOPNAME} -json ${TOPNAME}.json" ${SRCFILES}
+
+# Place and route
+${PRTOOL} --seed 424242 -l pr.rpt --pre-pack ${SDC} --pcf ${PCF} --${DEVICE} --package ${PACKAGE} --json ${TOPNAME}.json --asc ${TOPNAME}.asc
+
+# Timing analysis
+${STATOOL} -d ${DEVICE} ${TOPNAME}.asc -c ${FREQMHZ} -t -i | tee sta.rpt
+
+# Generate bitmap
+${BMAPTOOL} ${TOPNAME}.asc ${TOPNAME}.bin

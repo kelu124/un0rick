@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Script to generate pll with IceStorm PLL tool
+icepll -i 12 -o 128 -m -f pll.v

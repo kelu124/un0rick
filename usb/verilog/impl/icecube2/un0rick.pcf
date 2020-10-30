@@ -1,0 +1,125 @@
+# Clock and reset
+set_io ICE_RESET 15 -pullup yes
+set_io ICE_CLK 21
+
+# Buttons
+set_io BUTTON_TRIG 1
+#set_io BUTTON_SINGLE_nLOOP 3
+#set_io BUTTON3 8
+
+# Leds
+#set_io SPI_SELECT_LED 4
+set_io LED_ACQUISITION 2
+set_io LED_SINGLE_nLOOP 7
+set_io LED3 9
+
+# Jumpers
+set_io JUMPER1 49
+set_io JUMPER2 52
+set_io JUMPER3 45
+#set_io SPI_SELECT 23
+
+# RPI header
+#set_io TRIG_RPI
+#set_io ICE_SCLK_RPI
+#set_io ICE_MISO_RPI
+#set_io ICE_MOSI_RPI
+#set_io ICE_CS_RPI
+#set_io RPI2FLASH_CS
+#set_io ICE_RESET_RPI
+#set_io IO1_RPI
+#set_io IO2_RPI
+#set_io IO3_RPI
+#set_io IO4_RPI
+
+# Application IO
+set_io PON_ICE 11
+set_io POFF_ICE 12
+set_io TRIG_ICE 16
+set_io IN1_ICE 34
+set_io IN2_ICE 33
+set_io IN3_ICE 32
+set_io OUT1_ICE 18
+set_io OUT2_ICE 19
+set_io OUT3_ICE 17
+set_io TOP_TURN1 24
+set_io TOP_TURN2 25
+set_io TOP_TURN3 26
+
+# FTDI IO
+set_io ICE_SCLK_FT 64
+set_io ICE_MISO_FT 62
+set_io ICE_MOSI_FT 63
+set_io ISE_CS_FT 73
+set_io ICE_RESET_FT 48
+#set_io TRIG_FT
+#set_io IO1_FT
+#set_io IO2_FT
+#set_io IO3_FT
+#set_io IO4_FT
+
+# Flash
+#set_io FLASH_MOSI
+#set_io FLASH_MISO
+#set_io FLASH_SCLK
+#set_io FLASH_CS
+
+# DAC
+set_io DAC_SPI_SCLK 37
+set_io DAC_SPI_CS 38
+set_io DAC_SPI_MOSI 39
+
+# RAM
+set_io RAM_nLB 94
+set_io RAM_nUB 95
+set_io RAM_nOE 96
+set_io RAM_nWE 101
+set_io RAM_nCE 119
+set_io RAM_IO[0] 118
+set_io RAM_IO[1] 117
+set_io RAM_IO[2] 116
+set_io RAM_IO[3] 115
+set_io RAM_IO[4] 114
+set_io RAM_IO[5] 113
+set_io RAM_IO[6] 112
+set_io RAM_IO[7] 110
+set_io RAM_IO[8] 84
+set_io RAM_IO[9] 85
+set_io RAM_IO[10] 76
+set_io RAM_IO[11] 87
+set_io RAM_IO[12] 88
+set_io RAM_IO[13] 90
+set_io RAM_IO[14] 91
+set_io RAM_IO[15] 93
+set_io RAM_A[0] 125
+set_io RAM_A[1] 124
+set_io RAM_A[2] 122
+set_io RAM_A[3] 121
+set_io RAM_A[4] 120
+set_io RAM_A[5] 102
+set_io RAM_A[6] 104
+set_io RAM_A[7] 105
+set_io RAM_A[8] 106
+set_io RAM_A[9] 107
+set_io RAM_A[10] 83
+set_io RAM_A[11] 82
+set_io RAM_A[12] 81
+set_io RAM_A[13] 80
+set_io RAM_A[14] 79
+set_io RAM_A[15] 97
+set_io RAM_A[16] 98
+set_io RAM_A[17] 99
+set_io RAM_A[18] 78
+
+# ADC
+set_io ADC_CLK 130
+set_io ADC_D[0] 134
+set_io ADC_D[1] 135
+set_io ADC_D[2] 136
+set_io ADC_D[3] 137
+set_io ADC_D[4] 138
+set_io ADC_D[5] 139
+set_io ADC_D[6] 141
+set_io ADC_D[7] 142
+set_io ADC_D[8] 143
+set_io ADC_D[9] 144

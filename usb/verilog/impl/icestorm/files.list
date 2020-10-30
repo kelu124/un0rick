@@ -1,0 +1,11 @@
+../../src/rtl/pll.v
+../../src/rtl/clkdiv.v
+../../src/rtl/csr.v
+../../src/rtl/dpram.v
+../../src/rtl/ramctl.v
+../../src/rtl/ram_filler.v
+../../src/rtl/debouncer.v
+../../src/rtl/spi2csr.v
+../../src/rtl/dacctl.v
+../../src/rtl/acq.v
+../../src/rtl/top.v
