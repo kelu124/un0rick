@@ -1,0 +1,24 @@
+---
+layout: none
+date: 2020-10-31 00:00:00 +0530
+---
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
+
+<!-- blog posts -->
+{% for post in site.posts %}
+    <url>
+        <loc>{{ site.url }}{{ post.url }}</loc>
+        <lastmod>{{ post.date }}</lastmod>
+    </url>
+{% endfor %}
+
+<!-- pages -->
+{% for page in site.pages %}
+    <url>
+        <loc>{{ site.url }}{{ page.url }}</loc>
+        <lastmod>{{ page.date }}</lastmod>
+    </url>
+{% endfor %}
+
+</urlset>
