@@ -34,4 +34,22 @@ In the fpga_ctrl folder you can run
 
 which will run a series of acqs. It's the test bench for the python lib matching the usb firmware.
 
+# Example of acquisitons
+
+## Raw signal, with DAC
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/fpga_ctrl/img/3.png)
+
+## Detail of an echo
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/fpga_ctrl/img/4.png)
+
+## Interleaved acquisiton mode = ON
+
+Doublign acquisition speed (yellow and red dots below)
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/fpga_ctrl/img/6.png)
+
+
+
 
