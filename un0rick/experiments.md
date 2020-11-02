@@ -2,7 +2,7 @@
 layout: default
 title: un0rick Experiment
 parent: un0rick
-nav_order: 5
+nav_order: 6
 ---
 
 All experiments (on this hardware and other) are [on this repo](https://github.com/kelu124/echomods/).

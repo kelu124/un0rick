@@ -2,7 +2,7 @@
 layout: default
 title: un0rick Dual NDT
 parent: un0rick
-nav_order: 7
+nav_order: 8
 ---
 
 # Separate Tx/Rx paths

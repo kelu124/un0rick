@@ -2,7 +2,7 @@
 layout: default
 title: un0rick m5stack 
 parent: un0rick
-nav_order: 6
+nav_order: 7
 ---
 
 # Testing the un0rick board with a M5Stack
