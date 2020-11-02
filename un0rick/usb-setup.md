@@ -9,6 +9,8 @@ nav_order: 4
 
 # Beware! If you use this, you just need to have a usb cable plugged in.
 
+Install jumpers and connectors as indicated in the figure below. Jumpers necessary are the white and the green ones. 
+
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/Abdulrhman/unnamed.jpg)
 
 
