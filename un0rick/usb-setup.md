@@ -16,9 +16,39 @@ Install jumpers and connectors as indicated in the figure below. Jumpers necessa
 
 # Installation 
 
+## Preparing Python
+
+`pip3 install pyftdi matplotlib numpy scipy`
+
+## Installing iceprog to flash the fpga
+
+iceprog is the software used to put the fpga on the flash storage on the board, which will be read by the fpga on boot. The easiest way is to :
+
+`sudo apt install fpga-icestorm`
+
+If this doesn’t work, then this may work:
+
+```
+sudo apt-get install libftdi-dev git gcc 
+git clone https://github.com/cliffordwolf/icestorm.git
+cd iceprog
+make 
+sudo make install
+```
+
+This will create and install the iceprog utility, used to flash the fpga program (bitstream).
+
+## Board specific install files
+
 Download the [install pack](https://github.com/kelu124/un0rick/blob/master/usb/install_pack.zip) or by 
 
 `wget https://github.com/kelu124/un0rick/raw/master/usb/install_pack.zip`
+
+## Connect the usb cable
+
+Check that the FTDI device is well created by typing:
+
+`dmesg`
 
 # Programming it
 
