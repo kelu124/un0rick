@@ -77,7 +77,8 @@ cd experiment
 wget https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/brodie.zip
 iceprog un0rick_ms3_icestorm.bin
 cd fpga_ctrl/
-python3 test.py`
+python3 test.py
+```
 
 which will run a series of acqs and produce a series of images from this acquisition. 
 
