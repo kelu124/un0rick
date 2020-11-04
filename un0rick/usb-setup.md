@@ -66,9 +66,9 @@ In the fpga_ctrl folder you can run
 
 which will run a series of acqs. It's the test bench for the python lib matching the usb firmware.
 
-## Using the python lib
+## Using the python lib
 
-#### Imports
+### Imports
 
 In the fpga_ctrl folder, you'll need the `csr_map`, `ftdi_dev.py`, and `fpga_ctrl` files, to import the lib:
 
@@ -76,7 +76,7 @@ In the fpga_ctrl folder, you'll need the `csr_map`, `ftdi_dev.py`, and `fpga_ctr
 
 I encourage the reader to go inside this libs, which are already documented.
 
-#### Create the device
+### Create the device
 
 then connect to the FPGA
 
@@ -89,7 +89,7 @@ fpga.reload()
 fpga.reset()
 ```
 
-#### Pulser control
+### Pulser control
 
 To control the waveform, one would set the `fpga.csr.ponw`, `fpga.csr.interw` and `fpga.csr.poffw`, that are respectively integers for setting the width (timing) of the pulse, width of a relaxation period before damping, and then duration of damping. Unit are (1/128us).
 
@@ -108,7 +108,7 @@ Below is plotted amplitude of an echo as a function of the `fpga.csr.ponw` for a
 
 (See [full experiment here](https://github.com/kelu124/echomods/tree/master/matty/20201031a)).
 
-#### Gain and acquisitions
+### Gain and acquisitions
 
 And do acquisitions with `acq_res = fpga.do_acquisition(acq_lines=32, gain=gain, double_rate=True)` which will return an array of `acq_lines` acquisitions, of length 256us at 64Msps.
 `double_rate=True` provides a half clock offset to odd lines, so that one can interleave two subsequent acquisition to have, in a fixed setting, a 128Msps acquisition.
@@ -116,7 +116,7 @@ And do acquisitions with `acq_res = fpga.do_acquisition(acq_lines=32, gain=gain,
 The `gain` setting is an array of integers, of length 32, that can range from 0 to 1023, controlling gain for each of the 32 8us-segment of acquisition within the 256us line. 
 
 
-#### Other registers
+### Other registers
 
 * `fpga.csr.led3 = 0` sets LED3 off. led1, led2, led3 are possible, can be set to 0 or 1.
 * `fpga.csr.topturnX` reads input 1 to 3 on the input header.
@@ -135,7 +135,8 @@ The `gain` setting is an array of integers, of length 32, that can range from 0 
 
 ## Raw signal, with DAC
 
-![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/fpga_ctrl/img/3.png)
+The signal is in blue, the gain levels are in green. Here there are 32 visible steps, of 8us each.
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201103a/Acq%200.png)
 
 ## Detail of an echo
 
