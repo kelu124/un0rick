@@ -38,11 +38,20 @@ sudo make install
 
 This will create and install the iceprog utility, used to flash the fpga program (bitstream).
 
+## FTDI rules.
+
+_Notes for Linux_: Create a file /etc/udev/rules.d/53-lattice-ftdi.rules with the following line in it to allow uploading bit-streams as unprivileged user:
+
+`ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6014", MODE="0660", GROUP="plugdev", TAG+="uaccess"`
+
+This should solve usb access rules.
+
 ## Board specific install files
 
 Download the [install pack](https://github.com/kelu124/un0rick/blob/master/usb/install_pack.zip) or by 
 
 `wget https://github.com/kelu124/un0rick/raw/master/usb/install_pack.zip`
+
 
 ## Connect the usb cable
 
@@ -60,11 +69,17 @@ Unzip it, inside, there's the bin to program the fpga :
 
 ## Test
 
-In the fpga_ctrl folder you can run
+There is a test bench for the python lib matching the usb firmware, from the `brodie` package. Installation is as follows.
 
-`python3 test.py`
+```
+mkdir experiment
+cd experiment
+wget https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/brodie.zip
+iceprog un0rick_ms3_icestorm.bin
+cd fpga_ctrl/
+python3 test.py`
 
-which will run a series of acqs. It's the test bench for the python lib matching the usb firmware.
+which will run a series of acqs and produce a series of images from this acquisition. 
 
 ## Using the python lib
 
