@@ -84,6 +84,30 @@ which will run a series of acqs and produce a series of images from this acquisi
 
 ## Using the python lib
 
+### In python
+
+In essence, installing the module `pip3 install un0usb` before.
+
+```
+	import un0usb as USB # neeeds `pip3 install un0usb` before
+	fpga = USB.FpgaControl('ftdi://ftdi:2232:/', spi_freq=8E6) # init FTDI device 
+	fpga.reload() # reload configuration
+	fpga.reset() # reset fpga
+
+	file = fpga.stdNDTacq() # Running a standard NDT acquisition
+	plot = USB.FView() # Opens a viewing object
+	data = plot.readfile(file) # plots it
+```
+### Result
+
+![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201107a/20201107155232_ndt.jpg)
+
+
+The [full log is here](https://github.com/kelu124/echomods/blob/master/matty/20201107a/20201107a.ipynb).
+
+## Going in deeper details
+
+
 ### Imports
 
 In the fpga_ctrl folder, you'll need the `csr_map`, `ftdi_dev.py`, and `fpga_ctrl` files, to import the lib:
@@ -145,9 +169,13 @@ The `gain` setting is an array of integers, of length 32, that can range from 0 
 * `fpga.csr.acqstart = 1` to start the acquisition
 * `fpga.csr.acqdone` is equal to 0 during acquisitions.
 * `fpga.csr.author` reads the ID of the author of the binary.
+  * `1` : kelu124
 * `fpga.csr.version` reads the ID of the author's binary.
+  * `1` The current binary version 
 
-# Example of acquisitons
+Don't hesitate to improve the gateware and push more here.
+
+# Example of acquisitions
 
 ## Raw signal, with DAC
 

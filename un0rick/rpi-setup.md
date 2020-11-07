@@ -95,6 +95,8 @@ This should flash the board:
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/v1.01/iceprog.png)
 
+If you do not have a success here, you may want to have a look at how to connect FTDI devices to your computer (see for example: https://stackoverflow.com/questions/36633819/iceprog-cant-find-ice-ftdi-usb-device-linux-permission-issue ). Usually, one has no issues with RPi fresh out of the box.
+
 ## Physical setup for the lib acquisitions
 
 I've been using a RPi4 with a ribbon cable to connect to the board, leaving the jumper on, putting one to select the high voltage level, connecting a piezo.. and that's it.
