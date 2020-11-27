@@ -7,5 +7,13 @@ dc9ece10627d97eec40cbe3ed872cf39  ../bins/v1.1.bin
 7257b690f4bb009ee92676e8f4bcbef2  ../vhdl/aldec/a/a/slp/51ae1bafb1574ba72f031f2772c09183/0.bin
 4c4c1476fe43503b2a32ca39a59b3c51  ../vhdl/MATTY_Implmnt/sbt/outputs/bitmap/MATTY_v1.1a.bin
 7cbf3d11454ae62d70a5aa8264d74bae  ../vhdl/MATTY_Implmnt/sbt/outputs/bitmap/MATTY_un0rick_20180826.bin
+9edff6ff4d16a542f7329c126c43a6c7  ../usb/verilog/impl/icestorm/top.bin
+9edff6ff4d16a542f7329c126c43a6c7  ../usb/verilog/bin/usb_vga.bin
+92777954ce10afe129fa327b6ad38179  ../usb/verilog/bin/un0rick_ms1_icestorm.bin
+c632c1229591796b014530de723283e8  ../usb/verilog/bin/un0rick_ms1_icecube2.bin
+04971b4bf5d662be09277bf367411c48  ../usb/verilog/bin/un0rick_ms2_icestorm.bin
+c8d10ac982b15a13d70aa01f7b3873c5  ../usb/verilog/bin/un0rick_ms4_icestorm.bin
+9a6fea7ba4f78ea78193e313f2b1b345  ../usb/verilog/bin/un0rick_pre_ms4_icestorm.bin
+1b82e3585f9d2db4e9c32949ffa30cb4  ../usb/verilog/bin/un0rick_ms2_icecube2.bin
 37184c245d76ed89fc93ad9eaf5e0c3b  ../usb/verilog/bin/un0rick_ms3_icestorm.bin
-37184c245d76ed89fc93ad9eaf5e0c3b  ../usb/usb.bin
+9edff6ff4d16a542f7329c126c43a6c7  ../usb/usb.bin
