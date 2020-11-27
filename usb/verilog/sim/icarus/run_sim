@@ -15,7 +15,7 @@ VIEWTOOL=gtkwave
 # Compile sources
 INCDIRS="-I ../../src/rtl -I ../../src/tb"
 DEFINES="-D SIM"
-${ELABTOOL} $DEFINES -g2005-sv -s $1 -o work.vvp -f $1.cmd $INCDIRS
+${ELABTOOL} $DEFINES -g2005-sv -s $1 -o work.vvp -f files.cmd $INCDIRS
 
 # Simulate design
 ${SIMTOOL} work.vvp -lxt2

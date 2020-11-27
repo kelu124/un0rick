@@ -220,13 +220,13 @@ dpram #(
     .DATA_W    (DAC_DATA_W),
     .INIT_FILE ("../../src/rtl/dacgain.mem")
 ) dac_gain_ram (
-    // System
-    .clk   (clk),   // System clock
     // Write interface
+    .wclk  (clk),   // Write clock
     .wdata (dac_gain_ram_wdata), // Write data
     .waddr (dac_gain_ram_waddr), // Write address
     .wr    (dac_gain_ram_wen),    // Write operation
     // Read interface
+    .rclk  (clk),   // Read clock
     .rdata (dac_gain_ram_rdata), // Read data
     .raddr (dac_gain_ram_raddr), // Read address
     .rd    (~dac_gain_ram_wen)    // Read operation

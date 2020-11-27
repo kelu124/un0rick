@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Script to run Modelsim simulation
+# To run testbench ../../src/tb/tb_example.v
+#./run_sim tb_example
+
+# exit when any command fails
+set -e
+
+# Tools used
+SIMTOOL=vsim
+
+# Create .do script
+echo "set tb_name $1" > tb.do
+echo "source compile.tcl" >> tb.do
+
+# Simulate design
+${SIMTOOL} -do tb.do

@@ -19,7 +19,7 @@ module top #(
     output wire LED3,
 
     // Jumpers
-    input wire JUMPER1,
+    //input wire JUMPER1, // conflict with PLLs
     input wire JUMPER2,
     input wire JUMPER3,
     //input wire SPI_SELECT,
@@ -32,10 +32,10 @@ module top #(
     //input  wire ICE_CS_RPI,
     //input  wire RPI2FLASH_CS,
     //input  wire ICE_RESET_RPI,
-    //input  wire IO1_RPI,
-    //input  wire IO2_RPI,
-    //input  wire IO3_RPI,
-    //input  wire IO4_RPI,
+    output  wire IO1_RPI, // VGA R
+    output  wire IO2_RPI, // VGA G
+    output  wire IO3_RPI, // VGA HS
+    output  wire IO4_RPI, // VGA VS
 
     //Application IO
     output wire PON_ICE,
@@ -107,9 +107,16 @@ localparam DAC_GAIN_PTR_W = $clog2(DAC_GAIN_N);
 localparam DAC_SCK_DIV    = 8;
 
 // Acquisition
-localparam ACQ_LINES_MAX      = 32;
-localparam ACQ_LINES_W        = 8;//$clog2(ACQ_LINES_MAX);
-localparam ACQ_WORDS_PER_LINE = 16384;
+localparam ACQ_LINES_MAX        = 32;
+localparam ACQ_LINES_W          = 8;//$clog2(ACQ_LINES_MAX);
+localparam ACQ_WORDS_PER_LINE   = 16384;
+localparam ACQ_WORDS_PER_GAIN   = 16384 / DAC_GAIN_N;
+localparam ACQ_BUFF_DATA_W      = 24;
+localparam ACQ_BUFF_ADDR_W      = 9;
+localparam ACQ_BUFF_WORDS       = 2**ACQ_BUFF_ADDR_W;
+localparam ACQ_ENV_WORDS        = ACQ_WORDS_PER_LINE / ACQ_BUFF_WORDS; // number of samples to generate one envelope sample
+localparam ACQ_ENV_DATA_W       = 8;
+localparam ACQ_BUFF_ADDR_OFFSET = $clog2(ACQ_ENV_WORDS);
 
 // IO
 localparam LED_N     = 3;
@@ -118,10 +125,21 @@ localparam JUMPER_N  = 3;
 localparam OUTICE_N  = 3;
 localparam INICE_N   = 3;
 
+// VGA
+localparam VGA_H_ACTIVE   = 800;
+localparam VGA_PX_CNT_W   = $clog2(VGA_H_ACTIVE);
+localparam VGA_V_ACTIVE   = 600;
+localparam VGA_LINE_CNT_W = $clog2(VGA_V_ACTIVE);
+localparam VGA_COLOR_W    = 1;
+
 // Misc
+`ifdef SIM
+localparam DEBOUNCE_DELAY = 20;
+`else
 localparam DEBOUNCE_DELAY = 2000000;
+`endif
 localparam LED_CNT_W      = 26;
-localparam EXT_RST_SYNC_W = 8;
+localparam EXT_RST_CNT_W  = 6;
 
 //-----------------------------------------------------------------------------
 // Variables
@@ -129,14 +147,19 @@ localparam EXT_RST_SYNC_W = 8;
 // Clock and reset
 wire por_rst_n;
 wire ftdi_rst;
-wire sys_rst;
-wire ext_rst;
+wire ext_rst_async;
+wire ext_rst_async_filtered;
 wire ref_clk;
 wire pulser_clk;
+wire pulser_rst;
 wire sys_clk;
-wire pll_lock;
-
-reg [EXT_RST_SYNC_W-1:0] ext_rst_sync = '1;
+wire sys_rst;
+wire vga_clk;
+wire vga_rst;
+wire sys_pll_lock;
+wire vga_pll_lock;
+reg [EXT_RST_CNT_W-1:0] ext_rst_cnt;
+reg  ext_rst;
 
 // SPI
 wire spi_miso;
@@ -167,14 +190,36 @@ wire [DAC_DATA_W-1:0]     dac_gain;
 wire [DAC_GAIN_PTR_W-1:0] dac_gain_ptr;
 
 // Acquisition
+wire                   acq_start_muxed;
 wire                   acq_start;
 wire                   acq_start_ext;
 wire                   acq_done;
 wire                   acq_busy;
+wire [ACQ_LINES_W-1:0] acq_lines_muxed;
 wire [ACQ_LINES_W-1:0] acq_lines;
 wire [RAM_ADDR_W-1:0]  acq_waddr;
 wire [RAM_DATA_W-1:0]  acq_wdata;
 wire                   acq_wen;
+
+reg  acq_run_mode;
+wire acq_run_mode_next;
+wire acq_run_mode_sysclk;
+
+reg                        acq_buff_fill_en;
+wire [ACQ_BUFF_DATA_W-1:0] acq_buff_wdata;
+reg [ACQ_BUFF_ADDR_W-1:0]  acq_buff_waddr;
+reg                        acq_buff_wr;
+wire [ACQ_BUFF_DATA_W-1:0] acq_buff_rdata;
+wire [ACQ_BUFF_ADDR_W-1:0] acq_buff_raddr;
+wire                       acq_buff_rd;
+reg                        acq_buff_rvalid;
+wire                       acq_buff_chunk_end;
+reg  [TOPTURN_N-1:0]       acq_buff_topturn;
+reg  [ACQ_ENV_DATA_W-1:0]  acq_buff_dacgain;
+reg  [15:0]                acq_buff_env;
+wire [8:0]                 acq_buff_env_next;
+wire [ACQ_ENV_DATA_W-1:0]  acq_buff_env_mean;
+
 
 // IO
 reg  [JUMPER_N-1:0]  jumper_ff;
@@ -199,11 +244,13 @@ wire [RAM_DATA_W-1:0] ram_data_o;
 wire                  ram_data_oe;
 wire                  ram_we_n;
 
+wire [RAM_DATA_W-1:0] ramctl_rdata_muxed;
 wire [RAM_DATA_W-1:0] ramctl_rdata;
 wire                  ramctl_rvalid;
 wire [RAM_ADDR_W-1:0] ramctl_addr;
 wire [RAM_ADDR_W-1:0] ramctl_raddr;
 wire [RAM_ADDR_W-1:0] ramctl_waddr;
+wire                  ramctl_ren_muxed;
 wire                  ramctl_ren;
 wire [RAM_DATA_W-1:0] ramctl_wdata;
 wire                  ramctl_wen;
@@ -224,6 +271,7 @@ reg [RAM_DATA_W-1:0] ram_data_i_ff;
 
 // DAC
 wire [DAC_DATA_W-1:0] dac_din;
+reg  [DAC_DATA_W-1:0] dac_gain_last;
 wire dac_dvalid;
 wire dac_spi_cs_n;
 wire dac_spi_sck;
@@ -232,6 +280,26 @@ wire dac_spi_sdi;
 // ADC
 reg  [ADC_DATA_W-1:0] adc_d_ff;
 wire [ADC_DATA_W-1:0] adc_dout;
+
+// VGA
+wire vga_hsync;
+wire vga_vsync;
+wire vga_ch_r;
+wire vga_ch_g;
+wire vga_ch_b;
+
+wire                      vga_en;
+wire [VGA_COLOR_W-1:0]    display_pixel_r;
+wire [VGA_COLOR_W-1:0]    display_pixel_g;
+wire [VGA_COLOR_W-1:0]    display_pixel_b;
+wire                      display_line_active;
+wire                      display_frame_active;
+wire [VGA_PX_CNT_W-1:0]   display_px_cnt;
+wire [VGA_LINE_CNT_W-1:0] display_line_cnt;
+
+wire display_acq_start, display_acq_start_synced;
+wire display_acq_done;
+wire display_acq_busy;
 
 // Misc
 reg                 led3_csr_sel;
@@ -244,44 +312,70 @@ assign ref_clk   = ICE_CLK;
 assign por_rst_n = ICE_RESET;
 assign ftdi_rst  = ICE_RESET_FT;
 
-`ifdef SIM
-    // Simply use external pins as clock and reset
-    assign pulser_clk = ref_clk;
-    reg ref_clk_div = 1'b0;
-    always @(posedge ref_clk) begin
-        ref_clk_div <= ~ref_clk_div;
+// Pulser 128 MHz clock + System (ADC) 64 MHz clock
+sys_pll sys_pll (
+    .ref_clk    (ref_clk),
+    .pulser_clk (pulser_clk),
+    .sys_clk    (sys_clk),
+    .lock       (sys_pll_lock)
+);
+
+// VGA 36 MHz clock
+vga_pll vga_pll (
+    .ref_clk    (ref_clk),
+    .vga_clk    (vga_clk),
+    .lock       (vga_pll_lock)
+);
+
+// external reset
+assign ext_rst_async = (~por_rst_n) | (~sys_pll_lock) | (~vga_pll_lock) | ftdi_rst;
+
+// external reset glitch filter
+glitch_filter ext_rst_filter (
+    .clk  (ref_clk),
+    .din  (ext_rst_async),
+    .dout (ext_rst_async_filtered)
+);
+
+// async reset assertion and synchronous (after 64 ticks) removal
+always @(posedge ref_clk or posedge ext_rst_async_filtered) begin
+    if (ext_rst_async_filtered) begin
+        ext_rst_cnt <= '0;
+        ext_rst     <= 1'b1;
+    end else if (ext_rst_cnt == '1) begin
+        ext_rst <= 1'b0;
+    end else begin
+        ext_rst_cnt <= ext_rst_cnt + 1;
     end
-    assign sys_clk = ref_clk_div;
-    assign sys_rst = ~por_rst_n |  ftdi_rst;
-`else
-    wire pll_clk;
+end
 
-    pll pll (
-	    .clk_in  (ref_clk),
-	    .clk_out (pll_clk),
-	    .lock    (pll_lock)
-	);
-
-    assign pulser_clk = pll_clk;
-
-    clkdiv pll_clk_div (
-        .clk_in   (pll_clk),
-        .clk_div2 (sys_clk)
-    );
-
-    assign ext_rst = (~por_rst_n) | (~pll_lock) | ftdi_rst;
-
-    // async reset assertion and synchronous (after 8 ticks) removal
-    always @(posedge sys_clk or posedge ext_rst) begin
-        if (ext_rst) begin
-            ext_rst_sync <= '1;
-        end else begin
-            ext_rst_sync <= {ext_rst_sync[EXT_RST_SYNC_W-2:0], 1'b0};
-        end
-    end
-
-    assign sys_rst = ext_rst_sync[EXT_RST_SYNC_W-1];
-`endif
+// reset removal sequence: external reset -> pulser_rst -> vga_rst -> sys_rst
+sync_2ff #(
+    .FF_INIT (1'b1)
+) pulser_rst_sync (
+    .clk  (pulser_clk),
+    .rst  (ext_rst_async_filtered),
+    .din  (ext_rst),
+    .dout (pulser_rst)
+);
+// pulser_rst -> vga_rst
+sync_2ff #(
+    .FF_INIT (1'b1)
+) vga_rst_sync (
+    .clk  (vga_clk),
+    .rst  (ext_rst_async_filtered),
+    .din  (pulser_rst),
+    .dout (vga_rst)
+);
+// vga_rst -> sys_rst
+sync_2ff #(
+    .FF_INIT (1'b1)
+) sys_rst_sync(
+    .clk  (sys_clk),
+    .rst  (ext_rst_async_filtered),
+    .din  (vga_rst),
+    .dout (sys_rst)
+);
 
 //-----------------------------------------------------------------------------
 // SPI to CSR
@@ -343,7 +437,7 @@ csr #(
     .csr_rvalid       (csr_rvalid),       // CSR read data is valid
     .csr_rdata        (csr_rdata),        // CSR read data
     // Application
-    .ramctl_rdata     (ramctl_rdata),     // RAM controller read data
+    .ramctl_rdata     (ramctl_rdata_muxed), // RAM controller read data
     .ramctl_rvalid    (ramctl_rvalid),    // RAM controller read data is valid
     .ramctl_raddr     (ramctl_raddr),     // RAM controller read address
     .ramctl_ren       (ramctl_ren),       // RAM controller read enable
@@ -391,13 +485,17 @@ ramctl #(
     .wen         (ramctl_wen),    // RAM controller write enable
     .rdata       (ramctl_rdata),  // RAM controller read data
     .rvalid      (ramctl_rvalid), // RAM controller read data is valid
-    .ren         (ramctl_ren)     // RAM controller read enable
+    .ren         (ramctl_ren_muxed) // RAM controller read enable
 );
+
+// external ram can not be read in run mode
+assign ramctl_rdata_muxed = acq_run_mode_sysclk ? '0   : ramctl_rdata;
+assign ramctl_ren_muxed   = acq_run_mode_sysclk ? 1'b0 : ramctl_ren;
 
 // Add ff to external RAM IO
 always @(posedge sys_clk or posedge sys_rst) begin
     if (sys_rst) begin
-        ram_we_n_ff    <= 1'b0;
+        ram_we_n_ff    <= 1'b1;
         ram_addr_ff    <= '0;
         ram_data_oe_ff <= 1'b0;
         ram_data_o_ff  <= '0;
@@ -469,6 +567,13 @@ dacctl #(
     .busy       ()              // DAC controller is busy (SPI exchange is in progress)
 );
 
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        dac_gain_last <= '0;
+    else if (dac_dvalid)
+        dac_gain_last <= dac_din;
+end
+
 assign DAC_SPI_SCLK = dac_spi_sck;
 assign DAC_SPI_CS   = dac_spi_cs_n;
 assign DAC_SPI_MOSI = dac_spi_sdi;
@@ -509,6 +614,7 @@ acq #(
     .rst              (sys_rst),          // System reset
     // Pulser
     .pulser_clk       (pulser_clk),       // Clock for pulse generation (2x faster than system clock)
+    .pulser_rst       (pulser_rst),       // Reset for pulser logic
     .pulser_on        (pulser_on),        // Pulser on pin
     .pulser_off       (pulser_off),       // Pulser off pin
     .pulser_on_len    (pulser_on_len),    // Length of the on pulse (in pulser_clk ticks)
@@ -525,10 +631,10 @@ acq #(
     // ADC
     .adc_dout         (adc_dout),         // ADC output data
     // Acquisition
-    .acq_start        (acq_start),        // Acquisition start
+    .acq_start        (acq_start_muxed),  // Acquisition start
     .acq_busy         (acq_busy),         // Acquisition is in progress
     .acq_done         (acq_done),         // Acquisition is done
-    .acq_lines        (acq_lines),        // Acquisition lines
+    .acq_lines        (acq_lines_muxed),  // Acquisition lines
     .acq_waddr        (acq_waddr),        // Address to save current acquisition sample
     .acq_wdata        (acq_wdata),        // Current acquisition sample value
     .acq_wen          (acq_wen),          // Acquisition sample write enable
@@ -536,10 +642,200 @@ acq #(
     .inice            (inice)             // Inputs from PMOD header, connected to FPGA
 );
 
+// Mux for display mode
+assign acq_start_muxed = acq_run_mode_sysclk ? display_acq_start_synced : acq_start;
+assign acq_lines_muxed = acq_run_mode_sysclk ?                        0 : acq_lines;
+
 assign acq_start_ext = btn_trig_pulse | trigice_pulse;
 
 assign PON_ICE  = pulser_on;
 assign POFF_ICE = pulser_off;
+
+//-----------------------------------------------------------------------------
+// Acqusition buffer
+//-----------------------------------------------------------------------------
+// enable filling buffer only with first line
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_fill_en <= 1'b0;
+    else if (acq_start_muxed)
+        acq_buff_fill_en <= 1'b1;
+    else if (acq_buff_wr && (!acq_wen))
+        acq_buff_fill_en <= 1'b0;
+end
+// buffer write enable
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_wr <= 1'b0;
+    else if (acq_buff_fill_en)
+        acq_buff_wr <= acq_wen;
+    else if (!acq_buff_fill_en)
+        acq_buff_wr <= 1'b0;
+end
+// buffer write address
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_waddr <= '0;
+    else if (acq_buff_fill_en)
+        acq_buff_waddr <= acq_waddr[ACQ_BUFF_ADDR_OFFSET +: ACQ_BUFF_ADDR_W];
+    else if (!acq_buff_fill_en)
+        acq_buff_waddr <= '0;
+end
+
+assign acq_buff_chunk_end = acq_waddr[0+:ACQ_BUFF_ADDR_OFFSET] == '0;
+
+assign acq_buff_env_next = acq_wdata[ADC_DATA_W-1] ? acq_wdata[0+:9] : 511 - acq_wdata[0+:9]; // abs
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_env <= '0;
+    else if (acq_buff_fill_en) begin
+        if (acq_buff_chunk_end)
+            acq_buff_env <= {{7{1'b0}}, acq_buff_env_next};
+        else
+            acq_buff_env <= acq_buff_env + {{7{1'b0}}, acq_buff_env_next};
+    end else
+        acq_buff_env <= '0;
+end
+// resulting value is mean( abs (sample - midrange))
+assign acq_buff_env_mean = acq_buff_env[6+:ACQ_ENV_DATA_W]; //6 = 5 (mean for 32 samples) + 1 (scale for plot)
+
+// dacgain sampling for acq buffer
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_dacgain <= '0;
+    else if (acq_buff_fill_en && (acq_waddr[0+:$clog2(ACQ_WORDS_PER_GAIN)] == '0))
+        // gain is updated only every 512 samples
+        acq_buff_dacgain <= dac_gain_last[2+:ACQ_ENV_DATA_W];
+    else if (!acq_buff_fill_en)
+        acq_buff_dacgain <= '0;
+end
+
+// topturn sampling for acq buffer
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_buff_topturn <= '0;
+    else if (acq_buff_fill_en && acq_buff_chunk_end)
+        acq_buff_topturn <= topturn;
+    else if (!acq_buff_fill_en)
+        acq_buff_topturn <= '0;
+end
+
+assign acq_buff_wdata[ 7: 0] = acq_buff_env_mean;
+assign acq_buff_wdata[15: 8] = acq_buff_dacgain;
+assign acq_buff_wdata[18:16] = acq_buff_topturn;
+assign acq_buff_wdata[23:19] = '0;
+
+acq_buff #(
+    .ADDR_W (ACQ_BUFF_ADDR_W), // Memory depth
+    .DATA_W (ACQ_BUFF_DATA_W)  // Data width
+) acq_buff (
+    // Write interface
+    .wclk   (sys_clk),             // Write clock
+    .wdata  (acq_buff_wdata), // Write data
+    .waddr  (acq_buff_waddr), // Write address
+    .wr     (acq_buff_wr),    // Write operation enable
+    // Read interface
+    .rclk   (vga_clk),             // Read clock
+    .rdata  (acq_buff_rdata), // Read data
+    .raddr  (acq_buff_raddr), // Read address
+    .rd     (acq_buff_rd)     // Read operation enable
+);
+
+// acquisition buffer data valid
+always @(posedge vga_clk or posedge vga_rst) begin
+    if (vga_rst)
+        acq_buff_rvalid <= 1'b0;
+    else
+        acq_buff_rvalid <= acq_buff_rd;
+end
+
+//-----------------------------------------------------------------------------
+// VGA interface
+//-----------------------------------------------------------------------------
+vga #(
+    .H_ACTIVE (VGA_H_ACTIVE), // Active video horizontal size (pixels)
+    .V_ACTIVE (VGA_V_ACTIVE), // Active video vertical size (pixels)
+    .COLOR_W  (VGA_COLOR_W)   // Color bitwidth
+) vga (
+    // System
+    .clk          (vga_clk),       // System clock (pixel clock)
+    .rst          (vga_rst),       // System reset
+    // VGA interface
+    .vga_hsync    (vga_hsync),    // VGA horizontal sync
+    .vga_vsync    (vga_vsync),    // VGA vertical sync
+    .vga_r        (vga_ch_r),        // VGA red channel
+    .vga_g        (vga_ch_g),        // VGA green channel
+    .vga_b        (vga_ch_b),        // VGA blue channel
+    // Display control
+    .en           (vga_en),               // VGA enable
+    .pixel_r      (display_pixel_r),      // Display pixel red channel
+    .pixel_g      (display_pixel_g),      // Display pixel green channel
+    .pixel_b      (display_pixel_b),      // Display pixel blue channel
+    .line_active  (display_line_active),  // Line is active
+    .frame_active (display_frame_active), // Frame is active
+    .px_cnt       (display_px_cnt),       // Horizontal (active pixel) counter
+    .line_cnt     (display_line_cnt)      // Vertical (active line) counter
+);
+
+assign IO1_RPI = vga_ch_g;
+assign IO2_RPI = vga_vsync;
+//assign IO3_RPI = ;
+assign IO4_RPI = vga_hsync;
+
+//-----------------------------------------------------------------------------
+// Display controller
+//-----------------------------------------------------------------------------
+display #(
+    .H_ACTIVE (VGA_H_ACTIVE),
+    .V_ACTIVE (VGA_V_ACTIVE),
+    .COLOR_W  (VGA_COLOR_W)
+) display (
+    .clk              (vga_clk),
+    .rst              (vga_rst),
+    // Display control
+    .vga_en           (vga_en),                // Display enable
+    .pixel_r          (display_pixel_r),       // Display pixel red channel
+    .pixel_g          (display_pixel_g),       // Display pixel green channel
+    .pixel_b          (display_pixel_b),       // Display pixel blue channel
+    .line_active      (display_line_active),   // Line is active
+    .frame_active     (display_frame_active),  // Frame is active
+    .px_cnt           (display_px_cnt),        // Horizontal (active pixel) counter
+    .line_cnt         (display_line_cnt),      // Vertical (active line) counter
+    .run_mode         (acq_run_mode),          // Display run mode active
+    // Acquisition interface
+    .acq_start        (display_acq_start),     // Start aquisition
+    .acq_done         (display_acq_done),      // Aquisition is done
+    .acq_buff_rvalid  (acq_buff_rvalid),       // Aquisition buffer data is valid
+    .acq_buff_rdata   (acq_buff_rdata),        // Acquisition buffer read data
+    .acq_buff_raddr   (acq_buff_raddr),        // Acuisition buffer read address
+    .acq_buff_rd      (acq_buff_rd),           // Acuisition buffer read enable
+    // Pulser parameters
+    .pulser_init_len  (pulser_init_len),       // Pulser initial delay
+    .pulser_on_len    (pulser_on_len),         // Pulser on width
+    .pulser_off_len   (pulser_off_len),        // Pulser off width
+    .pulser_inter_len (pulser_inter_len)       // Pulser intermediate delay
+);
+
+sync_2ff display_acq_start_sync (
+    .clk  (sys_clk),                 // Destination domain clock
+    .rst  (sys_rst),                 // Destination domain active low reset
+    .din  (display_acq_start),       // Source domain data
+    .dout (display_acq_start_synced) // Destination domain data
+);
+
+sync_2ff acq_done_sync (
+    .clk  (vga_clk),         // Destination domain clock
+    .rst  (vga_rst),         // Destination domain active low reset
+    .din  (acq_done),        // Source domain data
+    .dout (display_acq_done) // Destination domain data
+);
+
+sync_2ff acq_busy_sync (
+    .clk  (vga_clk),         // Destination domain clock
+    .rst  (vga_rst),         // Destination domain active low reset
+    .din  (acq_busy),        // Source domain data
+    .dout (display_acq_busy) // Destination domain data
+);
 
 //-----------------------------------------------------------------------------
 // JUMPERn sampling
@@ -548,10 +844,33 @@ always @(posedge sys_clk or posedge sys_rst) begin
     if (sys_rst)
         jumper_ff <= '0;
     else
-        jumper_ff <= {JUMPER3, JUMPER2, JUMPER1};
+        jumper_ff <= {JUMPER3, JUMPER2, 1'b0};
 end
 
 assign jumper = jumper_ff;
+
+debouncer #(
+    .DELAY (DEBOUNCE_DELAY) // delay in clk ticks
+) jumper2_debouncer (
+    .clk    (sys_clk),
+    .rst    (sys_rst),
+    .din    (jumper[1]),
+    .dout   (acq_run_mode_next)
+);
+
+always @(posedge sys_clk or posedge sys_rst) begin
+    if (sys_rst)
+        acq_run_mode <= 1'b0;
+    else if ((!display_acq_busy) && (!vga_vsync))
+        acq_run_mode <= acq_run_mode_next;
+end
+
+sync_2ff acq_run_mode_sync (
+    .clk  (sys_clk),         // Destination domain clock
+    .rst  (sys_rst),         // Destination domain active low reset
+    .din  (acq_run_mode),       // Source domain data
+    .dout (acq_run_mode_sysclk) // Destination domain data
+);
 
 //-----------------------------------------------------------------------------
 // INn_ICE sampling

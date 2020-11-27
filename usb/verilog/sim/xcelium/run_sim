@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Script to run Xcelium simulation
+# To run testbench ../../src/tb/tb_example.v
+#./run_sim tb_example
+
+PARAMS="+xm64bit +gui"
+PARAMS="${PARAMS} +xmlicq +sv +access+rwc -timescale 1ns/1ps -V200X -nowarn ASSERT -nowarn NONPRT -NONTCGLITCH +define+SIM"
+PARAMS="${PARAMS} +xmsmartorder +xmv93 +xmvhdlsync"
+PARAMS="${PARAMS} +notimingchecks +nospecify"
+PARAMS="${PARAMS} -l tb.log"
+PARAMS="${PARAMS} +xmview+module"
+PARAMS="${PARAMS} -work worklib +xmtop+worklib.$1:module"
+PARAMS="${PARAMS} -f src.files"
+
+xmverilog `echo "${PARAMS}"` | tee run_xm.log

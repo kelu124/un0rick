@@ -5,6 +5,7 @@ module adc10065 #(
     output wire [DATA_W-1:0] data
 );
 
+integer tick_cnt = 0;
 localparam PIPE_LEN = 6;
 
 reg [PIPE_LEN*DATA_W-1:0] data_pipe = '0;
@@ -12,6 +13,7 @@ reg [DATA_W-1:0] data_orig = '0;
 
 always @(posedge clk) begin
     data_orig <= $random();
+    tick_cnt  <= tick_cnt + 1;
 end
 
 always @(posedge clk) begin

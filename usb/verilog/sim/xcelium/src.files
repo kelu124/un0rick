@@ -1,0 +1,37 @@
+-INCDIR ../../src/rtl
+-INCDIR ../../src/tb
+../../src/beh/spi_master/spi_mst_beh.v
+../../src/beh/is61wv51216/is61wv51216.v
+../../src/beh/mcp4811/mcp4811.v
+../../src/beh/adc10065/adc10065.v
+../../src/beh/vga_recv/vga_recv.v
+../../src/rtl/glitch_filter.v
+../../src/rtl/rom.v
+../../src/rtl/sys_pll.v
+../../src/rtl/vga_pll.v
+../../src/rtl/dpram.v
+../../src/rtl/sync_2ff.v
+../../src/rtl/dacctl.v
+../../src/rtl/acq.v
+../../src/rtl/acq_buff.v
+../../src/rtl/hex_ch.v
+../../src/rtl/spi2csr.v
+../../src/rtl/vga.v
+../../src/rtl/debouncer.v
+../../src/rtl/display.v
+../../src/rtl/ramctl.v
+../../src/rtl/stat_px.v
+../../src/rtl/csr.v
+../../src/rtl/ram_filler.v
+../../src/rtl/top.v
+../../src/tb/tb_acq.v
+../../src/tb/tb_csr.v
+../../src/tb/tb_dacctl.v
+../../src/tb/tb_debouncer.v
+../../src/tb/tb_hex_ch.v
+../../src/tb/tb_ramctl.v
+../../src/tb/tb_ram_filler.v
+../../src/tb/tb_spi2csr.v
+../../src/tb/tb_stat_px.v
+../../src/tb/tb_vga.v
+../../src/tb/tb_top.v

@@ -12,7 +12,7 @@ STATOOL=icetime
 BMAPTOOL=icepack
 
 # Properties
-FREQMHZ=64
+FREQMHZ=12
 DEVICE=hx8k
 PACKAGE=tq144:4k
 TOPNAME=top

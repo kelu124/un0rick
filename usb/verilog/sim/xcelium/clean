@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -rf .simvision waves.shm xcelium.d .*.dsn .*.trn .*.vcd frame* *.log *.history *.key

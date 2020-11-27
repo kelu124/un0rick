@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -rf work *.do *.wlf *.ini transcript

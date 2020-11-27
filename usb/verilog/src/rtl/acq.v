@@ -22,6 +22,7 @@ module acq #(
     input  wire                      rst,              // System reset
     // Pulser
     input  wire                      pulser_clk,       // Clock for pulse generation (2x faster than system clock)
+    input  wire                      pulser_rst,       // Reset for pulser logic
     output reg                       pulser_on,        // Pulser on pin
     output reg                       pulser_off,       // Pulser off pin
     input  wire [PULSER_LEN_W-1:0]   pulser_on_len,    // Length of the on pulse (in pulser_clk ticks)
@@ -119,7 +120,10 @@ wire                    pulser_inter_end;
 wire                    pulser_on_end;
 wire                    pulser_off_end;
 wire                    pulser_stage_end;
-reg  [PULSER_LEN_W-1:0] pulser_cnt;
+reg  [PULSER_LEN_W-1:0] pulser_init_cnt;
+reg  [PULSER_LEN_W-1:0] pulser_on_cnt;
+reg  [PULSER_LEN_W-1:0] pulser_inter_cnt;
+reg  [PULSER_LEN_W-1:0] pulser_off_cnt;
 reg                     pulser_busy;
 reg  [1:0]              pulser_stage;
 reg                     pulser_start, pulser_start_next;
@@ -139,23 +143,23 @@ end
 assign pulser_init_len_drmode = (pulser_drmode && line_even) ? pulser_init_len_even : pulser_init_len_odd;
 
 // end of pulser stages
-assign pulser_init_end  = (pulser_cnt == '0) & (pulser_stage == PULSER_STAGE_INIT);
-assign pulser_on_end    = (pulser_cnt == '0) & (pulser_stage == PULSER_STAGE_ON);
-assign pulser_inter_end = (pulser_cnt == '0) & (pulser_stage == PULSER_STAGE_INTER);
-assign pulser_off_end   = (pulser_cnt == '0) & (pulser_stage == PULSER_STAGE_OFF);
+assign pulser_init_end  = (pulser_init_cnt == '0);
+assign pulser_on_end    = (pulser_on_cnt == '0);
+assign pulser_inter_end = (pulser_inter_cnt == '0);
+assign pulser_off_end   = (pulser_off_cnt == '0);
 
 // pulser stages
 assign pulser_stage_end = pulser_init_end | pulser_on_end | pulser_inter_end | pulser_off_end;
-always @(posedge pulser_clk or posedge rst) begin
-    if (rst)
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
         pulser_stage <= '0;
     else if (pulser_stage_end && pulser_busy)
         pulser_stage <= pulser_stage + 1;
 end
 
-// pulser counter
-always @(posedge pulser_clk or posedge rst) begin
-    if (rst)
+// pulser busy
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
         pulser_busy <= 1'b0;
     else if (pulser_start)
         pulser_busy <= 1'b1;
@@ -163,24 +167,49 @@ always @(posedge pulser_clk or posedge rst) begin
         pulser_busy <= 1'b0;
 end
 
-always @(posedge pulser_clk or posedge rst) begin
-    if (rst)
-        pulser_cnt <= '0;
+// pulser init counter
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
+        pulser_init_cnt <= '1;
     else if (pulser_start && (!pulser_busy))
-        pulser_cnt <= pulser_init_len_drmode;
+        pulser_init_cnt <= pulser_init_len_drmode;
+    else if (pulser_busy && (pulser_stage == PULSER_STAGE_INIT))
+        pulser_init_cnt <= pulser_init_cnt - 1;
+end
+
+// pulser on counter
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
+        pulser_on_cnt <= '1;
     else if (pulser_init_end)
-        pulser_cnt <= pulser_on_len;
+        pulser_on_cnt <= pulser_on_len;
+    else if (pulser_busy && (pulser_stage == PULSER_STAGE_ON))
+        pulser_on_cnt <= pulser_on_cnt - 1;
+end
+
+// pulser inter counter
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
+        pulser_inter_cnt <= '1;
     else if (pulser_on_end)
-        pulser_cnt <= pulser_inter_len;
+        pulser_inter_cnt <= pulser_inter_len;
+    else if (pulser_busy && (pulser_stage == PULSER_STAGE_INTER))
+        pulser_inter_cnt <= pulser_inter_cnt - 1;
+end
+
+// pulser off counter
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst)
+        pulser_off_cnt <= '1;
     else if (pulser_inter_end)
-        pulser_cnt <= pulser_off_len;
-    else if (pulser_busy)
-        pulser_cnt <= pulser_cnt - 1;
+        pulser_off_cnt <= pulser_off_len;
+    else if (pulser_busy && (pulser_stage == PULSER_STAGE_OFF))
+        pulser_off_cnt <= pulser_off_cnt - 1;
 end
 
 // pulser outputs driver
-always @(posedge pulser_clk or posedge rst) begin
-    if (rst) begin
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst) begin
         pulser_on  <= 1'b0;
         pulser_off <= 1'b0;
     end else if (pulser_busy) begin

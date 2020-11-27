@@ -1,5 +1,4 @@
-work
-transcript
-*.wlf
-*.ini
-wave.do
+*
+!clean
+!compile.tcl
+!run_sim

@@ -33,7 +33,7 @@ Directory with testbenches.
 ### Modelsim
 
 * Go to the ```sim/modelsim``` directory
-* Run in a terminal ```vsim -do tb_xxx.do```, where tb_xxx is the name of the testbench (e.g. ```vsim -do tb_demo.do```).
+* Run in a terminal ```./run_sim tb_xxx```, where tb_xxx is the name of the testbench (e.g. ```./run_sim tb_demo```).
 
 ### Icarus + GTKWave
 
@@ -66,3 +66,11 @@ Simple script to run icepll tool to obtain coefficients for the frequency needed
 ### util/fpga_ctrl
 
 Python library to access FPGA via FTDI FT2232 chip. More information about internal structure is in ```util/fpga_ctrl/README.md```.
+
+### util/dump_to_imp
+
+Tool to generate BMP images from frame dumps (HDL simulation artifacts).
+
+### util/vga_layout
+
+Tool to generate some code and other artifacts special for VGA display implementation.

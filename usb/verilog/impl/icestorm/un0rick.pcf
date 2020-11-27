@@ -1,5 +1,5 @@
 # Clock and reset
-set_io ICE_RESET 15 -pullup yes
+set_io -pullup yes ICE_RESET 15
 set_io ICE_CLK 21
 
 # Buttons
@@ -14,7 +14,7 @@ set_io LED_SINGLE_nLOOP 7
 set_io LED3 9
 
 # Jumpers
-set_io JUMPER1 49
+#set_io JUMPER1 49
 set_io JUMPER2 52
 set_io JUMPER3 45
 #set_io SPI_SELECT 23
@@ -27,10 +27,10 @@ set_io JUMPER3 45
 #set_io ICE_CS_RPI
 #set_io RPI2FLASH_CS
 #set_io ICE_RESET_RPI
-#set_io IO1_RPI
-#set_io IO2_RPI
-#set_io IO3_RPI
-#set_io IO4_RPI
+set_io IO1_RPI 10
+set_io IO2_RPI 43
+set_io IO3_RPI 42
+set_io IO4_RPI 41
 
 # Application IO
 set_io PON_ICE 11
@@ -42,9 +42,9 @@ set_io IN3_ICE 32
 set_io OUT1_ICE 18
 set_io OUT2_ICE 19
 set_io OUT3_ICE 17
-set_io TOP_TURN1 24
-set_io TOP_TURN2 25
-set_io TOP_TURN3 26
+set_io -pullup yes TOP_TURN1 24
+set_io -pullup yes TOP_TURN2 25
+set_io -pullup yes TOP_TURN3 26
 
 # FTDI IO
 set_io ICE_SCLK_FT 64
