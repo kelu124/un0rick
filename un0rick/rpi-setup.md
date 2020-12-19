@@ -97,9 +97,21 @@ This should flash the board:
 
 If you do not have a success here, you may want to have a look at how to connect FTDI devices to your computer (see for example: https://stackoverflow.com/questions/36633819/iceprog-cant-find-ice-ftdi-usb-device-linux-permission-issue ). Usually, one has no issues with RPi fresh out of the box.
 
-## Physical setup for the lib acquisitions
+## Physical setup / connections for the lib acquisitions
 
-I've been using a RPi4 with a ribbon cable to connect to the board, leaving the jumper on, putting one to select the high voltage level, connecting a piezo.. and that's it.
+### Pinouts
+
+#### Raspberry Pi header
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_rpi_header.png)
+
+#### FTDI breakout
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_ftdi.png)
+
+### Setup
+
+You can use a RPi4 with a ribbon cable to connect to the board, leaving the jumper on, putting one to select the high voltage level, connecting a piezo.. and that's it.
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/images/P_20191123_161358.jpg)
 

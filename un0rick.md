@@ -137,6 +137,16 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 * A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of my earlier works.
 * un0rick boards are open-source certified on [OSHWA, FR000005](https://certification.oshwa.org/list.html?q=un0rick). lit3rick's certification is pending.
 
+## Pinouts
+
+### Raspberry Pi header
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_rpi_header.png)
+
+### FTDI breakout
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_ftdi.png)
+
 ## Thanks & shouts
 
 * BiVi - _always here to chat_
