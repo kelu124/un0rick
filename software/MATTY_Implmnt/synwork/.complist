@@ -1,4 +1,0 @@
-
-: 0 work.pll100M "C:\Users\david\Desktop\luc\MATTY serie\pll100M.vhd" 4 7 work.SB_PLL40_CORE 
-: 0 work.pll256M2 "C:\Users\david\Desktop\luc\MATTY serie\pll256M2.vhd" 4 7 work.SB_PLL40_2F_CORE 
-: 0 work.MATTY_MAIN_VHDL "C:\Users\david\Desktop\luc\MATTY serie\matty.vhd" 23 7 work.spi_master work.SPI_SLAVE_ICE work.pll128M2 
