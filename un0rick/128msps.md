@@ -12,6 +12,8 @@ nav_order: 7
 
 Playing with the trigger, it's possible to [interleave two signals](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) and artificially double to acquisition speed, yielding clean images.
 
+The version used for this is the [GPIO](http://un0rick.cc/un0rick/rpi-setup) firmware, but it is natively integrated in the usb version.
+
 # Setup 
 
 The usual fixed target. But [code](https://github.com/kelu124/echomods/blob/master/matty/20180814a/20180814a-Server.ipynb) has changed.

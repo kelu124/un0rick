@@ -5,11 +5,11 @@ parent: un0rick
 nav_order: 3
 ---
 
-# How to setup the board using only a raspberry pi 4
+# How to setup the board using only a RaspberryPi (here with RPi 4)
 
 ## Putting the board together
 
-Need a few feet, two 2x20 headers, and a SMA.
+Need a few feet to raise the board a bit above the ground, two 2x20 headers, and a SMA.
 
 ### Board in a bag
 
@@ -41,6 +41,17 @@ From a general perspective, it may be worth trying to keep your tools up to date
 ```
 sudo apt-get upgrade
 ```
+
+If you face SPI / GPIOs issues, and that you are using a RPi4, you may want to follow [these hints](http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/) to update WiringPi. In short:
+
+```
+cd /tmp
+wget https://project-downloads.drogon.net/wiringpi-latest.deb
+sudo dpkg -i wiringpi-latest.deb
+gpio -v
+```
+
+to check you're using v2.52 or above.
 
 ## Updating the python tools
 
@@ -140,15 +151,15 @@ python pyUn0.py process
 
 ## Results
 
-I've used this exact setup to get the lib examples ( https://github.com/kelu124/pyUn0-lib ).
+I've used this exact setup to [get the lib](https://github.com/kelu124/pyUn0-lib) examples ( https://github.com/kelu124/pyUn0-lib ).
 * [Raw files are here](https://github.com/kelu124/pyUn0-lib/tree/master/data)
-* [Images here]() `@todo`
+* [Images here](https://github.com/kelu124/pyUn0-lib/tree/master/images)`
 
 
 Example of an acq : 
 
-![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20191123a-1.jpg)
+![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20201009a-2.png)
 
 with a clean spectrum: 
 
-![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20191123a-1-fft.jpg)
+![](https://raw.githubusercontent.com/kelu124/pyUn0-lib/master/images/20201009a-2-fft.png)

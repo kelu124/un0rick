@@ -19,12 +19,18 @@ This is a simple single-channel ultrasound board. Block diagram below:
 
 ## Step-by-step
 
-1. Program the fpga using a open-source toolchain
-2. Control the board fully through SPI, be it through USB, a Raspberry Pi, or even an arduino.
-3. Set up the acquisition sequence through SPI (for example using this python lib for Raspberry Pi)
-4. Get the data back again through SPI, and process it.
+1. Program the fpga using a open-source toolchain to synthetise the embedded firmware.
+2. Control the board fully through SPI, be it [through USB](http://un0rick.cc/un0rick/usb-setup), a [Raspberry Pi](http://un0rick.cc/un0rick/rpi-setup), or even an [arduino](http://un0rick.cc/un0rick/m5stack) (though a cheap one may not have sufficient resources to do what you want do to).
+3. Set up the acquisition sequence 
+4. Get the data back again 
+5. Process / visualize the acquistion
 
 I recommend using RPi, particularly W for the wireless aspects, which then becomes the board server. There's a dedicated 20x2 header. Prepared is a [python lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) as well. The v1.0.0 version is RPi4 proofed.
+
+## Two control options: usb or raspberry
+
+* [Tutorial : Controlling it with a GPIO ribbon](http://un0rick.cc/un0rick/rpi-setup)
+* [Tutorial : Controlling it with usb](http://un0rick.cc/un0rick/usb-setup)
 
 ## Examples 
 
@@ -97,7 +103,7 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 
 ## Orders
 
-* First sets around 449$.  Vilis Ad Bis Pretii !
+* The [board is available on Tindie](https://www.tindie.com/products/kelu124/un0rick-open-ice40-ultrasound-imaging-dev-board/) at around 489$.
   * Send me a mail at __orders@un0rick.cc__ !
   * Or wait for the [Tindie shop](https://www.tindie.com/stores/kelu124/)
 
@@ -106,19 +112,24 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 
 ## Changelog
 
-* lit3rick _v1.2 - Ongoing_ 
+* lit3rick v1.4
+  * Using AD8332 for more gain
+  * ADC: 12bits -> 10bits
+* [lit3rick](http://un0rick.cc/lit3rick) __v1.3__
   * lighter board
+  * 12bits ADC
+  * up5k based
   * external HV modules
-* un0rick dual _v1.2 - Ongoing_ 
+* un0rick dual _v1.2 - to be done 
   * Better HV generation
   * SPI muxing to update
   * Check USB too
   * PMOD-compliant headers
   * remove i2c header, but keep i2c to RPI (with PU)
-* un0Rick dual - __v1.1__
+* un0rick dual - __v1.1__
   * Double SMA to possibly separate TX and RX path (for dual elements transducers)
   * Still some issues with muxing
-* un0Rick - __v1.01__
+* un0rick - __v1.01__
   * Rewired SPI
   * Less MUXing
 * The "matty board" __v1__ 
@@ -130,12 +141,15 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 ## Useful links
 
 * __Come and chat__ : join the [Slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
-* The full [GitHub Repo](https://github.com/kelu124/un0rick)
+* The full [GitHub Repo](https://github.com/kelu124/un0rick) for the hx8k board.
+  * [Hardware files](https://github.com/kelu124/un0rick/tree/master/hardware)
+  * [Verilog for usb control](https://github.com/kelu124/un0rick/tree/master/usb) - with the [corresponding python module](https://pypi.org/project/un0usb/)
+  * [A version of the lib](https://github.com/kelu124/un0rick/tree/master/pyUn0) - with the [corresponding python module](https://github.com/kelu124/pyUn0-lib)
 * The board's [Tindie shop](https://www.tindie.com/stores/kelu124/)
 * The project [Hackaday](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board) page
+* A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of earlier works.
+* un0rick boards are open-source certified on [OSHWA, FR000005](https://certification.oshwa.org/list.html?q=un0rick). lit3rick's certification is done on [OSHWA, FR000006](https://certification.oshwa.org/list.html?q=lit3rick).
 * wlmeng11's [SimpleRick](https://github.com/wlmeng11/SimpleRick) for a analog part board. Clever use of [RTL-sdr hardware](https://github.com/wlmeng11/rtl-ultrasound) for the acquisition !
-* A [messy braindump](https://github.com/kelu124/echomods/) with all experiments, and a slightly [cleaner documentation](https://kelu124.gitbooks.io/echomods/content/) of my earlier works.
-* un0rick boards are open-source certified on [OSHWA, FR000005](https://certification.oshwa.org/list.html?q=un0rick). lit3rick's certification is pending.
 
 ## Pinouts
 
@@ -163,7 +177,7 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 * Visa - _exploring amode_
 * Vlad - _you pulse_
 * Wlmeng11 - _inspiring_
-* all the supportive users
+* All the supportive users
 * .. and all the others around the world!
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
