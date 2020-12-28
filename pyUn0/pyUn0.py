@@ -167,9 +167,9 @@ class us_spi:
         """
         print(value,int(value))
         if gpioexists:
-            self.spi.xfer([0xAA])
-            self.spi.xfer([adress])
-            self.spi.xfer([int(value)])
+            self.spi.writebytes([0xAA])
+            self.spi.writebytes([adress])
+            self.spi.writebytes([int(value)])
             #self.spi.xfer([value])
             self.JSON["registers"][int(adress)] = value
 
@@ -275,7 +275,8 @@ class us_spi:
         start = time.time()
         if gpioexists:
             for i in range(int(2*self.Nacq+2)):
-                self.JSON["data"].append(self.spi.xfer([0x00])[0])
+                #self.JSON["data"].append(self.spi.xfer2([0x00])[0]) #old xfer
+                self.JSON["data"].append( self.spi.readbytes(1)[0] )
                 if not (i%milestone) and self.verbose:
                     print( str((50*i)/self.Nacq)+"% - "+str(self.JSON["data"][-1]) )
             end = time.time()

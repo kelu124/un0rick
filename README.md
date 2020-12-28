@@ -1,11 +1,3 @@
----
-layout: default
-title: un0rick
-nav_order: 2
-has_children: true
----
-
-
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
 
