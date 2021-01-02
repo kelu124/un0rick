@@ -12,10 +12,10 @@ has_children: true
 
 ## What's the hardware?
 
-* Lattice: up5k. Onboard RAM for 64k points saves.
+* __FPGA__: Lattice UP5K. Onboard RAM for 64k points saves.
 * __Onboard flash__ : W25X10CLSNIG
-* __Pulser__ : HV7361GA-G: adaptable to +-100V pulses. Onboard is 5V pulse.
-* __AD8331__ for gain
+* __Pulser__ : HV7361GA-G: can manageg up to +-100V pulses. Onboard is 5V pulse.
+* __AD8331__ for gain - ~40dB gain.
 * __ADC__: AD9629BCPZ-65: 12bits, reaching 64Msps here
 * __DAC__: MCP4812-E/MS for 8us gain segments
 
@@ -25,6 +25,17 @@ has_children: true
 * [Utilities to program the up5k](https://github.com/kelu124/lit3rick/tree/master/program): no FTDI, all through the RPi header, using its SPI bus to program either the board flash, or the fpga directy.
 * [The python tools](https://github.com/kelu124/lit3rick/tree/master/py_fpga): to facilitate the acquisitions.
 * [The cursed gateware](https://github.com/kelu124/lit3rick/tree/master/verilog): for the current gateware linked to the python library.
+
+## Remarks on hardware
+
+* R26 is to be removed if we are using two transducers or one transducer with on element. Am i right?
+  * To separate TX/RX, indeed that's R26 that should be removed.
+* 5V/GND: What is used for? HV +/- must be use if we want to use an external voltage supply for the pulses?
+  * You can put two jumpers on the two 2x1 headers, so that 5V is connected to [HV+] source, and [HV-] is on GND. HV+ can accomodate [0 : 100V], and HV- can take [-100:0V]. 
+* I guess "From Piezzo" and "SMA RX" are the same, with just a different connection. Is that right? Same thing for "To Piezzo" and "SMA TX"?
+  * "ToPiezo" is indeed the TX path, FromPiezo the RXPath.
+* If we are using only one transducer for both TX and RX, how do we have to connect it?
+  * By default, the TX and RX SMAs are connected (with R26, a 0R). So you can only put in place one SMA an connect this piezo to this SMA.
 
 ## Some images, unipolar pulse at Vpulse = 5V
 
@@ -92,6 +103,20 @@ dataFFT = fpga.read_fft_through_spi()
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/sample_acqs/compare_noise.jpg)
 
+# Changelog / TODO
+
+* v1.1ca (not released)
+  * Put in AD8332
+  * Add external clock
+  * Expose gain pad
+  * Think of a FTDI+HV daughter board
+
+* v1.0 initial release
+  * 12bits ADC
+  * AD8331
+  * i2s connections, along with i2c and spi, + uart (on buttons)
+  * TODO: still some finetuning with i2s streaming (slight offset over long period)
+ 
 # License
 
 This work is based on two previous TAPR projects, [the echOmods project](https://github.com/kelu124/echomods/), and the [un0rick project](https://github.com/kelu124/un0rick) - its boards are open hardware and software, developped with open-source elements as much as possible.
