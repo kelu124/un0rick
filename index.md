@@ -10,66 +10,71 @@ nav_order: 1
 
 Non destructive testing and imaging ultrasound have been around since the '50s. Many ultrasound open-source projects are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs to be used on commercial US scanners, but they are not cheap, and are difficult to access.
 
-
-I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers.
+_I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers._
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G81MT0G)
 
-## Why this project ?
-
-This project has a specific target of providing a __low-cost, open source technological kit to allow scientists, academics, hackers, makers or OSHW fans to hack their way to ultrasound imaging__ - below 500$ - at home, with no specific equipment required. This piece of hardware follows [the murgen dev-kit](https://github.com/kelu124/murgen-dev-kit) and the [echomods](https://github.com/kelu124/echomods/), previous iterations. Those were simpler, less robust and less cost-efficient than this kit.
-
-The aim of this project is to build a basic ultrasound imaging hardware and software development kit, with the specific goal of:
-
-- consolidating [existing hardware research](http://openhardware.metajnl.com/articles/10.5334/joh.2/);
-- simplifing / lowering the cost of the kit;
-- making it more robust;
-- introducing a simple API to control hardware;
-- having a server which provides raw ultrasound data, and for ultrasound imaging, can deliver standard DICOM files;
-- having a kit that can be used for pedagogical and academic purposes - not to mention people who want to understand ultrasound!
-
-Previous projects has shown the feasibility of the hardware, but was not simple enough. Let's keep the momentum, and use this dev kit in interesting ways.
-
 ## Two boards
 
-For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively.
+For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively. 
+
+### Comparing the two designs
+
+They have their own specificities:
+
+|                      	|                un0rick                	|        lit3rick        	|
+|---------------------:	|:-------------------------------------:	|:----------------------:	|
+|                 FPGA 	|               HX4K, HX8K              	|          UP5K          	|
+| Onboard high voltage 	|             0, 24, 48, 72V            	|           5V           	|
+|                  RAM 	|              External 8Mb             	|      Internal 1Mb      	|
+|                  ADC 	| 64Msp, 10bits, interleaved at 128Msps 	|     64Msps 12 bits     	|
+|  Amplification / VGA 	|                 AD8331                	|         AD8331         	|
+|               Pulser 	|          Unipolar, 0 to 100V          	| Bipolar, -100V to 100V 	|
+|                 Size 	|                 Larger                	|   Raspberry pHAT size  	|
+|          USB capable 	|               Yes (FTDI)              	|           No           	|
+|                      	|                                       	|                        	|
+|                      	|                                       	|                        	|
+
+And they look like this:
+
+### un0rick
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
+### lit3rick
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
 
 ## ice40 - a specificity
 
-This board builds in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
+These two boards build in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
 
 It can use the "Project IceStorm", which aims at reverse engineering and documenting the bitstream format of Lattice iCE40 FPGAs and providing simple tools for analyzing and creating bitstream files.
 
 There's a bit of action around these FPGAs these days, be it for tools, extensions, DIP designs,... and I thought using those for a ultrasound imaging device would permit to mix both FPGA and OpenSource.
 
-
-
 ## How is this better?
 
-Compared to previous iterations, the two un0rick and lit3rick boards setups are :
+Compared to previous iterations, the two un0rick and lit3rick boards are :
 
 * more robust;
 * more cost efficient;
-* integrated: SNR is far better than earlier;
+* integrated - and SNR is far better than earlier;
 * better memory for bigger captures;
-* has an [Open Source Hardware Certificate](http://certificate.oshwa.org/certification-directory/)
+* are [Open Source Hardware Certified](http://certificate.oshwa.org/certification-directory/)
 
 ## What can be done with this hardware?
 
-This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-desctrucive testing work. This structure can be used to develop:
+This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
 
-* other modalities of ultrasound imaging - and be used as a platform for A-mode, or B-mode imaging; 
+* ultrasound prototypes, eg can be used as a platform for A-mode, or B-mode imaging ([pulse echo](http://un0rick.cc/UseCase/pulse_echo) works best); 
 * it can also be used for array imaging - the modules can be used with a multiplexer for do synthetic aperture beamforming; 
 * new signal processing methods;
 * test transducers - which can be used as well for maintenance and repairs of ultrasound probes;
-* other non-destructive testing apparatus.
-
-Why are you doing this ? or besides pedagogical uses of your prototype, we want to know if you are thinking about other applications ? Where your prototype can be more useful? Can your prototype solve some problems? 
+* use [old mechanical probes](http://un0rick.cc/probes) to get ultrasound images;
+* play with [ultrasound tomography](http://un0rick.cc/UseCase/tomo);
+* can be [connected to arduinos](http://un0rick.cc/UseCase/m5stack);
+* other [non-destructive](http://un0rick.cc/UseCase/NDT) testing apparatus. 
 
 # Working together
 
