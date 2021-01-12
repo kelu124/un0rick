@@ -89,14 +89,14 @@ which will run a series of acqs and produce a series of images from this acquisi
 In essence, installing the module `pip3 install un0usb` before.
 
 ```
-	import un0usb as USB # neeeds `pip3 install un0usb` before
-	fpga = USB.FpgaControl('ftdi://ftdi:2232:/', spi_freq=8E6) # init FTDI device 
-	fpga.reload() # reload configuration
-	fpga.reset() # reset fpga
+import un0usb as USB # neeeds `pip3 install un0usb` before
+fpga = USB.FpgaControl('ftdi://ftdi:2232:/', spi_freq=8E6) # init FTDI device 
+fpga.reload() # reload configuration
+fpga.reset() # reset fpga
 
-	file = fpga.stdNDTacq() # Running a standard NDT acquisition
-	plot = USB.FView() # Opens a viewing object
-	data = plot.readfile(file) # plots it
+file = fpga.stdNDTacq() # Running a standard NDT acquisition
+plot = USB.FView() # Opens a viewing object
+data = plot.readfile(file) # plots it
 ```
 ### Result
 
