@@ -211,6 +211,29 @@ end
 always @(posedge pulser_clk or posedge pulser_rst) begin
     if (pulser_rst) begin
         pulser_on  <= 1'b0;
+        pulser_off <= 1'b1;
+    end else if (pulser_busy) begin
+        if (pulser_init_end) begin
+            pulser_on  <= 1'b1;
+            pulser_off <= 1'b1;
+        end else if (pulser_on_end) begin
+            pulser_on  <= 1'b0;
+            pulser_off <= 1'b1;
+        end else if (pulser_inter_end) begin
+            pulser_on  <= 1'b0;
+            pulser_off <= 1'b0;
+        end else if (pulser_off_end) begin
+            pulser_on  <= 1'b0;
+            pulser_off <= 1'b1;
+        end
+    end
+end
+
+/* Old pulser sequence
+
+always @(posedge pulser_clk or posedge pulser_rst) begin
+    if (pulser_rst) begin
+        pulser_on  <= 1'b0;
         pulser_off <= 1'b0;
     end else if (pulser_busy) begin
         if (pulser_init_end) begin
@@ -228,6 +251,8 @@ always @(posedge pulser_clk or posedge pulser_rst) begin
         end
     end
 end
+
+*/
 
 //-----------------------------------------------------------------------------
 // Acquisition FSM
