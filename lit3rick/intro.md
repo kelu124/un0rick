@@ -7,7 +7,7 @@ nav_order: 1
 
 # Pulse echo uses
 
-This board uses the i2c, spi and i2s buses to communicate with any device. Basically, the i2c bus is self sufficient, with a device appearing at `0x25` but can also be used more efficiently through spi.
+This board can use the i2c, spi and i2s buses to communicate with any device. Basically, the i2c bus is self sufficient, with a device appearing at `0x25` (with the basic firmware) but can also be used more efficiently through SPI.
 
 # Sample of acquisitions.
 

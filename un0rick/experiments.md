@@ -10,7 +10,7 @@ All experiments (on this hardware and other) are [on this repo](https://github.c
 # How to manage an experiment.
 
 All acquisitions on this page are based on:
-* [this version of the python lib](https://github.com/kelu124/pyUn0-lib/blob/b364fe05ac51cf430723e5c0ff27511b7cc9c554/pyUn0.py) (v1.0.0)
+* [this version of the python lib](https://github.com/kelu124/pyUn0-lib/blob/19f25e1c30a8894a719d18258b2e8e23f80866c3/pyUn0.py) (v1.0.0)
 * [the v1.1 firmware binary](https://github.com/kelu124/un0rick/raw/master/bins/v1.1.bin)
 
 ## Setup
@@ -31,7 +31,7 @@ The code below is equivalent to
 python pyUn0.py single
 ```
 
-### Doing the acquisition
+### Doing the acquisition
 
 ```python
 import pyUn0 as us

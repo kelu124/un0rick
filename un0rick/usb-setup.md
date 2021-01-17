@@ -46,11 +46,28 @@ _Notes for Linux_: Create a file /etc/udev/rules.d/53-lattice-ftdi.rules with th
 
 This should solve usb access rules.
 
-## Board specific install files
+## Setting jumpers
 
-Download the [install pack](https://github.com/kelu124/un0rick/blob/master/usb/install_pack.zip) or by 
+Put jumpers on the `J23` header, only on `Jumper2` and on `"SPI FT if ON"`. See at the bottom of the page for the VGA connections.
 
-`wget https://github.com/kelu124/un0rick/raw/master/usb/install_pack.zip`
+
+## Optional: connection for VGA
+
+For this binary, you will need to connect VGA lines to the board, using the [header close to the buttons](https://raw.githubusercontent.com/kelu124/un0rick/master/images/ios.png) (beware, this image should be rotated to align with the actual board silkscreen).
+ 
+* IO1_RPI = GREEN (color of your choice really)
+  * A 270 Ohm R should be inserted in series with the line.
+* IO2_RPI = VSYNC
+  * A 120 Ohm R should be inserted in series with the line.
+* IO4_RPI = HSYNC
+  * A 120 Ohm R should be inserted in series with the line.
+* GND = GND
+
+__Beware, IO3 seems not to be working on this bin__.
+
+Below, and example of my connections with nice resistors.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/20210117_173645.jpg)
 
 
 ## Connect the usb cable
@@ -61,32 +78,24 @@ Check that the FTDI device is well created by typing:
 
 # Programming it
 
-Unzip it, inside, there's the bin to program the fpga :
- 
-`iceprog usb.bin`
-
-# Running python
-
-## Test
-
-There is a test bench for the python lib matching the usb firmware, from the `brodie` package. Installation is as follows.
-
 ```
-mkdir experiment
-cd experiment
-wget https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201026a/brodie.zip
-iceprog un0rick_ms3_icestorm.bin
-cd fpga_ctrl/
-python3 test.py
+wget https://github.com/kelu124/un0rick/raw/master/usb/usb.bin
+iceprog usb.bin
 ```
-
-which will run a series of acqs and produce a series of images from this acquisition. 
 
 ## Using the python lib
 
 ### In python
 
-In essence, installing the module `pip3 install un0usb` before.
+
+In essence, installing the module `pip3 install un0usb` before, or, to get a specific one:
+
+```
+wget https://github.com/kelu124/un0rick/raw/master/usb/python_lib/un0usb-0.2.6.tar.gz
+pip3 install un0usb-0.2.6.tar.gz
+```
+
+Then, from a python shell, you can initialise the board with the following code.
 
 ```
 import un0usb as USB # neeeds `pip3 install un0usb` before
@@ -98,6 +107,20 @@ file = fpga.stdNDTacq() # Running a standard NDT acquisition
 plot = USB.FView() # Opens a viewing object
 data = plot.readfile(file) # plots it
 ```
+
+After the `fpga.reset()` command, D7 should be starting to blink.
+
+### Managing the VGA output
+
+If not jumper is put on `Jumper2`, you should start having on the VGA output a picture of what is happening on the board in real time. The board registers and parameters can be set via USB, but acquisition triggers is managed by the board itself, not allowing you to read from the buffer.
+
+![LARGE IMAGE, BEWARE](https://raw.githubusercontent.com/kelu124/un0rick/master/images/20210117_180634.gif)
+
+If a jumper is set on `Jumper2`, the display with only display the latest acquisition, and the board will be fully controlable via USB, including the option to read from the board RAM.
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/20210117_173334.jpg)
+
+
 ### Result
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20201107a/20201107155232_ndt.jpg)
@@ -107,27 +130,9 @@ The [full log is here](https://github.com/kelu124/echomods/blob/master/matty/202
 
 ## Going in deeper details
 
+###
 
-### Imports
-
-In the fpga_ctrl folder, you'll need the `csr_map`, `ftdi_dev.py`, and `fpga_ctrl` files, to import the lib:
-
-`from fpga_ctrl import FpgaControl`
-
-I encourage the reader to go inside this libs, which are already documented.
-
-### Create the device
-
-then connect to the FPGA
-
-```python
-# init FTDI device
-fpga = FpgaControl('ftdi://ftdi:2232:/', spi_freq=8E6)
-# reload configuration (optional step - just to fill BRAM (DACGAIN registers) with initial values)
-fpga.reload()
-# reset fpga
-fpga.reset()
-```
+The lib and examples should be self sufficient. However, you can go at a deeper level by exploring the un0usb library.
 
 ### Pulser control
 
