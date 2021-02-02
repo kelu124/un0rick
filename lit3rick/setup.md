@@ -47,7 +47,26 @@ cd ../
 ```
 
 (`./prog_flash.sh` writes a persisting version on the flash) `
- 
+
+
+### Flashing the .. flash
+
+When programming the flash, you should get the flash ID appear and the flashing starts. Takes a bit more time than the ram programming.
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/flash.png)
+
+
+### In case of issues 
+
+RPi4 seems to face flash issues, so please follow instructions here to update your Pi ( http://wiringpi.com/wiringpi-updated-to-2-52-for-the-raspberry-pi-4b/) to get the latest WiringPi:
+
+```
+cd /tmp
+wget https://project-downloads.drogon.net/wiringpi-latest.deb
+sudo dpkg -i wiringpi-latest.deb
+```
+
+
 
 ## Testing with an acquisition.
 
