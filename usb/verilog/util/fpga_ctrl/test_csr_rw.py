@@ -7,6 +7,7 @@ from fpga_ctrl import FpgaControl
 
 QUIET_VERIFY = True
 
+
 def verify(golden, revised):
     if (not QUIET_VERIFY):
         print("\tgolden", golden)
@@ -19,6 +20,7 @@ def verify(golden, revised):
         else:
             print("Error! Expected 0x%x, but got 0x%x" % (golden, revised))
         return 1
+
 
 if __name__ == "__main__":
     fpga = FpgaControl('ftdi://ftdi:2232:/', spi_freq=8E6)
@@ -47,14 +49,14 @@ if __name__ == "__main__":
         fpga.csr.poffw = golden
         revised = fpga.csr.poffw
         err_cnt += verify(golden, revised)
-    
+
     print("INTERW test ...")
     for i in range(test_iter):
         golden = randint(0, fpga.csr.INTERW_MASK)
         fpga.csr.interw = golden
         revised = fpga.csr.interw
         err_cnt += verify(golden, revised)
-    
+
     print("DRMODE test ...")
     for i in range(test_iter):
         golden = randint(0, fpga.csr.DRMODE_MASK)
@@ -71,7 +73,8 @@ if __name__ == "__main__":
 
     print("DACGAIN test ...")
     for i in range(test_iter):
-        golden = [randint(0, fpga.csr.DACGAIN_MASK) for w in range(fpga.csr.DACGAIN_N)]
+        golden = [randint(0, fpga.csr.DACGAIN_MASK)
+                  for w in range(fpga.csr.DACGAIN_N)]
         fpga.csr.dacgain = golden
         revised = fpga.csr.dacgain
         err_cnt += verify(golden, revised)
@@ -123,6 +126,20 @@ if __name__ == "__main__":
         golden = randint(0, fpga.csr.OUT3ICE_MASK)
         fpga.csr.out3ice = golden
         revised = fpga.csr.out3ice
+        err_cnt += verify(golden, revised)
+
+    print("HVMUXEN test ...")
+    for i in range(test_iter):
+        golden = randint(0, fpga.csr.HVMUXEN_MASK)
+        fpga.csr.hvmuxen = golden
+        revised = fpga.csr.hvmuxen
+        err_cnt += verify(golden, revised)
+
+    print("HVMUXSW test ...")
+    for i in range(test_iter):
+        golden = randint(0, fpga.csr.HVMUXSW_MASK)
+        fpga.csr.hvmuxsw = golden
+        revised = fpga.csr.hvmuxsw
         err_cnt += verify(golden, revised)
 
     if (err_cnt):

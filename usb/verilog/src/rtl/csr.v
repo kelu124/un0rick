@@ -15,7 +15,8 @@ module csr #(
     parameter LED_N          = 3,                  // Number of leds, connected to FPGA
     parameter TOPTURN_N      = 3,                  // Number of TOPTURN pins, connected to FPGA
     parameter JUMPER_N       = 3,                  // Number of jumpers, connected to FPGA
-    parameter OUTICE_N       = 3                   // Number of OUTICE pins, connected to FPGA
+    parameter OUTICE_N       = 3,                  // Number of OUTICE pins, connected to FPGA
+    parameter HVMUX_SWITCH_W = 16                  // Number of HV mux switches
 )(
     // System
     input  wire                      clk,              // System clock
@@ -51,7 +52,10 @@ module csr #(
     output reg  [LED_N-1:0]          led,              // Leds, connected to FPGA
     input  wire [TOPTURN_N-1:0]      topturn,          // TOPTURN pins, connected to FPGA
     input  wire [JUMPER_N-1:0]       jumper,           // Jumpers, connected to FPGA
-    output reg  [OUTICE_N-1:0]       outice            // OUTICE pins, connected to FPGA
+    output reg  [OUTICE_N-1:0]       outice,           // OUTICE pins, connected to FPGA
+    output reg                       hvmux_en,         // Enable HV mux driver
+    output reg  [HVMUX_SWITCH_W-1:0] hvmux_sw,         // State of HV mux switches
+    output reg                       hvmux_sw_upd      // Strobe to update HV mux switches
 );
 //-----------------------------------------------------------------------------
 // Generated address decoder with read data logic
@@ -401,6 +405,37 @@ assign rvalid_bus[OUT2ICE_POS] = 1'b1;
 assign rdata_bus[OUT3ICE_POS * CSR_DATA_W + 1 +: CSR_DATA_W - 1] = '0;
 assign rdata_bus[OUT3ICE_POS * CSR_DATA_W +: 1] = outice[2];
 assign rvalid_bus[OUT3ICE_POS] = 1'b1;
+
+//-----------------------------------------------------------------------------
+// HVMUXEN, HVMUXSW - HV mux control
+//-----------------------------------------------------------------------------
+// write
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        hvmux_en     <= HVMUXEN_RST;
+        hvmux_sw     <= HVMUXSW_RST;
+        hvmux_sw_upd <= 1'b0;
+    end else if (csr_wen) begin
+        if (sel_bus[HVMUXEN_POS]) begin
+            hvmux_en <= csr_wdata[0];
+        end
+        if (sel_bus[HVMUXSW_POS]) begin
+            hvmux_sw     <= csr_wdata[15:0];
+            hvmux_sw_upd <= 1'b1;
+        end
+    end else begin
+        hvmux_sw_upd <= 1'b0;
+    end
+end
+
+// read
+// HVMUXEN
+assign rdata_bus[HVMUXEN_POS * CSR_DATA_W + 1 +: CSR_DATA_W - 1] = '0;
+assign rdata_bus[HVMUXEN_POS * CSR_DATA_W +: 1] = hvmux_en;
+assign rvalid_bus[HVMUXEN_POS] = 1'b1;
+// HVMUXSW
+assign rdata_bus[HVMUXSW_POS * CSR_DATA_W +: CSR_DATA_W] = hvmux_sw;
+assign rvalid_bus[HVMUXSW_POS] = 1'b1;
 
 //-----------------------------------------------------------------------------
 // RAMDATA - Read data from the external RAM (address increments after every read)

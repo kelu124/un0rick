@@ -106,6 +106,10 @@ localparam DAC_GAIN_N     = 32;
 localparam DAC_GAIN_PTR_W = $clog2(DAC_GAIN_N);
 localparam DAC_SCK_DIV    = 8;
 
+// HV MUX control
+localparam HVMUX_SWITCH_N = 16;
+localparam HVMUX_CLK_DIV  = 8;
+
 // Acquisition
 localparam ACQ_LINES_MAX        = 32;
 localparam ACQ_LINES_W          = 8;//$clog2(ACQ_LINES_MAX);
@@ -276,6 +280,14 @@ wire dac_dvalid;
 wire dac_spi_cs_n;
 wire dac_spi_sck;
 wire dac_spi_sdi;
+
+// HV MUX
+wire [HVMUX_SWITCH_N-1:0] hvmux_din;
+wire hvmux_dvalid;
+wire hvmux_spi_le;
+wire hvmux_spi_clk;
+wire hvmux_spi_din;
+wire hvmux_en;
 
 // ADC
 reg  [ADC_DATA_W-1:0] adc_d_ff;
@@ -460,7 +472,10 @@ csr #(
     .led              (led),              // Leds, connected to FPGA
     .topturn          (topturn),          // TOPTURN pins, connected to FPGA
     .jumper           (jumper),           // Jumpers, connected to FPGA
-    .outice           (outice)            // OUTICE pins, connected to FPGA
+    .outice           (outice),           // OUTICE pins, connected to FPGA
+    .hvmux_en         (hvmux_en),         // Enable HV mux driver
+    .hvmux_sw         (hvmux_din),        // State of HV mux switches
+    .hvmux_sw_upd     (hvmux_dvalid)   // Strobe to update HV mux switches
 );
 
 //-----------------------------------------------------------------------------
@@ -577,6 +592,27 @@ end
 assign DAC_SPI_SCLK = dac_spi_sck;
 assign DAC_SPI_CS   = dac_spi_cs_n;
 assign DAC_SPI_MOSI = dac_spi_sdi;
+
+//-----------------------------------------------------------------------------
+// HV MUX controler
+//-----------------------------------------------------------------------------
+hvmuxctl #(
+    .SWITCH_N (HVMUX_SWITCH_N), // HVMUX number of switches
+    .CLK_DIV  (HVMUX_CLK_DIV)   // Divider to obtain mux CLK from system clock
+) hvmuxctl (
+    // System
+    .clk        (sys_clk),        // System clock
+    .rst        (sys_rst),        // System reset
+    // HVMUX input data interface
+    .din        (hvmux_din),        // HVMUX data to set output voltage
+    .dvalid     (hvmux_dvalid),     // HVMUX data is valid (pulse)
+    // HVMUX output SPI interface
+    .spi_le_n   (hvmux_spi_le),   // HVMUX latch enable (active low)
+    .spi_clk    (hvmux_spi_clk),  // HVMUX clock
+    .spi_din    (hvmux_spi_din),  // HVMUX data output
+    // Misc
+    .busy       ()        // HVMUX controller is busy (SPI exchange is in progress)
+);
 
 //-----------------------------------------------------------------------------
 // ADC controler
@@ -899,9 +935,9 @@ assign topturn = topturn_ff;
 //-----------------------------------------------------------------------------
 // OUTn_ICE control
 //-----------------------------------------------------------------------------
-assign OUT1_ICE = outice[0];
-assign OUT2_ICE = outice[1];
-assign OUT3_ICE = outice[2];
+assign OUT1_ICE = hvmux_en ? hvmux_spi_le  : outice[0];
+assign OUT2_ICE = hvmux_en ? hvmux_spi_clk : outice[1];
+assign OUT3_ICE = hvmux_en ? hvmux_spi_din : outice[2];
 
 //-----------------------------------------------------------------------------
 // External triggers

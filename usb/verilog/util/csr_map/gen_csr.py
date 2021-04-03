@@ -1,6 +1,6 @@
 '''
 Generate some CSR related artifacts from csr_map.yaml:
-  - ../../src/rtl/csr_decorer.svh
+  - ../../src/rtl/csr_decoder.svh
   - ../fpga_ctrl/csr_map.md
   - ../fpga_ctrl/csr_map.py
 '''
@@ -21,11 +21,14 @@ def gen_csr_decoder_svh(csr_map):
     # all CSR related parameters
     for i, csr_name in enumerate(csr_map):
         csr_data = csr_map[csr_name]
-        svh_lines += ["\n// %s - %s\n" % (csr_name.upper(), csr_data['description'])]
-        svh_lines += ["localparam %s_ADDR = 8'h%02x;\n" % (csr_name.upper(), int(csr_data['address'], 16))]
+        svh_lines += ["\n// %s - %s\n" %
+                      (csr_name.upper(), csr_data['description'])]
+        svh_lines += ["localparam %s_ADDR = 8'h%02x;\n" %
+                      (csr_name.upper(), int(csr_data['address'], 16))]
         svh_lines += ["localparam %s_POS = %d;\n" % (csr_name.upper(), i)]
         if (csr_data['type'] == 'reg'):
-            svh_lines += ["localparam %s_RST = %d'h%0x;\n" % (csr_name.upper(), csr_data['size'], int(csr_data['reset'], 16))]
+            svh_lines += ["localparam %s_RST = %d'h%0x;\n" %
+                          (csr_name.upper(), csr_data['size'], int(csr_data['reset'], 16))]
 
     # header of address decoder
     svh_lines += ['''
@@ -47,7 +50,8 @@ always @(*) begin
         csr_data = csr_map[csr_name]
         if (csr_data['type'] == 'arr'):
             for i in reversed(range(1, csr_data['length'])):
-                svh_lines += ["        %s_ADDR + %d,\n" % (csr_name.upper(), i)]
+                svh_lines += ["        %s_ADDR + %d,\n" %
+                              (csr_name.upper(), i)]
         svh_lines += ['''        {0}_ADDR : begin
             sel_bus[{0}_POS] = 1'b1;
             csr_rdata_next  = (csr_ren && !csr_rvalid) ? rdata_bus[{0}_POS * CSR_DATA_W +:CSR_DATA_W] : '0;
@@ -74,6 +78,7 @@ end
     # save lines to the file
     with open('../../src/rtl/csr_decoder.vh', 'w') as file:
         file.writelines(svh_lines)
+
 
 def gen_csr_map_md(csr_map):
     md_lines = []
@@ -106,6 +111,7 @@ def gen_csr_map_md(csr_map):
     with open('../fpga_ctrl/csr_map.md', 'w') as file:
         file.writelines(md_lines)
 
+
 def gen_csr_map_py(csr_map):
     py_lines = []
 
@@ -120,12 +126,17 @@ def gen_csr_map_py(csr_map):
     # CSR parameters
     for csr_name in csr_map:
         csr_data = csr_map[csr_name]
-        py_lines += ["\n    # %s - %s\n" % (csr_name.upper(), csr_data['description'])]
-        py_lines += ["    %s_ADDR = %s\n" % (csr_name.upper(), csr_data['address'])]
-        py_lines += ["    %s_WIDTH = %d\n" % (csr_name.upper(), csr_data['size'])]
-        py_lines += ["    %s_MASK = 0x%0x\n" % (csr_name.upper(), (1 << csr_data['size']) - 1)]
+        py_lines += ["\n    # %s - %s\n" %
+                     (csr_name.upper(), csr_data['description'])]
+        py_lines += ["    %s_ADDR = %s\n" %
+                     (csr_name.upper(), csr_data['address'])]
+        py_lines += ["    %s_WIDTH = %d\n" %
+                     (csr_name.upper(), csr_data['size'])]
+        py_lines += ["    %s_MASK = 0x%0x\n" %
+                     (csr_name.upper(), (1 << csr_data['size']) - 1)]
         if (csr_data['type'] in ['arr', 'fifo']):
-            py_lines += ["    %s_N = %d\n" % (csr_name.upper(), csr_data['length'])]
+            py_lines += ["    %s_N = %d\n" %
+                         (csr_name.upper(), csr_data['length'])]
 
     # init function
     py_lines += ["""
@@ -190,20 +201,22 @@ def gen_csr_map_py(csr_map):
         data = self._ftdi.spi_read(self.{name_upper}_ADDR, len=self.{name_upper}_N, burst='fixed')
         return [w & self.{name_upper}_MASK for w in data]
 """
-    access_str = {'reg': {'rw':access_reg_rw_str,
-                          'ro':access_reg_ro_str,
-                          'wo':access_reg_wo_str},
-                  'arr': {'rw':access_arr_rw_str},
-                  'fifo': {'ro':access_fifo_ro_str}}
+    access_str = {'reg': {'rw': access_reg_rw_str,
+                          'ro': access_reg_ro_str,
+                          'wo': access_reg_wo_str},
+                  'arr': {'rw': access_arr_rw_str},
+                  'fifo': {'ro': access_fifo_ro_str}}
     # setters/getters
     for csr_name in csr_map:
         csr_data = csr_map[csr_name]
         csr_access_str = access_str[csr_data['type']][csr_data['mode']]
-        py_lines += [csr_access_str.format(name_lower=csr_name, name_upper=csr_name.upper())]
+        py_lines += [csr_access_str.format(name_lower=csr_name,
+                                           name_upper=csr_name.upper())]
 
     # save lines to the file
     with open('../fpga_ctrl/csr_map.py', 'w') as file:
         file.writelines(py_lines)
+
 
 def gen_mem_init(csr_map):
     # header
@@ -219,6 +232,7 @@ def gen_mem_init(csr_map):
                 file.writelines(header)
                 for i in range(csr_data['length']):
                     file.write("%x\n" % (int(csr_data['reset'][i], 16)))
+
 
 if __name__ == "__main__":
     with open("csr_map.yaml", 'r') as f:
