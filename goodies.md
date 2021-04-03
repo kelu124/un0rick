@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Byproducts and goodies
-has_children: true
 nav_order: 9
+has_children: true
 ---
 
 
