@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Byproducts and goodies
-nav_order: 9
+nav_order: 8 
 has_children: true
 ---
 
@@ -20,9 +20,10 @@ Apart from the un0rick and lit3rick boards, some hardware was developped, as dev
 
 ## Software
 
-* Python library: [USB probes APIs]()
+* Python library: [USB probes APIs](https://github.com/kelu124/pyusbus)
 * Not really much here, maybe an [intro to ultrasound signal processing with raw data](https://github.com/kelu124/us_rf_processing/)
 
 ## Other
-* Older [modules](https://github.com/kelu124/echomods/blob/master/include/AddModulesSummary.md) also where developped
 
+* Older [modules](https://github.com/kelu124/echomods/blob/master/include/AddModulesSummary.md) also where developped
+* Older use with a [Raspberry Pi](https://kelu124.gitbooks.io/echomods/content/RPI.html)
