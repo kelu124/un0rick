@@ -36,3 +36,15 @@ Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
 
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg) 
+
+
+## TODO for the website
+
+
+* Add usb probes
+* Add some experiments under "use cases"
+* Add a "signal" section
+  * Add some scan conversion
+  * Add some examples of signal processing
+
+

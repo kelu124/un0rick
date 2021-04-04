@@ -1,6 +1,6 @@
 ---
 layout: default
-title: HP
+title: HP21412A
 parent: Using probes
 nav_order: 3
 ---

@@ -16,7 +16,17 @@ _I couldn't find designs to play with, that would be affordable or open, so I de
 
 ## Two boards
 
-For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively. 
+For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively. Both are open hardware certified (check for [un0rick](https://certification.oshwa.org/fr000005.html) and [lit3rick](https://certification.oshwa.org/fr000006.html) ).
+
+### un0rick
+
+![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
+
+### lit3rick
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
+
+
 
 ### Comparing the two designs
 
@@ -35,15 +45,19 @@ They have their own specificities:
 |                      	|                                       	|                        	|
 |                      	|                                       	|                        	|
 
-And they look like this:
 
-### un0rick
+## What can be done with this hardware?
 
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
+This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
 
-### lit3rick
-
-![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
+* ultrasound prototypes, eg can be used as a platform for A-mode, or B-mode imaging ([pulse echo](http://un0rick.cc/UseCase/pulse_echo) works best); 
+* it can also be used for array imaging - the modules can be used with a multiplexer for do synthetic aperture beamforming; 
+* new signal processing methods;
+* test transducers - which can be used as well for maintenance and repairs of ultrasound probes;
+* use [old mechanical probes](http://un0rick.cc/probes) to get ultrasound images;
+* play with [ultrasound tomography](http://un0rick.cc/UseCase/tomo);
+* can be [connected to arduinos](http://un0rick.cc/UseCase/m5stack);
+* other [non-destructive](http://un0rick.cc/UseCase/NDT) testing apparatus. 
 
 ## ice40 - a specificity
 
@@ -63,18 +77,6 @@ Compared to previous iterations, the two un0rick and lit3rick boards are :
 * better memory for bigger captures;
 * are [Open Source Hardware Certified](http://certificate.oshwa.org/certification-directory/)
 
-## What can be done with this hardware?
-
-This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
-
-* ultrasound prototypes, eg can be used as a platform for A-mode, or B-mode imaging ([pulse echo](http://un0rick.cc/UseCase/pulse_echo) works best); 
-* it can also be used for array imaging - the modules can be used with a multiplexer for do synthetic aperture beamforming; 
-* new signal processing methods;
-* test transducers - which can be used as well for maintenance and repairs of ultrasound probes;
-* use [old mechanical probes](http://un0rick.cc/probes) to get ultrasound images;
-* play with [ultrasound tomography](http://un0rick.cc/UseCase/tomo);
-* can be [connected to arduinos](http://un0rick.cc/UseCase/m5stack);
-* other [non-destructive](http://un0rick.cc/UseCase/NDT) testing apparatus. 
 
 # Working together
 
