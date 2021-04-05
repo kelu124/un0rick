@@ -5,7 +5,7 @@
 
 ## Overview
 
-This is a simple single-channel ultrasound board. Block diagram below:
+This is a relatively simple single-channel ultrasound board. Block diagram below:
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/block-diagram.png)
 
