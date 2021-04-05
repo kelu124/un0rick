@@ -17,4 +17,5 @@
 ../../src/rtl/sys_pll.v
 ../../src/rtl/vga_pll.v
 ../../src/rtl/vga.v
+../../src/rtl/hvmuxctl.v
 ../../src/rtl/top.v

@@ -7,6 +7,7 @@ set library_file_list [list \
     ../../src/beh/spi_master/spi_mst_beh.v \
     ../../src/beh/is61wv51216/is61wv51216.v \
     ../../src/beh/mcp4811/mcp4811.v \
+    ../../src/beh/max14866/max14866.v \
     ../../src/beh/adc10065/adc10065.v \
     ../../src/beh/vga_recv/vga_recv.v \
     ../../src/rtl/glitch_filter.v \
@@ -27,6 +28,7 @@ set library_file_list [list \
     ../../src/rtl/stat_px.v \
     ../../src/rtl/csr.v \
     ../../src/rtl/ram_filler.v \
+    ../../src/rtl/hvmuxctl.v \
     ../../src/rtl/top.v \
     ../../src/tb/$tb_name.v] \
 ]

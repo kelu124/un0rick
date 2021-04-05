@@ -216,6 +216,22 @@ out3ice:
   mode: rw
   reset: '0x1'
 
+hvmuxen:
+  type: reg
+  address: '0x6F'
+  description: Enable HV mux driver
+  size: 1
+  mode: rw
+  reset: '0x0'
+
+hvmuxsw:
+  type: reg
+  address: '0x70'
+  description: Control HV mux switches
+  size: 16
+  mode: rw
+  reset: '0x0'
+
 ramdata:
   type: fifo
   address: '0xA0'

@@ -58,6 +58,8 @@ Please do not edit manually!
 |0x6C|     OUT1ICE|01|   0x1| rw|OUT1_ICE output control|
 |0x6D|     OUT2ICE|01|   0x0| rw|OUT2_ICE output control|
 |0x6E|     OUT3ICE|01|   0x1| rw|OUT3_ICE output control|
+|0x6F|     HVMUXEN|01|   0x0| rw|Enable HV mux driver|
+|0x70|     HVMUXSW|16|   0x0| rw|Control HV mux switches|
 |0xA0|     RAMDATA|16|0x0000| ro|Read data from the external RAM|
 |0xA1| RAMRADDRRST|01|   0x0| wo|Reset external RAM read address|
 |0xA4|     RAMFINC|01|   0x0| wo|Fill external RAM with incrementing data pattern|

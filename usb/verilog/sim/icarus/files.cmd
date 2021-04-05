@@ -1,12 +1,12 @@
 ../../src/beh/spi_master/spi_mst_beh.v
 ../../src/beh/is61wv51216/is61wv51216.v
 ../../src/beh/mcp4811/mcp4811.v
+../../src/beh/max14866/max14866.v
 ../../src/beh/adc10065/adc10065.v
 ../../src/beh/vga_recv/vga_recv.v
 ../../src/rtl/glitch_filter.v
 ../../src/rtl/rom.v
 ../../src/rtl/pll.v
-../../src/rtl/clkdiv.v
 ../../src/rtl/dpram.v
 ../../src/rtl/sync_2ff.v
 ../../src/rtl/dacctl.v
@@ -21,6 +21,7 @@
 ../../src/rtl/stat_px.v
 ../../src/rtl/csr.v
 ../../src/rtl/ram_filler.v
+../../src/rtl/hvmuxctl.v
 ../../src/rtl/top.v
 ../../src/tb/tb_acq.v
 ../../src/tb/tb_csr.v
@@ -31,5 +32,6 @@
 ../../src/tb/tb_ram_filler.v
 ../../src/tb/tb_spi2csr.v
 ../../src/tb/tb_stat_px.v
+../../src/tb/tb_hvmuxctl.v
 ../../src/tb/tb_vga.v
 ../../src/tb/tb_top.v

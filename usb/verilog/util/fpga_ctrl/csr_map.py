@@ -120,6 +120,16 @@ class CsrMap:
     OUT3ICE_WIDTH = 1
     OUT3ICE_MASK = 0x1
 
+    # HVMUXEN - Enable HV mux driver
+    HVMUXEN_ADDR = 0x6F
+    HVMUXEN_WIDTH = 1
+    HVMUXEN_MASK = 0x1
+
+    # HVMUXSW - Control HV mux switches
+    HVMUXSW_ADDR = 0x70
+    HVMUXSW_WIDTH = 16
+    HVMUXSW_MASK = 0xffff
+
     # RAMDATA - Read data from the external RAM
     RAMDATA_ADDR = 0xA0
     RAMDATA_WIDTH = 16
@@ -385,6 +395,30 @@ class CsrMap:
         """Set OUT3ICE register with new value"""
         data = val & self.OUT3ICE_MASK
         self._ftdi.spi_write(self.OUT3ICE_ADDR, [data], burst='fixed')
+
+    @property
+    def hvmuxen(self):
+        """Get current HVMUXEN register value"""
+        data = self._ftdi.spi_read(self.HVMUXEN_ADDR, len=1, burst='fixed')
+        return data[0] & self.HVMUXEN_MASK
+
+    @hvmuxen.setter
+    def hvmuxen(self, val):
+        """Set HVMUXEN register with new value"""
+        data = val & self.HVMUXEN_MASK
+        self._ftdi.spi_write(self.HVMUXEN_ADDR, [data], burst='fixed')
+
+    @property
+    def hvmuxsw(self):
+        """Get current HVMUXSW register value"""
+        data = self._ftdi.spi_read(self.HVMUXSW_ADDR, len=1, burst='fixed')
+        return data[0] & self.HVMUXSW_MASK
+
+    @hvmuxsw.setter
+    def hvmuxsw(self, val):
+        """Set HVMUXSW register with new value"""
+        data = val & self.HVMUXSW_MASK
+        self._ftdi.spi_write(self.HVMUXSW_ADDR, [data], burst='fixed')
 
     @property
     def ramdata(self):
