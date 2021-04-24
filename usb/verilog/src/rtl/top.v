@@ -108,7 +108,7 @@ localparam DAC_SCK_DIV    = 8;
 
 // HV MUX control
 localparam HVMUX_SWITCH_N = 16;
-localparam HVMUX_CLK_DIV  = 8;
+localparam HVMUX_CLK_DIV  = 64;
 
 // Acquisition
 localparam ACQ_LINES_MAX        = 32;

@@ -39,9 +39,9 @@ set_io TRIG_ICE 16
 set_io IN1_ICE 34
 set_io IN2_ICE 33
 set_io IN3_ICE 32
-set_io OUT1_ICE 18
+set_io OUT1_ICE 17
 set_io OUT2_ICE 19
-set_io OUT3_ICE 17
+set_io OUT3_ICE 18
 set_io -pullup yes TOP_TURN1 24
 set_io -pullup yes TOP_TURN2 25
 set_io -pullup yes TOP_TURN3 26
