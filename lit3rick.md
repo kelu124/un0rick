@@ -103,7 +103,7 @@ dataFFT = fpga.read_fft_through_spi()
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/sample_acqs/compare_noise.jpg)
 
-# Changelog / TODO
+# Changelog / TODO
 
 * v1.1ca (not released)
   * Put in AD8332
