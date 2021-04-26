@@ -10,7 +10,8 @@ nav_order: 5
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/piezo_datasheet.jpg)
 
 ```
-New Olympus Harisonic Tubo Ultrasonic Transducer 2.25MHz 0.5"x1.0" 3" Cyl Foc J4
+Olympus Harisonic Tubo Ultrasonic Transducer 2.25MHz 0.5"x1.0" 3" 
+Cyl Foc J4
 
 New Olympus Harisonic Tuboscope Ultrasonic Transducer
 Part number:  HI-7074, 394479-0010
@@ -19,7 +20,10 @@ Dimensions:  0.5" x 1.0"
 3" cylinder focus
 New transducer with inspection documents.
 
-We have a number of these transducers made by various companies: GE, Technisonic, Tuboscope, Olympus, etc. they are all the same.  If you need more than one, or have a preference of manufacturer, contact us before buying.
+We have a number of these transducers made by various companies:
+GE, Technisonic, Tuboscope, Olympus, etc. they are all the same. 
+If you need more than one, or have a preference of manufacturer,
+contact us before buying.
 ```
 
 # What it means
