@@ -535,7 +535,7 @@ assign rvalid_bus[AUTHOR_POS] = 1'b1;
 // VERSION - Version
 //-----------------------------------------------------------------------------
 // read
-assign rdata_bus[VERSION_POS * CSR_DATA_W + VERSION_W +: CSR_DATA_W - VERSION_W] = '0;
+assign rdata_bus[VERSION_POS * CSR_DATA_W + VERSION_W +: CSR_DATA_W - VERSION_W] = '2;
 assign rdata_bus[VERSION_POS * CSR_DATA_W +: VERSION_W] = VERSION_RST;
 assign rvalid_bus[VERSION_POS] = 1'b1;
 
