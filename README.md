@@ -1,5 +1,8 @@
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G81MT0G)
+
+<a href="https://www.patreon.com/bePatron?u=9987695" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
 
 # un0rick
 
