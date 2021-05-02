@@ -14,6 +14,9 @@ _I couldn't find designs to play with, that would be affordable or open, so I de
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G81MT0G)
 
+<a href="https://www.patreon.com/bePatron?u=9987695" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+
 ## Two boards
 
 For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively. Both are open hardware certified (check for [un0rick](https://certification.oshwa.org/fr000005.html) and [lit3rick](https://certification.oshwa.org/fr000006.html) ).
