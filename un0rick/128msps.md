@@ -32,6 +32,13 @@ for k in range(10):
 
 # Images
 
+On the pictures below, we take two consecutive sampling. Blue dots then red dots.
+
+We start with blue dots, and we take a point every 1/64us (sampling speed at 64Msps). Then we do a second acquisition, but we delay this second sampling start with 1/128us. We can do this because the thing we sample is the same between two acquisitions.
+
+We then plot red and blue dots (interleaving). Because we have this 1/128us (half a period) shift, it is equivalent to an interleaving.
+
+So the blue dots would be at time 0/64, 1/64, 2/64 (or 0/128, 2/128, 4/128) and the red dots would be at times (0/64+1/128, 1/128+1/64) that is equal to (1/128, 3/128, 5/128...). So if you join the two series you have 0, 1, 2, 3, 4 (/128) equivalent to a 128msps sampling
 ## Overview 
 
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180814a/128Msps_20180813a-9-detail.jpg)

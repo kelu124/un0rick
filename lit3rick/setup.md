@@ -14,10 +14,12 @@ First, install the required tools to communicate with the board.
 
 ``` 
 sudo apt-get update
-sudo apt-get install i2c-tools libasound2-dev
+sudo apt-get install i2c-tools libasound2-dev git python3-pip python3-dev libatlas-base-dev python3-all-dev libopenjp2-7-dev libtiff5
 ```
 
 Then, one will need to enable i2c, i2s and spi through the raspberry `raspi-config` tool (tuto for [SPI is here](https://www.raspberrypi.org/documentation/hardware/raspberrypi/spi/README.md)).
+
+i2s can be enabled via `sudo vi /boot/config.txt` and uncommenting `dtparam=i2s=on`.
 
 Then update python modules with the following command
 

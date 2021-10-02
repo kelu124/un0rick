@@ -52,7 +52,7 @@ You may need to install new packages, especially to communicate with the fpga.
 ``` 
 sudo apt-get update
 sudo apt-get install i2c-tools libasound2-dev python3-numpy python-numpy
-sudo apt-get install python-dev libatlas-base-dev
+sudo apt-get install python-dev libatlas-base-dev libportaudio2
 ```
 
 From a general perspective, it may be worth trying to keep your tools up to date with:
