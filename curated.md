@@ -1,12 +1,8 @@
 ---
 layout: default
 title: Curated links
-nav_order: 6
+nav_order: 8
 ---
-
-
-
-
 ## Some experiments
 
 At one point or another, may become a page here! In between, those are links ot the github
@@ -38,4 +34,3 @@ At one point or another, may become a page here! In between, those are links ot 
   * Test for [max1846 and hv9150](https://github.com/kelu124/hvpppn)
   * [HV9150](https://github.com/kelu124/HV9150DevKit)
   * [DRV8662](https://github.com/kelu124/DRV8662-devkit) for DRV8662
-

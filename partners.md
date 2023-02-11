@@ -1,9 +1,8 @@
 ---
 layout: default
 title: Partnering
-nav_order: 8
+nav_order: 10
 ---
-
 # What I want to do 
 
 Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
@@ -11,7 +10,7 @@ Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
 ## What I have
 
 * Been selling hardware since 2017: know-how in terms of design, prototyping, review, production, sales  
-* Two existing board designs and corresponding python libs ([un0rick](http://un0rick.cc/un0rick) and [lit3rick](http://un0rick.cc/lit3rick  ))!
+* Two existing board designs and corresponding python libs ([un0rick](http://un0rick.cc/un0rick) and [lit3rick](http://un0rick.cc/lit3rick))!
 * Documentation, along with an exhaustive research log
 * Existing users - and access to ultrasound research labs, as well as ultrasound startups (~100+ users, including ~20 academic labs, ~15 startups, ~15 SMEs)
 * An [ecosystem](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) (academics, private, researchers, students, suppliers, ...)
@@ -31,20 +30,20 @@ Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
 * Innovate: Explore more complex (still within open-tool chain) FPGAs, build on single element hardware to start 8-elements arrays
 * Share: Improve a library of fpga signal processing tools
 
+## Example of a partnership
+
+![PulseIT](https://github.com/kelu124/lit3rick/blob/lit3-32/images/variants/image001.png?raw=true "What we've done")
+
+A derivated work has been developped in the partnership with the [National Research Council ](https://nrc.canada.ca/en)which cocreated the lit3-32.
 
 ## Be part of it!
 
-
-![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg) 
-
+![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
 
 ## TODO for the website
-
 
 * Add usb probes
 * Add some experiments under "use cases"
 * Add a "signal" section
   * Add some scan conversion
   * Add some examples of signal processing
-
-
