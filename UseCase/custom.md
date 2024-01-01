@@ -38,6 +38,6 @@ nav_order: 7
 
 # General map
 
-![](map.jpg)
+![](https://raw.githubusercontent.com/kelu124/echomods/master/include/community/map.jpg)
 
 
