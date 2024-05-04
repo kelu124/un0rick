@@ -93,9 +93,10 @@ A summary of the contributors using this family of hardware is detailed below. S
 
 ## And you?
 
-* Want to learn more? You can join the [slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) if you want to discuss, but there are plenty of other sources:
+* Want to learn more? We are on the [Matrix](https://app.element.io/#/room/#un0rick:matrix.org) as an open chat, if you want to discuss, but there are plenty of other sources:
 * [Hackaday page too](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board)
 * You can also __fork the [project repo](https://github.com/kelu124/un0rick/)__, 
+* The [slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) is being deprecated.
 * Or, you can go vintage and see:
   * [Old repo](https://github.com/kelu124/echomods/) can be used for an extensive archive for the source files, raw data and raw experiment logs or explore the [hackaday page](https://hackaday.io/project/9281-murgen-open-source-ultrasound-imaging), where I tried to blog day-to-day experiments in a casual format
   * Obviously, you can __read the [online manual/book](https://www.gitbook.com/book/kelu124/echomods/details)__ for a easily readable and searchable archive of the whole work on this family of hardware
