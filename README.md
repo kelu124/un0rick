@@ -6,7 +6,7 @@
 [![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/kelu124) 
 [![Kofi](https://badgen.net/badge/icon/kofi?icon=kofi&label)](https://ko-fi.com/G2G81MT0G)
 
-[![Slack](https://badgen.net/badge/icon/slack?icon=slack&label)](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
+[![Slack replacement](https://badgen.net/badge/icon/Matrix.org?icon=matrix&label)](https://app.element.io/#/room/#un0rick:matrix.org)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
@@ -157,8 +157,8 @@ It seems that the different series interleave quite nicely, even in the detail.
 ![](https://raw.githubusercontent.com/kelu124/echomods/master/matty/20180814a/128Msps_20180813a-9-fft.jpg)
 
 ## Useful links
-
-* __Come and chat__ : join the [Slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
+ 
+* __Come and chat__ : Want to learn more? We are on the [Matrix](https://app.element.io/#/room/#un0rick:matrix.org) as an open chat. The [slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) is being deprecated.
 * The full [GitHub Repo](https://github.com/kelu124/un0rick) for the hx8k board.
   * [Hardware files](https://github.com/kelu124/un0rick/tree/master/hardware)
   * [Verilog for usb control](https://github.com/kelu124/un0rick/tree/master/usb) - with the [corresponding python module](https://pypi.org/project/un0usb/)
