@@ -1,82 +1,47 @@
 ---
 layout: default
-title: New version of the lit3rick, lit3-32
+title: More about the lit3-32
 parent: lit3-32
 nav_order: 1
 ---
-## The up5k lit3rick open hardware ultrasound pulse echo board, with -28dB to 92dB gain
 
-Lit3-32 is the younger sibling of the lit3rick board, and keeps the same principles.
+# The up5k lit3rick open hardware ultrasound pulse echo board, with -28dB to 92dB gain
+
+The `lit3-32` is the younger sibling of the lit3rick board, and keeps the same principles.
 
 Apart from shifting to AD8331 to AD8332 to have more gain, the source code / dev files are moved from upverter to altium, for ease of share. Because of more gain, the ADC goes from 12 bits to 10 bits. The form factor now is strictly a pHAT.
 
-### OSHWA certified !
 
-[https://certification.oshwa.org/fr000016.html](https://certification.oshwa.org/fr000016.html)
+# How to flash the board
 
-## Presentation of the hardware
+Due to a simpler bom, there is no USB bridge (compared to say the un0rick). Therefore, the flash must be written. When using any raspberry pi, one can go to the [programming tool folder](https://github.com/kelu124/lit3rick/tree/lit3-32/program) and type `make` to compile the programmer, then `make install` to install it.
 
-* Lattice: up5k. Onboard RAM for 64k points saves. (128kB onboard RAM)
-* Onboard flash
-* Pulser : HV7361GA-G:
+The "basic binary" to flash can be [downloaded here](https://github.com/kelu124/lit3rick/blob/lit3-32/20230114_GainTests/bins/working.bin).
 
-  * Can manage +-100V pulses. Onboard is 5V pulse.
-  * Integrated circuit protection from HV
-* Time gain compensation : [AD8332](https://github.com/kelu124/lit3rick/blob/lit3-32/altium/ad8332.md) using both channels, chained
+One can use it afterwards to program either [the flash](https://github.com/kelu124/lit3rick/blob/lit3-32/program/prog_flash.sh), or the [fpga ram](https://github.com/kelu124/lit3rick/blob/lit3-32/program/prog_ram.sh). It takes far less time to program the ram, so a good choice to test.
 
-  * HI setting: -4dB to __92dB__ amp
-  * LO setting: -28dB to 68dB amp
-* ADC: 10bits, up to 64Msps here. Test in progress for 80MHz acqs.
-* Previous iteration: [documentation released: 10.5281/zenodo.5792245](https://zenodo.org/record/5792245#.YhvClITMJuQ)
-* [Schematics](https://github.com/kelu124/lit3rick/blob/lit3-32/altium/OUTPUT/Schematics/ice40_schematic.PDF)
+# Communicate with the board
 
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/build/schematics.png)
+When using the default, (very) basic binary, one can use python, see for example this [acquisition test](https://github.com/kelu124/lit3rick/blob/lit3-32/20230114_GainTests/python.py). It is relatively basic, allows the user to only set the gain, and then read values from the FPGA.
 
-# Pics
+# Tweaking the verilog
 
+The basic binary mentionned before has been created using `icestudio`, a [visual editor](https://icestudio.io/) for FPGA programming. The icestudio project lives here:  https://github.com/kelu124/lit3rick/tree/lit3-32/icestudio/lit3 .
 
-## Design
+# Physical setup
 
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/top.png)
+## Experiments
 
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/bot.png)
+I usually like to use a ribbon as below, so to use duplicated headers pins for debug.
 
-## Prod
+![](https://raw.githubusercontent.com/kelu124/lit3rick/lit3-32/images/01_40msps/20230304_151654.jpg)
 
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/build/imagelit3_32.png)
+## QA tests
 
-## Python user code
+For QA tests, I use a raspberry pi zero with pogo pins, so to not have to solder any connectors:
 
-* Principles are [here](https://github.com/kelu124/lit3rick/blob/lit3-32/lit3-32/icestudio/Readme.md)
-* Python code is [here](https://github.com/kelu124/lit3rick/blob/lit3-32/icestudio/python/python.py)
+![](https://raw.githubusercontent.com/kelu124/lit3rick/lit3-32/images/20210831_210830.jpg)
 
-## Verilog: using icestudio (work in progress)
+and use some pressure to keep it in place =)
 
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/icestudio/icestudio_screenshot.png)
-
-.. and a list of binaries. `823f03fdc4bc9354f3f7d20d9fca6d58` is the latest stable one.
-
-```
-823f03fdc4bc9354f3f7d20d9fca6d58  ./20230114_GainTests/bins/working.bin
-e33742aa40016c3d32f804f4f5a2916f  ./20230114_GainTests/bins/pll_test_impl_1.bin
-823f03fdc4bc9354f3f7d20d9fca6d58  ./20230114_GainTests/bins/hardware.bin
-e3ddac9e455002339cf0d9cd9f03672c  ./program/blink.bin
-823f03fdc4bc9354f3f7d20d9fca6d58  ./icestudio/lit3/ice-build/lit3bin/hardware.bin
-70a0563b9e889dcdd5ab43a0825b8bfc  ./icestudio/old/corePLL/ice-build/corePLL/hardware.bin
-823f03fdc4bc9354f3f7d20d9fca6d58  ./example/bins/working.bin
-e33742aa40016c3d32f804f4f5a2916f  ./example/bins/pll_test_impl_1.bin
-823f03fdc4bc9354f3f7d20d9fca6d58  ./example/bins/hardware.bin
-```
-
-# Outputs
-
-Below are echoes from a 5V pulse, gain at 350/1000, HILO being low.
-
-![img](https://github.com/kelu124/lit3rick/raw/lit3-32/icestudio/G350_HL0_5V.jpg)
-
-[
-    Schematics are here](https://github.com/kelu124/lit3rick/raw/lit3-32/build/ice40_schematic.PDF)
-
-## Seen in groups ?
-
-![Boards in group](https://github.com/kelu124/lit3rick/blob/lit3-32/build/imagelit3_32.png?raw=true "Title")
+![](https://raw.githubusercontent.com/kelu124/lit3rick/lit3-32/images/01_40msps/20230304_110240.jpg)
