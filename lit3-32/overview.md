@@ -28,6 +28,12 @@ When using the default, (very) basic binary, one can use python, see for example
 
 The basic binary mentionned before has been created using `icestudio`, a [visual editor](https://icestudio.io/) for FPGA programming. The icestudio project lives here:  https://github.com/kelu124/lit3rick/tree/lit3-32/icestudio/lit3 .
 
+# Using external voltage (tested up to +-75V)
+
+Below is the connection for the external high voltage (HV) sources. 
+
+![](https://raw.githubusercontent.com/kelu124/lit3rick/lit3-32/images/20240716_114836.jpg)
+
 # Physical setup
 
 ## Experiments
