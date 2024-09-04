@@ -9,6 +9,12 @@ nav_order: 6
 
 .. which use or quotes the work.
 
+## 2024
+
+* [Non-Destructive  Test for Quality Control in Laboratory-Scale Fabrication of Laminated Composites Using Programmable Portable Ultrasonic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900585). Uses un0rick 💪.
+* [Open-Science Materials Acceleration Platforms for Clean Energy Material Design Spaces](https://www.proquest.com/openview/92632c8e8e694159b42f961a8ef441c6/1?pq-origsite=gscholar&cbl=18750&diss=y). Quotes research.
+* [Development and validation of a gel wax phantom to evaluate geometric accuracy and measurement of a hyperechoic target diameter in diagnostic ultrasound imaging](https://link.springer.com/article/10.1007/s13246-023-01362-0). Uses un0rick 💪.
+ 
 ## 2023
 
 * [IoT-Based Medical Image Monitoring System Using HL7 in a Hospital Database](https://www.mdpi.com/2227-9032/11/1/139). DOI: healthcare11010139. Quotes the research.
