@@ -6,9 +6,21 @@ nav_order: 9
 ---
 
 
+![GitHub repo size](https://img.shields.io/github/repo-size/kelu124/pic0rick?style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/kelu124/pic0rick?style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/kelu124/pic0rick?style=plastic)
+![GitHub last commit](https://img.shields.io/github/last-commit/kelu124/pic0rick?color=red&style=plastic)
+
+[![Slack](https://badgen.net/badge/icon/slack?icon=slack&label)](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
+[![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
+
+
 # the _pic0rick_ project
 
-The pic0rick is the central board for an ultrasound pulse-echo modular system. It is composed of a main board, based on the famous rp2040 and easy to solder SMD, to which a single, and a double PMOD connector can connect to addons:
+[![Patreon](https://img.shields.io/badge/patreon-donate-orange.svg)](https://www.patreon.com/kelu124)
+[![Kofi](https://badgen.net/badge/icon/kofi?icon=kofi&label)](https://ko-fi.com/G2G81MT0G)
+
+The pic0rick is a very central board for an ultrasound pulse-echo system. It is composed of a main board, based on the famous rp2040 and easy to solder SMD, to which a single, and a double PMOD connector can connect to addons:
 
 * The main board is equipped with a 60Msps, 10bit ADC. Front end is protected against high-voltage pulses, and features a proven time-gain compensation system consisting in a AD8331 (7.5 dB to 55.5dB) with a controlling (MCP4812) SPI DAC.
 * The single PMOD connector can plug to the Pulser board, which can be equipped with a simple +-25V generation board. Together, they generate the pulse on behalf of the pic0rick main board. The setup can generate three-level pulses ( with a pair of MD1210 + TC6320 ).
@@ -29,17 +41,27 @@ And if you want to discuss the project - [meet us on our slack](https://join.sla
 
 ## The three boards assemble look like this
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/main/documentation/images/20240406_153634.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/20240406_153634.jpg)
 
 ## Example of acquisitions
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/main/python/imgs/pic0gain_at_8.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
 
 
-# TODO
 
-* HW: Slight tweaks on the main board to allow more space for the PMODs
-* FW: Tie the pulses to the PIO code so that pulses strictly cohappen with the acquisition start
+# Along with the other boards
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/sister_boards.png)
+
+# Scheduled changes
+
+## DONE
+
+* FW: Tie the pulses to the PIO code so that pulses strictly cohappen with the acquisition start (done)
+
+## TODO
+
+* HW: Slight tweaks on the main board to allow more space for the PMODs (Oct 21, 2024)
 
 # Thank you to
 
@@ -59,4 +81,3 @@ Copyright Luc Jonveaux (<kelu124@gmail.com>) 2024
 ## Disclaimer
 
 This project is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING OF MERCHANTABILITY, SATISFACTORY QUALITY AND FITNESS FOR A PARTICULAR PURPOSE.
-
