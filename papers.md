@@ -1,18 +1,23 @@
 ---
 layout: default
-title: Theses
-parent: Use Cases
-nav_order: 6
+title: Research papers
+nav_order: 11
 ---
 
 # Theses and academic publications
 
 .. which use or quotes the work.
 
+
+## 2025
+
+* [Fabrication and evaluation of breast tissue equivalent phantoms for image quality assessment in ultrasound imaging](https://scholar.unair.ac.id/en/publications/fabrication-and-evaluation-of-breast-tissue-equivalent-phantoms-f). https://doi.org/10.1016/j.radi.2024.11.023 . Uses un0rick 💪.
+
 ## 2024
 
 * [ULTRASONIC-BASED NON-DESTRUCTIVE TESTING SYSTEM FOR QUALITY CONTROL IN FABRICATION OF LEAD BRICK](https://kinematika.ulm.ac.id/index.php/kinematika/article/view/323). DOI: 10.20527/sjmekinematika.v9i2.323 . Uses un0rick 💪.
 * [DEFECT DETECTION IN CARBON FIBER REINFORCED POLYMER USING PEARSON CORRELATION COEFFICIENT FROM ULTRASONIC ECHO SIGNALS](https://kinematika.ulm.ac.id/index.php/kinematika/article/view/322). DOI: 10.20527/sjmekinematika.v9i2.322 . Uses un0rick 💪.
+* [Electronic design considerations and system development for structural health monitoring with ultrasonic guided waves](https://ieeexplore.ieee.org/abstract/document/10794056/references#references). https://doi.org/10.1109/UFFC-JS60046.2024.10794056 . Quotes the research.
 * [Non-Destructive  Test for Quality Control in Laboratory-Scale Fabrication of Laminated Composites Using Programmable Portable Ultrasonic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900585). Uses un0rick 💪.
 * [Open-Science Materials Acceleration Platforms for Clean Energy Material Design Spaces](https://www.proquest.com/openview/92632c8e8e694159b42f961a8ef441c6/1?pq-origsite=gscholar&cbl=18750&diss=y). Quotes research.
 * [Development and validation of a gel wax phantom to evaluate geometric accuracy and measurement of a hyperechoic target diameter in diagnostic ultrasound imaging](https://link.springer.com/article/10.1007/s13246-023-01362-0). Uses un0rick 💪.

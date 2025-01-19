@@ -1,8 +1,7 @@
 ---
 layout: default
 title: pic0rick
-parent: Byproducts and goodies
-nav_order: 9
+nav_order: 5
 ---
 
 
