@@ -12,6 +12,7 @@ nav_order: 11
 ## 2025
 
 * [Fabrication and evaluation of breast tissue equivalent phantoms for image quality assessment in ultrasound imaging](https://scholar.unair.ac.id/en/publications/fabrication-and-evaluation-of-breast-tissue-equivalent-phantoms-f). https://doi.org/10.1016/j.radi.2024.11.023 . Uses un0rick 💪.
+* [Survey on wireless ultrasound imaging](https://link.springer.com/article/10.1007/s12553-025-00976-6). Quotes the research.
 
 ## 2024
 
@@ -20,6 +21,7 @@ nav_order: 11
 * [DEVELOPMENT OF A PROGRAMMABLE OPEN HARDWARE DEVICE FOR ULTRASONIC-BASED NON-DESTRUCTIVE TESTING FOR INTERNAL DEFECT DETECTION IN RAILWAY TRACKS](https://digilib.itb.ac.id/gdl/view/83719/). Uses un0rick 💪.
 * [Electronic design considerations and system development for structural health monitoring with ultrasonic guided waves](https://ieeexplore.ieee.org/abstract/document/10794056/references#references). https://doi.org/10.1109/UFFC-JS60046.2024.10794056 . Quotes the research.
 * [Non-Destructive  Test for Quality Control in Laboratory-Scale Fabrication of Laminated Composites Using Programmable Portable Ultrasonic](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4900585). Uses un0rick 💪.
+* [DEVELOPMENT OF AN OPEN INSTRUMENTATION SYSTEM 4FOR ULTRASONIC TESTING IN QUALITY CONTROL OF LABORATORY-SCALE LAMINATED COMPOSITE FABRICATION ](https://digilib.itb.ac.id/assets/files/2024/MjAyNCBUUyBJSyBZVVNVRiBHSVJJIFdJSkFZQSAyMzgyMjAxMCBDT1ZFUi5wZGY1.pdf). Uses un0rick 💪.
 * [Open-Science Materials Acceleration Platforms for Clean Energy Material Design Spaces](https://www.proquest.com/openview/92632c8e8e694159b42f961a8ef441c6/1?pq-origsite=gscholar&cbl=18750&diss=y). Quotes research.
 * [Development and validation of a gel wax phantom to evaluate geometric accuracy and measurement of a hyperechoic target diameter in diagnostic ultrasound imaging](https://link.springer.com/article/10.1007/s13246-023-01362-0). Uses un0rick 💪.
  
@@ -34,7 +36,7 @@ nav_order: 11
 * [Machine-Learning-Based Real-Time Photoacoustic Surface Crack Detection](https://www.mdpi.com/2673-4591/56/1/92). Uses un0rick 💪.
 * [Handheld Bone Densitometry Configuration on Development of Bone Model Density Testing](https://ieeexplore.ieee.org/abstract/document/10346057). DOI: 10.1109/IoTaIS60147.2023.10346057. Quotes research. Possible uses un0rick (used by same author later on) (❓) .
 * [Evaluation of physical properties and image of polyvinyl chloride as breast tissue equivalence for dual-modality (mammography and ultrasound)](https://link.springer.com/article/10.1007/s13246-023-01283-y). DOI: 10.1007/s13246-023-01283-y . Uses un0rick 💪.
-
+* [Technical program at  Institut Teknologi Bandung](https://repository.umj.ac.id/20855/1/LAPORAN%20KINERJA-PENUNJANG.pdf) . Uses un0rick 💪.
 
 ## 2022
 
@@ -42,12 +44,13 @@ nav_order: 11
 * [A gel wax phantom for performance evaluation in diagnostic ultrasound: assessment of image uniformity, geometric accuracy, and diameter of a hyperechoic target](https://arxiv.org/pdf/2212.07073.pdf). DOI: arXiv:2212.07073. Quotes research.
 * [Low-cost and open-source super-resolution fluorescence microscope with autofocus for teaching and research](https://www.biorxiv.org/content/10.1101/2022.02.22.481481v1.abstract). Quotes the research.
 
-
 ## 2021
 
 * [Evaluation of Open Source Hardware for Rapid Prototyping of Advanced Ultrasonic Testing Methods](https://github.com/kelu124/echomods/raw/master/include/community/Tim/bachelor_thesis.pdf) by Tim Treichel. Technische Universität Ilmenau, Bachelor Thesis. Uses an un0rick board 💪.
 * [Evaluation of Respiration Reproducibility of Chest General X-ray Examination using Self-made Respiratory Synchronization Device](https://koreascience.kr/article/JAKO202102153781201.page). Quotes research.
 * [Ultrasound scanner—Teaching tool](https://iopscience.iop.org/article/10.1088/1361-6404/ac10b1/meta). DOI: 10.1088/1361-6404/ac10b1. Quotes research.
+* [Development of a Medical System to Indicate Risk of Cardiovascular Disease](https://eprints.nottingham.ac.uk/69305/1/Denesh%20Sooriamoorthy%20PhD%20Thesis%20024958-official.pdf). Quotes research.
+
 
 
 ## 2020
