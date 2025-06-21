@@ -25,6 +25,15 @@ Similar to the previous hardware, the pic0rick has great ultrasound capabilities
 
 ![Example of acquisition](https://github.com/kelu124/pic0rick/raw/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
 
+## The journey to pic0rick
+
+It's all been about accessibility and cost reduction. It started in 2016 with an integrated board, the [Murgen board](murgen), which was a first step into the complicated world of hardware. And some discoveries about joys of developing boards. The [echOmods](modules.md) introduced the original modular concept with separate breadboard components - that allowed further explorations in a hacker-friendly manner, with the cost of more noise.
+
+This was partially solved with [un0rick](un0rick) (2018-2025), which consolidated the best of these modules into the first integrated FPGA board using Lattice iCE40 HX4K/HX8K, achieving up to 64 Msps sampling and good timing control, on a large and possibly over complicated board that requires significant FPGA expertise to tweak the firmware.. err gateware. The lit3rick (2020-2024) simplified the design with iCE40 UP5K using a Raspberry Pi pHAT format, reducing cost (no HV onboard) while maintaining FPGA capabilities in a smaller form factor. The [lit3-32](lit3-32) (2021-2024) pushed gain performance to 92dB with AD8332 amplifiers, optimizing for weak signal detection, but still was quite expensive. Each iteration solved specific technical challenges but remained constrained by FPGA programming complexity and higher costs.
+
+The [pic0rick](pic0rick)  eliminates these barriers, and tries and lower the cost - no FPGA toolchains, no specialized hardware knowledge, just standard 'arduino' embedded programming on the rp2040/rp2350 proven platform.
+
+Who knows what the next step will be?
 
 ## What can be done with this hardware?
 
