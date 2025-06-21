@@ -35,6 +35,11 @@ The [pic0rick](pic0rick)  eliminates these barriers, and tries and lower the cos
 
 Who knows what the next step will be?
 
+## How does it get rid of the FPGA for timing control?
+
+The design leverages the pico Programmable Input/Output (PIO) units - one for acquisition and another for something else (like VGA output) - leaving other microcontroller resources free for custom applications. This design philosophy makes it quite versatile an easy to use.
+
+
 ## What can be done with this hardware?
 
 The boards have been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
