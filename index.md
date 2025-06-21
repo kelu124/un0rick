@@ -10,7 +10,7 @@ nav_order: 1
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 
-The `un0rick` project is an open-source ultrasound hardware project, that has evolved significantly over nearly a decade -- keeping the objective of providing an affordable tool for educational demonstrations and rapid prototyping.
+The `un0rick` project is an open-source ultrasound hardware project, that has evolved significantly over nearly (soon) a decade -- keeping the objective of providing an affordable tool for educational demonstrations and rapid prototyping.
 
 
 # The un0rick project today
@@ -76,7 +76,8 @@ A summary of the contributors using this family of hardware is detailed below. S
 ## And you?
 
 * Want to learn more? We are on the [Matrix](https://app.element.io/#/room/#un0rick:matrix.org) as an open chat, if you want to discuss, but there are plenty of other sources:
-* You can also __fork the [project repo](https://github.com/kelu124/pic0rick/)__, 
+* Check __the [project repo](https://github.com/kelu124/pic0rick/)__
+
 
 # Articles
 
@@ -89,9 +90,9 @@ The systems designs have been documented, and captured in a number of openly acc
 
 ## License
 
-This work is based on a previous TAPR project, [the echOmods project](https://github.com/kelu124/echomods/). The [un0rick project](https://github.com/kelu124/un0rick), the [lit3rick project](https://github.com/kelu124/lit3rick) and their boards are open hardware and software, developped with open-source elements, as much as possible.
+This work is based on a previous TAPR project, the [pic0rick project](https://github.com/kelu124/pic0rick), the [echOmods project](https://github.com/kelu124/echomods/). The [un0rick project](https://github.com/kelu124/un0rick), the [lit3rick project](https://github.com/kelu124/lit3rick) and their boards are open hardware and software, developped with open-source elements, as much as possible.
 
-Copyright Kelu124 (kelu124@gmail.com) 2018-2020
+Copyright Kelu124 (kelu124@gmail.com) 2018-2025
 
 * The hardware is licensed under TAPR Open Hardware License (www.tapr.org/OHL)
 * The software components are free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
