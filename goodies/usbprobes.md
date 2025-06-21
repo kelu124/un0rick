@@ -1,7 +1,8 @@
 ---
 layout: default
-title: Testing USB Probes
-nav_order: 7
+title: USB Probes
+parent: Probes
+nav_order: 5
 ---
 
 # Getting ultrasound images from OEM probes

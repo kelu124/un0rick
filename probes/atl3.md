@@ -1,8 +1,8 @@
 ---
 layout: default
 title: ATL3 probe
-parent: Using probes
-nav_order: 1
+parent: Probes
+nav_order: 5
 ---
 
 

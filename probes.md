@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Using probes
+title: Probes
 has_children: true
-nav_order: 6
+nav_order: 37
 ---
 # Experimenting with medical mechanical probes
 

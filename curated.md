@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Curated links
-nav_order: 8
+parent: Goodies
+nav_order: 1
 ---
 ## Some experiments
 

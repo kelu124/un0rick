@@ -1,8 +1,8 @@
 ---
 layout: default
 title: PMODs and stuff
-parent: Byproducts and goodies
-nav_order: 10
+parent: Extensions
+nav_order: 50
 ---
 
 # Modules for signal acquisition and transmission - using the PMOD standard

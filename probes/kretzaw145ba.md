@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Kretz AW14 5B A
-parent: Using probes
+parent: Probes
 nav_order: 4
 ---
 

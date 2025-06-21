@@ -1,7 +1,7 @@
 ---
 layout: default
 title: HP21412A
-parent: Using probes
+parent: Probes
 nav_order: 3
 ---
 
