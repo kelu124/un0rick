@@ -10,6 +10,7 @@ nav_order: 1
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 
+The `un0rick` project is an open-source ultrasound hardware project, that has evolved significantly over nearly a decade -- keeping hte objective of providing an affordable tool for educational demonstrations and rapid prototyping.
 
 # Open source ultrasound
 
@@ -18,42 +19,16 @@ Non destructive testing and imaging ultrasound have been around since the '50s. 
 
 _I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers._
 
+# The un0rick project today
 
-## Two boards
+The pic0rick device is a shift in the project's approach - abandoning more complex FPGA architectures for an accessible, RP2040/RP2350-based design that delivers comparable performance at a fraction of the cost and complexity, while eliminating the steep learning curve of FPGA programming.
 
-For this project, I developped two boards, the [un0rick](un0rick.md) and the [lit3rick](lit3rick.md) boards, based on the hx4k and up5k lattice fpga, respectively. Both are open hardware certified (check for [un0rick](https://certification.oshwa.org/fr000005.html) and [lit3rick](https://certification.oshwa.org/fr000006.html) ).
-
-### un0rick
-
-![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
-
-### lit3rick
-
-![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
-
-
-
-### Comparing the two designs
-
-They have their own specificities:
-
-|                      	|                un0rick                	|        lit3rick        	|
-|---------------------:	|:-------------------------------------:	|:----------------------:	|
-|                 FPGA 	|               HX4K, HX8K              	|          UP5K          	|
-| Onboard high voltage 	|             0, 24, 48, 72V            	|           5V           	|
-|                  RAM 	|              External 8Mb             	|      Internal 1Mb      	|
-|                  ADC 	| 64Msp, 10bits, interleaved at 128Msps 	|     64Msps 12 bits     	|
-|  Amplification / VGA 	|                 AD8331                	|         AD8331         	|
-|               Pulser 	|          Unipolar, 0 to 100V          	| Bipolar, -100V to 100V 	|
-|                 Size 	|                 Larger                	|   Raspberry pHAT size  	|
-|          USB capable 	|               Yes (FTDI)              	|           No           	|
-|                      	|                                       	|                        	|
-|                      	|                                       	|                        	|
+Similar to the previous hardware, the pic0rick has great ultrasound capabilities: 60 Msps ADC with 10-bit resolution (could go faster!), an AD8331 Time-Gain Compensation ranging from 7.5 to 55.5 dB, and innovative modular PMOD expansion system - that can be used for real-time VGA display output for live acquisition visualization, or to get a multiplexer allowing you to drive a series of piezos. Un0rick making it ideal 
 
 
 ## What can be done with this hardware?
 
-This board has been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
+The boards have been developped for pedagogical purposes, to understand how ultrasound imaging and non-destructive testing work. This structure can be used to develop:
 
 * ultrasound prototypes, eg can be used as a platform for A-mode, or B-mode imaging ([pulse echo](http://un0rick.cc/UseCase/pulse_echo) works best); 
 * it can also be used for array imaging - the modules can be used with a multiplexer for do synthetic aperture beamforming; 
@@ -63,24 +38,16 @@ This board has been developped for pedagogical purposes, to understand how ultra
 * play with [ultrasound tomography](http://un0rick.cc/UseCase/tomo);
 * can be [connected to arduinos](http://un0rick.cc/UseCase/m5stack);
 * other [non-destructive](http://un0rick.cc/UseCase/NDT) testing apparatus. 
-
-## ice40 - a specificity
-
-These two boards build in particular on the famouse ice40 FPGA family which is low-cost, ... and open-sourced.
-
-It can use the "Project IceStorm", which aims at reverse engineering and documenting the bitstream format of Lattice iCE40 FPGAs and providing simple tools for analyzing and creating bitstream files.
-
-There's a bit of action around these FPGAs these days, be it for tools, extensions, DIP designs,... and I thought using those for a ultrasound imaging device would permit to mix both FPGA and OpenSource.
+* 
 
 ## How is this better?
 
-Compared to previous iterations, the two un0rick and lit3rick boards are :
+Compared to previous iterations, the pic0rick is
 
 * more robust;
 * more cost efficient;
-* integrated - and SNR is far better than earlier;
-* better memory for bigger captures;
-* are [Open Source Hardware Certified](http://certificate.oshwa.org/certification-directory/)
+* has modular capabilities, for bigger captures or MUXes;
+* still a device that is [Open Source Hardware Certified](http://certificate.oshwa.org/certification-directory/)
 
 
 # Working together
@@ -94,16 +61,16 @@ A summary of the contributors using this family of hardware is detailed below. S
 ## And you?
 
 * Want to learn more? We are on the [Matrix](https://app.element.io/#/room/#un0rick:matrix.org) as an open chat, if you want to discuss, but there are plenty of other sources:
-* [Hackaday page too](https://hackaday.io/project/28375-un0rick-an-ice40-ultrasound-board)
-* You can also __fork the [project repo](https://github.com/kelu124/un0rick/)__, 
-* The [slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) is being deprecated.
-* Or, you can go vintage and see:
-  * [Old repo](https://github.com/kelu124/echomods/) can be used for an extensive archive for the source files, raw data and raw experiment logs or explore the [hackaday page](https://hackaday.io/project/9281-murgen-open-source-ultrasound-imaging), where I tried to blog day-to-day experiments in a casual format
-  * Obviously, you can __read the [online manual/book](https://www.gitbook.com/book/kelu124/echomods/details)__ for a easily readable and searchable archive of the whole work on this family of hardware
+* You can also __fork the [project repo](https://github.com/kelu124/pic0rick/)__, 
 
 # Articles
 
-Under CC-BY-4.0, [main article here](https://openhardware.metajnl.com/articles/10.5334/joh.2/). Other articles are in the pipeline.
+
+The systems designs have been documented, and captured in a number of openly accessible articles:
+* [Arduino-like development kit for single-element ultrasound imaging](https://doi.org/10.5334/joh.2)
+* [Review of Current Simple Ultrasound Hardware Considerations, Designs, and Processing Opportunities](https://doi.org/10.5334/joh.28)
+* [A rp2040-based ultrasound pulse-echo acquisition device](https://doi.org/10.5281/zenodo.10968503)
+
 
 ## License
 
@@ -123,4 +90,3 @@ This project is distributed WITHOUT ANY EXPRESS OR IMPLIED WARRANTY, INCLUDING O
 * As in all electronics, be careful, especially.
 * This is a learning by doing project, I never did something related -> It's all but a finalized product.
 * Ultrasound raises questions. In case you build a scanner, use caution and good sense!
-

@@ -6,6 +6,8 @@ nav_order: 20
 has_children: true
 ---
 
+# **BEWARE: This project has been deprecated since the arrival of the [pic0rick project](pic0rick) in 2024**
+
 
 ![](https://raw.githubusercontent.com/kelu124/lit3rick/master/images/top.jpg)
 

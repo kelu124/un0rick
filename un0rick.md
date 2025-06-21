@@ -6,6 +6,8 @@ nav_order: 10
 has_children: true
 ---
 
+# **BEWARE: This project has been deprecated since the arrival of the [pic0rick project](pic0rick) in 2024**
+
 
 ![](https://raw.githubusercontent.com/kelu124/un0rick/master/images/un0rick_black.png)
 
@@ -141,7 +143,7 @@ The board was also tested with a nice [m5stack board](http://un0rick.cc/UseCase/
 
 ## Useful links
 
-* __Come and chat__ : join the [Slack channel](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow)
+* __Come and chat__ : Want to learn more? We are on the [Matrix](https://app.element.io/#/room/#un0rick:matrix.org) as an open chat, if you want to discuss, but there are plenty of other sources:
 * The full [GitHub Repo](https://github.com/kelu124/un0rick) for the hx8k board.
   * [Hardware files](https://github.com/kelu124/un0rick/tree/master/hardware)
   * [Verilog for usb control](https://github.com/kelu124/un0rick/tree/master/usb) - with the [corresponding python module](https://pypi.org/project/un0usb/)
