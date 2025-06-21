@@ -1,8 +1,8 @@
 ---
 layout: default
-title: PMODs and stuff
-parent: Extensions
-nav_order: 50
+title: Extensions
+nav_order: 15
+has_children: true
 ---
 
 # Modules for signal acquisition and transmission - using the PMOD standard
@@ -30,6 +30,10 @@ PMODs for my rp2040-based boards -- [github](https://github.com/kelu124/PMOD_rp2
 ## 6-bit VGA
 
 ![](https://raw.githubusercontent.com/kelu124/PMOD_rp2040/main/6bit-VGA/pic.jpg)
+
+# Other
+
+![](https://github.com/kelu124/pic0rick/raw/main/documentation/images/sister_boards.png)
 
 # License
 

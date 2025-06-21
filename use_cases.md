@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Use Cases
-nav_order: 15
+nav_order: 40
 has_children: true
 ---
 # Use cases

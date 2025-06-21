@@ -1,7 +1,7 @@
 ---
 layout: default
 title: More about the lit3-32
-parent: lit3-32
+parent: lit332
 nav_order: 1
 ---
 

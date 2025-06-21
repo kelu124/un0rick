@@ -10,20 +10,20 @@ nav_order: 1
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 
 
-The `un0rick` project is an open-source ultrasound hardware project, that has evolved significantly over nearly a decade -- keeping hte objective of providing an affordable tool for educational demonstrations and rapid prototyping.
+The `un0rick` project is an open-source ultrasound hardware project, that has evolved significantly over nearly a decade -- keeping the objective of providing an affordable tool for educational demonstrations and rapid prototyping.
 
-# Open source ultrasound
-
-
-Non destructive testing and imaging ultrasound have been around since the '50s. Many ultrasound open-source projects are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs to be used on commercial US scanners, but they are not cheap, and are difficult to access.
-
-_I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers._
 
 # The un0rick project today
 
+## the pic0rick
+
 The pic0rick device is a shift in the project's approach - abandoning more complex FPGA architectures for an accessible, RP2040/RP2350-based design that delivers comparable performance at a fraction of the cost and complexity, while eliminating the steep learning curve of FPGA programming.
 
+![](https://cdn.tindiemedia.com/images/resize/Kn3s65qieAvQ6NCM_oXqx2dLEXg=/p/full-fit-in/2336x1752/i/17175/products/2025-01-08T20%3A52%3A36.763Z-20240406_153634.jpg?1736340770)
+
 Similar to the previous hardware, the pic0rick has great ultrasound capabilities: 60 Msps ADC with 10-bit resolution (could go faster!), an AD8331 Time-Gain Compensation ranging from 7.5 to 55.5 dB, and innovative modular PMOD expansion system - that can be used for real-time VGA display output for live acquisition visualization, or to get a multiplexer allowing you to drive a series of piezos. Un0rick making it ideal 
+
+![Example of acquisition](https://github.com/kelu124/pic0rick/raw/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
 
 
 ## What can be done with this hardware?
@@ -49,6 +49,12 @@ Compared to previous iterations, the pic0rick is
 * has modular capabilities, for bigger captures or MUXes;
 * still a device that is [Open Source Hardware Certified](http://certificate.oshwa.org/certification-directory/)
 
+# Why open-source ultrasound?
+
+
+Non destructive testing and imaging ultrasound have been around since the '50s. Many ultrasound open-source projects are emerging, mostly focusing on image processing - while hardware has been left behind. Several teams have produced succesful designs to be used on commercial US scanners, but they are not cheap, and are difficult to access.
+
+_I couldn't find designs to play with, that would be affordable or open, so I decided to make one for makers, researchers and hackers._
 
 # Working together
 
