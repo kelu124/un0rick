@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Byproducts and goodies
-nav_order: 7
+title: Goodies
+nav_order: 35
 has_children: true
 ---
 # Some experiments

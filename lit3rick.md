@@ -1,7 +1,8 @@
 ---
 layout: default
 title: lit3rick
-nav_order: 3
+parent: Older designs
+nav_order: 20
 has_children: true
 ---
 

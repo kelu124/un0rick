@@ -1,7 +1,8 @@
 ---
 layout: default
 title: un0rick
-nav_order: 2
+parent: Older designs
+nav_order: 10
 has_children: true
 ---
 

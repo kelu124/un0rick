@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Research papers
-nav_order: 11
+title: Supported research
+nav_order: 50
 ---
 
 # Theses and academic publications

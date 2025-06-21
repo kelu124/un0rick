@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Partnering
-nav_order: 20
+title: Building together
+nav_order: 60
 ---
 # What I want to do 
 
