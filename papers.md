@@ -26,7 +26,8 @@ nav_order: 50
 * [DEVELOPMENT OF AN OPEN INSTRUMENTATION SYSTEM 4FOR ULTRASONIC TESTING IN QUALITY CONTROL OF LABORATORY-SCALE LAMINATED COMPOSITE FABRICATION ](https://digilib.itb.ac.id/assets/files/2024/MjAyNCBUUyBJSyBZVVNVRiBHSVJJIFdJSkFZQSAyMzgyMjAxMCBDT1ZFUi5wZGY1.pdf). Uses un0rick 💪.
 * [Open-Science Materials Acceleration Platforms for Clean Energy Material Design Spaces](https://www.proquest.com/openview/92632c8e8e694159b42f961a8ef441c6/1?pq-origsite=gscholar&cbl=18750&diss=y). Quotes research.
 * [Development and validation of a gel wax phantom to evaluate geometric accuracy and measurement of a hyperechoic target diameter in diagnostic ultrasound imaging](https://link.springer.com/article/10.1007/s13246-023-01362-0). Uses un0rick 💪.
- 
+* [A rp2040-based ultrasound pulse-echo acquisition device](https://doi.org/10.5281/zenodo.10968503). 🌞 us.
+
 ## 2023
 
 * [Research Hardware Definition, A report by the RDA FAIR4RH Interest Group, Subgroup 1: FAIR4RH-Definition](https://www.rd-alliance.org/wp-content/uploads/2024/03/FAIR4RH20IG20Output20Research20Hardware20Definition_0.pdf). Quotes un0rick as an example of open-hardware.
@@ -45,6 +46,8 @@ nav_order: 50
 * [Strategies for Artifact Correction and Motion Monitoring in MRI Through Innovations in Radiofrequency Coil Design](https://dukespace.lib.duke.edu/items/0659a62f-0046-4cf4-a4c3-1bbf2892bd44). Uses the echOmods ADC hat 💪.
 * [A gel wax phantom for performance evaluation in diagnostic ultrasound: assessment of image uniformity, geometric accuracy, and diameter of a hyperechoic target](https://arxiv.org/pdf/2212.07073.pdf). DOI: arXiv:2212.07073. Quotes research.
 * [Low-cost and open-source super-resolution fluorescence microscope with autofocus for teaching and research](https://www.biorxiv.org/content/10.1101/2022.02.22.481481v1.abstract). Quotes the research.
+* [Review of current simple ultrasound hardware considerations, designs, and processing opportunities](https://ojs.lib.uwo.ca/index.php/openhardware/article/download/17846/13468). 🌞 us.
+
 
 ## 2021
 
@@ -52,7 +55,7 @@ nav_order: 50
 * [Evaluation of Respiration Reproducibility of Chest General X-ray Examination using Self-made Respiratory Synchronization Device](https://koreascience.kr/article/JAKO202102153781201.page). Quotes research.
 * [Ultrasound scanner—Teaching tool](https://iopscience.iop.org/article/10.1088/1361-6404/ac10b1/meta). DOI: 10.1088/1361-6404/ac10b1. Quotes research.
 * [Development of a Medical System to Indicate Risk of Cardiovascular Disease](https://eprints.nottingham.ac.uk/69305/1/Denesh%20Sooriamoorthy%20PhD%20Thesis%20024958-official.pdf). Quotes research.
-
+* [A low-cost, arduino-like dev-kit for single-element ultrasound imaging](https://zenodo.org/records/5792252). 🌞 us.
 
 
 ## 2020
@@ -68,5 +71,13 @@ nav_order: 50
 * [On the economic value of open source hardware–case study of an open source magnetic resonance imaging scanner](https://openhardware.metajnl.com/articles/10.5334/joh.14). Quotes the research.
 * [The Case for a Portable Open-Source 3D Ultrasound: Issues, Benefits, and Challenges](https://www.mdpi.com/2079-9292/8/11/1256). DOI: 10.3390/electronics8111256. Quotes the research.
 * [Ubiquitous Object Imaging Using Audio Signals](https://scholar.archive.org/work/gpon3mg7rzdepds3atd76wmcea/access/wayback/https://publikationen.bibliothek.kit.edu/1000117525/61981138#page=51). Karlsruhe Institute of Technology. Quotes the research.
+* [un0rick : open-source fpga board for single element ultrasound imaging](https://doi.org/10.5281/zenodo.3364558). 🌞 us.
+
+## 2017
+
+* [Development of a Portable and Inexpensive Ultrasound Imaging Device for Use in the Developing World](https://cdn.vanderbilt.edu/vu-wordpress-0/wp-content/uploads/sites/16/2017/06/19123608/Taylor.pdf). 🌞 us.
 
 
+## 2016
+
+* [A low-cost, arduino-like dev-kit for single-element ultrasound imaging](https://doi.org/10.5334/joh.2). 🌞 us.
