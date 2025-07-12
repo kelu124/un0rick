@@ -11,6 +11,8 @@ nav_order: 50
 
 ## 2025
 
+* [Evaluation of physical properties and image quality of a breast tissue phantom with glycerol-enhanced polyvinyl chloride plastisol for ultrasound imaging](https://doi.org/10.14366/usg.24096). Uses un0rick 💪.
+* [Emerging Technologies and Concepts for Cardiovascular Risk Detection](https://books.google.co.uk/books?hl=fr&lr=&id=jAxlEQAAQBAJ&oi=fnd&pg=PP1&dq=jonveaux+ultrasound&ots=JeDQyMCgy4&sig=67zLz1i6KjsmQVPHLHgPUOfhOso#v=onepage&q=jonveaux&f=false). Quotes the research.
 * [Fabrication and evaluation of breast tissue equivalent phantoms for image quality assessment in ultrasound imaging](https://scholar.unair.ac.id/en/publications/fabrication-and-evaluation-of-breast-tissue-equivalent-phantoms-f). https://doi.org/10.1016/j.radi.2024.11.023 . Uses un0rick 💪.
 * [Survey on wireless ultrasound imaging](https://link.springer.com/article/10.1007/s12553-025-00976-6). Quotes the research.
 
