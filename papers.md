@@ -15,6 +15,13 @@ nav_order: 50
 * [Emerging Technologies and Concepts for Cardiovascular Risk Detection](https://books.google.co.uk/books?hl=fr&lr=&id=jAxlEQAAQBAJ&oi=fnd&pg=PP1&dq=jonveaux+ultrasound&ots=JeDQyMCgy4&sig=67zLz1i6KjsmQVPHLHgPUOfhOso#v=onepage&q=jonveaux&f=false). Quotes the research.
 * [Fabrication and evaluation of breast tissue equivalent phantoms for image quality assessment in ultrasound imaging](https://scholar.unair.ac.id/en/publications/fabrication-and-evaluation-of-breast-tissue-equivalent-phantoms-f). https://doi.org/10.1016/j.radi.2024.11.023 . Uses un0rick 💪.
 * [Survey on wireless ultrasound imaging](https://link.springer.com/article/10.1007/s12553-025-00976-6). Quotes the research.
+* [Ultrasonic guided wave transducers and electronic system design for Structural Health Monitoring](https://ieeexplore.ieee.org/abstract/document/11232463). Quotes the research.
+* [Nondestructive test for quality control in laboratory-scale fabrication of laminated composites using programmable portable ultrasonic](https://www.sciencedirect.com/science/article/pii/S2588840425000150).  Uses un0rick 💪.
+* [ModulUS: A Sandbox for High-Resolution Wearable Ultrasound Development](https://ieeexplore.ieee.org/abstract/document/11201551). Quotes the research.
+
+
+
+
 
 ## 2024
 
