@@ -1,8 +1,9 @@
 ---
 layout: default
 title: Building together
-nav_order: 60
+nav_order: 10
 ---
+
 # What I want to do 
 
 Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
