@@ -21,7 +21,10 @@ Before you begin, make sure you have the following:
 | **HV board** | Generates +-25V for the pulser. Plugs into the pulser board |
 | **A single-element ultrasound transducer** | Any single-element probe in the 1–10 MHz range will work. See [compatible probes](http://un0rick.cc/probes) for suggestions |
 | **SMA cable** | To connect the transducer to the board's receive SMA connector |
-| **USB-C cable** | For power and data connection to your computer |
+| **SMA connectors** | Coax connectors for both the pulser and the AFE boards, where to connect your cables  |
+| **2.54 connectors** | The 2.54mm usual headers, I use them 90° angle as you can see below, female on the AFE board, male on the PMOD smaller boards |
+| **rp2350/rp2040** | THe usual form factor, to assemble the board and get your microcontroler of choice |
+| **USB cable** | For power and data connection to your computer |
 | **A computer** | Any OS with Python 3 installed (Windows, macOS, Linux) |
 | **A test target** (optional) | A glass of water with a coin at the bottom, a metal block, or any solid object for reflection testing |
 

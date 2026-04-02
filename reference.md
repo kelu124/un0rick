@@ -74,10 +74,54 @@ Several HV supply designs were developed during the project for generating the t
 
 ## Software tools
 
-### Python libraries
+### pyusbus — Python APIs for USB ultrasound probes
 
-* **[pyusbus](https://github.com/kelu124/pyusbus)** — Python APIs for USB ultrasound probes. Provides a common interface for communicating with commercial USB probes whose drivers are normally proprietary.
-* **[pyUProbe1](https://github.com/kelu124/pyUProbe1)** — Python library for uProbe-1 ultrasound probe acquisitions.
+![GitHub repo size](https://img.shields.io/github/repo-size/kelu124/pyusbus?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/kelu124/pyusbus?color=red&style=plastic)
+
+* **Repository**: [github.com/kelu124/pyusbus](https://github.com/kelu124/pyusbus) (27 stars)
+* **License**: GPLv3
+
+A number of USB ultrasound probes exist on the consumer market — compact, affordable devices that could be powerful research and education tools. The problem is that their communication protocols are locked behind proprietary drivers, and vendors rarely open their SDKs beyond basic image display.
+
+**pyusbus** is a Python library that reverse-engineers the USB communication of these probes, providing an open API to acquire raw ultrasound frames directly. The goal is to get images from a USB probe in three lines of code:
+
+```python
+import pyusbus as usbProbe
+probe = usbProbe.UP20()
+frames = probe.getImages(n=10)  # returns 10 frames
+```
+
+#### Supported probes
+
+| Probe | Type | API class | Notes |
+|---|---|---|---|
+| **Interson SeeMore** | Mechanical (single-element, motor-driven) | `usbProbe.Interson()` | Variable image width depending on motor speed. Based on [Kitware's IntersonManager](https://github.com/KitwareMedical/IntersonManager) references |
+| **BMV Convex** | Convex array | `usbProbe.CONV()` | Returns RF signals (not just envelope) — useful for research |
+| **Linear HP20L** | Linear array (B-mode) | `usbProbe.UP20()` | Returns envelope data with correct distance markers (mm) |
+| **BMV Doppler** | Linear array (B-mode + Doppler) | `usbProbe.DOPPLER()` | Supports both B-mode and Doppler acquisition modes |
+
+![pyusbus acquisition demo — vein phantom and forearm](https://github.com/kelu124/pyusbus/raw/main/experiments/streamlit/capture.gif)
+
+#### Installation
+
+```bash
+git clone https://github.com/kelu124/pyusbus.git
+cd pyusbus
+bash build.sh
+bash install.sh
+```
+
+On Linux, you need to set up udev rules so the probes are accessible without root. A `rules.d.sh` script is included in the repository. You may also need to add your user to the `dialout` group.
+
+#### Why this matters
+
+Having open drivers for USB ultrasound probes benefits both probe users (by providing an easy-to-use API with access to raw data) and researchers (by providing insights into probe internals that are normally hidden). The raw RF data from the BMV Convex probe, for example, opens up signal processing experiments that are impossible with the vendor's display-only software.
+
+Not all probe features are fully mapped yet — this is an active reverse-engineering effort. Contributions and bug reports are welcome on [GitHub](https://github.com/kelu124/pyusbus/issues).
+
+#### Related: pyUProbe1
+
+* **[pyUProbe1](https://github.com/kelu124/pyUProbe1)** (15 stars) — A separate Python library for the uProbe-1 ultrasound probe. Similar approach, different probe hardware.
 
 ### Signal processing
 
