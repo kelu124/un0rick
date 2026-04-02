@@ -82,7 +82,7 @@ The double PMOD connector supports several expansion boards:
 
 Note: the PMOD headers include a 5V rail in addition to the standard signals, so they are not strictly PMOD-compliant — but this allows powering more demanding extension boards directly.
 
-For more details, see the [Extensions page](http://un0rick.cc/goodies/pmods).
+For more details, see the [Extensions page](http://un0rick.cc/pmods).
 
 ---
 

@@ -100,7 +100,7 @@ The pic0rick features a Time-Gain Compensation (TGC) system using an AD8331 ampl
 Now that you have your first acquisition working, here are some directions to explore:
 
 * **Try different use cases**: [Pulse-echo](http://un0rick.cc/UseCase/pulse_echo), [NDT](http://un0rick.cc/UseCase/NDT), or [Tomography](http://un0rick.cc/UseCase/tomo)
-* **Add extensions**: The double PMOD connector supports a [VGA output](http://un0rick.cc/goodies/pmods) for real-time display and a [MUX board](http://un0rick.cc/goodies/pmods) for driving multiple transducers
+* **Add extensions**: The double PMOD connector supports a [VGA output](http://un0rick.cc/pmods) for real-time display and a [MUX board](http://un0rick.cc/pmods) for driving multiple transducers
 * **Explore the hardware**: Full [KiCad design files](https://github.com/kelu124/pic0rick/) are available if you want to modify the board
 * **Read the research**: See how others have used the hardware in [30+ academic publications](http://un0rick.cc/research)
 * **Join the community**: Ask questions on [Slack](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) or [Matrix](https://app.element.io/#/room/#un0rick:matrix.org)

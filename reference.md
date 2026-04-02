@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Reference
+title: Legacy boards
 nav_order: 8
-has_children: true
+
 ---
 
 # Reference
