@@ -113,9 +113,11 @@ How does the pic0rick compare to the older un0rick-family boards?
 
 ---
 
-## Example acquisitions
+### Example of acquisition
 
-![Acquisition example](https://github.com/kelu124/pic0rick/raw/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
+A typical acquisition looks like this — the large spike on the left is the transmit pulse, and the smaller peaks to the right are reflections from your target:
+
+![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/pic0gain_at_6.jpg)
 
 ---
 
