@@ -153,11 +153,4 @@ Contributors and users of un0rick-family hardware span multiple continents:
 
 If you have published work using un0rick hardware and it is not listed here, please [open an issue on GitHub](https://github.com/kelu124/pic0rick/issues) or email [kelu124@gmail.com](mailto:kelu124@gmail.com) — we would love to add it.
 
----
-
-## Legend
-
-| Symbol | Meaning |
-|---|---|
-| 💪 | Directly uses un0rick-family hardware |
-| 🌞 | Publication by the un0rick team |
+--- 
