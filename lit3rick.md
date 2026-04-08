@@ -1,7 +1,7 @@
 ---
 layout: default
 title: lit3rick
-parent: Older designs
+parent: Legacy boards
 nav_order: 20
 has_children: true
 ---
