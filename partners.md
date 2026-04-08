@@ -11,7 +11,7 @@ Foster open-source ultrasound hardware, like arduino and raspberrypi have done.
 ## What I have
 
 * Been selling hardware since 2017: know-how in terms of design, prototyping, review, production, sales  
-* Two existing board designs and corresponding python libs ([un0rick](http://un0rick.cc/un0rick) and [lit3rick](http://un0rick.cc/lit3rick))!
+* Three existing board designs and corresponding python libs ([un0rick](http://un0rick.cc/un0rick), [lit3rick](http://un0rick.cc/lit3rick), and [pic0rick](http://un0rick.cc/pic0rick))!
 * Documentation, along with an exhaustive research log
 * Existing users - and access to ultrasound research labs, as well as ultrasound startups (~100+ users, including ~20 academic labs, ~15 startups, ~15 SMEs)
 * An [ecosystem](https://join.slack.com/t/usdevkit/shared_invite/zt-2g501obl-z53YHyGOOMZjeCXuXzjZow) (academics, private, researchers, students, suppliers, ...)

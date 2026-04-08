@@ -2,7 +2,7 @@
 layout: default
 title: PMODs
 parent: Legacy boards
-nav_order: 15 
+nav_order: 90
 ---
 
 # Modules for signal acquisition and transmission - using the PMOD standard
