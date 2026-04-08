@@ -71,7 +71,7 @@ The hardware is designed for pedagogical and prototyping purposes. Common applic
 * **Transducer characterization** — test and evaluate piezoelectric probes ([compatible probes](http://un0rick.cc/probes))
 * **Signal processing research** — a flexible platform for new methods
 
-![Example acquisition](https://github.com/kelu124/pic0rick/raw/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
+![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/pic0gain_at_6.jpg)
 
 ---
 

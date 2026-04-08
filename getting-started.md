@@ -87,7 +87,7 @@ This script connects to the pic0rick over serial, triggers a pulse, and captures
 
 A typical acquisition looks like this — the large spike on the left is the transmit pulse, and the smaller peaks to the right are reflections from your target:
 
-![Example acquisition](https://github.com/kelu124/pic0rick/raw/main/software/imgs/pico_shell/pic0gain_at_6.jpg)
+![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/pic0gain_at_6.jpg)
 
 ### Adjusting the gain
 
