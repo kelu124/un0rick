@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Legacy boards
+title: PMODs
+parent: Legacy boards
 nav_order: 15 
 ---
 
