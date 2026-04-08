@@ -42,6 +42,9 @@ The un0rick-family boards are certified by the [Open Source Hardware Association
 |---|---|---|
 | un0rick | FR000005 | [Certificate](https://certification.oshwa.org/fr000005.html) |
 | lit3rick | FR000006 | [Certificate](https://certification.oshwa.org/fr000006.html) |
+| pic0rick | FR000023 | [Certificate](https://certification.oshwa.org/fr000023.html) |
+
+
 
 OSHWA certification means the hardware meets the [Open Source Hardware Definition](https://www.oshwa.org/definition/) — the design files are publicly available, the license permits study, modification, distribution, and manufacture, and the hardware has been made using open tools as much as possible.
 
