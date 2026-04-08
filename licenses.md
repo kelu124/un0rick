@@ -43,6 +43,7 @@ The un0rick-family boards are certified by the [Open Source Hardware Association
 | un0rick | FR000005 | [Certificate](https://certification.oshwa.org/fr000005.html) |
 | lit3rick | FR000006 | [Certificate](https://certification.oshwa.org/fr000006.html) |
 | pic0rick | FR000023 | [Certificate](https://certification.oshwa.org/fr000023.html) |
+| max14866 for un0rick | FR000014 | [Certificate](https://certification.oshwa.org/fr000014.html) |
 
 
 
