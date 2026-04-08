@@ -107,7 +107,7 @@ Now that you have your first acquisition working, here are some directions to ex
 
 ---
 
-## Troubleshooting
+## "Easy" troubleshooting
 
 ### Board not detected over USB
 
@@ -140,6 +140,44 @@ sudo usermod -aG dialout $USER
 Then log out and back in for the change to take effect.
 
 ---
+
+## More support / troubleshooting ?
+
+As a simple sanity check, I'd recommend trying first a basic setup: a piezo pointing straight down into a glass of water (4-5 cm depth) with a flat reflector at the bottom. This gives a clean, predictable echo that helps rule out target/coupling issues.
+
+Then here's the checklist, containing information I'd need to help your troubleshooting:
+
+- HARDWARE SETUP
+  - Which board are you using (pic0rick, un0rick, other)?
+  - Which microcontroller did you solder (RP2040, RP2350)?
+  - A photo of your assembled setup (boards, connectors, cabling) would be very helpful.
+  - How are the electrical connections made (which pins, grounding)?
+
+- EXPERIMENT CONTEXT
+  - What is the goal of your experiment (pulse-echo imaging, Doppler, NDT, other)?
+  - What signal do you expect to see?
+  - What gain/DAC and pulse parameters have you used?
+  
+- PIEZO / TRANSDUCER
+  - What transducer are you using (brand, model, central frequency)?
+  - How is the piezo connected to the board (SMA, BNC, other)?
+  - Is the piezo in contact with water, gel, or another medium?
+  - What is your target, and at what distance from the piezo? Is it parallel to the piezo face?
+
+- FIRMWARE
+  - What firmware (.uf2 file) have you flashed? From which version of the repo?
+  - Have you modified the firmware in any way?
+  - The latest firmware is available at: https://github.com/kelu124/pic0rick/
+
+- SOFTWARE & COMMUNICATION
+  - What OS are you running (Linux, Windows, Raspberry Pi OS)?
+  - How are you communicating with the board (serial terminal, custom scripts, Jupyter notebook)?
+  - Can you see the device connected (e.g., does /dev/ttyACM* appear)?
+  - If possible, please try cloning the repo (https://github.com/kelu124/pic0rick/) and running the example.ipynb notebook — this will help isolate whether the issue is in your code or in the hardware.
+
+
+
+
 
 ## Going deeper
 
