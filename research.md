@@ -26,7 +26,35 @@ If you use un0rick-family hardware in your research, please cite the publication
 }
 ```
 
-### un0rick / lit3rick (FPGA-based, 2018–2024)
+### lit3rick (2021 - 2024)
+
+```bibtex
+@article{jonveaux_2021_5792245,
+  title        = {lit3rick: an up5k ultrasound pulse-echo device},
+  author       = {Jonveaux, Luc},
+  month        = dec,
+  year         = 2021,
+  doi          = {10.5281/zenodo.5792245},
+  url          = {https://doi.org/10.5281/zenodo.5792245},
+}
+```
+
+### un0rick (2019 - 2022)
+
+```bibtex
+@article{luc_jonveaux_2019_3364559,
+  title        = {un0rick : open-source fpga board for single
+                   element ultrasound imaging
+                  },
+  author       = {Luc Jonveaux},
+  month        = aug,
+  year         = 2019,
+  doi          = {10.5281/zenodo.3364559},
+  url          = {https://doi.org/10.5281/zenodo.3364559},
+}
+```
+
+### General design concepts
 
 ```bibtex
 @article{jonveaux2022review,
