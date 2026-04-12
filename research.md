@@ -96,6 +96,7 @@ These are the papers authored by the un0rick team:
 |---|---|---|
 | 2024 | A rp2040-based ultrasound pulse-echo acquisition device | [10.5281/zenodo.10968503](https://doi.org/10.5281/zenodo.10968503) |
 | 2022 | Review of current simple ultrasound hardware considerations, designs, and processing opportunities | [10.5334/joh.28](https://doi.org/10.5334/joh.28) |
+| 2021 | lit3rick: an up5k ultrasound pulse-echo device | [10.5281/zenodo.5792245](https://doi.org/10.5281/zenodo.5792245) |
 | 2021 | A low-cost, arduino-like dev-kit for single-element ultrasound imaging (updated) | [zenodo.5792252](https://zenodo.org/records/5792252) |
 | 2019 | un0rick: open-source FPGA board for single element ultrasound imaging | [10.5281/zenodo.3364558](https://doi.org/10.5281/zenodo.3364558) |
 | 2017 | Development of a portable and inexpensive ultrasound imaging device | [Vanderbilt](https://cdn.vanderbilt.edu/vu-wordpress-0/wp-content/uploads/sites/16/2017/06/19123608/Taylor.pdf) |
