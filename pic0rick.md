@@ -36,7 +36,7 @@ The pic0rick is the current recommended board in the un0rick family. It replaces
 | **Power** | USB bus powered |
 | **Design files** | KiCad (open source) |
 | **Firmware** | C/C++ for RP2040 — Arduino-like development environment |
-| **Certification** | [OSHWA open-source hardware certified](http://certificate.oshwa.org/certification-directory/) |
+| **Certification** | [OSHWA open-source hardware certified as FR000023](https://certification.oshwa.org/fr000023.html) |
 
 ---
 
@@ -92,7 +92,7 @@ How does the pic0rick compare to the older un0rick-family boards?
 
 {: .board-comparison}
 
-| | **pic0rick** | **un0rick** | **lit3rick** | **lit3-32** |
+| | **pic0rick** | [un0rick](https://un0rick.cc/un0rick) | [lit3rick](https://un0rick.cc/lit3rick) | [lit3-32](https://un0rick.cc/lit3-32) |
 |---|---|---|---|---|
 | **Status** | **Active** | Legacy | Legacy | Legacy |
 | **Years** | 2024–now | 2018–2025 | 2020–2024 | 2021–2024 |
