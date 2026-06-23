@@ -184,3 +184,30 @@ Then here's the checklist, containing information I'd need to help your troubles
 * [pic0rick hardware details](http://un0rick.cc/pic0rick) — full specs, block diagram, and PMOD extensions
 * [pic0rick GitHub repository](https://github.com/kelu124/pic0rick/) — firmware source, KiCad files, and documentation
 * [Board comparison table](http://un0rick.cc/pic0rick#board-comparison) — how pic0rick compares to older un0rick-family boards
+
+
+# The physical assembly of the device
+
+## What you get :
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step0.jpg)
+
+## Before assembly
+
+You will need to get a few headers, a raspberry pico, and SMA connectors
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step1.jpg)
+
+## Focus on the Pulser connector
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step2.jpg)
+
+## Once assembled
+
+### Top view
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step3.jpg)
+
+### Bottom view 
+
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step4.jpg)
