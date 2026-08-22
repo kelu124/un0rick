@@ -124,6 +124,7 @@ These publications directly used an un0rick-family board for experiments or data
 
 | Year | Title | Board | Link |
 |---|---|---|---|
+|2026 |Non-uniform lagrange interpolation in B-mode ultrasound image reconstruction| [DOI : 10.56764/hpu2.jos.2026.5.01.27-34](https://sj.hpu2.edu.vn/index.php/journal/article/view/578)|
 | 2025 | Evaluation of physical properties and image quality of a breast tissue phantom with glycerol-enhanced PVC plastisol for ultrasound imaging | un0rick | [DOI: 10.14366](https://doi.org/10.14366/usg.24096) |
 | 2025 | Fabrication and evaluation of breast tissue equivalent phantoms for image quality assessment in ultrasound imaging | un0rick | [DOI: 10.1016](https://scholar.unair.ac.id/en/publications/fabrication-and-evaluation-of-breast-tissue-equivalent-phantoms-f) |
 | 2024 | Development and validation of a gel wax phantom to evaluate geometric accuracy and measurement of a hyperechoic target | un0rick | [Springer](https://link.springer.com/article/10.1007/s13246-023-01362-0) |
@@ -138,11 +139,14 @@ These publications directly used an un0rick-family board for experiments or data
 
 These publications reference un0rick publications without directly using the hardware.
 
-### Hardware design and electronics
-
 | Year | Title | Link |
 |---|---|---|
+| 2026 | Development of an optically emulated computed tomography scanner for college education | [DOI: 10.1186/s42492-025-00211-z](https://doi.org/10.1186/s42492-025-00211-z)|
+| 2026 | A Robotic Simulation Environment for Ultrasound Imaging of Soft Tissue | [DOI: 10.1109/ISMR69606.2026.11536413](https://ieeexplore.ieee.org/document/11536413/)|
+| 2026 | Validation of a Software-Defined 100-Gb/s RDMA Streaming Architecture for Ultrafast Optoacoustic and Ultrasound Imaging | [DOI: 	arXiv:2601.18280 ](https://arxiv.org/abs/2601.18280) |
+| 2026 | Design and Experimental Validation of an Ultrasonic Sensor Node for Distributed Large-Scale Flow Measurements in the DRESDYN Precession Experiment | [DOI: 10.2139/ssrn.6946751](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6946751) | 
 | 2025 | Ultrasonic guided wave transducers and electronic system design for structural health monitoring | [IEEE](https://ieeexplore.ieee.org/abstract/document/11232463) |
+| 2025 | Emerging technologies and concepts for cardiovascular risk detection | [Google Books](https://books.google.co.uk/books?hl=fr&lr=&id=jAxlEQAAQBAJ&oi=fnd&pg=PP1&dq=jonveaux+ultrasound&ots=JeDQyMCgy4&sig=67zLz1i6KjsmQVPHLHgPUOfhOso#v=onepage&q=jonveaux&f=false) |
 | 2025 | Survey on wireless ultrasound imaging | [Springer](https://link.springer.com/article/10.1007/s12553-025-00976-6) |
 | 2025 | ModulUS: a sandbox for high-resolution wearable ultrasound development | [IEEE](https://ieeexplore.ieee.org/abstract/document/11201551) |
 | 2024 | Electronic design considerations and system development for SHM with ultrasonic guided waves | [DOI: 10.1109](https://ieeexplore.ieee.org/abstract/document/10794056/) |
@@ -153,12 +157,7 @@ These publications reference un0rick publications without directly using the har
 | 2023 | Ultraäänitomografialaitteiston instrumentointi (Ultrasound tomography instrumentation) | [UEF thesis](https://erepo.uef.fi/bitstream/handle/123456789/30401/urn_nbn_fi_uef-20231044.pdf?sequence=1) |
 | 2023 | Handheld bone densitometry configuration on development of bone model density testing | [DOI: 10.1109](https://ieeexplore.ieee.org/abstract/document/10346057) |
 | 2023 | IoT-based medical image monitoring system using HL7 in a hospital database | [MDPI](https://www.mdpi.com/2227-9032/11/1/139) |
-| 2023 | Research hardware definition — a report by the RDA FAIR4RH interest group | [RDA](https://www.rd-alliance.org/wp-content/uploads/2024/03/FAIR4RH20IG20Output20Research20Hardware20Definition_0.pdf) |
-
-### Open hardware and methodology
-
-| Year | Title | Link |
-|---|---|---|
+| 2023 | Research hardware definition — a report by the RDA FAIR4RH interest group | [RDA](https://www.rd-alliance.org/wp-content/uploads/2024/03/FAIR4RH20IG20Output20Research20Hardware20Definition_0.pdf) | 
 | 2022 | A gel wax phantom for performance evaluation in diagnostic ultrasound | [arXiv:2212.07073](https://arxiv.org/pdf/2212.07073.pdf) |
 | 2022 | Low-cost and open-source super-resolution fluorescence microscope with autofocus for teaching and research | [bioRxiv](https://www.biorxiv.org/content/10.1101/2022.02.22.481481v1.abstract) |
 | 2021 | Evaluation of respiration reproducibility of chest general X-ray examination using self-made respiratory synchronization device | [KoreaScience](https://koreascience.kr/article/JAKO202102153781201.page) |
@@ -170,7 +169,7 @@ These publications reference un0rick publications without directly using the har
 | 2019 | On the economic value of open source hardware — case study of an open source MRI scanner | [DOI: 10.5334](https://openhardware.metajnl.com/articles/10.5334/joh.14) |
 | 2019 | The case for a portable open-source 3D ultrasound: issues, benefits, and challenges | [DOI: 10.3390](https://www.mdpi.com/2079-9292/8/11/1256) |
 | 2019 | Ubiquitous object imaging using audio signals | [KIT](https://scholar.archive.org/work/gpon3mg7rzdepds3atd76wmcea/access/wayback/https://publikationen.bibliothek.kit.edu/1000117525/61981138#page=51) |
-| 2025 | Emerging technologies and concepts for cardiovascular risk detection | [Google Books](https://books.google.co.uk/books?hl=fr&lr=&id=jAxlEQAAQBAJ&oi=fnd&pg=PP1&dq=jonveaux+ultrasound&ots=JeDQyMCgy4&sig=67zLz1i6KjsmQVPHLHgPUOfhOso#v=onepage&q=jonveaux&f=false) |
+
 
 ---
 
