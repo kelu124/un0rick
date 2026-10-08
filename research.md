@@ -141,6 +141,8 @@ These publications reference un0rick publications without directly using the har
 
 | Year | Title | Link |
 |---|---|---|
+| 2026 | U-Sonic: An Open-Source 8-Channel Ultrasound Transmit IP in a 130 nm RISC-V SoC | [arXiv:2610.01603](https://arxiv.org/abs/2610.01603) |
+| 2026 | Delay-structure-based pulser quantization for low-complexity 2D ultrasound arrays | [DOI: 10.5370/KIEE.2026.75.7.1591](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12890083) |
 | 2026 | Development of an optically emulated computed tomography scanner for college education | [DOI: 10.1186/s42492-025-00211-z](https://doi.org/10.1186/s42492-025-00211-z)|
 | 2026 | A Robotic Simulation Environment for Ultrasound Imaging of Soft Tissue | [DOI: 10.1109/ISMR69606.2026.11536413](https://ieeexplore.ieee.org/document/11536413/)|
 | 2026 | Validation of a Software-Defined 100-Gb/s RDMA Streaming Architecture for Ultrafast Optoacoustic and Ultrasound Imaging | [DOI: 	arXiv:2601.18280 ](https://arxiv.org/abs/2601.18280) |
@@ -149,6 +151,7 @@ These publications reference un0rick publications without directly using the har
 | 2025 | Emerging technologies and concepts for cardiovascular risk detection | [Google Books](https://books.google.co.uk/books?hl=fr&lr=&id=jAxlEQAAQBAJ&oi=fnd&pg=PP1&dq=jonveaux+ultrasound&ots=JeDQyMCgy4&sig=67zLz1i6KjsmQVPHLHgPUOfhOso#v=onepage&q=jonveaux&f=false) |
 | 2025 | Survey on wireless ultrasound imaging | [Springer](https://link.springer.com/article/10.1007/s12553-025-00976-6) |
 | 2025 | ModulUS: a sandbox for high-resolution wearable ultrasound development | [IEEE](https://ieeexplore.ieee.org/abstract/document/11201551) |
+| 2024 | Transducers and sensor-near signal processing for structural health monitoring of composite structures | [UniBo PhD thesis](https://amsdottorato.unibo.it/id/eprint/11154/) |
 | 2024 | Electronic design considerations and system development for SHM with ultrasonic guided waves | [DOI: 10.1109](https://ieeexplore.ieee.org/abstract/document/10794056/) |
 | 2024 | Open-science materials acceleration platforms for clean energy material design spaces | [ProQuest](https://www.proquest.com/openview/92632c8e8e694159b42f961a8ef441c6/1?pq-origsite=gscholar&cbl=18750&diss=y) |
 | 2023 | Contribution to the development of a smart ultrasound scanner: design and analysis of the HV power supply | [DOI: 10.3390](https://www.mdpi.com/2411-5134/8/5/113) |
