@@ -15,7 +15,7 @@ The `un0rick` project provides affordable, open-source ultrasound pulse-echo har
 
 The current board is the **[pic0rick](http://un0rick.cc/pic0rick)** — an RP2040-based design that delivers 60 Msps, 10-bit acquisition with no FPGA expertise required.
 
-![pic0rick board](https://cdn.tindiemedia.com/images/resize/Kn3s65qieAvQ6NCM_oXqx2dLEXg=/p/full-fit-in/2336x1752/i/17175/products/2025-01-08T20%3A52%3A36.763Z-20240406_153634.jpg?1736340770)
+![pic0rick board](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/20240406_153634.jpg)
 
 ---
 
@@ -71,7 +71,7 @@ The hardware is designed for pedagogical and prototyping purposes. Common applic
 * **Transducer characterization** — test and evaluate piezoelectric probes ([compatible probes](http://un0rick.cc/probes))
 * **Signal processing research** — a flexible platform for new methods
 
-![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/pic0gain_at_6.jpg)
+![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/pic0gain_at_6.jpg)
 
 ---
 

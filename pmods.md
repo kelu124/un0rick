@@ -33,7 +33,7 @@ PMODs for my rp2040-based boards -- [github](https://github.com/kelu124/PMOD_rp2
 
 # Other
 
-![](https://github.com/kelu124/pic0rick/raw/main/documentation/images/sister_boards.png)
+![](https://github.com/kelu124/pic0rick/raw/main/docs/images/sister_boards.png)
 
 # License
 

@@ -32,7 +32,7 @@ Before you begin, make sure you have the following:
 
 The three boards connect together like this: HV board → Pulser board → pic0rick main board (via the single PMOD header). The double PMOD header on the other side can optionally connect to a VGA output or MUX extension.
 
-![Assembled pic0rick](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/20240406_153634.jpg)
+![Assembled pic0rick](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/20240406_153634.jpg)
 
 ---
 
@@ -87,7 +87,7 @@ This script connects to the pic0rick over serial, triggers a pulse, and captures
 
 A typical acquisition looks like this — the large spike on the left is the transmit pulse, and the smaller peaks to the right are reflections from your target:
 
-![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/pic0gain_at_6.jpg)
+![Example acquisition](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/pic0gain_at_6.jpg)
 
 ### Adjusting the gain
 
@@ -190,24 +190,24 @@ Then here's the checklist, containing information I'd need to help your troubles
 
 ## What you get :
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step0.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/assembly/Step0.jpg)
 
 ## Before assembly
 
 You will need to get a few headers, a raspberry pico, and SMA connectors
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step1.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/assembly/Step1.jpg)
 
 ## Focus on the Pulser connector
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step2.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/assembly/Step2.jpg)
 
 ## Once assembled
 
 ### Top view
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step3.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/assembly/Step3.jpg)
 
 ### Bottom view 
 
-![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/documentation/images/assembly/Step4.jpg)
+![](https://raw.githubusercontent.com/kelu124/pic0rick/refs/heads/main/docs/images/assembly/Step4.jpg)
