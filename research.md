@@ -142,6 +142,7 @@ These publications reference un0rick publications without directly using the har
 | Year | Title | Link |
 |---|---|---|
 | 2026 | U-Sonic: An Open-Source 8-Channel Ultrasound Transmit IP in a 130 nm RISC-V SoC | [arXiv:2610.01603](https://arxiv.org/abs/2610.01603) |
+| 2026 | Using open-source platforms to build a low-cost, ultrasound-scanner-like device for teaching (Utilizarea platformelor open source pentru realizarea unui dispozitiv, low cost, similar unui ecograf, în scop didactic) | [Buletinul AGIR nr. 2/2026](https://www.agir.ro/buletine/3462.pdf) |
 | 2026 | Delay-structure-based pulser quantization for low-complexity 2D ultrasound arrays | [DOI: 10.5370/KIEE.2026.75.7.1591](https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE12890083) |
 | 2026 | Development of an optically emulated computed tomography scanner for college education | [DOI: 10.1186/s42492-025-00211-z](https://doi.org/10.1186/s42492-025-00211-z)|
 | 2026 | A Robotic Simulation Environment for Ultrasound Imaging of Soft Tissue | [DOI: 10.1109/ISMR69606.2026.11536413](https://ieeexplore.ieee.org/document/11536413/)|
